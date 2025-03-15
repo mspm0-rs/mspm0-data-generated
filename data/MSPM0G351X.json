@@ -7871,6 +7871,12 @@
         }
       ]
     },
+    "DMA": {
+      "name": "DMA",
+      "type": "Dma",
+      "address": 1078108160,
+      "pins": []
+    },
     "GPIOA": {
       "name": "GPIOA",
       "type": "Gpio",

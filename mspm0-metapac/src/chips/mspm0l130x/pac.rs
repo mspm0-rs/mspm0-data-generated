@@ -129,6 +129,8 @@ pub use cortex_m_rt::interrupt;
 pub use Interrupt as interrupt;
 #[path = "../../peripherals/cpuss.rs"]
 pub mod cpuss;
+#[path = "../../peripherals/dma.rs"]
+pub mod dma;
 #[path = "../../peripherals/gpio.rs"]
 pub mod gpio;
 #[path = "../../peripherals/iomux.rs"]
@@ -146,6 +148,7 @@ pub const COMP0: () = ();
 pub const CPUSS: cpuss::Cpuss = unsafe { cpuss::Cpuss::from_ptr(1077936128 as *mut _) };
 #[doc = "Address: 1074556928"]
 pub const DEBUGSS: () = ();
+pub const DMA: dma::Dma = unsafe { dma::Dma::from_ptr(1078108160 as *mut _) };
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 #[doc = "Address: 1074724864"]
 pub const I2C0: () = ();
