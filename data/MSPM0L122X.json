@@ -6771,5 +6771,28 @@
       "num": 31,
       "group": {}
     }
+  },
+  "dma_channels": {
+    "0": {
+      "full": true
+    },
+    "1": {
+      "full": true
+    },
+    "2": {
+      "full": true
+    },
+    "3": {
+      "full": false
+    },
+    "4": {
+      "full": false
+    },
+    "5": {
+      "full": false
+    },
+    "6": {
+      "full": false
+    }
   }
 }

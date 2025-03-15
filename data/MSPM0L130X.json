@@ -2428,5 +2428,16 @@
       "num": 31,
       "group": {}
     }
+  },
+  "dma_channels": {
+    "0": {
+      "full": true
+    },
+    "1": {
+      "full": false
+    },
+    "2": {
+      "full": false
+    }
   }
 }

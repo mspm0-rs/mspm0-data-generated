@@ -1688,5 +1688,10 @@
       "num": 31,
       "group": {}
     }
+  },
+  "dma_channels": {
+    "0": {
+      "full": false
+    }
   }
 }

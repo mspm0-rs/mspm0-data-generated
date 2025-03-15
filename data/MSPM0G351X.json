@@ -8865,5 +8865,43 @@
       "num": 31,
       "group": {}
     }
+  },
+  "dma_channels": {
+    "0": {
+      "full": true
+    },
+    "1": {
+      "full": true
+    },
+    "2": {
+      "full": true
+    },
+    "3": {
+      "full": true
+    },
+    "4": {
+      "full": true
+    },
+    "5": {
+      "full": true
+    },
+    "6": {
+      "full": false
+    },
+    "7": {
+      "full": false
+    },
+    "8": {
+      "full": false
+    },
+    "9": {
+      "full": false
+    },
+    "10": {
+      "full": false
+    },
+    "11": {
+      "full": false
+    }
   }
 }

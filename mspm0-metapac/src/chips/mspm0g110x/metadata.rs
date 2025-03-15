@@ -411,4 +411,34 @@ pub static METADATA: Metadata = Metadata {
             number: 31,
         },
     ],
+    dma_channels: &[
+        DmaChannel {
+            number: 0,
+            full: true,
+        },
+        DmaChannel {
+            number: 1,
+            full: true,
+        },
+        DmaChannel {
+            number: 2,
+            full: true,
+        },
+        DmaChannel {
+            number: 3,
+            full: false,
+        },
+        DmaChannel {
+            number: 4,
+            full: false,
+        },
+        DmaChannel {
+            number: 5,
+            full: false,
+        },
+        DmaChannel {
+            number: 6,
+            full: false,
+        },
+    ],
 };
