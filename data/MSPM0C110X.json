@@ -529,824 +529,81 @@
       ]
     }
   ],
-  "pin_cm": {
-    "PA0": {
-      "iomux_cm": 1,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA0"
-          },
-          {
-            "name": "PA0"
-          }
-        ],
-        "2": [
-          {
-            "name": "SYSCTL.BEEPER"
-          },
-          {
-            "name": "SYSCTL.BEEPER"
-          }
-        ],
-        "3": [
-          {
-            "name": "I2C0.SDA"
-          },
-          {
-            "name": "I2C0.SDA"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMG8.CCP0"
-          },
-          {
-            "name": "TIMG8.CCP0"
-          }
-        ],
-        "5": [
-          {
-            "name": "SPI0.CS1_POCI1"
-          },
-          {
-            "name": "SPI0.CS1_POCI1"
-          }
-        ],
-        "6": [
-          {
-            "name": "SYSCTL.FCC_IN"
-          },
-          {
-            "name": "SYSCTL.FCC_IN"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.FAULT1"
-          },
-          {
-            "name": "TIMA0.FAULT1"
-          }
-        ]
-      }
-    },
-    "PA1": {
-      "iomux_cm": 2,
-      "pfs": {
-        "0": [
-          {
-            "name": "SYSCTL.NRST"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA1"
-          },
-          {
-            "name": "PA1"
-          },
-          {
-            "name": "PA1"
-          }
-        ],
-        "3": [
-          {
-            "name": "I2C0.SCL"
-          },
-          {
-            "name": "I2C0.SCL"
-          },
-          {
-            "name": "I2C0.SCL"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMG8.CCP1"
-          },
-          {
-            "name": "TIMG8.CCP1"
-          },
-          {
-            "name": "TIMG8.CCP1"
-          }
-        ],
-        "5": [
-          {
-            "name": "SYSCTL.HFCLKIN"
-          },
-          {
-            "name": "SYSCTL.HFCLKIN"
-          },
-          {
-            "name": "SYSCTL.HFCLKIN"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.CCP1"
-          },
-          {
-            "name": "TIMA0.CCP1"
-          },
-          {
-            "name": "TIMA0.CCP1"
-          }
-        ]
-      }
-    },
-    "PA11": {
-      "iomux_cm": 12,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA11"
-          },
-          {
-            "name": "PA11"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.SCLK"
-          },
-          {
-            "name": "SPI0.SCLK"
-          }
-        ],
-        "4": [
-          {
-            "name": "I2C0.SCL"
-          },
-          {
-            "name": "I2C0.SCL"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMA0.FAULT0"
-          },
-          {
-            "name": "TIMA0.FAULT0"
-          }
-        ]
-      }
-    },
-    "PA16": {
-      "iomux_cm": 17,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.8"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA16"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMA0.CCP1_CMPL"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMG14.CCP0"
-          }
-        ],
-        "6": [
-          {
-            "name": "SYSCTL.FCC_IN"
-          }
-        ]
-      }
-    },
-    "PA17": {
-      "iomux_cm": 18,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.9"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA17"
-          }
-        ],
-        "2": [
-          {
-            "name": "UART0.TX"
-          }
-        ],
-        "3": [
-          {
-            "name": "TIMA0.CCP0_CMPL"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.SCLK"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMA0.CCP2"
-          }
-        ],
-        "6": [
-          {
-            "name": "SPI0.CS1_POCI1"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.CCP3"
-          }
-        ]
-      }
-    },
-    "PA18": {
-      "iomux_cm": 19,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.7"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA18"
-          }
-        ],
-        "2": [
-          {
-            "name": "UART0.RX"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.PICO"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMA0.CCP1_CMPL"
-          }
-        ],
-        "5": [
-          {
-            "name": "SYSCTL.CLK_OUT"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.CCP3"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.CCP3_CMPL"
-          }
-        ]
-      }
-    },
-    "PA19": {
-      "iomux_cm": 20,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA19"
-          }
-        ],
-        "2": [
-          {
-            "name": "DEBUGSS.SWDIO"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.SCLK"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMA0.CCP2"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMG14.CCP0"
-          }
-        ],
-        "7": [
-          {
-            "name": "UART0.CTS"
-          }
-        ]
-      }
-    },
-    "PA2": {
-      "iomux_cm": 3,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA2"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMG8.CCP1"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.CS0"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMA0.CCP0"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMG8.IDX"
-          }
-        ]
-      }
-    },
-    "PA20": {
-      "iomux_cm": 21,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.6"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA20"
-          }
-        ],
-        "2": [
-          {
-            "name": "DEBUGSS.SWCLK"
-          }
-        ],
-        "3": [
-          {
-            "name": "TIMA0.FAULT1"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.PICO"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMA0.CCP2_CMPL"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.CCP0"
-          }
-        ],
-        "7": [
-          {
-            "name": "UART0.RTS"
-          }
-        ]
-      }
-    },
-    "PA22": {
-      "iomux_cm": 23,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.4"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA22"
-          }
-        ],
-        "2": [
-          {
-            "name": "UART0.RX"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "4": [
-          {
-            "name": "UART0.RTS"
-          }
-        ],
-        "5": [
-          {
-            "name": "SYSCTL.CLK_OUT"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.CCP1"
-          }
-        ]
-      }
-    },
-    "PA23": {
-      "iomux_cm": 24,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA23"
-          }
-        ],
-        "2": [
-          {
-            "name": "UART0.TX"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.CS3_CD_POCI3"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMG14.CCP0"
-          }
-        ],
-        "5": [
-          {
-            "name": "UART0.CTS"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.CCP3"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMG14.CCP1"
-          }
-        ]
-      }
-    },
-    "PA24": {
-      "iomux_cm": 25,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.3"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA24"
-          }
-        ],
-        "2": [
-          {
-            "name": "SPI0.CS2_POCI2"
-          }
-        ],
-        "3": [
-          {
-            "name": "TIMG14.CCP1"
-          }
-        ],
-        "4": [
-          {
-            "name": "UART0.RTS"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMG14.CCP2"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.CCP3_CMPL"
-          }
-        ],
-        "7": [
-          {
-            "name": "UART0.RX"
-          }
-        ]
-      }
-    },
-    "PA25": {
-      "iomux_cm": 26,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.2"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA25"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMG14.CCP3"
-          }
-        ],
-        "3": [
-          {
-            "name": "UART0.TX"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.PICO"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMG14.CCP1"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMA0.FAULT2"
-          }
-        ]
-      }
-    },
-    "PA26": {
-      "iomux_cm": 27,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.1"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA26"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMG8.CCP0"
-          }
-        ],
-        "3": [
-          {
-            "name": "UART0.RX"
-          }
-        ],
-        "4": [
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "5": [
-          {
-            "name": "SYSCTL.BEEPER"
-          }
-        ],
-        "6": [
-          {
-            "name": "TIMG14.CCP0"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.FAULT0"
-          }
-        ]
-      }
-    },
-    "PA27": {
-      "iomux_cm": 28,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.0"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA27"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMG8.CCP1"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.CS3_CD_POCI3"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMA0.CCP0_CMPL"
-          }
-        ],
-        "5": [
-          {
-            "name": "UART0.TX"
-          }
-        ],
-        "6": [
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.FAULT2"
-          }
-        ]
-      }
-    },
-    "PA28": {
-      "iomux_cm": 29,
-      "pfs": {
-        "0": [
-          {
-            "name": "ADC0.5"
-          }
-        ],
-        "1": [
-          {
-            "name": "PA28"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMA0.CCP0"
-          }
-        ],
-        "5": [
-          {
-            "name": "UART0.RX"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMG8.IDX"
-          }
-        ]
-      }
-    },
-    "PA4": {
-      "iomux_cm": 5,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA4"
-          },
-          {
-            "name": "PA4"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMA0.CCP0_CMPL"
-          },
-          {
-            "name": "TIMA0.CCP0_CMPL"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.POCI"
-          },
-          {
-            "name": "SPI0.POCI"
-          }
-        ],
-        "4": [
-          {
-            "name": "SYSCTL.LFCLKIN"
-          },
-          {
-            "name": "SYSCTL.LFCLKIN"
-          }
-        ],
-        "5": [
-          {
-            "name": "SYSCTL.HFCLKIN"
-          },
-          {
-            "name": "SYSCTL.HFCLKIN"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.CCP1_CMPL"
-          },
-          {
-            "name": "TIMA0.CCP1_CMPL"
-          }
-        ]
-      }
-    },
-    "PA6": {
-      "iomux_cm": 7,
-      "pfs": {
-        "1": [
-          {
-            "name": "PA6"
-          }
-        ],
-        "2": [
-          {
-            "name": "TIMG14.CCP1"
-          }
-        ],
-        "3": [
-          {
-            "name": "SPI0.SCLK"
-          }
-        ],
-        "4": [
-          {
-            "name": "TIMA0.CCP1"
-          }
-        ],
-        "5": [
-          {
-            "name": "TIMG14.CCP2"
-          }
-        ],
-        "6": [
-          {
-            "name": "SPI0.CS0"
-          }
-        ],
-        "7": [
-          {
-            "name": "TIMA0.FAULT0"
-          }
-        ]
-      }
-    }
+  "iomux": {
+    "PA0": 1,
+    "PA1": 2,
+    "PA11": 12,
+    "PA16": 17,
+    "PA17": 18,
+    "PA18": 19,
+    "PA19": 20,
+    "PA2": 3,
+    "PA20": 21,
+    "PA22": 23,
+    "PA23": 24,
+    "PA24": 25,
+    "PA25": 26,
+    "PA26": 27,
+    "PA27": 28,
+    "PA28": 29,
+    "PA4": 5,
+    "PA6": 7
   },
   "peripherals": {
     "ADC0": {
       "name": "ADC0",
-      "type": "Unknown",
+      "type": "Adc",
       "address": 1073758208,
       "pins": [
         {
-          "name": "0"
+          "pin": "PA27",
+          "signal": "0",
+          "pf": 0
         },
         {
-          "name": "1"
+          "pin": "PA26",
+          "signal": "1",
+          "pf": 0
         },
         {
-          "name": "2"
+          "pin": "PA25",
+          "signal": "2",
+          "pf": 0
         },
         {
-          "name": "3"
+          "pin": "PA24",
+          "signal": "3",
+          "pf": 0
         },
         {
-          "name": "4"
+          "pin": "PA22",
+          "signal": "4",
+          "pf": 0
         },
         {
-          "name": "5"
+          "pin": "PA28",
+          "signal": "5",
+          "pf": 0
         },
         {
-          "name": "6"
+          "pin": "PA20",
+          "signal": "6",
+          "pf": 0
         },
         {
-          "name": "7"
+          "pin": "PA18",
+          "signal": "7",
+          "pf": 0
         },
         {
-          "name": "8"
+          "pin": "PA16",
+          "signal": "8",
+          "pf": 0
         },
         {
-          "name": "9"
+          "pin": "PA17",
+          "signal": "9",
+          "pf": 0
         }
       ]
     },
@@ -1356,16 +613,26 @@
       "address": 1077936128,
       "pins": []
     },
+    "CRC": {
+      "name": "CRC",
+      "type": "Crc",
+      "address": 1078198272,
+      "pins": []
+    },
     "DEBUGSS": {
       "name": "DEBUGSS",
-      "type": "Unknown",
+      "type": "Debugss",
       "address": 1074556928,
       "pins": [
         {
-          "name": "SWCLK"
+          "pin": "PA20",
+          "signal": "SWCLK",
+          "pf": 2
         },
         {
-          "name": "SWDIO"
+          "pin": "PA19",
+          "signal": "SWDIO",
+          "pf": 2
         }
       ]
     },
@@ -1375,77 +642,164 @@
       "address": 1078108160,
       "pins": []
     },
+    "EVENT": {
+      "name": "EVENT",
+      "type": "Event",
+      "address": 1074565120,
+      "pins": []
+    },
+    "FLASHCTL": {
+      "name": "FLASHCTL",
+      "type": "FlashCtl",
+      "address": 1074581504,
+      "pins": []
+    },
+    "GPAMP": {
+      "name": "GPAMP",
+      "type": "GpAmp",
+      "pins": []
+    },
     "GPIOA": {
       "name": "GPIOA",
       "type": "Gpio",
       "address": 1074397184,
       "pins": [
         {
-          "name": "PA0"
+          "pin": "PA0",
+          "signal": "PA0",
+          "pf": 1
         },
         {
-          "name": "PA1"
+          "pin": "PA0",
+          "signal": "PA0",
+          "pf": 1
         },
         {
-          "name": "PA11"
+          "pin": "PA1",
+          "signal": "PA1",
+          "pf": 1
         },
         {
-          "name": "PA16"
+          "pin": "PA1",
+          "signal": "PA1",
+          "pf": 1
         },
         {
-          "name": "PA17"
+          "pin": "PA1/NRST",
+          "signal": "PA1/NRST",
+          "pf": 1
         },
         {
-          "name": "PA18"
+          "pin": "PA11",
+          "signal": "PA11",
+          "pf": 1
         },
         {
-          "name": "PA19"
+          "pin": "PA11",
+          "signal": "PA11",
+          "pf": 1
         },
         {
-          "name": "PA2"
+          "pin": "PA16",
+          "signal": "PA16",
+          "pf": 1
         },
         {
-          "name": "PA20"
+          "pin": "PA17",
+          "signal": "PA17",
+          "pf": 1
         },
         {
-          "name": "PA22"
+          "pin": "PA18",
+          "signal": "PA18",
+          "pf": 1
         },
         {
-          "name": "PA23"
+          "pin": "PA19",
+          "signal": "PA19",
+          "pf": 1
         },
         {
-          "name": "PA24"
+          "pin": "PA2",
+          "signal": "PA2",
+          "pf": 1
         },
         {
-          "name": "PA25"
+          "pin": "PA20",
+          "signal": "PA20",
+          "pf": 1
         },
         {
-          "name": "PA26"
+          "pin": "PA22",
+          "signal": "PA22",
+          "pf": 1
         },
         {
-          "name": "PA27"
+          "pin": "PA23",
+          "signal": "PA23",
+          "pf": 1
         },
         {
-          "name": "PA28"
+          "pin": "PA24",
+          "signal": "PA24",
+          "pf": 1
         },
         {
-          "name": "PA4"
+          "pin": "PA25",
+          "signal": "PA25",
+          "pf": 1
         },
         {
-          "name": "PA6"
+          "pin": "PA26",
+          "signal": "PA26",
+          "pf": 1
+        },
+        {
+          "pin": "PA27",
+          "signal": "PA27",
+          "pf": 1
+        },
+        {
+          "pin": "PA28",
+          "signal": "PA28",
+          "pf": 1
+        },
+        {
+          "pin": "PA4",
+          "signal": "PA4",
+          "pf": 1
+        },
+        {
+          "pin": "PA4",
+          "signal": "PA4",
+          "pf": 1
+        },
+        {
+          "pin": "PA6",
+          "signal": "PA6",
+          "pf": 1
         }
       ]
     },
     "I2C0": {
       "name": "I2C0",
-      "type": "Unknown",
+      "type": "I2c",
       "address": 1074724864,
       "pins": [
         {
-          "name": "SCL"
+          "pin": "PA1",
+          "signal": "SCL",
+          "pf": 3
         },
         {
-          "name": "SDA"
+          "pin": "PA11",
+          "signal": "SCL",
+          "pf": 4
+        },
+        {
+          "pin": "PA0",
+          "signal": "SDA",
+          "pf": 3
         }
       ]
     },
@@ -1457,29 +811,108 @@
     },
     "SPI0": {
       "name": "SPI0",
-      "type": "Unknown",
+      "type": "Spi",
       "address": 1078362112,
       "pins": [
         {
-          "name": "CS0"
+          "pin": "PA2",
+          "signal": "CS0",
+          "pf": 3
         },
         {
-          "name": "CS1"
+          "pin": "PA6",
+          "signal": "CS0",
+          "pf": 6
         },
         {
-          "name": "CS2"
+          "pin": "PA0",
+          "signal": "CS1_POCI1",
+          "pf": 5
         },
         {
-          "name": "CS3_CD"
+          "pin": "PA17",
+          "signal": "CS1_POCI1",
+          "pf": 6
         },
         {
-          "name": "PICO"
+          "pin": "PA24",
+          "signal": "CS2_POCI2",
+          "pf": 2
         },
         {
-          "name": "POCI"
+          "pin": "PA23",
+          "signal": "CS3_CD_POCI3",
+          "pf": 3
         },
         {
-          "name": "SCLK"
+          "pin": "PA27",
+          "signal": "CS3_CD_POCI3",
+          "pf": 3
+        },
+        {
+          "pin": "PA18",
+          "signal": "PICO",
+          "pf": 3
+        },
+        {
+          "pin": "PA20",
+          "signal": "PICO",
+          "pf": 4
+        },
+        {
+          "pin": "PA25",
+          "signal": "PICO",
+          "pf": 4
+        },
+        {
+          "pin": "PA22",
+          "signal": "POCI",
+          "pf": 3
+        },
+        {
+          "pin": "PA4",
+          "signal": "POCI",
+          "pf": 3
+        },
+        {
+          "pin": "PA16",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA19",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA26",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA27",
+          "signal": "POCI",
+          "pf": 6
+        },
+        {
+          "pin": "PA11",
+          "signal": "SCLK",
+          "pf": 3
+        },
+        {
+          "pin": "PA19",
+          "signal": "SCLK",
+          "pf": 3
+        },
+        {
+          "pin": "PA6",
+          "signal": "SCLK",
+          "pf": 3
+        },
+        {
+          "pin": "PA17",
+          "signal": "SCLK",
+          "pf": 4
         }
       ]
     },
@@ -1490,25 +923,59 @@
       "address": 1074458624,
       "pins": [
         {
-          "name": "BEEPER"
+          "pin": "PA0",
+          "signal": "BEEPER",
+          "pf": 2
         },
         {
-          "name": "CLK_OUT"
+          "pin": "PA26",
+          "signal": "BEEPER",
+          "pf": 5
         },
         {
-          "name": "FCC_IN"
+          "pin": "PA18",
+          "signal": "CLK_OUT",
+          "pf": 5
         },
         {
-          "name": "FLTP1"
+          "pin": "PA22",
+          "signal": "CLK_OUT",
+          "pf": 5
         },
         {
-          "name": "HFCLKIN"
+          "pin": "PA0",
+          "signal": "FCC_IN",
+          "pf": 6
         },
         {
-          "name": "LFCLKIN"
+          "pin": "PA16",
+          "signal": "FCC_IN",
+          "pf": 6
         },
         {
-          "name": "NRST"
+          "pin": "FLTP1",
+          "signal": "FLTP1",
+          "pf": 0
+        },
+        {
+          "pin": "PA1",
+          "signal": "HFCLKIN",
+          "pf": 5
+        },
+        {
+          "pin": "PA4",
+          "signal": "HFCLKIN",
+          "pf": 5
+        },
+        {
+          "pin": "PA4",
+          "signal": "LFCLKIN",
+          "pf": 4
+        },
+        {
+          "pin": "NRST",
+          "signal": "NRST",
+          "pf": 0
         }
       ]
     },
@@ -1518,37 +985,139 @@
       "address": 1082523648,
       "pins": [
         {
-          "name": "CCP0"
+          "pin": "PA28",
+          "signal": "CCP0",
+          "pf": 2
         },
         {
-          "name": "CCP0_CMPL"
+          "pin": "PA2",
+          "signal": "CCP0",
+          "pf": 4
         },
         {
-          "name": "CCP1"
+          "pin": "PA20",
+          "signal": "CCP0",
+          "pf": 6
         },
         {
-          "name": "CCP1_CMPL"
+          "pin": "PA4",
+          "signal": "CCP0_CMPL",
+          "pf": 2
         },
         {
-          "name": "CCP2"
+          "pin": "PA17",
+          "signal": "CCP0_CMPL",
+          "pf": 3
         },
         {
-          "name": "CCP2_CMPL"
+          "pin": "PA27",
+          "signal": "CCP0_CMPL",
+          "pf": 4
         },
         {
-          "name": "CCP3"
+          "pin": "PA6",
+          "signal": "CCP1",
+          "pf": 4
         },
         {
-          "name": "CCP3_CMPL"
+          "pin": "PA22",
+          "signal": "CCP1",
+          "pf": 6
         },
         {
-          "name": "FAULT0"
+          "pin": "PA1",
+          "signal": "CCP1",
+          "pf": 7
         },
         {
-          "name": "FAULT1"
+          "pin": "PA16",
+          "signal": "CCP1_CMPL",
+          "pf": 2
         },
         {
-          "name": "FAULT2"
+          "pin": "PA18",
+          "signal": "CCP1_CMPL",
+          "pf": 4
+        },
+        {
+          "pin": "PA4",
+          "signal": "CCP1_CMPL",
+          "pf": 7
+        },
+        {
+          "pin": "PA17",
+          "signal": "CCP2",
+          "pf": 5
+        },
+        {
+          "pin": "PA19",
+          "signal": "CCP2",
+          "pf": 5
+        },
+        {
+          "pin": "PA20",
+          "signal": "CCP2_CMPL",
+          "pf": 5
+        },
+        {
+          "pin": "PA18",
+          "signal": "CCP3",
+          "pf": 6
+        },
+        {
+          "pin": "PA23",
+          "signal": "CCP3",
+          "pf": 6
+        },
+        {
+          "pin": "PA17",
+          "signal": "CCP3",
+          "pf": 7
+        },
+        {
+          "pin": "PA24",
+          "signal": "CCP3_CMPL",
+          "pf": 6
+        },
+        {
+          "pin": "PA18",
+          "signal": "CCP3_CMPL",
+          "pf": 7
+        },
+        {
+          "pin": "PA11",
+          "signal": "FAULT0",
+          "pf": 5
+        },
+        {
+          "pin": "PA26",
+          "signal": "FAULT0",
+          "pf": 7
+        },
+        {
+          "pin": "PA6",
+          "signal": "FAULT0",
+          "pf": 7
+        },
+        {
+          "pin": "PA20",
+          "signal": "FAULT1",
+          "pf": 3
+        },
+        {
+          "pin": "PA0",
+          "signal": "FAULT1",
+          "pf": 7
+        },
+        {
+          "pin": "PA25",
+          "signal": "FAULT2",
+          "pf": 6
+        },
+        {
+          "pin": "PA27",
+          "signal": "FAULT2",
+          "pf": 7
         }
       ]
     },
@@ -1558,16 +1127,59 @@
       "address": 1074282496,
       "pins": [
         {
-          "name": "CCP0"
+          "pin": "PA23",
+          "signal": "CCP0",
+          "pf": 4
         },
         {
-          "name": "CCP1"
+          "pin": "PA16",
+          "signal": "CCP0",
+          "pf": 5
         },
         {
-          "name": "CCP2"
+          "pin": "PA19",
+          "signal": "CCP0",
+          "pf": 6
         },
         {
-          "name": "CCP3"
+          "pin": "PA26",
+          "signal": "CCP0",
+          "pf": 6
+        },
+        {
+          "pin": "PA6",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA24",
+          "signal": "CCP1",
+          "pf": 3
+        },
+        {
+          "pin": "PA25",
+          "signal": "CCP1",
+          "pf": 5
+        },
+        {
+          "pin": "PA23",
+          "signal": "CCP1",
+          "pf": 7
+        },
+        {
+          "pin": "PA24",
+          "signal": "CCP2",
+          "pf": 5
+        },
+        {
+          "pin": "PA6",
+          "signal": "CCP2",
+          "pf": 5
+        },
+        {
+          "pin": "PA25",
+          "signal": "CCP3",
+          "pf": 2
         }
       ]
     },
@@ -1577,13 +1189,39 @@
       "address": 1074331648,
       "pins": [
         {
-          "name": "CCP0"
+          "pin": "PA26",
+          "signal": "CCP0",
+          "pf": 2
         },
         {
-          "name": "CCP1"
+          "pin": "PA0",
+          "signal": "CCP0",
+          "pf": 4
         },
         {
-          "name": "IDX"
+          "pin": "PA2",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA27",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA1",
+          "signal": "CCP1",
+          "pf": 4
+        },
+        {
+          "pin": "PA2",
+          "signal": "IDX",
+          "pf": 7
+        },
+        {
+          "pin": "PA28",
+          "signal": "IDX",
+          "pf": 7
         }
       ]
     },
@@ -1593,18 +1231,94 @@
       "address": 1074823168,
       "pins": [
         {
-          "name": "CTS"
+          "pin": "PA23",
+          "signal": "CTS",
+          "pf": 5
         },
         {
-          "name": "RTS"
+          "pin": "PA19",
+          "signal": "CTS",
+          "pf": 7
         },
         {
-          "name": "RX"
+          "pin": "PA22",
+          "signal": "RTS",
+          "pf": 4
         },
         {
-          "name": "TX"
+          "pin": "PA24",
+          "signal": "RTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA20",
+          "signal": "RTS",
+          "pf": 7
+        },
+        {
+          "pin": "PA18",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA22",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA26",
+          "signal": "RX",
+          "pf": 3
+        },
+        {
+          "pin": "PA28",
+          "signal": "RX",
+          "pf": 5
+        },
+        {
+          "pin": "PA24",
+          "signal": "RX",
+          "pf": 7
+        },
+        {
+          "pin": "PA17",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA23",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA25",
+          "signal": "TX",
+          "pf": 3
+        },
+        {
+          "pin": "PA27",
+          "signal": "TX",
+          "pf": 5
         }
       ]
+    },
+    "VREF": {
+      "name": "VREF",
+      "type": "Vref",
+      "address": 1073938432,
+      "pins": []
+    },
+    "WUC": {
+      "name": "WUC",
+      "type": "Wuc",
+      "address": 1078083584,
+      "pins": []
+    },
+    "WWDT0": {
+      "name": "WWDT0",
+      "type": "Wwdt",
+      "address": 1074266112,
+      "pins": []
     }
   },
   "interrupts": {

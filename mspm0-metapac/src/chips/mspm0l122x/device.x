@@ -18,5 +18,5 @@ PROVIDE(I2C0 = DefaultHandler);
 PROVIDE(I2C1 = DefaultHandler);
 PROVIDE(I2C2 = DefaultHandler);
 PROVIDE(AESADV = DefaultHandler);
-PROVIDE(GROUP30 = DefaultHandler);
+PROVIDE(LFSS = DefaultHandler);
 PROVIDE(DMA = DefaultHandler);

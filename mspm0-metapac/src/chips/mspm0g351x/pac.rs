@@ -33,7 +33,7 @@ pub enum Interrupt {
     UART7 = 27,
     AESADV = 28,
     UART6 = 29,
-    GROUP30 = 30,
+    LFSS = 30,
     DMA = 31,
 }
 unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
@@ -128,7 +128,7 @@ mod _vectors {
         fn UART7();
         fn AESADV();
         fn UART6();
-        fn GROUP30();
+        fn LFSS();
         fn DMA();
     }
     #[repr(C)]
@@ -169,7 +169,7 @@ mod _vectors {
         Vector { _handler: UART7 },
         Vector { _handler: AESADV },
         Vector { _handler: UART6 },
-        Vector { _handler: GROUP30 },
+        Vector { _handler: LFSS },
         Vector { _handler: DMA },
     ];
 }
@@ -195,6 +195,8 @@ pub mod uart;
 pub const ADC0: () = ();
 #[doc = "Address: 1073750016"]
 pub const ADC1: () = ();
+#[doc = "Address: 1078206464"]
+pub const AESADV: () = ();
 #[doc = "Address: 1079017472"]
 pub const CANFD0: () = ();
 #[doc = "Address: 1079050240"]
@@ -206,11 +208,17 @@ pub const COMP1: () = ();
 #[doc = "Address: 1073790976"]
 pub const COMP2: () = ();
 pub const CPUSS: cpuss::Cpuss = unsafe { cpuss::Cpuss::from_ptr(1077936128 as *mut _) };
+#[doc = "Address: 1078198272"]
+pub const CRCP0: () = ();
 #[doc = "Address: 1073840128"]
 pub const DAC0: () = ();
 #[doc = "Address: 1074556928"]
 pub const DEBUGSS: () = ();
 pub const DMA: dma::Dma = unsafe { dma::Dma::from_ptr(1078108160 as *mut _) };
+#[doc = "Address: 1074565120"]
+pub const EVENT: () = ();
+#[doc = "Address: 1074581504"]
+pub const FLASHCTL: () = ();
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074405376 as *mut _) };
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074413568 as *mut _) };
@@ -221,8 +229,12 @@ pub const I2C1: () = ();
 #[doc = "Address: 1074741248"]
 pub const I2C2: () = ();
 pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *mut _) };
+#[doc = "Address: 1074446336"]
+pub const KEYSTORECTL: () = ();
 #[doc = "Address: 1074348032"]
 pub const LFSS: () = ();
+#[doc = "Address: 1078001664"]
+pub const MATHACL: () = ();
 #[doc = "Address: 1078362112"]
 pub const SPI0: () = ();
 #[doc = "Address: 1078370304"]
@@ -239,6 +251,8 @@ pub const TIMG6: tim::Tim = unsafe { tim::Tim::from_ptr(1082556416 as *mut _) };
 pub const TIMG7: tim::Tim = unsafe { tim::Tim::from_ptr(1082564608 as *mut _) };
 pub const TIMG8: tim::Tim = unsafe { tim::Tim::from_ptr(1074331648 as *mut _) };
 pub const TIMG9: tim::Tim = unsafe { tim::Tim::from_ptr(1074339840 as *mut _) };
+#[doc = "Address: 1078214656"]
+pub const TRNG: () = ();
 pub const UART0: uart::Uart = unsafe { uart::Uart::from_ptr(1074823168 as *mut _) };
 pub const UART1: uart::Uart = unsafe { uart::Uart::from_ptr(1074790400 as *mut _) };
 pub const UART3: uart::Uart = unsafe { uart::Uart::from_ptr(1078984704 as *mut _) };
@@ -246,3 +260,11 @@ pub const UART4: uart::Uart = unsafe { uart::Uart::from_ptr(1078992896 as *mut _
 pub const UART5: uart::Uart = unsafe { uart::Uart::from_ptr(1079001088 as *mut _) };
 pub const UART6: uart::Uart = unsafe { uart::Uart::from_ptr(1079009280 as *mut _) };
 pub const UART7: uart::Uart = unsafe { uart::Uart::from_ptr(1074831360 as *mut _) };
+#[doc = "Address: 1073938432"]
+pub const VREF: () = ();
+#[doc = "Address: 1078083584"]
+pub const WUC: () = ();
+#[doc = "Address: 1074266112"]
+pub const WWDT0: () = ();
+#[doc = "Address: 1074274304"]
+pub const WWDT1: () = ();
