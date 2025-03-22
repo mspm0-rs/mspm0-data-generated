@@ -4354,12 +4354,25 @@
     "0": {
       "name": "GROUP0",
       "num": 0,
-      "group": {}
+      "group": {
+        "0": "WWDT0",
+        "1": "WWDT1",
+        "2": "DEBUGSS",
+        "3": "FLASHCTL",
+        "6": "SYSCTL"
+      }
     },
     "1": {
       "name": "GROUP1",
       "num": 1,
-      "group": {}
+      "group": {
+        "0": "GPIOA",
+        "1": "GPIOB",
+        "2": "COMP0",
+        "3": "COMP1",
+        "4": "COMP2",
+        "5": "TRNG"
+      }
     },
     "2": {
       "name": "TIMG8",

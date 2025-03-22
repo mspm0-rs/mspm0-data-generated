@@ -1375,12 +1375,20 @@
     "0": {
       "name": "GROUP0",
       "num": 0,
-      "group": {}
+      "group": {
+        "0": "WWDT0",
+        "2": "DEBUGSS",
+        "3": "FLASHCTL",
+        "6": "SYSCTL"
+      }
     },
     "1": {
       "name": "GROUP1",
       "num": 1,
-      "group": {}
+      "group": {
+        "0": "GPIOA",
+        "2": "COMP0"
+      }
     },
     "2": {
       "name": "TIMG1",

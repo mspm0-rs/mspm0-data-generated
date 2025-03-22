@@ -22,6 +22,26 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
         self as u16
     }
 }
+#[repr(u8)]
+pub enum Group0 {
+    WWDT0 = 0,
+    DEBUGSS = 2,
+    FLASHCTL = 3,
+    SYSCTL = 6,
+}
+impl TryFrom<u8> for Group0 {
+    type Error = ();
+    #[inline]
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        match value {
+            0 => Ok(Self::WWDT0),
+            2 => Ok(Self::DEBUGSS),
+            3 => Ok(Self::FLASHCTL),
+            6 => Ok(Self::SYSCTL),
+            _ => Err(()),
+        }
+    }
+}
 #[cfg(feature = "rt")]
 mod _vectors {
     extern "C" {
