@@ -339,6 +339,7 @@
       "name": "ADC0",
       "type": "Adc",
       "address": 1073758208,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA27",
@@ -396,6 +397,7 @@
       "name": "COMP0",
       "type": "Comp",
       "address": 1073774592,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -443,18 +445,21 @@
       "name": "CPUSS",
       "type": "Cpuss",
       "address": 1077936128,
+      "power_domain": "Pd1",
       "pins": []
     },
     "CRC": {
       "name": "CRC",
       "type": "Crc",
       "address": 1078198272,
+      "power_domain": "Pd1",
       "pins": []
     },
     "DEBUGSS": {
       "name": "DEBUGSS",
       "type": "Debugss",
       "address": 1074556928,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA20",
@@ -472,23 +477,27 @@
       "name": "DMA",
       "type": "Dma",
       "address": 1078108160,
+      "power_domain": "Pd1",
       "pins": []
     },
     "EVENT": {
       "name": "EVENT",
       "type": "Event",
       "address": 1074565120,
+      "power_domain": "Pd0",
       "pins": []
     },
     "FLASHCTL": {
       "name": "FLASHCTL",
       "type": "FlashCtl",
       "address": 1074581504,
+      "power_domain": "Pd0",
       "pins": []
     },
     "GPAMP": {
       "name": "GPAMP",
       "type": "GpAmp",
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -511,6 +520,7 @@
       "name": "GPIOA",
       "type": "Gpio",
       "address": 1074397184,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA0",
@@ -663,6 +673,7 @@
       "name": "I2C0",
       "type": "I2c",
       "address": 1074724864,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA1",
@@ -690,6 +701,7 @@
       "name": "I2C1",
       "type": "I2c",
       "address": 1074733056,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA15",
@@ -737,12 +749,14 @@
       "name": "IOMUX",
       "type": "Iomux",
       "address": 1078099968,
+      "power_domain": "Pd0",
       "pins": []
     },
     "OPA0": {
       "name": "OPA0",
       "type": "Opa",
       "address": 1073872896,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA25",
@@ -770,6 +784,7 @@
       "name": "OPA1",
       "type": "Opa",
       "address": 1073881088,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA18",
@@ -797,6 +812,7 @@
       "name": "SPI0",
       "type": "Spi",
       "address": 1078362112,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA2",
@@ -910,6 +926,7 @@
       "type": "Sysctl",
       "version": "l110x_l130x_l134x",
       "address": 1074458624,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA14",
@@ -972,6 +989,7 @@
       "name": "TIMG0",
       "type": "Tim",
       "address": 1074282496,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA5",
@@ -1014,6 +1032,7 @@
       "name": "TIMG1",
       "type": "Tim",
       "address": 1074290688,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -1056,6 +1075,7 @@
       "name": "TIMG2",
       "type": "Tim",
       "address": 1074298880,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA21",
@@ -1093,6 +1113,7 @@
       "name": "TIMG4",
       "type": "Tim",
       "address": 1074315264,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA20",
@@ -1135,6 +1156,7 @@
       "name": "UART0",
       "type": "Uart",
       "address": 1074823168,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA12",
@@ -1217,6 +1239,7 @@
       "name": "UART1",
       "type": "Uart",
       "address": 1074790400,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA14",
@@ -1294,6 +1317,7 @@
       "name": "VREF",
       "type": "Vref",
       "address": 1073938432,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA23",
@@ -1311,12 +1335,14 @@
       "name": "WUC",
       "type": "Wuc",
       "address": 1078083584,
+      "power_domain": "Pd0",
       "pins": []
     },
     "WWDT0": {
       "name": "WWDT0",
       "type": "Wwdt",
       "address": 1074266112,
+      "power_domain": "Pd0",
       "pins": []
     }
   },

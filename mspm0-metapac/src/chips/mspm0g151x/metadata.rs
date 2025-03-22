@@ -413,11 +413,6 @@ pub static METADATA: Metadata = Metadata {
             pins: &[],
         },
         Peripheral {
-            name: "GPAMP",
-            kind: "gpamp",
-            pins: &[],
-        },
-        Peripheral {
             name: "GPIOA",
             kind: "gpio",
             pins: &[

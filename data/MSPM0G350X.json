@@ -1423,6 +1423,7 @@
       "name": "ADC0",
       "type": "Adc",
       "address": 1073741824,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA27",
@@ -1480,6 +1481,7 @@
       "name": "ADC1",
       "type": "Adc",
       "address": 1073750016,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA15",
@@ -1532,12 +1534,14 @@
       "name": "AES",
       "type": "Aes",
       "address": 1078206464,
+      "power_domain": "Pd1",
       "pins": []
     },
     "CANFD0": {
       "name": "CANFD0",
       "type": "Canfd",
       "address": 1079017472,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA13",
@@ -1565,6 +1569,7 @@
       "name": "COMP0",
       "type": "Comp",
       "address": 1073774592,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -1622,6 +1627,7 @@
       "name": "COMP1",
       "type": "Comp",
       "address": 1073782784,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB26",
@@ -1679,6 +1685,7 @@
       "name": "COMP2",
       "type": "Comp",
       "address": 1073790976,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB21",
@@ -1721,18 +1728,21 @@
       "name": "CPUSS",
       "type": "Cpuss",
       "address": 1077936128,
+      "power_domain": "Pd1",
       "pins": []
     },
     "CRC": {
       "name": "CRC",
       "type": "Crc",
       "address": 1078198272,
+      "power_domain": "Pd1",
       "pins": []
     },
     "DAC0": {
       "name": "DAC0",
       "type": "Dac",
       "address": 1073840128,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA15",
@@ -1745,6 +1755,7 @@
       "name": "DEBUGSS",
       "type": "Debugss",
       "address": 1074556928,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA20",
@@ -1762,23 +1773,27 @@
       "name": "DMA",
       "type": "Dma",
       "address": 1078108160,
+      "power_domain": "Pd1",
       "pins": []
     },
     "EVENT": {
       "name": "EVENT",
       "type": "Event",
       "address": 1074565120,
+      "power_domain": "Pd0",
       "pins": []
     },
     "FLASHCTL": {
       "name": "FLASHCTL",
       "type": "FlashCtl",
       "address": 1074581504,
+      "power_domain": "Pd0",
       "pins": []
     },
     "GPAMP": {
       "name": "GPAMP",
       "type": "GpAmp",
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -1801,6 +1816,7 @@
       "name": "GPIOA",
       "type": "Gpio",
       "address": 1074397184,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA0",
@@ -1968,6 +1984,7 @@
       "name": "GPIOB",
       "type": "Gpio",
       "address": 1074405376,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB0",
@@ -2115,6 +2132,7 @@
       "name": "I2C0",
       "type": "I2c",
       "address": 1074724864,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA1",
@@ -2152,6 +2170,7 @@
       "name": "I2C1",
       "type": "I2c",
       "address": 1074733056,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA29",
@@ -2219,18 +2238,21 @@
       "name": "IOMUX",
       "type": "Iomux",
       "address": 1078099968,
+      "power_domain": "Pd0",
       "pins": []
     },
     "MATHACL": {
       "name": "MATHACL",
       "type": "Mathacl",
       "address": 1078001664,
+      "power_domain": "Pd1",
       "pins": []
     },
     "OPA0": {
       "name": "OPA0",
       "type": "Opa",
       "address": 1073872896,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA26",
@@ -2268,6 +2290,7 @@
       "name": "OPA1",
       "type": "Opa",
       "address": 1073881088,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB19",
@@ -2305,6 +2328,7 @@
       "name": "RTC",
       "type": "Rtc",
       "address": 1074348032,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA27",
@@ -2322,6 +2346,7 @@
       "name": "SPI0",
       "type": "Spi",
       "address": 1078362112,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA2",
@@ -2454,6 +2479,7 @@
       "name": "SPI1",
       "type": "Spi",
       "address": 1078370304,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA26",
@@ -2587,6 +2613,7 @@
       "type": "Sysctl",
       "version": "g350x_g310x_g150x_g110x",
       "address": 1074458624,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA7",
@@ -2689,6 +2716,7 @@
       "name": "TIMA0",
       "type": "Tim",
       "address": 1082523648,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA0",
@@ -3006,6 +3034,7 @@
       "name": "TIMA1",
       "type": "Tim",
       "address": 1082531840,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PB0",
@@ -3213,6 +3242,7 @@
       "name": "TIMG0",
       "type": "Tim",
       "address": 1074282496,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB10",
@@ -3260,6 +3290,7 @@
       "name": "TIMG12",
       "type": "Tim",
       "address": 1082589184,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PB13",
@@ -3307,6 +3338,7 @@
       "name": "TIMG6",
       "type": "Tim",
       "address": 1082556416,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA29",
@@ -3384,6 +3416,7 @@
       "name": "TIMG7",
       "type": "Tim",
       "address": 1082564608,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA17",
@@ -3466,6 +3499,7 @@
       "name": "TIMG8",
       "type": "Tim",
       "address": 1074331648,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA3",
@@ -3613,12 +3647,14 @@
       "name": "TRNG",
       "type": "Trng",
       "address": 1078214656,
+      "power_domain": "Pd1",
       "pins": []
     },
     "UART0": {
       "name": "UART0",
       "type": "Uart",
       "address": 1074823168,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA14",
@@ -3701,6 +3737,7 @@
       "name": "UART1",
       "type": "Uart",
       "address": 1074790400,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PB8",
@@ -3778,6 +3815,7 @@
       "name": "UART2",
       "type": "Uart",
       "address": 1074798592,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA30",
@@ -3865,6 +3903,7 @@
       "name": "UART3",
       "type": "Uart",
       "address": 1078984704,
+      "power_domain": "Pd1",
       "pins": [
         {
           "pin": "PA12",
@@ -3952,6 +3991,7 @@
       "name": "VREF",
       "type": "Vref",
       "address": 1073938432,
+      "power_domain": "Pd0",
       "pins": [
         {
           "pin": "PA23",
@@ -3969,18 +4009,21 @@
       "name": "WUC",
       "type": "Wuc",
       "address": 1078083584,
+      "power_domain": "Pd0",
       "pins": []
     },
     "WWDT0": {
       "name": "WWDT0",
       "type": "Wwdt",
       "address": 1074266112,
+      "power_domain": "Pd0",
       "pins": []
     },
     "WWDT1": {
       "name": "WWDT1",
       "type": "Wwdt",
       "address": 1074274304,
+      "power_domain": "Pd0",
       "pins": []
     }
   },
