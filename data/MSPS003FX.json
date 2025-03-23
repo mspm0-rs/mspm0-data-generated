@@ -293,8 +293,8 @@
           "pf": 1
         },
         {
-          "pin": "PA1/NRST",
-          "signal": "PA1/NRST",
+          "pin": "PA1",
+          "signal": "PA1",
           "pf": 1
         },
         {

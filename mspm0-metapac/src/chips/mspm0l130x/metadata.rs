@@ -181,8 +181,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA1/NRST",
-                    signal: "PA1/NRST",
+                    pin: "PA1",
+                    signal: "PA1",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
@@ -191,8 +191,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA10/PA14",
-                    signal: "PA10/PA14",
+                    pin: "PA10",
+                    signal: "PA10",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
@@ -231,8 +231,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA17/OPA1.IN0-",
-                    signal: "PA17/OPA1.IN0-",
+                    pin: "PA17",
+                    signal: "PA17",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
@@ -241,8 +241,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA18/OPA1.IN0-",
-                    signal: "PA18/OPA1.IN0-",
+                    pin: "PA18",
+                    signal: "PA18",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
@@ -276,8 +276,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA23/PA25",
-                    signal: "PA23/PA25",
+                    pin: "PA23",
+                    signal: "PA23",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
@@ -286,8 +286,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA24/OPA0.IN0-",
-                    signal: "PA24/OPA0.IN0-",
+                    pin: "PA24",
+                    signal: "PA24",
                     pf: Some(1u8),
                 },
                 PeripheralPin {

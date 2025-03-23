@@ -129,8 +129,8 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(1u8),
                 },
                 PeripheralPin {
-                    pin: "PA1/NRST",
-                    signal: "PA1/NRST",
+                    pin: "PA1",
+                    signal: "PA1",
                     pf: Some(1u8),
                 },
                 PeripheralPin {
