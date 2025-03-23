@@ -404,11 +404,6 @@ pub static METADATA: Metadata = Metadata {
                     pf: Some(0u8),
                 },
                 PeripheralPin {
-                    pin: "OPA0.IN0-",
-                    signal: "IN0-",
-                    pf: Some(0u8),
-                },
-                PeripheralPin {
                     pin: "PA24",
                     signal: "IN1-",
                     pf: Some(0u8),
@@ -427,11 +422,6 @@ pub static METADATA: Metadata = Metadata {
                 PeripheralPin {
                     pin: "PA18",
                     signal: "IN0+",
-                    pf: Some(0u8),
-                },
-                PeripheralPin {
-                    pin: "OPA1.IN0-",
-                    signal: "IN0-",
                     pf: Some(0u8),
                 },
                 PeripheralPin {

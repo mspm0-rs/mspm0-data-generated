@@ -1359,11 +1359,6 @@
           "pf": 0
         },
         {
-          "pin": "OPA0.IN0-",
-          "signal": "IN0-",
-          "pf": 0
-        },
-        {
           "pin": "PA24",
           "signal": "IN1-",
           "pf": 0
@@ -1384,11 +1379,6 @@
         {
           "pin": "PA18",
           "signal": "IN0+",
-          "pf": 0
-        },
-        {
-          "pin": "OPA1.IN0-",
-          "signal": "IN0-",
           "pf": 0
         },
         {
