@@ -199,6 +199,17 @@ pub mod regs {
         pub fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
+        #[doc = "Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet."]
+        #[inline(always)]
+        pub const fn autoen(&self) -> super::vals::Autoen {
+            let val = (self.0 >> 2usize) & 0x03;
+            super::vals::Autoen::from_bits(val as u8)
+        }
+        #[doc = "Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet."]
+        #[inline(always)]
+        pub fn set_autoen(&mut self, val: super::vals::Autoen) {
+            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+        }
         #[doc = "Enable an early IRQ event. This can help software to react quicker to and DMA done event or allows some additional configuration before the channel is complete. Note: This register is only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC configuration this register is a read only value and always reads as 0x0."]
         #[inline(always)]
         pub const fn preirq(&self) -> super::vals::Preirq {
@@ -818,6 +829,40 @@ is set to 'STOP'."]
     }
 }
 pub mod vals {
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Autoen {
+        #[doc = "No automatic DMA enable"]
+        NONE = 0x0,
+        #[doc = "Automatic DMA channel enable on SA register write."]
+        SA = 0x01,
+        #[doc = "Automatic DMA channel enable on DA register write."]
+        DA = 0x02,
+        #[doc = "Automatic DMA channel enable on SZ register write."]
+        SZ = 0x03,
+    }
+    impl Autoen {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Autoen {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Autoen {
+        #[inline(always)]
+        fn from(val: u8) -> Autoen {
+            Autoen::from_bits(val)
+        }
+    }
+    impl From<Autoen> for u8 {
+        #[inline(always)]
+        fn from(val: Autoen) -> u8 {
+            Autoen::to_bits(val)
+        }
+    }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Burstsz {
