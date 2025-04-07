@@ -159,6 +159,8 @@ pub mod cpuss;
 pub mod dma;
 #[path = "../../peripherals/gpio.rs"]
 pub mod gpio;
+#[path = "../../peripherals/i2c.rs"]
+pub mod i2c;
 #[path = "../../peripherals/iomux.rs"]
 pub mod iomux;
 #[path = "../../peripherals/sysctl_l122x_l222x.rs"]
@@ -186,12 +188,9 @@ pub const FLASHCTL: () = ();
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074405376 as *mut _) };
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074413568 as *mut _) };
-#[doc = "Address: 1074724864"]
-pub const I2C0: () = ();
-#[doc = "Address: 1074733056"]
-pub const I2C1: () = ();
-#[doc = "Address: 1074741248"]
-pub const I2C2: () = ();
+pub const I2C0: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074724864 as *mut _) };
+pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074733056 as *mut _) };
+pub const I2C2: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074741248 as *mut _) };
 pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *mut _) };
 #[doc = "Address: 1074446336"]
 pub const KEYSTORECTL: () = ();

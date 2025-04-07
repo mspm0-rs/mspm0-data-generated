@@ -157,6 +157,8 @@ pub mod cpuss;
 pub mod dma;
 #[path = "../../peripherals/gpio.rs"]
 pub mod gpio;
+#[path = "../../peripherals/i2c.rs"]
+pub mod i2c;
 #[path = "../../peripherals/iomux.rs"]
 pub mod iomux;
 #[path = "../../peripherals/sysctl_g350x_g310x_g150x_g110x.rs"]
@@ -185,10 +187,8 @@ pub const EVENT: () = ();
 pub const FLASHCTL: () = ();
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074405376 as *mut _) };
-#[doc = "Address: 1074724864"]
-pub const I2C0: () = ();
-#[doc = "Address: 1074733056"]
-pub const I2C1: () = ();
+pub const I2C0: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074724864 as *mut _) };
+pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074733056 as *mut _) };
 pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *mut _) };
 #[doc = "Address: 1074348032"]
 pub const RTC: () = ();
