@@ -1037,12 +1037,6 @@
       "power_domain": "Pd0",
       "pins": []
     },
-    "GPAMP": {
-      "name": "GPAMP",
-      "type": "GpAmp",
-      "power_domain": "Pd0",
-      "pins": []
-    },
     "GPIOA": {
       "name": "GPIOA",
       "type": "Gpio",
