@@ -1,0 +1,1329 @@
+{
+  "name": "mspm0l1345",
+  "family": "mspm0l134x",
+  "datasheet_url": "https://www.ti.com/lit/gpn/mspm0l1346",
+  "reference_manual_url": "https://www.ti.com/lit/pdf/slau847",
+  "errata_url": "https://www.ti.com/lit/pdf/slaz741",
+  "ram": 4,
+  "flash": 32,
+  "packages": [
+    {
+      "name": "VSSOP-28",
+      "chip": "mspm0l134x",
+      "package": "DGS28",
+      "pins": [
+        {
+          "position": "1",
+          "signals": [
+            "PA26"
+          ]
+        },
+        {
+          "position": "10",
+          "signals": [
+            "PA3"
+          ]
+        },
+        {
+          "position": "11",
+          "signals": [
+            "PA4"
+          ]
+        },
+        {
+          "position": "12",
+          "signals": [
+            "PA5"
+          ]
+        },
+        {
+          "position": "13",
+          "signals": [
+            "PA6"
+          ]
+        },
+        {
+          "position": "14",
+          "signals": [
+            "PA9"
+          ]
+        },
+        {
+          "position": "15",
+          "signals": [
+            "PA10"
+          ]
+        },
+        {
+          "position": "16",
+          "signals": [
+            "PA11"
+          ]
+        },
+        {
+          "position": "17",
+          "signals": [
+            "PA14"
+          ]
+        },
+        {
+          "position": "18",
+          "signals": [
+            "PA15"
+          ]
+        },
+        {
+          "position": "19",
+          "signals": [
+            "PA16"
+          ]
+        },
+        {
+          "position": "2",
+          "signals": [
+            "PA27"
+          ]
+        },
+        {
+          "position": "20",
+          "signals": [
+            "OPA1.IN0-"
+          ]
+        },
+        {
+          "position": "21",
+          "signals": [
+            "PA18"
+          ]
+        },
+        {
+          "position": "22",
+          "signals": [
+            "PA19"
+          ]
+        },
+        {
+          "position": "23",
+          "signals": [
+            "PA20"
+          ]
+        },
+        {
+          "position": "24",
+          "signals": [
+            "PA21"
+          ]
+        },
+        {
+          "position": "25",
+          "signals": [
+            "PA22"
+          ]
+        },
+        {
+          "position": "26",
+          "signals": [
+            "PA23"
+          ]
+        },
+        {
+          "position": "27",
+          "signals": [
+            "OPA0.IN0-"
+          ]
+        },
+        {
+          "position": "28",
+          "signals": [
+            "PA25"
+          ]
+        },
+        {
+          "position": "3",
+          "signals": [
+            "VCORE"
+          ]
+        },
+        {
+          "position": "4",
+          "signals": [
+            "PA0"
+          ]
+        },
+        {
+          "position": "5",
+          "signals": [
+            "PA1"
+          ]
+        },
+        {
+          "position": "6",
+          "signals": [
+            "NRST"
+          ]
+        },
+        {
+          "position": "7",
+          "signals": [
+            "VDD"
+          ]
+        },
+        {
+          "position": "8",
+          "signals": [
+            "VSS"
+          ]
+        },
+        {
+          "position": "9",
+          "signals": [
+            "PA2"
+          ]
+        }
+      ]
+    }
+  ],
+  "iomux": {
+    "PA0": 1,
+    "PA1": 2,
+    "PA10": 11,
+    "PA11": 12,
+    "PA12": 13,
+    "PA13": 14,
+    "PA14": 15,
+    "PA15": 16,
+    "PA16": 17,
+    "PA17": 18,
+    "PA18": 19,
+    "PA19": 20,
+    "PA2": 3,
+    "PA20": 21,
+    "PA21": 22,
+    "PA22": 23,
+    "PA23": 24,
+    "PA24": 25,
+    "PA25": 26,
+    "PA26": 27,
+    "PA27": 28,
+    "PA3": 4,
+    "PA4": 5,
+    "PA5": 6,
+    "PA6": 7,
+    "PA7": 8,
+    "PA8": 9,
+    "PA9": 10
+  },
+  "peripherals": {
+    "ADC0": {
+      "name": "ADC0",
+      "type": "Adc",
+      "address": 1073758208,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA27",
+          "signal": "0",
+          "pf": 0
+        },
+        {
+          "pin": "PA26",
+          "signal": "1",
+          "pf": 0
+        },
+        {
+          "pin": "PA25",
+          "signal": "2",
+          "pf": 0
+        },
+        {
+          "pin": "PA24",
+          "signal": "3",
+          "pf": 0
+        },
+        {
+          "pin": "PA22",
+          "signal": "4",
+          "pf": 0
+        },
+        {
+          "pin": "PA21",
+          "signal": "5",
+          "pf": 0
+        },
+        {
+          "pin": "PA20",
+          "signal": "6",
+          "pf": 0
+        },
+        {
+          "pin": "PA18",
+          "signal": "7",
+          "pf": 0
+        },
+        {
+          "pin": "PA16",
+          "signal": "8",
+          "pf": 0
+        },
+        {
+          "pin": "PA15",
+          "signal": "9",
+          "pf": 0
+        }
+      ]
+    },
+    "COMP0": {
+      "name": "COMP0",
+      "type": "Comp",
+      "address": 1073774592,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA26",
+          "signal": "IN0+",
+          "pf": 0
+        },
+        {
+          "pin": "PA27",
+          "signal": "IN0-",
+          "pf": 0
+        },
+        {
+          "pin": "PA20",
+          "signal": "IN1+",
+          "pf": 0
+        },
+        {
+          "pin": "PA23",
+          "signal": "IN1-",
+          "pf": 0
+        },
+        {
+          "pin": "PA16",
+          "signal": "OUT",
+          "pf": 2
+        },
+        {
+          "pin": "PA7",
+          "signal": "OUT",
+          "pf": 2
+        },
+        {
+          "pin": "PA3",
+          "signal": "OUT",
+          "pf": 5
+        },
+        {
+          "pin": "PA11",
+          "signal": "OUT",
+          "pf": 6
+        }
+      ]
+    },
+    "CPUSS": {
+      "name": "CPUSS",
+      "type": "Cpuss",
+      "address": 1077936128,
+      "power_domain": "Pd1",
+      "pins": []
+    },
+    "CRC": {
+      "name": "CRC",
+      "type": "Crc",
+      "address": 1078198272,
+      "power_domain": "Pd1",
+      "pins": []
+    },
+    "DEBUGSS": {
+      "name": "DEBUGSS",
+      "type": "Debugss",
+      "address": 1074556928,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA20",
+          "signal": "SWCLK",
+          "pf": 2
+        },
+        {
+          "pin": "PA19",
+          "signal": "SWDIO",
+          "pf": 2
+        }
+      ]
+    },
+    "DMA": {
+      "name": "DMA",
+      "type": "Dma",
+      "address": 1078108160,
+      "power_domain": "Pd1",
+      "pins": []
+    },
+    "EVENT": {
+      "name": "EVENT",
+      "type": "Event",
+      "address": 1074565120,
+      "power_domain": "Pd0",
+      "pins": []
+    },
+    "FLASHCTL": {
+      "name": "FLASHCTL",
+      "type": "FlashCtl",
+      "address": 1074581504,
+      "power_domain": "Pd0",
+      "pins": []
+    },
+    "GPAMP": {
+      "name": "GPAMP",
+      "type": "GpAmp",
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA26",
+          "signal": "IN+",
+          "pf": 0
+        },
+        {
+          "pin": "PA18",
+          "signal": "IN-",
+          "pf": 0
+        },
+        {
+          "pin": "PA22",
+          "signal": "OUT",
+          "pf": 0
+        }
+      ]
+    },
+    "GPIOA": {
+      "name": "GPIOA",
+      "type": "Gpio",
+      "address": 1074397184,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA0",
+          "signal": "PA0",
+          "pf": 1
+        },
+        {
+          "pin": "PA1",
+          "signal": "PA1",
+          "pf": 1
+        },
+        {
+          "pin": "PA1",
+          "signal": "PA1",
+          "pf": 1
+        },
+        {
+          "pin": "PA10",
+          "signal": "PA10",
+          "pf": 1
+        },
+        {
+          "pin": "PA11",
+          "signal": "PA11",
+          "pf": 1
+        },
+        {
+          "pin": "PA12",
+          "signal": "PA12",
+          "pf": 1
+        },
+        {
+          "pin": "PA13",
+          "signal": "PA13",
+          "pf": 1
+        },
+        {
+          "pin": "PA14",
+          "signal": "PA14",
+          "pf": 1
+        },
+        {
+          "pin": "PA15",
+          "signal": "PA15",
+          "pf": 1
+        },
+        {
+          "pin": "PA16",
+          "signal": "PA16",
+          "pf": 1
+        },
+        {
+          "pin": "PA17",
+          "signal": "PA17",
+          "pf": 1
+        },
+        {
+          "pin": "PA18",
+          "signal": "PA18",
+          "pf": 1
+        },
+        {
+          "pin": "PA19",
+          "signal": "PA19",
+          "pf": 1
+        },
+        {
+          "pin": "PA2",
+          "signal": "PA2",
+          "pf": 1
+        },
+        {
+          "pin": "PA20",
+          "signal": "PA20",
+          "pf": 1
+        },
+        {
+          "pin": "PA21",
+          "signal": "PA21",
+          "pf": 1
+        },
+        {
+          "pin": "PA22",
+          "signal": "PA22",
+          "pf": 1
+        },
+        {
+          "pin": "PA23",
+          "signal": "PA23",
+          "pf": 1
+        },
+        {
+          "pin": "PA24",
+          "signal": "PA24",
+          "pf": 1
+        },
+        {
+          "pin": "PA25",
+          "signal": "PA25",
+          "pf": 1
+        },
+        {
+          "pin": "PA26",
+          "signal": "PA26",
+          "pf": 1
+        },
+        {
+          "pin": "PA27",
+          "signal": "PA27",
+          "pf": 1
+        },
+        {
+          "pin": "PA3",
+          "signal": "PA3",
+          "pf": 1
+        },
+        {
+          "pin": "PA4",
+          "signal": "PA4",
+          "pf": 1
+        },
+        {
+          "pin": "PA5",
+          "signal": "PA5",
+          "pf": 1
+        },
+        {
+          "pin": "PA6",
+          "signal": "PA6",
+          "pf": 1
+        },
+        {
+          "pin": "PA7",
+          "signal": "PA7",
+          "pf": 1
+        },
+        {
+          "pin": "PA8",
+          "signal": "PA8",
+          "pf": 1
+        },
+        {
+          "pin": "PA9",
+          "signal": "PA9",
+          "pf": 1
+        }
+      ]
+    },
+    "I2C0": {
+      "name": "I2C0",
+      "type": "I2c",
+      "address": 1074724864,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA1",
+          "signal": "SCL",
+          "pf": 3
+        },
+        {
+          "pin": "PA11",
+          "signal": "SCL",
+          "pf": 4
+        },
+        {
+          "pin": "PA0",
+          "signal": "SDA",
+          "pf": 3
+        },
+        {
+          "pin": "PA10",
+          "signal": "SDA",
+          "pf": 4
+        }
+      ]
+    },
+    "I2C1": {
+      "name": "I2C1",
+      "type": "I2c",
+      "address": 1074733056,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA15",
+          "signal": "SCL",
+          "pf": 3
+        },
+        {
+          "pin": "PA17",
+          "signal": "SCL",
+          "pf": 3
+        },
+        {
+          "pin": "PA20",
+          "signal": "SCL",
+          "pf": 3
+        },
+        {
+          "pin": "PA4",
+          "signal": "SCL",
+          "pf": 5
+        },
+        {
+          "pin": "PA16",
+          "signal": "SDA",
+          "pf": 3
+        },
+        {
+          "pin": "PA19",
+          "signal": "SDA",
+          "pf": 3
+        },
+        {
+          "pin": "PA18",
+          "signal": "SDA",
+          "pf": 4
+        },
+        {
+          "pin": "PA3",
+          "signal": "SDA",
+          "pf": 6
+        }
+      ]
+    },
+    "IOMUX": {
+      "name": "IOMUX",
+      "type": "Iomux",
+      "address": 1078099968,
+      "power_domain": "Pd0",
+      "pins": []
+    },
+    "OPA0": {
+      "name": "OPA0",
+      "type": "Opa",
+      "address": 1073872896,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA25",
+          "signal": "IN0+",
+          "pf": 0
+        },
+        {
+          "pin": "PA24",
+          "signal": "IN1-",
+          "pf": 0
+        },
+        {
+          "pin": "PA22",
+          "signal": "OUT",
+          "pf": 0
+        }
+      ]
+    },
+    "OPA1": {
+      "name": "OPA1",
+      "type": "Opa",
+      "address": 1073881088,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA18",
+          "signal": "IN0+",
+          "pf": 0
+        },
+        {
+          "pin": "PA17",
+          "signal": "IN1-",
+          "pf": 0
+        },
+        {
+          "pin": "PA16",
+          "signal": "OUT",
+          "pf": 0
+        }
+      ]
+    },
+    "SPI0": {
+      "name": "SPI0",
+      "type": "Spi",
+      "address": 1078362112,
+      "power_domain": "Pd1",
+      "pins": [
+        {
+          "pin": "PA2",
+          "signal": "CS0",
+          "pf": 3
+        },
+        {
+          "pin": "PA8",
+          "signal": "CS0",
+          "pf": 3
+        },
+        {
+          "pin": "PA3",
+          "signal": "CS1_POCI1",
+          "pf": 3
+        },
+        {
+          "pin": "PA0",
+          "signal": "CS1_POCI1",
+          "pf": 5
+        },
+        {
+          "pin": "PA17",
+          "signal": "CS1_POCI1",
+          "pf": 6
+        },
+        {
+          "pin": "PA24",
+          "signal": "CS2_POCI2",
+          "pf": 2
+        },
+        {
+          "pin": "PA15",
+          "signal": "CS2_POCI2",
+          "pf": 4
+        },
+        {
+          "pin": "PA23",
+          "signal": "CS3_CD_POCI3",
+          "pf": 3
+        },
+        {
+          "pin": "PA27",
+          "signal": "CS3_CD_POCI3",
+          "pf": 3
+        },
+        {
+          "pin": "PA18",
+          "signal": "PICO",
+          "pf": 3
+        },
+        {
+          "pin": "PA5",
+          "signal": "PICO",
+          "pf": 3
+        },
+        {
+          "pin": "PA9",
+          "signal": "PICO",
+          "pf": 3
+        },
+        {
+          "pin": "PA25",
+          "signal": "PICO",
+          "pf": 4
+        },
+        {
+          "pin": "PA10",
+          "signal": "POCI",
+          "pf": 3
+        },
+        {
+          "pin": "PA4",
+          "signal": "POCI",
+          "pf": 3
+        },
+        {
+          "pin": "PA16",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA19",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA26",
+          "signal": "POCI",
+          "pf": 4
+        },
+        {
+          "pin": "PA11",
+          "signal": "SCLK",
+          "pf": 3
+        },
+        {
+          "pin": "PA6",
+          "signal": "SCLK",
+          "pf": 3
+        },
+        {
+          "pin": "PA17",
+          "signal": "SCLK",
+          "pf": 4
+        }
+      ]
+    },
+    "SYSCTL": {
+      "name": "SYSCTL",
+      "type": "Sysctl",
+      "version": "l110x_l130x_l134x",
+      "address": 1074458624,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA14",
+          "signal": "CLK_OUT",
+          "pf": 3
+        },
+        {
+          "pin": "PA7",
+          "signal": "CLK_OUT",
+          "pf": 3
+        },
+        {
+          "pin": "PA22",
+          "signal": "CLK_OUT",
+          "pf": 5
+        },
+        {
+          "pin": "PA10",
+          "signal": "CLK_OUT",
+          "pf": 6
+        },
+        {
+          "pin": "PA9",
+          "signal": "CLK_OUT",
+          "pf": 6
+        },
+        {
+          "pin": "PA12",
+          "signal": "FCC_IN",
+          "pf": 4
+        },
+        {
+          "pin": "PA5",
+          "signal": "FCC_IN",
+          "pf": 4
+        },
+        {
+          "pin": "PA0",
+          "signal": "FCC_IN",
+          "pf": 6
+        },
+        {
+          "pin": "PA16",
+          "signal": "FCC_IN",
+          "pf": 6
+        },
+        {
+          "pin": "NRST",
+          "signal": "NRST",
+          "pf": 0
+        },
+        {
+          "pin": "PA2",
+          "signal": "ROSC",
+          "pf": 0
+        }
+      ]
+    },
+    "TIMG0": {
+      "name": "TIMG0",
+      "type": "Tim",
+      "address": 1074282496,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA5",
+          "signal": "CCP0",
+          "pf": 2
+        },
+        {
+          "pin": "PA12",
+          "signal": "CCP0",
+          "pf": 3
+        },
+        {
+          "pin": "PA23",
+          "signal": "CCP0",
+          "pf": 4
+        },
+        {
+          "pin": "PA16",
+          "signal": "CCP0",
+          "pf": 5
+        },
+        {
+          "pin": "PA6",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA13",
+          "signal": "CCP1",
+          "pf": 3
+        },
+        {
+          "pin": "PA24",
+          "signal": "CCP1",
+          "pf": 3
+        }
+      ]
+    },
+    "TIMG1": {
+      "name": "TIMG1",
+      "type": "Tim",
+      "address": 1074290688,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA26",
+          "signal": "CCP0",
+          "pf": 2
+        },
+        {
+          "pin": "PA0",
+          "signal": "CCP0",
+          "pf": 4
+        },
+        {
+          "pin": "PA7",
+          "signal": "CCP0",
+          "pf": 4
+        },
+        {
+          "pin": "PA14",
+          "signal": "CCP0",
+          "pf": 5
+        },
+        {
+          "pin": "PA2",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA27",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA1",
+          "signal": "CCP1",
+          "pf": 4
+        }
+      ]
+    },
+    "TIMG2": {
+      "name": "TIMG2",
+      "type": "Tim",
+      "address": 1074298880,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA21",
+          "signal": "CCP0",
+          "pf": 2
+        },
+        {
+          "pin": "PA3",
+          "signal": "CCP0",
+          "pf": 2
+        },
+        {
+          "pin": "PA8",
+          "signal": "CCP0",
+          "pf": 5
+        },
+        {
+          "pin": "PA4",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA22",
+          "signal": "CCP1",
+          "pf": 3
+        },
+        {
+          "pin": "PA9",
+          "signal": "CCP1",
+          "pf": 5
+        }
+      ]
+    },
+    "TIMG4": {
+      "name": "TIMG4",
+      "type": "Tim",
+      "address": 1074315264,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA20",
+          "signal": "CCP0",
+          "pf": 4
+        },
+        {
+          "pin": "PA10",
+          "signal": "CCP0",
+          "pf": 5
+        },
+        {
+          "pin": "PA17",
+          "signal": "CCP0",
+          "pf": 5
+        },
+        {
+          "pin": "PA25",
+          "signal": "CCP1",
+          "pf": 2
+        },
+        {
+          "pin": "PA11",
+          "signal": "CCP1",
+          "pf": 5
+        },
+        {
+          "pin": "PA15",
+          "signal": "CCP1",
+          "pf": 5
+        },
+        {
+          "pin": "PA18",
+          "signal": "CCP1",
+          "pf": 5
+        }
+      ]
+    },
+    "UART0": {
+      "name": "UART0",
+      "type": "Uart",
+      "address": 1074823168,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA12",
+          "signal": "CTS",
+          "pf": 2
+        },
+        {
+          "pin": "PA21",
+          "signal": "CTS",
+          "pf": 3
+        },
+        {
+          "pin": "PA23",
+          "signal": "CTS",
+          "pf": 5
+        },
+        {
+          "pin": "PA13",
+          "signal": "RTS",
+          "pf": 2
+        },
+        {
+          "pin": "PA22",
+          "signal": "RTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA24",
+          "signal": "RTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA18",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA22",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA9",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA26",
+          "signal": "RX",
+          "pf": 3
+        },
+        {
+          "pin": "PA17",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA23",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA8",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA25",
+          "signal": "TX",
+          "pf": 3
+        },
+        {
+          "pin": "PA21",
+          "signal": "TX",
+          "pf": 4
+        }
+      ]
+    },
+    "UART1": {
+      "name": "UART1",
+      "type": "Uart",
+      "address": 1074790400,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA14",
+          "signal": "CTS",
+          "pf": 2
+        },
+        {
+          "pin": "PA3",
+          "signal": "CTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA9",
+          "signal": "CTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA15",
+          "signal": "RTS",
+          "pf": 2
+        },
+        {
+          "pin": "PA4",
+          "signal": "RTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA8",
+          "signal": "RTS",
+          "pf": 4
+        },
+        {
+          "pin": "PA1",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA11",
+          "signal": "RX",
+          "pf": 2
+        },
+        {
+          "pin": "PA13",
+          "signal": "RX",
+          "pf": 4
+        },
+        {
+          "pin": "PA22",
+          "signal": "RX",
+          "pf": 6
+        },
+        {
+          "pin": "PA0",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA10",
+          "signal": "TX",
+          "pf": 2
+        },
+        {
+          "pin": "PA14",
+          "signal": "TX",
+          "pf": 4
+        },
+        {
+          "pin": "PA23",
+          "signal": "TX",
+          "pf": 6
+        }
+      ]
+    },
+    "VREF": {
+      "name": "VREF",
+      "type": "Vref",
+      "address": 1073938432,
+      "power_domain": "Pd0",
+      "pins": [
+        {
+          "pin": "PA23",
+          "signal": "VREF+",
+          "pf": 0
+        },
+        {
+          "pin": "PA21",
+          "signal": "VREF-",
+          "pf": 0
+        }
+      ]
+    },
+    "WUC": {
+      "name": "WUC",
+      "type": "Wuc",
+      "address": 1078083584,
+      "power_domain": "Pd0",
+      "pins": []
+    },
+    "WWDT0": {
+      "name": "WWDT0",
+      "type": "Wwdt",
+      "address": 1074266112,
+      "power_domain": "Pd0",
+      "pins": []
+    }
+  },
+  "interrupts": {
+    "-14": {
+      "name": "NonMaskableInt",
+      "num": -14,
+      "group": {}
+    },
+    "-13": {
+      "name": "HardFault",
+      "num": -13,
+      "group": {}
+    },
+    "-5": {
+      "name": "SVCall",
+      "num": -5,
+      "group": {}
+    },
+    "-2": {
+      "name": "PendSV",
+      "num": -2,
+      "group": {}
+    },
+    "-1": {
+      "name": "SysTick",
+      "num": -1,
+      "group": {}
+    },
+    "0": {
+      "name": "GROUP0",
+      "num": 0,
+      "group": {
+        "0": "WWDT0",
+        "2": "DEBUGSS",
+        "3": "FLASHCTL",
+        "6": "SYSCTL"
+      }
+    },
+    "1": {
+      "name": "GROUP1",
+      "num": 1,
+      "group": {
+        "0": "GPIOA",
+        "2": "COMP0"
+      }
+    },
+    "2": {
+      "name": "TIMG1",
+      "num": 2,
+      "group": {}
+    },
+    "4": {
+      "name": "ADC0",
+      "num": 4,
+      "group": {}
+    },
+    "9": {
+      "name": "SPI0",
+      "num": 9,
+      "group": {}
+    },
+    "13": {
+      "name": "UART1",
+      "num": 13,
+      "group": {}
+    },
+    "15": {
+      "name": "UART0",
+      "num": 15,
+      "group": {}
+    },
+    "16": {
+      "name": "TIMG0",
+      "num": 16,
+      "group": {}
+    },
+    "18": {
+      "name": "TIMG2",
+      "num": 18,
+      "group": {}
+    },
+    "20": {
+      "name": "TIMG4",
+      "num": 20,
+      "group": {}
+    },
+    "24": {
+      "name": "I2C0",
+      "num": 24,
+      "group": {}
+    },
+    "25": {
+      "name": "I2C1",
+      "num": 25,
+      "group": {}
+    },
+    "31": {
+      "name": "DMA",
+      "num": 31,
+      "group": {}
+    }
+  },
+  "dma_channels": {
+    "0": {
+      "full": true
+    },
+    "1": {
+      "full": false
+    },
+    "2": {
+      "full": false
+    }
+  }
+}
