@@ -4,8 +4,18 @@
   "datasheet_url": "https://www.ti.com/lit/gpn/mspm0l1228",
   "reference_manual_url": "https://www.ti.com/lit/pdf/slau847",
   "errata_url": "https://www.ti.com/lit/pdf/slaz755",
-  "ram": 32,
-  "flash": 256,
+  "memory": [
+    {
+      "name": "FLASH",
+      "length": 256,
+      "address": 0
+    },
+    {
+      "name": "RAM",
+      "length": 32,
+      "address": 538968064
+    }
+  ],
   "packages": [
     {
       "name": "VQFN-32",

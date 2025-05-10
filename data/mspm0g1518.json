@@ -4,8 +4,23 @@
   "datasheet_url": "https://www.ti.com/lit/gpn/mspm0g1519",
   "reference_manual_url": "https://www.ti.com/lit/pdf/slau846",
   "errata_url": "https://www.ti.com/lit/pdf/slaz758",
-  "ram": 128,
-  "flash": 256,
+  "memory": [
+    {
+      "name": "FLASH",
+      "length": 256,
+      "address": 0
+    },
+    {
+      "name": "RAM",
+      "length": 64,
+      "address": 538968064
+    },
+    {
+      "name": "RAM_BANK",
+      "length": 64,
+      "address": 539033600
+    }
+  ],
   "packages": [],
   "iomux": {
     "PA0": 1,

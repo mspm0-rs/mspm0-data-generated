@@ -4,8 +4,18 @@
   "datasheet_url": "https://www.ti.com/lit/gpn/mspm0c1104",
   "reference_manual_url": "https://www.ti.com/lit/pdf/slau893",
   "errata_url": "https://www.ti.com/lit/pdf/slaz753",
-  "ram": 1,
-  "flash": 8,
+  "memory": [
+    {
+      "name": "FLASH",
+      "length": 8,
+      "address": 0
+    },
+    {
+      "name": "RAM",
+      "length": 1,
+      "address": 536870912
+    }
+  ],
   "packages": [
     {
       "name": "TSSOP-20",
