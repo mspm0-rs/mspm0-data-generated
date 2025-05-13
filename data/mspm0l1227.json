@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "VQFN-32",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227rhb",
       "package": "RHB",
       "pins": [
         {
@@ -218,7 +218,7 @@
     },
     {
       "name": "LQFP-80",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227pn",
       "package": "PN",
       "pins": [
         {
@@ -705,7 +705,7 @@
     },
     {
       "name": "VQFN-48",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227rgz",
       "package": "RGZ",
       "pins": [
         {
@@ -1000,7 +1000,7 @@
     },
     {
       "name": "LQFP-48",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227pt",
       "package": "PT",
       "pins": [
         {
@@ -1295,7 +1295,7 @@
     },
     {
       "name": "LQFP-64",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227pm",
       "package": "PM",
       "pins": [
         {
@@ -1686,7 +1686,7 @@
     },
     {
       "name": "VQFN-24",
-      "chip": "mspm0l122x",
+      "chip": "mspm0l1227rge",
       "package": "RGE",
       "pins": [
         {

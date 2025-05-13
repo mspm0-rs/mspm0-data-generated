@@ -24,7 +24,7 @@
   "packages": [
     {
       "name": "VQFN-32",
-      "chip": "mspm0g151x",
+      "chip": "mspm0g1519rhb",
       "package": "RHB",
       "pins": [
         {
@@ -223,7 +223,7 @@
     },
     {
       "name": "VQFN-48",
-      "chip": "mspm0g151x",
+      "chip": "mspm0g1519rgz",
       "package": "RGZ",
       "pins": [
         {

@@ -24,7 +24,7 @@
   "packages": [
     {
       "name": "VQFN-32",
-      "chip": "mspm0g351x",
+      "chip": "mspm0g3519rhb",
       "package": "RHB",
       "pins": [
         {
@@ -223,7 +223,7 @@
     },
     {
       "name": "VQFN-48",
-      "chip": "mspm0g351x",
+      "chip": "mspm0g3519rgz",
       "package": "RGZ",
       "pins": [
         {
@@ -518,7 +518,7 @@
     },
     {
       "name": "LQFP-64",
-      "chip": "mspm0g351x",
+      "chip": "mspm0g3519pm",
       "package": "PM",
       "pins": [
         {
@@ -909,7 +909,7 @@
     },
     {
       "name": "LQFP-100",
-      "chip": "mspm0g351x",
+      "chip": "mspm0g3519pz",
       "package": "PZ",
       "pins": [
         {
@@ -1516,7 +1516,7 @@
     },
     {
       "name": "LQFP-80",
-      "chip": "mspm0g351x",
+      "chip": "mspm0g3519pn",
       "package": "PN",
       "pins": [
         {

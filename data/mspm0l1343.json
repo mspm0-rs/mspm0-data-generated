@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "VSSOP-20",
-      "chip": "mspm0l134x",
+      "chip": "mspm0l1343dgs20",
       "package": "DGS20",
       "pins": [
         {

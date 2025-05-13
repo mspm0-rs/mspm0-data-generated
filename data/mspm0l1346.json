@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "VSSOP-28",
-      "chip": "mspm0l134x",
+      "chip": "mspm0l1346dgs28",
       "package": "DGS28",
       "pins": [
         {

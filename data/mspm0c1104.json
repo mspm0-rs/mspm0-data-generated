@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "WQFN-20",
-      "chip": "mspm0c110x",
+      "chip": "mspm0c1104ruk",
       "package": "RUK",
       "pins": [
         {
@@ -147,7 +147,7 @@
     },
     {
       "name": "SOT-16",
-      "chip": "mspm0c110x",
+      "chip": "mspm0c1104dyy",
       "package": "DYY",
       "pins": [
         {
@@ -251,7 +251,7 @@
     },
     {
       "name": "WSON-8",
-      "chip": "mspm0c110x",
+      "chip": "mspm0c1104dsg",
       "package": "DSG",
       "pins": [
         {
@@ -307,7 +307,7 @@
     },
     {
       "name": "WCSP-8",
-      "chip": "mspm0c110x",
+      "chip": "mspm0c1104ycj",
       "package": "YCJ",
       "pins": [
         {

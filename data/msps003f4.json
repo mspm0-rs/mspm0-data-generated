@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "TSSOP-20",
-      "chip": "msps003fx",
+      "chip": "msps003f4pw20",
       "package": "PW20",
       "pins": [
         {

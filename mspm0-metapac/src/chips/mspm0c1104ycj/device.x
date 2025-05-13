@@ -1,0 +1,10 @@
+PROVIDE(GROUP0 = DefaultHandler);
+PROVIDE(GPIOA = DefaultHandler);
+PROVIDE(TIMG8 = DefaultHandler);
+PROVIDE(ADC0 = DefaultHandler);
+PROVIDE(SPI0 = DefaultHandler);
+PROVIDE(UART0 = DefaultHandler);
+PROVIDE(TIMG14 = DefaultHandler);
+PROVIDE(TIMA0 = DefaultHandler);
+PROVIDE(I2C0 = DefaultHandler);
+PROVIDE(DMA = DefaultHandler);

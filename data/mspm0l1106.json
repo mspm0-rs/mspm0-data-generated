@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "VQFN-32",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106rhb",
       "package": "RHB",
       "pins": [
         {
@@ -218,7 +218,7 @@
     },
     {
       "name": "VSSOP-20",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106dgs20",
       "package": "DGS20",
       "pins": [
         {
@@ -346,7 +346,7 @@
     },
     {
       "name": "VSSOP-28",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106dgs28",
       "package": "DGS28",
       "pins": [
         {
@@ -521,7 +521,7 @@
     },
     {
       "name": "VQFN-24",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106rge",
       "package": "RGE",
       "pins": [
         {
@@ -672,7 +672,7 @@
     },
     {
       "name": "WQFN-16",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106rtr",
       "package": "RTR",
       "pins": [
         {
@@ -777,7 +777,7 @@
     },
     {
       "name": "SOT-16",
-      "chip": "mspm0l110x",
+      "chip": "mspm0l1106dyy",
       "package": "DYY",
       "pins": [
         {

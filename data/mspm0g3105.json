@@ -19,7 +19,7 @@
   "packages": [
     {
       "name": "VSSOP-20",
-      "chip": "mspm0g310x",
+      "chip": "mspm0g3105dgs20",
       "package": "DGS20",
       "pins": [
         {
@@ -146,7 +146,7 @@
     },
     {
       "name": "VSSOP-28",
-      "chip": "mspm0g310x",
+      "chip": "mspm0g3105dgs28",
       "package": "DGS28",
       "pins": [
         {
@@ -321,7 +321,7 @@
     },
     {
       "name": "VQFN-32",
-      "chip": "mspm0g310x",
+      "chip": "mspm0g3105rhb",
       "package": "RHB",
       "pins": [
         {
