@@ -3,6 +3,7 @@ pub const ALL_CHIPS: &[&str] = &[
     "mspm0c1103ruk",
     "mspm0c1103dyy",
     "mspm0c1103dsg",
+    "mspm0c1104dgs20",
     "mspm0c1104ruk",
     "mspm0c1104dyy",
     "mspm0c1104dsg",

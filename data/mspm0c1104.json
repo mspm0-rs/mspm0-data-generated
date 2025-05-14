@@ -18,6 +18,134 @@
   ],
   "packages": [
     {
+      "name": "VSSOP-20",
+      "chip": "mspm0c1104dgs20",
+      "package": "DGS20",
+      "pins": [
+        {
+          "position": "1",
+          "signals": [
+            "PA26"
+          ]
+        },
+        {
+          "position": "10",
+          "signals": [
+            "PA6"
+          ]
+        },
+        {
+          "position": "11",
+          "signals": [
+            "PA11"
+          ]
+        },
+        {
+          "position": "12",
+          "signals": [
+            "PA16"
+          ]
+        },
+        {
+          "position": "13",
+          "signals": [
+            "PA17"
+          ]
+        },
+        {
+          "position": "14",
+          "signals": [
+            "PA18"
+          ]
+        },
+        {
+          "position": "15",
+          "signals": [
+            "PA19"
+          ]
+        },
+        {
+          "position": "16",
+          "signals": [
+            "PA20"
+          ]
+        },
+        {
+          "position": "17",
+          "signals": [
+            "PA22"
+          ]
+        },
+        {
+          "position": "18",
+          "signals": [
+            "PA23"
+          ]
+        },
+        {
+          "position": "19",
+          "signals": [
+            "PA24"
+          ]
+        },
+        {
+          "position": "2",
+          "signals": [
+            "PA27"
+          ]
+        },
+        {
+          "position": "20",
+          "signals": [
+            "PA25"
+          ]
+        },
+        {
+          "position": "3",
+          "signals": [
+            "PA28"
+          ]
+        },
+        {
+          "position": "4",
+          "signals": [
+            "PA0"
+          ]
+        },
+        {
+          "position": "5",
+          "signals": [
+            "PA1",
+            "NRST"
+          ]
+        },
+        {
+          "position": "6",
+          "signals": [
+            "VDD"
+          ]
+        },
+        {
+          "position": "7",
+          "signals": [
+            "VSS"
+          ]
+        },
+        {
+          "position": "8",
+          "signals": [
+            "PA2"
+          ]
+        },
+        {
+          "position": "9",
+          "signals": [
+            "PA4"
+          ]
+        }
+      ]
+    },
+    {
       "name": "WQFN-20",
       "chip": "mspm0c1104ruk",
       "package": "RUK",
