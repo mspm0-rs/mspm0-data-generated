@@ -7,5 +7,6 @@ pub static METADATA: Metadata = Metadata {
     peripherals: PERIPHERALS,
     pins: PINS,
     interrupts: INTERRUPTS,
+    interrupt_groups: INTERRUPT_GROUPS,
     dma_channels: DMA_CHANNELS,
 };

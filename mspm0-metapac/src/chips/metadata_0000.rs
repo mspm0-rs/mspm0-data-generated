@@ -727,6 +727,28 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 31,
     },
 ];
+pub(crate) static INTERRUPT_GROUPS: &[InterruptGroup] = &[InterruptGroup {
+    name: "GROUP0",
+    number: 0,
+    interrupts: &[
+        GroupInterrupt {
+            name: "WWDT0",
+            number: 0,
+        },
+        GroupInterrupt {
+            name: "DEBUGSS",
+            number: 2,
+        },
+        GroupInterrupt {
+            name: "FLASHCTL",
+            number: 3,
+        },
+        GroupInterrupt {
+            name: "SYSCTL",
+            number: 6,
+        },
+    ],
+}];
 pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[DmaChannel {
     number: 0,
     full: false,
