@@ -1824,6 +1824,7 @@
     "CPUSS": {
       "name": "CPUSS",
       "type": "Cpuss",
+      "version": "v1",
       "address": 1077936128,
       "power_domain": "Pd1",
       "pins": []
@@ -1856,6 +1857,7 @@
     "DMA": {
       "name": "DMA",
       "type": "Dma",
+      "version": "v1",
       "address": 1078108160,
       "power_domain": "Pd1",
       "pins": []
@@ -1883,6 +1885,7 @@
     "GPIOA": {
       "name": "GPIOA",
       "type": "Gpio",
+      "version": "v1",
       "address": 1074397184,
       "power_domain": "Pd0",
       "pins": [
@@ -2051,6 +2054,7 @@
     "GPIOB": {
       "name": "GPIOB",
       "type": "Gpio",
+      "version": "v1",
       "address": 1074405376,
       "power_domain": "Pd0",
       "pins": [
@@ -2219,6 +2223,7 @@
     "GPIOC": {
       "name": "GPIOC",
       "type": "Gpio",
+      "version": "v1",
       "address": 1074413568,
       "power_domain": "Pd0",
       "pins": [
@@ -2277,6 +2282,7 @@
     "I2C0": {
       "name": "I2C0",
       "type": "I2c",
+      "version": "v1",
       "address": 1074724864,
       "power_domain": "Pd0",
       "pins": [
@@ -2365,6 +2371,7 @@
     "I2C1": {
       "name": "I2C1",
       "type": "I2c",
+      "version": "v1",
       "address": 1074733056,
       "power_domain": "Pd0",
       "pins": [
@@ -2453,6 +2460,7 @@
     "I2C2": {
       "name": "I2C2",
       "type": "I2c",
+      "version": "v1",
       "address": 1074741248,
       "power_domain": "Pd0",
       "pins": [
@@ -2541,6 +2549,7 @@
     "IOMUX": {
       "name": "IOMUX",
       "type": "Iomux",
+      "version": "v1",
       "address": 1078099968,
       "power_domain": "Pd0",
       "pins": []
@@ -3621,6 +3630,7 @@
     "TIMA0": {
       "name": "TIMA0",
       "type": "Tim",
+      "version": "v1",
       "address": 1082523648,
       "power_domain": "Pd0",
       "pins": [
@@ -4144,6 +4154,7 @@
     "TIMG0": {
       "name": "TIMG0",
       "type": "Tim",
+      "version": "v1",
       "address": 1074282496,
       "power_domain": "Pd0",
       "pins": [
@@ -4272,6 +4283,7 @@
     "TIMG12": {
       "name": "TIMG12",
       "type": "Tim",
+      "version": "v1",
       "address": 1082589184,
       "power_domain": "Pd0",
       "pins": [
@@ -4380,6 +4392,7 @@
     "TIMG4": {
       "name": "TIMG4",
       "type": "Tim",
+      "version": "v1",
       "address": 1074315264,
       "power_domain": "Pd0",
       "pins": [
@@ -4518,6 +4531,7 @@
     "TIMG5": {
       "name": "TIMG5",
       "type": "Tim",
+      "version": "v1",
       "address": 1074323456,
       "power_domain": "Pd0",
       "pins": [
@@ -4621,6 +4635,7 @@
     "TIMG8": {
       "name": "TIMG8",
       "type": "Tim",
+      "version": "v1",
       "address": 1074331648,
       "power_domain": "Pd0",
       "pins": [
@@ -4826,6 +4841,7 @@
     "UART0": {
       "name": "UART0",
       "type": "Uart",
+      "version": "v1",
       "address": 1074823168,
       "power_domain": "Pd0",
       "pins": [
@@ -4929,6 +4945,7 @@
     "UART1": {
       "name": "UART1",
       "type": "Uart",
+      "version": "v1",
       "address": 1074831360,
       "power_domain": "Pd0",
       "pins": [
@@ -5072,6 +5089,7 @@
     "UART2": {
       "name": "UART2",
       "type": "Uart",
+      "version": "v1",
       "address": 1074790400,
       "power_domain": "Pd0",
       "pins": [
@@ -5225,6 +5243,7 @@
     "UART3": {
       "name": "UART3",
       "type": "Uart",
+      "version": "v1",
       "address": 1074798592,
       "power_domain": "Pd0",
       "pins": [
@@ -5358,6 +5377,7 @@
     "UART4": {
       "name": "UART4",
       "type": "Uart",
+      "version": "v1",
       "address": 1074806784,
       "power_domain": "Pd0",
       "pins": [

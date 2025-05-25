@@ -159,21 +159,21 @@ mod _vectors {
 pub use cortex_m_rt::interrupt;
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
-#[path = "../../peripherals/cpuss.rs"]
+#[path = "../../peripherals/cpuss_v1.rs"]
 pub mod cpuss;
-#[path = "../../peripherals/dma.rs"]
+#[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
-#[path = "../../peripherals/gpio.rs"]
+#[path = "../../peripherals/gpio_v1.rs"]
 pub mod gpio;
-#[path = "../../peripherals/i2c.rs"]
+#[path = "../../peripherals/i2c_v1.rs"]
 pub mod i2c;
-#[path = "../../peripherals/iomux.rs"]
+#[path = "../../peripherals/iomux_v1.rs"]
 pub mod iomux;
 #[path = "../../peripherals/sysctl_g350x_g310x_g150x_g110x.rs"]
 pub mod sysctl;
-#[path = "../../peripherals/tim.rs"]
+#[path = "../../peripherals/tim_v1.rs"]
 pub mod tim;
-#[path = "../../peripherals/uart.rs"]
+#[path = "../../peripherals/uart_v1.rs"]
 pub mod uart;
 #[doc = "Address: 1073741824"]
 pub const ADC0: () = ();

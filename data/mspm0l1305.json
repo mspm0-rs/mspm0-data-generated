@@ -830,6 +830,7 @@
     "CPUSS": {
       "name": "CPUSS",
       "type": "Cpuss",
+      "version": "v1",
       "address": 1077936128,
       "power_domain": "Pd1",
       "pins": []
@@ -862,6 +863,7 @@
     "DMA": {
       "name": "DMA",
       "type": "Dma",
+      "version": "v1",
       "address": 1078108160,
       "power_domain": "Pd1",
       "pins": []
@@ -905,6 +907,7 @@
     "GPIOA": {
       "name": "GPIOA",
       "type": "Gpio",
+      "version": "v1",
       "address": 1074397184,
       "power_domain": "Pd0",
       "pins": [
@@ -1083,6 +1086,7 @@
     "I2C0": {
       "name": "I2C0",
       "type": "I2c",
+      "version": "v1",
       "address": 1074724864,
       "power_domain": "Pd0",
       "pins": [
@@ -1111,6 +1115,7 @@
     "I2C1": {
       "name": "I2C1",
       "type": "I2c",
+      "version": "v1",
       "address": 1074733056,
       "power_domain": "Pd0",
       "pins": [
@@ -1159,6 +1164,7 @@
     "IOMUX": {
       "name": "IOMUX",
       "type": "Iomux",
+      "version": "v1",
       "address": 1078099968,
       "power_domain": "Pd0",
       "pins": []
@@ -1389,6 +1395,7 @@
     "TIMG0": {
       "name": "TIMG0",
       "type": "Tim",
+      "version": "v1",
       "address": 1074282496,
       "power_domain": "Pd0",
       "pins": [
@@ -1432,6 +1439,7 @@
     "TIMG1": {
       "name": "TIMG1",
       "type": "Tim",
+      "version": "v1",
       "address": 1074290688,
       "power_domain": "Pd0",
       "pins": [
@@ -1475,6 +1483,7 @@
     "TIMG2": {
       "name": "TIMG2",
       "type": "Tim",
+      "version": "v1",
       "address": 1074298880,
       "power_domain": "Pd0",
       "pins": [
@@ -1513,6 +1522,7 @@
     "TIMG4": {
       "name": "TIMG4",
       "type": "Tim",
+      "version": "v1",
       "address": 1074315264,
       "power_domain": "Pd0",
       "pins": [
@@ -1556,6 +1566,7 @@
     "UART0": {
       "name": "UART0",
       "type": "Uart",
+      "version": "v1",
       "address": 1074823168,
       "power_domain": "Pd0",
       "pins": [
@@ -1639,6 +1650,7 @@
     "UART1": {
       "name": "UART1",
       "type": "Uart",
+      "version": "v1",
       "address": 1074790400,
       "power_domain": "Pd0",
       "pins": [

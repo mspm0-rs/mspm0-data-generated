@@ -3,6 +3,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "ADC0",
         kind: "adc",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA27",
@@ -44,6 +45,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "ADC1",
         kind: "adc",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA15",
@@ -80,16 +82,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "CPUSS",
         kind: "cpuss",
+        version: Some("v1"),
         pins: &[],
     },
     Peripheral {
         name: "CRC",
         kind: "crc",
+        version: None,
         pins: &[],
     },
     Peripheral {
         name: "DEBUGSS",
         kind: "debugss",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA20",
@@ -106,21 +111,25 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "DMA",
         kind: "dma",
+        version: Some("v1"),
         pins: &[],
     },
     Peripheral {
         name: "EVENT",
         kind: "event",
+        version: None,
         pins: &[],
     },
     Peripheral {
         name: "FLASHCTL",
         kind: "flashctl",
+        version: None,
         pins: &[],
     },
     Peripheral {
         name: "GPAMP",
         kind: "gpamp",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA26",
@@ -142,6 +151,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "GPIOA",
         kind: "gpio",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA0",
@@ -288,11 +298,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "GPIOB",
         kind: "gpio",
+        version: Some("v1"),
         pins: &[],
     },
     Peripheral {
         name: "I2C0",
         kind: "i2c",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA1",
@@ -319,6 +331,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "I2C1",
         kind: "i2c",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA15",
@@ -365,11 +378,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "IOMUX",
         kind: "iomux",
+        version: Some("v1"),
         pins: &[],
     },
     Peripheral {
         name: "RTC",
         kind: "rtc",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA27",
@@ -386,6 +401,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "SPI0",
         kind: "spi",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA2",
@@ -462,6 +478,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "SPI1",
         kind: "spi",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA26",
@@ -508,6 +525,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMA0",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA0",
@@ -679,6 +697,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMA1",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA10",
@@ -770,6 +789,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMG0",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA12",
@@ -806,6 +826,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMG12",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA14",
@@ -827,6 +848,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMG6",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA21",
@@ -853,6 +875,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMG7",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA17",
@@ -909,6 +932,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TIMG8",
         kind: "tim",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA3",
@@ -995,6 +1019,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "UART0",
         kind: "uart",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA14",
@@ -1041,6 +1066,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "UART1",
         kind: "uart",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA21",
@@ -1077,6 +1103,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "UART2",
         kind: "uart",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA3",
@@ -1113,6 +1140,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "UART3",
         kind: "uart",
+        version: Some("v1"),
         pins: &[
             PeripheralPin {
                 pin: "PA12",
@@ -1159,6 +1187,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "VREF",
         kind: "vref",
+        version: None,
         pins: &[
             PeripheralPin {
                 pin: "PA23",
@@ -1175,16 +1204,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "WUC",
         kind: "wuc",
+        version: None,
         pins: &[],
     },
     Peripheral {
         name: "WWDT0",
         kind: "wwdt",
+        version: None,
         pins: &[],
     },
     Peripheral {
         name: "WWDT1",
         kind: "wwdt",
+        version: None,
         pins: &[],
     },
 ];
