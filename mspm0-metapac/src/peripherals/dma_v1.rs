@@ -437,239 +437,33 @@ pub mod regs {
     impl Int {
         #[doc = "DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0)."]
         #[inline(always)]
-        pub const fn ch0(&self) -> bool {
-            let val = (self.0 >> 0usize) & 0x01;
+        pub const fn ch(&self, n: usize) -> bool {
+            assert!(n < 16usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0)."]
         #[inline(always)]
-        pub fn set_ch0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-        }
-        #[doc = "DMA Channel 1 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch1(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 1 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-        }
-        #[doc = "DMA Channel 2 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch2(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 2 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-        }
-        #[doc = "DMA Channel 3 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch3(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 3 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-        }
-        #[doc = "DMA Channel 4 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch4(&self) -> bool {
-            let val = (self.0 >> 4usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 4 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch4(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
-        }
-        #[doc = "DMA Channel 5 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch5(&self) -> bool {
-            let val = (self.0 >> 5usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 5 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch5(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
-        }
-        #[doc = "DMA Channel 6 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub const fn ch6(&self) -> bool {
-            let val = (self.0 >> 6usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA Channel 6 interrupt signals that size counter reached zero (DMASZ=0)."]
-        #[inline(always)]
-        pub fn set_ch6(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-        }
-        #[inline(always)]
-        pub const fn ch7(&self) -> bool {
-            let val = (self.0 >> 7usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch7(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-        }
-        #[inline(always)]
-        pub const fn ch8(&self) -> bool {
-            let val = (self.0 >> 8usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch8(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
-        }
-        #[inline(always)]
-        pub const fn ch9(&self) -> bool {
-            let val = (self.0 >> 9usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch9(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
-        }
-        #[inline(always)]
-        pub const fn ch10(&self) -> bool {
-            let val = (self.0 >> 10usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch10(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
-        }
-        #[inline(always)]
-        pub const fn ch11(&self) -> bool {
-            let val = (self.0 >> 11usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch11(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-        }
-        #[inline(always)]
-        pub const fn ch12(&self) -> bool {
-            let val = (self.0 >> 12usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch12(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-        }
-        #[inline(always)]
-        pub const fn ch13(&self) -> bool {
-            let val = (self.0 >> 13usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch13(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
-        }
-        #[inline(always)]
-        pub const fn ch14(&self) -> bool {
-            let val = (self.0 >> 14usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch14(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
-        }
-        #[inline(always)]
-        pub const fn ch15(&self) -> bool {
-            let val = (self.0 >> 15usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_ch15(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        pub fn set_ch(&mut self, n: usize, val: bool) {
+            assert!(n < 16usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold."]
         #[inline(always)]
-        pub const fn preirqch0(&self) -> bool {
-            let val = (self.0 >> 16usize) & 0x01;
+        pub const fn preirqch(&self, n: usize) -> bool {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold."]
         #[inline(always)]
-        pub fn set_preirqch0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-        }
-        #[doc = "Pre-IRQ for Channel 1. Size counter reached Pre-IRQ threshold."]
-        #[inline(always)]
-        pub const fn preirqch1(&self) -> bool {
-            let val = (self.0 >> 17usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Pre-IRQ for Channel 1. Size counter reached Pre-IRQ threshold."]
-        #[inline(always)]
-        pub fn set_preirqch1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-        }
-        #[doc = "Pre-IRQ for Channel 2. Size counter reached Pre-IRQ threshold."]
-        #[inline(always)]
-        pub const fn preirqch2(&self) -> bool {
-            let val = (self.0 >> 18usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Pre-IRQ for Channel 2. Size counter reached Pre-IRQ threshold."]
-        #[inline(always)]
-        pub fn set_preirqch2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-        }
-        #[inline(always)]
-        pub const fn preirqch3(&self) -> bool {
-            let val = (self.0 >> 19usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_preirqch3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-        }
-        #[inline(always)]
-        pub const fn preirqch4(&self) -> bool {
-            let val = (self.0 >> 20usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_preirqch4(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
-        }
-        #[inline(always)]
-        pub const fn preirqch5(&self) -> bool {
-            let val = (self.0 >> 21usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_preirqch5(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
-        }
-        #[inline(always)]
-        pub const fn preirqch6(&self) -> bool {
-            let val = (self.0 >> 22usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_preirqch6(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
-        }
-        #[inline(always)]
-        pub const fn preirqch7(&self) -> bool {
-            let val = (self.0 >> 23usize) & 0x01;
-            val != 0
-        }
-        #[inline(always)]
-        pub fn set_preirqch7(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
+        pub fn set_preirqch(&mut self, n: usize, val: bool) {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "DMA address error, SRC address not reachable."]
         #[inline(always)]
@@ -871,7 +665,7 @@ pub mod vals {
         #[doc = "The burst size is 8, after 8 transfers the block transfer is interrupted and the priority is reevaluated."]
         BURST_8 = 0x01,
         #[doc = "The burst size is 16, after 16 transfers the block transfer is interrupted and the priority is reevaluated."]
-        BUSRT_16 = 0x02,
+        BURST_16 = 0x02,
         #[doc = "The burst size is 32, after 32 transfers the block transfer is interrupted and the priority is reevaluated."]
         BURST_32 = 0x03,
     }
