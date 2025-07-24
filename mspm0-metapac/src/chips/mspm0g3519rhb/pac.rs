@@ -177,6 +177,8 @@ mod _vectors {
 pub use cortex_m_rt::interrupt;
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+#[path = "../../peripherals/adc_v1.rs"]
+pub mod adc;
 #[path = "../../peripherals/cpuss_v1.rs"]
 pub mod cpuss;
 #[path = "../../peripherals/dma_v1.rs"]
@@ -193,10 +195,8 @@ pub mod sysctl;
 pub mod tim;
 #[path = "../../peripherals/uart_v1.rs"]
 pub mod uart;
-#[doc = "Address: 1073741824"]
-pub const ADC0: () = ();
-#[doc = "Address: 1073750016"]
-pub const ADC1: () = ();
+pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073741824 as *mut _) };
+pub const ADC1: adc::Adc = unsafe { adc::Adc::from_ptr(1073750016 as *mut _) };
 #[doc = "Address: 1078206464"]
 pub const AESADV: () = ();
 #[doc = "Address: 1079017472"]

@@ -180,6 +180,7 @@
     "ADC0": {
       "name": "ADC0",
       "type": "Adc",
+      "version": "v1",
       "address": 1073758208,
       "power_domain": "Pd0",
       "pins": [
@@ -1300,5 +1301,7 @@
     "2": {
       "full": false
     }
-  }
+  },
+  "adc_memctl": 4,
+  "adc_vrsel": 5
 }

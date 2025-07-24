@@ -9,4 +9,6 @@ pub static METADATA: Metadata = Metadata {
     interrupts: INTERRUPTS,
     interrupt_groups: INTERRUPT_GROUPS,
     dma_channels: DMA_CHANNELS,
+    adc_memctl: 4,
+    adc_vrsel: 5,
 };

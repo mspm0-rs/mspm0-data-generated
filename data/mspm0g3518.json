@@ -122,6 +122,7 @@
     "ADC0": {
       "name": "ADC0",
       "type": "Adc",
+      "version": "v1",
       "address": 1073741824,
       "power_domain": "Pd0",
       "pins": [
@@ -195,6 +196,7 @@
     "ADC1": {
       "name": "ADC1",
       "type": "Adc",
+      "version": "v1",
       "address": 1073750016,
       "power_domain": "Pd0",
       "pins": [
@@ -4772,5 +4774,7 @@
     "11": {
       "full": false
     }
-  }
+  },
+  "adc_memctl": 24,
+  "adc_vrsel": 5
 }
