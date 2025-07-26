@@ -56,18 +56,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(0u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "CPUSS",
         kind: "cpuss",
         version: Some("v1"),
         pins: &[],
+        power_domain: PowerDomain::Pd1,
     },
     Peripheral {
         name: "CRC",
         kind: "crc",
         version: None,
         pins: &[],
+        power_domain: PowerDomain::Pd1,
     },
     Peripheral {
         name: "DEBUGSS",
@@ -85,24 +88,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(2u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "DMA",
         kind: "dma",
         version: Some("v1"),
         pins: &[],
+        power_domain: PowerDomain::Pd1,
     },
     Peripheral {
         name: "EVENT",
         kind: "event",
         version: None,
         pins: &[],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "FLASHCTL",
         kind: "flashctl",
         version: None,
         pins: &[],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "GPAMP",
@@ -125,6 +132,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(0u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "GPIOA",
@@ -267,6 +275,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(1u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "I2C0",
@@ -294,12 +303,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(4u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "IOMUX",
         kind: "iomux",
         version: Some("v1"),
         pins: &[],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "SPI0",
@@ -407,6 +418,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(3u8),
             },
         ],
+        power_domain: PowerDomain::Pd1,
     },
     Peripheral {
         name: "TIMG0",
@@ -439,6 +451,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(3u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "TIMG1",
@@ -476,6 +489,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(4u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "TIMG2",
@@ -508,6 +522,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(5u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "TIMG4",
@@ -550,6 +565,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(5u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "UART0",
@@ -617,6 +633,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(4u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "UART1",
@@ -684,6 +701,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(6u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "VREF",
@@ -701,18 +719,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(0u8),
             },
         ],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "WUC",
         kind: "wuc",
         version: None,
         pins: &[],
+        power_domain: PowerDomain::Pd0,
     },
     Peripheral {
         name: "WWDT0",
         kind: "wwdt",
         version: None,
         pins: &[],
+        power_domain: PowerDomain::Pd0,
     },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
