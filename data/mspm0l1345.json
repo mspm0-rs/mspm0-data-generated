@@ -589,7 +589,8 @@
           "signal": "SDA",
           "pf": 4
         }
-      ]
+      ],
+      "sys_fentries": 8
     },
     "I2C1": {
       "name": "I2C1",
@@ -638,7 +639,8 @@
           "signal": "SDA",
           "pf": 6
         }
-      ]
+      ],
+      "sys_fentries": 8
     },
     "IOMUX": {
       "name": "IOMUX",
@@ -805,7 +807,8 @@
           "signal": "SCLK",
           "pf": 4
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "SYSCTL": {
       "name": "SYSCTL",
@@ -1124,7 +1127,8 @@
           "signal": "TX",
           "pf": 4
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "UART1": {
       "name": "UART1",
@@ -1203,7 +1207,8 @@
           "signal": "TX",
           "pf": 6
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "VREF": {
       "name": "VREF",

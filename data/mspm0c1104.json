@@ -771,7 +771,8 @@
           "signal": "SDA",
           "pf": 3
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "IOMUX": {
       "name": "IOMUX",
@@ -887,7 +888,8 @@
           "signal": "SCLK",
           "pf": 4
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "SYSCTL": {
       "name": "SYSCTL",
@@ -1282,7 +1284,8 @@
           "signal": "TX",
           "pf": 5
         }
-      ]
+      ],
+      "sys_fentries": 4
     },
     "VREF": {
       "name": "VREF",
