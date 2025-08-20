@@ -169,6 +169,8 @@ pub mod sysctl;
 pub mod tim;
 #[path = "../../peripherals/uart_v1.rs"]
 pub mod uart;
+#[path = "../../peripherals/wwdt_v1.rs"]
+pub mod wwdt;
 pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073758208 as *mut _) };
 #[doc = "Address: 1078206464"]
 pub const AESADV: () = ();
@@ -217,5 +219,4 @@ pub const UART4: uart::Uart = unsafe { uart::Uart::from_ptr(1074806784 as *mut _
 pub const VREF: () = ();
 #[doc = "Address: 1078083584"]
 pub const WUC: () = ();
-#[doc = "Address: 1074266112"]
-pub const WWDT0: () = ();
+pub const WWDT0: wwdt::Wwdt = unsafe { wwdt::Wwdt::from_ptr(1074266112 as *mut _) };

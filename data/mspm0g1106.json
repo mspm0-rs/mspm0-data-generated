@@ -3914,6 +3914,7 @@
     "WWDT0": {
       "name": "WWDT0",
       "type": "Wwdt",
+      "version": "v1",
       "address": 1074266112,
       "power_domain": "Pd0",
       "pins": []
@@ -3921,6 +3922,7 @@
     "WWDT1": {
       "name": "WWDT1",
       "type": "Wwdt",
+      "version": "v1",
       "address": 1074274304,
       "power_domain": "Pd0",
       "pins": []
