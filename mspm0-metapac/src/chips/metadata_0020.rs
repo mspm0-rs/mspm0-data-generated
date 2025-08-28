@@ -92,32 +92,100 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: None,
     },
     Peripheral {
-        name: "CANFD0",
-        kind: "canfd",
+        name: "COMP0",
+        kind: "comp",
         version: None,
         pins: &[
             PeripheralPin {
-                pin: "PA13",
-                signal: "CANRX",
-                pf: Some(6u8),
+                pin: "PA26",
+                signal: "IN0+",
+                pf: Some(0u8),
             },
             PeripheralPin {
                 pin: "PA27",
-                signal: "CANRX",
-                pf: Some(6u8),
+                signal: "IN0-",
+                pf: Some(0u8),
             },
             PeripheralPin {
-                pin: "PA12",
-                signal: "CANTX",
-                pf: Some(5u8),
+                pin: "PA18",
+                signal: "IN1+",
+                pf: Some(0u8),
             },
             PeripheralPin {
-                pin: "PA26",
-                signal: "CANTX",
+                pin: "PA17",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "IN2+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "IN2-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "IN3+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "OUT",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "OUT",
                 pf: Some(6u8),
             },
         ],
-        power_domain: PowerDomain::Pd1,
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "COMP1",
+        kind: "comp",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA23",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "IN3+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "OUT",
+                pf: Some(6u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "COMP2",
+        kind: "comp",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA21",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "OUT",
+                pf: Some(2u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
     Peripheral {
@@ -134,6 +202,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         version: None,
         pins: &[],
         power_domain: PowerDomain::Pd1,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "DAC0",
+        kind: "dac",
+        version: None,
+        pins: &[PeripheralPin {
+            pin: "PA15",
+            signal: "OUT",
+            pf: Some(0u8),
+        }],
+        power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
     Peripheral {
@@ -443,6 +523,82 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         kind: "iomux",
         version: Some("v1"),
         pins: &[],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "MATHACL",
+        kind: "mathacl",
+        version: None,
+        pins: &[],
+        power_domain: PowerDomain::Pd1,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "OPA0",
+        kind: "opa",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "IN0+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "IN0-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA25",
+                signal: "IN1+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "IN2+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "OUT",
+                pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "OPA1",
+        kind: "opa",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA18",
+                signal: "IN1+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "IN2+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "OUT",
+                pf: Some(0u8),
+            },
+        ],
         power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
@@ -1355,8 +1511,8 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 5,
     },
     Interrupt {
-        name: "CANFD0",
-        number: 6,
+        name: "DAC0",
+        number: 7,
     },
     Interrupt {
         name: "SPI0",
@@ -1461,6 +1617,18 @@ pub(crate) static INTERRUPT_GROUPS: &[InterruptGroup] = &[
             GroupInterrupt {
                 name: "GPIOB",
                 number: 1,
+            },
+            GroupInterrupt {
+                name: "COMP0",
+                number: 2,
+            },
+            GroupInterrupt {
+                name: "COMP1",
+                number: 3,
+            },
+            GroupInterrupt {
+                name: "COMP2",
+                number: 4,
             },
             GroupInterrupt {
                 name: "TRNG",
