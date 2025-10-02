@@ -11,6 +11,7 @@ pub static ALL_PERIPHERAL_VERSIONS: &[(&str, &[&str])] = &[
             "c110x",
             "g350x_g310x_g150x_g110x",
             "g351x_g151x",
+            "h321x",
             "l110x_l130x_l134x",
             "l122x_l222x",
         ],
