@@ -3362,8 +3362,7 @@ pub mod vals {
         BORWAKESHUTDN = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
-        #[doc = "Non-PMU trim parity fault."]
-        BOOTNONPMUPARITY = 0x08,
+        _RESERVED_8 = 0x08,
         #[doc = "Fatal clock failure."]
         BOOTCLKFAIL = 0x09,
         _RESERVED_a = 0x0a,
@@ -3382,8 +3381,7 @@ pub mod vals {
         _RESERVED_12 = 0x12,
         #[doc = "WWDT1 violation."]
         SYSWWDT1 = 0x13,
-        #[doc = "Flash uncorrectable ECC error."]
-        SYSFLASHECC = 0x14,
+        _RESERVED_14 = 0x14,
         #[doc = "CPULOCK violation."]
         SYSCPULOCK = 0x15,
         _RESERVED_16 = 0x16,

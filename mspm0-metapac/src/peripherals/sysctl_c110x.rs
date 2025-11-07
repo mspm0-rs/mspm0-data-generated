@@ -907,13 +907,13 @@ pub mod regs {
     pub struct Rstcause(pub u32);
     impl Rstcause {
         #[inline(always)]
-        pub const fn id(&self) -> u8 {
+        pub const fn id(&self) -> super::vals::Id {
             let val = (self.0 >> 0usize) & 0x1f;
-            val as u8
+            super::vals::Id::from_bits(val as u8)
         }
         #[inline(always)]
-        pub fn set_id(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
+        pub fn set_id(&mut self, val: super::vals::Id) {
+            self.0 = (self.0 & !(0x1f << 0usize)) | (((val.to_bits() as u32) & 0x1f) << 0usize);
         }
     }
     impl Default for Rstcause {
@@ -1659,6 +1659,81 @@ pub mod vals {
         #[inline(always)]
         fn from(val: Hsclkmux) -> u8 {
             Hsclkmux::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Id {
+        #[doc = "No reset since last read."]
+        NORST = 0x0,
+        #[doc = "POR- violation, SHUTDNSTOREx or PMU trim parity fault."]
+        PORHWFAIL = 0x01,
+        #[doc = "NRST triggered POR (&gt;1s hold)."]
+        POREXNRST = 0x02,
+        #[doc = "Software triggered POR."]
+        PORSW = 0x03,
+        #[doc = "BOR0- violation."]
+        BORSUPPLY = 0x04,
+        #[doc = "SHUTDOWN mode exit."]
+        BORWAKESHUTDN = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+        _RESERVED_8 = 0x08,
+        #[doc = "Fatal clock failure."]
+        BOOTCLKFAIL = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        #[doc = "NRST triggered BOOTRST (&lt;1s hold)."]
+        BOOTEXNRST = 0x0c,
+        #[doc = "Software triggered BOOTRST."]
+        BOOTSW = 0x0d,
+        #[doc = "WWDT0 violation."]
+        BOOTWWDT0 = 0x0e,
+        _RESERVED_f = 0x0f,
+        #[doc = "BSL exit."]
+        SYSBSLEXIT = 0x10,
+        #[doc = "BSL entry."]
+        SYSBSLENTRY = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        #[doc = "CPULOCK violation."]
+        SYSCPULOCK = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        #[doc = "Debug triggered SYSRST."]
+        SYSDBG = 0x1a,
+        #[doc = "Software triggered SYSRST."]
+        SYSSW = 0x1b,
+        #[doc = "Debug triggered CPURST."]
+        CPUDBG = 0x1c,
+        #[doc = "Software triggered CPURST."]
+        CPUSW = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+    }
+    impl Id {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Id {
+            unsafe { core::mem::transmute(val & 0x1f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Id {
+        #[inline(always)]
+        fn from(val: u8) -> Id {
+            Id::from_bits(val)
+        }
+    }
+    impl From<Id> for u8 {
+        #[inline(always)]
+        fn from(val: Id) -> u8 {
+            Id::to_bits(val)
         }
     }
     #[repr(u8)]

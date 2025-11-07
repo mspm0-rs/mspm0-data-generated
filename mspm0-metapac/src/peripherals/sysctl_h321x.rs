@@ -2299,8 +2299,7 @@ pub mod vals {
         #[doc = "BSL entry."]
         SYSBSLENTRY = 0x11,
         _RESERVED_12 = 0x12,
-        #[doc = "WWDT1 violation."]
-        SYSWWDT1 = 0x13,
+        _RESERVED_13 = 0x13,
         #[doc = "Flash uncorrectable ECC error."]
         SYSFLASHECC = 0x14,
         #[doc = "CPULOCK violation."]
