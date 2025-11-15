@@ -189,6 +189,8 @@ pub mod gpio;
 pub mod i2c;
 #[path = "../../peripherals/iomux_v1.rs"]
 pub mod iomux;
+#[path = "../../peripherals/mathacl_v1.rs"]
+pub mod mathacl;
 #[path = "../../peripherals/sysctl_g351x_g151x.rs"]
 pub mod sysctl;
 #[path = "../../peripherals/tim_v1.rs"]
@@ -234,8 +236,7 @@ pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *m
 pub const KEYSTORECTL: () = ();
 #[doc = "Address: 1074348032"]
 pub const LFSS: () = ();
-#[doc = "Address: 1078001664"]
-pub const MATHACL: () = ();
+pub const MATHACL: mathacl::Mathacl = unsafe { mathacl::Mathacl::from_ptr(1078001664 as *mut _) };
 #[doc = "Address: 1078362112"]
 pub const SPI0: () = ();
 #[doc = "Address: 1078370304"]

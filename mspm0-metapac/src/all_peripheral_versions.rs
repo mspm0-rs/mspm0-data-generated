@@ -5,6 +5,7 @@ pub static ALL_PERIPHERAL_VERSIONS: &[(&str, &[&str])] = &[
     ("gpio", &["v1"]),
     ("i2c", &["v1"]),
     ("iomux", &["v1"]),
+    ("mathacl", &["v1"]),
     (
         "sysctl",
         &[

@@ -1864,6 +1864,7 @@
     "MATHACL": {
       "name": "MATHACL",
       "type": "Mathacl",
+      "version": "v1",
       "address": 1078001664,
       "power_domain": "Pd1",
       "pins": []
