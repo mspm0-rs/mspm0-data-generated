@@ -866,6 +866,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: None,
     },
     Peripheral {
+        name: "RTC_B",
+        kind: "rtc",
+        version: None,
+        pins: &[],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
         name: "SPI0",
         kind: "spi",
         version: None,
