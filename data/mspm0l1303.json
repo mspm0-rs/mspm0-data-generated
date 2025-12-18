@@ -404,16 +404,6 @@
           "pf": 1
         },
         {
-          "pin": "PA1",
-          "signal": "PA1",
-          "pf": 1
-        },
-        {
-          "pin": "PA10",
-          "signal": "PA10",
-          "pf": 1
-        },
-        {
           "pin": "PA10",
           "signal": "PA10",
           "pf": 1
@@ -454,16 +444,6 @@
           "pf": 1
         },
         {
-          "pin": "PA17",
-          "signal": "PA17",
-          "pf": 1
-        },
-        {
-          "pin": "PA18",
-          "signal": "PA18",
-          "pf": 1
-        },
-        {
           "pin": "PA18",
           "signal": "PA18",
           "pf": 1
@@ -496,16 +476,6 @@
         {
           "pin": "PA23",
           "signal": "PA23",
-          "pf": 1
-        },
-        {
-          "pin": "PA23",
-          "signal": "PA23",
-          "pf": 1
-        },
-        {
-          "pin": "PA24",
-          "signal": "PA24",
           "pf": 1
         },
         {

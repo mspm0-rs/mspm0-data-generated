@@ -317,16 +317,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(1u8),
             },
             PeripheralPin {
-                pin: "PA26",
-                signal: "PA26",
-                pf: Some(1u8),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "PA27",
-                pf: Some(1u8),
-            },
-            PeripheralPin {
                 pin: "PA27",
                 signal: "PA27",
                 pf: Some(1u8),
@@ -334,16 +324,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA28",
                 signal: "PA28",
-                pf: Some(1u8),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "PA28",
-                pf: Some(1u8),
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "PA3",
                 pf: Some(1u8),
             },
             PeripheralPin {
@@ -359,11 +339,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA31",
                 signal: "PA31",
-                pf: Some(1u8),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "PA4",
                 pf: Some(1u8),
             },
             PeripheralPin {
