@@ -6650,6 +6650,7 @@
     "TRNG": {
       "name": "TRNG",
       "type": "Trng",
+      "version": "v1",
       "address": 1078214656,
       "power_domain": "Pd1",
       "pins": []

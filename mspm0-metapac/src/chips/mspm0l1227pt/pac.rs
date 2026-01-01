@@ -167,6 +167,8 @@ pub mod iomux;
 pub mod sysctl;
 #[path = "../../peripherals/tim_v1.rs"]
 pub mod tim;
+#[path = "../../peripherals/trng_v1.rs"]
+pub mod trng;
 #[path = "../../peripherals/uart_v1.rs"]
 pub mod uart;
 #[path = "../../peripherals/wwdt_v1.rs"]
@@ -208,8 +210,7 @@ pub const TIMG12: tim::Tim = unsafe { tim::Tim::from_ptr(1082589184 as *mut _) }
 pub const TIMG4: tim::Tim = unsafe { tim::Tim::from_ptr(1074315264 as *mut _) };
 pub const TIMG5: tim::Tim = unsafe { tim::Tim::from_ptr(1074323456 as *mut _) };
 pub const TIMG8: tim::Tim = unsafe { tim::Tim::from_ptr(1074331648 as *mut _) };
-#[doc = "Address: 1078214656"]
-pub const TRNG: () = ();
+pub const TRNG: trng::Trng = unsafe { trng::Trng::from_ptr(1078214656 as *mut _) };
 pub const UART0: uart::Uart = unsafe { uart::Uart::from_ptr(1074823168 as *mut _) };
 pub const UART1: uart::Uart = unsafe { uart::Uart::from_ptr(1074831360 as *mut _) };
 pub const UART2: uart::Uart = unsafe { uart::Uart::from_ptr(1074790400 as *mut _) };

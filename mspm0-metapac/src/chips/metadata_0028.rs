@@ -3305,7 +3305,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "TRNG",
         kind: "trng",
-        version: None,
+        version: Some("v1"),
         pins: &[],
         power_domain: PowerDomain::Pd1,
         sys_fentries: None,

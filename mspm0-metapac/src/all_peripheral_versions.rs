@@ -18,6 +18,7 @@ pub static ALL_PERIPHERAL_VERSIONS: &[(&str, &[&str])] = &[
         ],
     ),
     ("tim", &["v1"]),
+    ("trng", &["v1"]),
     ("uart", &["v1"]),
     ("wwdt", &["v1"]),
 ];
