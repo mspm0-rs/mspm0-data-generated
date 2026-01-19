@@ -672,6 +672,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "LFXOUT",
                 pf: Some(0u8),
             },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "NRST",
+                pf: Some(0u8),
+            },
         ],
         power_domain: PowerDomain::Pd0,
         sys_fentries: None,

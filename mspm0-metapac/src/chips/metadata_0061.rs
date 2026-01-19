@@ -544,6 +544,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(6u8),
             },
             PeripheralPin {
+                pin: "NRST",
+                signal: "NRST",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
                 pin: "PA2",
                 signal: "ROSC",
                 pf: Some(0u8),
