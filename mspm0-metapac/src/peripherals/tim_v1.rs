@@ -19,47 +19,47 @@ impl Commonregs {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "CCP Direction"]
+    #[doc = "CCP Direction."]
     #[inline(always)]
     pub const fn ccpd(self) -> crate::common::Reg<regs::Ccpd, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
-    #[doc = "Output Disable"]
+    #[doc = "Output Disable."]
     #[inline(always)]
     pub const fn odis(self) -> crate::common::Reg<regs::Odis, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
     }
-    #[doc = "Counter Clock Control Register"]
+    #[doc = "Counter Clock Control Register."]
     #[inline(always)]
     pub const fn cclkctl(self) -> crate::common::Reg<regs::Cclkctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
-    #[doc = "Clock Prescale Register"]
+    #[doc = "Clock Prescale Register."]
     #[inline(always)]
     pub const fn cps(self) -> crate::common::Reg<regs::Cps, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
     }
-    #[doc = "Clock prescale count status register"]
+    #[doc = "Clock prescale count status register."]
     #[inline(always)]
     pub const fn cpsv(self) -> crate::common::Reg<regs::Cpsv, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
-    #[doc = "Timer Cross Trigger Control Register"]
+    #[doc = "Timer Cross Trigger Control Register."]
     #[inline(always)]
     pub const fn cttrigctl(self) -> crate::common::Reg<regs::Cttrigctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
     }
-    #[doc = "Timer Cross Trigger Register"]
+    #[doc = "Timer Cross Trigger Register."]
     #[inline(always)]
     pub const fn cttrig(self) -> crate::common::Reg<regs::Cttrig, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
     }
-    #[doc = "Fault Source Control"]
+    #[doc = "Fault Source Control."]
     #[inline(always)]
     pub const fn fsctl(self) -> crate::common::Reg<regs::Fsctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
     }
-    #[doc = "Shadow to active load mask"]
+    #[doc = "Global control register."]
     #[inline(always)]
     pub const fn gctl(self) -> crate::common::Reg<regs::Gctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
@@ -80,78 +80,94 @@ impl Counterregs {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Counter Control Register"]
+    #[doc = "Counter Register."]
+    #[inline(always)]
+    pub const fn ctr(self) -> crate::common::Reg<u32, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+    }
+    #[doc = "Counter Control Register."]
     #[inline(always)]
     pub const fn ctrctl(self) -> crate::common::Reg<regs::Ctrctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
     }
-    #[doc = "Capture or Compare Control Registers"]
+    #[doc = "Load Register."]
+    #[inline(always)]
+    pub const fn load(self) -> crate::common::Reg<u32, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+    }
+    #[doc = "Compare or capture value"]
+    #[inline(always)]
+    pub const fn cc(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
+        assert!(n < 6usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
+    }
+    #[doc = "Capture or compare control register"]
     #[inline(always)]
     pub const fn ccctl(self, n: usize) -> crate::common::Reg<regs::Ccctl, crate::common::RW> {
-        assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 8usize) as _) }
+        assert!(n < 6usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 4usize) as _) }
     }
-    #[doc = "CCP Output Control Registers"]
+    #[doc = "CCP output control register"]
     #[inline(always)]
     pub const fn octl(self, n: usize) -> crate::common::Reg<regs::Octl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize + n * 8usize) as _) }
+        assert!(n < 4usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize + n * 4usize) as _) }
     }
-    #[doc = "Capture or Compare Action Registers"]
+    #[doc = "CCP output control register"]
     #[inline(always)]
     pub const fn ccact(self, n: usize) -> crate::common::Reg<regs::Ccact, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x70usize + n * 8usize) as _) }
+        assert!(n < 4usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x70usize + n * 4usize) as _) }
     }
-    #[doc = "Input Filter Control Register"]
+    #[doc = "Input filter control register"]
     #[inline(always)]
     pub const fn ifctl(self, n: usize) -> crate::common::Reg<regs::Ifctl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize + n * 8usize) as _) }
+        assert!(n < 4usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize + n * 4usize) as _) }
     }
-    #[doc = "Counter Register"]
+    #[doc = "Phase Load Register."]
     #[inline(always)]
     pub const fn pl(self) -> crate::common::Reg<regs::Pl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize) as _) }
     }
-    #[doc = "Dead Band insertion control register"]
+    #[doc = "Dead Band insertion control register."]
     #[inline(always)]
     pub const fn dbctl(self) -> crate::common::Reg<regs::Dbctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa4usize) as _) }
     }
-    #[doc = "Trigger Select"]
+    #[doc = "Trigger Select Register."]
     #[inline(always)]
     pub const fn tsel(self) -> crate::common::Reg<regs::Tsel, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb0usize) as _) }
     }
-    #[doc = "Repeat counter"]
+    #[doc = "Repeat counter Register."]
     #[inline(always)]
     pub const fn rc(self) -> crate::common::Reg<regs::Rc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb4usize) as _) }
     }
-    #[doc = "Repeat counter"]
+    #[doc = "Repeat counter load Register."]
     #[inline(always)]
     pub const fn rcld(self) -> crate::common::Reg<regs::Rcld, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb8usize) as _) }
     }
-    #[doc = "Fault Control Register"]
+    #[doc = "Fault Control Register."]
     #[inline(always)]
     pub const fn fctl(self) -> crate::common::Reg<regs::Fctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd0usize) as _) }
     }
-    #[doc = "Fault input Filter control register"]
+    #[doc = "Fault input Filter control register."]
     #[inline(always)]
     pub const fn fifctl(self) -> crate::common::Reg<regs::Fifctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd4usize) as _) }
     }
 }
 #[derive(Copy, Clone, Eq, PartialEq)]
-pub struct Counterregs16 {
+pub struct CpuInt {
     ptr: *mut u8,
 }
-unsafe impl Send for Counterregs16 {}
-unsafe impl Sync for Counterregs16 {}
-impl Counterregs16 {
+unsafe impl Send for CpuInt {}
+unsafe impl Sync for CpuInt {}
+impl CpuInt {
     #[inline(always)]
     pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
         Self { ptr: ptr as _ }
@@ -160,94 +176,44 @@ impl Counterregs16 {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Counter Register"]
+    #[doc = "Interrupt index."]
     #[inline(always)]
-    pub const fn ctr(self) -> crate::common::Reg<regs::Ctr16, crate::common::RW> {
+    pub const fn iidx(self) -> crate::common::Reg<regs::CpuIntIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
-    #[doc = "Counter Control Register"]
+    #[doc = "Interrupt mask."]
     #[inline(always)]
-    pub const fn ctrctl(self) -> crate::common::Reg<regs::Ctrctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
-    }
-    #[doc = "Load Register"]
-    #[inline(always)]
-    pub const fn load(self) -> crate::common::Reg<regs::Load16, crate::common::RW> {
+    pub const fn imask(self) -> crate::common::Reg<regs::CpuInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
-    #[doc = "Capture or Compare Register (x)"]
+    #[doc = "Raw interrupt status."]
     #[inline(always)]
-    pub const fn cc(self, n: usize) -> crate::common::Reg<regs::Cc16, crate::common::RW> {
-        assert!(n < 6usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
+    pub const fn ris(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
-    #[doc = "Capture or Compare Control Registers"]
+    #[doc = "Masked interrupt status."]
     #[inline(always)]
-    pub const fn ccctl(self, n: usize) -> crate::common::Reg<regs::Ccctl, crate::common::RW> {
-        assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 8usize) as _) }
+    pub const fn mis(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
     }
-    #[doc = "CCP Output Control Registers"]
+    #[doc = "Interrupt set."]
     #[inline(always)]
-    pub const fn octl(self, n: usize) -> crate::common::Reg<regs::Octl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize + n * 8usize) as _) }
+    pub const fn iset(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
     }
-    #[doc = "Capture or Compare Action Registers"]
+    #[doc = "Interrupt clear."]
     #[inline(always)]
-    pub const fn ccact(self, n: usize) -> crate::common::Reg<regs::Ccact, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x70usize + n * 8usize) as _) }
-    }
-    #[doc = "Input Filter Control Register"]
-    #[inline(always)]
-    pub const fn ifctl(self, n: usize) -> crate::common::Reg<regs::Ifctl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize + n * 8usize) as _) }
-    }
-    #[doc = "Counter Register"]
-    #[inline(always)]
-    pub const fn pl(self) -> crate::common::Reg<regs::Pl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize) as _) }
-    }
-    #[doc = "Dead Band insertion control register"]
-    #[inline(always)]
-    pub const fn dbctl(self) -> crate::common::Reg<regs::Dbctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa4usize) as _) }
-    }
-    #[doc = "Trigger Select"]
-    #[inline(always)]
-    pub const fn tsel(self) -> crate::common::Reg<regs::Tsel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb0usize) as _) }
-    }
-    #[doc = "Repeat counter"]
-    #[inline(always)]
-    pub const fn rc(self) -> crate::common::Reg<regs::Rc, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb4usize) as _) }
-    }
-    #[doc = "Repeat counter"]
-    #[inline(always)]
-    pub const fn rcld(self) -> crate::common::Reg<regs::Rcld, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb8usize) as _) }
-    }
-    #[doc = "Fault Control Register"]
-    #[inline(always)]
-    pub const fn fctl(self) -> crate::common::Reg<regs::Fctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd0usize) as _) }
-    }
-    #[doc = "Fault input Filter control register"]
-    #[inline(always)]
-    pub const fn fifctl(self) -> crate::common::Reg<regs::Fifctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd4usize) as _) }
+    pub const fn iclr(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
 }
 #[derive(Copy, Clone, Eq, PartialEq)]
-pub struct Counterregs32 {
+pub struct GenEvent {
     ptr: *mut u8,
 }
-unsafe impl Send for Counterregs32 {}
-unsafe impl Sync for Counterregs32 {}
-impl Counterregs32 {
+unsafe impl Send for GenEvent {}
+unsafe impl Sync for GenEvent {}
+impl GenEvent {
     #[inline(always)]
     pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
         Self { ptr: ptr as _ }
@@ -256,85 +222,35 @@ impl Counterregs32 {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Counter Register"]
+    #[doc = "Interrupt index."]
     #[inline(always)]
-    pub const fn ctr(self) -> crate::common::Reg<regs::Ctr32, crate::common::RW> {
+    pub const fn iidx(self) -> crate::common::Reg<regs::GenEventIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
-    #[doc = "Counter Control Register"]
+    #[doc = "Interrupt mask."]
     #[inline(always)]
-    pub const fn ctrctl(self) -> crate::common::Reg<regs::Ctrctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
-    }
-    #[doc = "Load Register"]
-    #[inline(always)]
-    pub const fn load(self) -> crate::common::Reg<regs::Load32, crate::common::RW> {
+    pub const fn imask(self) -> crate::common::Reg<regs::GenEventInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
-    #[doc = "Capture or Compare Register (x)"]
+    #[doc = "Raw interrupt status."]
     #[inline(always)]
-    pub const fn cc(self, n: usize) -> crate::common::Reg<regs::Cc32, crate::common::RW> {
-        assert!(n < 6usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
+    pub const fn ris(self) -> crate::common::Reg<regs::GenEventInt, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
-    #[doc = "Capture or Compare Control Registers"]
+    #[doc = "Masked interrupt status."]
     #[inline(always)]
-    pub const fn ccctl(self, n: usize) -> crate::common::Reg<regs::Ccctl, crate::common::RW> {
-        assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 8usize) as _) }
+    pub const fn mis(self) -> crate::common::Reg<regs::GenEventInt, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
     }
-    #[doc = "CCP Output Control Registers"]
+    #[doc = "Interrupt set."]
     #[inline(always)]
-    pub const fn octl(self, n: usize) -> crate::common::Reg<regs::Octl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize + n * 8usize) as _) }
+    pub const fn iset(self) -> crate::common::Reg<regs::GenEventInt, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
     }
-    #[doc = "Capture or Compare Action Registers"]
+    #[doc = "Interrupt clear."]
     #[inline(always)]
-    pub const fn ccact(self, n: usize) -> crate::common::Reg<regs::Ccact, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x70usize + n * 8usize) as _) }
-    }
-    #[doc = "Input Filter Control Register"]
-    #[inline(always)]
-    pub const fn ifctl(self, n: usize) -> crate::common::Reg<regs::Ifctl, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize + n * 8usize) as _) }
-    }
-    #[doc = "Counter Register"]
-    #[inline(always)]
-    pub const fn pl(self) -> crate::common::Reg<regs::Pl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize) as _) }
-    }
-    #[doc = "Dead Band insertion control register"]
-    #[inline(always)]
-    pub const fn dbctl(self) -> crate::common::Reg<regs::Dbctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa4usize) as _) }
-    }
-    #[doc = "Trigger Select"]
-    #[inline(always)]
-    pub const fn tsel(self) -> crate::common::Reg<regs::Tsel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb0usize) as _) }
-    }
-    #[doc = "Repeat counter"]
-    #[inline(always)]
-    pub const fn rc(self) -> crate::common::Reg<regs::Rc, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb4usize) as _) }
-    }
-    #[doc = "Repeat counter"]
-    #[inline(always)]
-    pub const fn rcld(self) -> crate::common::Reg<regs::Rcld, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb8usize) as _) }
-    }
-    #[doc = "Fault Control Register"]
-    #[inline(always)]
-    pub const fn fctl(self) -> crate::common::Reg<regs::Fctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd0usize) as _) }
-    }
-    #[doc = "Fault input Filter control register"]
-    #[inline(always)]
-    pub const fn fifctl(self) -> crate::common::Reg<regs::Fifctl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd4usize) as _) }
+    pub const fn iclr(self) -> crate::common::Reg<regs::GenEventInt, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
 }
 #[derive(Copy, Clone, Eq, PartialEq)]
@@ -352,69 +268,23 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable"]
+    #[doc = "Power enable."]
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
-    #[doc = "Reset Control"]
+    #[doc = "Reset Control."]
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
     }
-    #[doc = "Status Register"]
+    #[doc = "Status Register."]
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
     }
 }
-#[derive(Copy, Clone, Eq, PartialEq)]
-pub struct IntEvent {
-    ptr: *mut u8,
-}
-unsafe impl Send for IntEvent {}
-unsafe impl Sync for IntEvent {}
-impl IntEvent {
-    #[inline(always)]
-    pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
-        Self { ptr: ptr as _ }
-    }
-    #[inline(always)]
-    pub const fn as_ptr(&self) -> *mut () {
-        self.ptr as _
-    }
-    #[doc = "Interrupt index"]
-    #[inline(always)]
-    pub const fn iidx(self) -> crate::common::Reg<regs::Iidx, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
-    }
-    #[doc = "Interrupt mask"]
-    #[inline(always)]
-    pub const fn imask(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
-    }
-    #[doc = "Raw interrupt status"]
-    #[inline(always)]
-    pub const fn ris(self) -> crate::common::Reg<regs::Int, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
-    }
-    #[doc = "Masked interrupt status"]
-    #[inline(always)]
-    pub const fn mis(self) -> crate::common::Reg<regs::Int, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
-    }
-    #[doc = "Interrupt set"]
-    #[inline(always)]
-    pub const fn iset(self) -> crate::common::Reg<regs::Int, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
-    }
-    #[doc = "Interrupt clear"]
-    #[inline(always)]
-    pub const fn iclr(self) -> crate::common::Reg<regs::Int, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
-    }
-}
-#[doc = "PERIPHERALREGION"]
+#[doc = "PERIPHERALREGION."]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Tim {
     ptr: *mut u8,
@@ -430,13 +300,13 @@ impl Tim {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Subsciber Port 0"]
+    #[doc = "Subsciber Port 0."]
     #[inline(always)]
     pub const fn fsub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0400usize + n * 4usize) as _) }
     }
-    #[doc = "Publisher Port 0"]
+    #[doc = "Publisher Port 0."]
     #[inline(always)]
     pub const fn fpub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 2usize);
@@ -447,32 +317,37 @@ impl Tim {
         assert!(n < 1usize);
         unsafe { Gprcm::from_ptr(self.ptr.add(0x0800usize + n * 24usize) as _) }
     }
-    #[doc = "Clock Divider"]
+    #[doc = "Clock Divider."]
     #[inline(always)]
     pub const fn clkdiv(self) -> crate::common::Reg<regs::Clkdiv, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1000usize) as _) }
     }
-    #[doc = "Clock Select for Ultra Low Power peripherals"]
+    #[doc = "Clock Select for Ultra Low Power peripherals."]
     #[inline(always)]
     pub const fn clksel(self) -> crate::common::Reg<regs::Clksel, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1008usize) as _) }
     }
-    #[doc = "Peripheral Debug Control"]
+    #[doc = "Peripheral Debug Control."]
     #[inline(always)]
     pub const fn pdbgctl(self) -> crate::common::Reg<regs::Pdbgctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1018usize) as _) }
     }
     #[inline(always)]
-    pub const fn int_event(self, n: usize) -> IntEvent {
-        assert!(n < 3usize);
-        unsafe { IntEvent::from_ptr(self.ptr.add(0x1020usize + n * 44usize) as _) }
+    pub const fn cpu_int(self, n: usize) -> CpuInt {
+        assert!(n < 1usize);
+        unsafe { CpuInt::from_ptr(self.ptr.add(0x1020usize + n * 44usize) as _) }
     }
-    #[doc = "Event Mode"]
+    #[inline(always)]
+    pub const fn gen_event(self, n: usize) -> GenEvent {
+        assert!(n < 2usize);
+        unsafe { GenEvent::from_ptr(self.ptr.add(0x1050usize + n * 48usize) as _) }
+    }
+    #[doc = "Event Mode."]
     #[inline(always)]
     pub const fn evt_mode(self) -> crate::common::Reg<regs::EvtMode, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10e0usize) as _) }
     }
-    #[doc = "Module Description"]
+    #[doc = "Module Description."]
     #[inline(always)]
     pub const fn desc(self) -> crate::common::Reg<regs::Desc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10fcusize) as _) }
@@ -493,165 +368,119 @@ impl Tim {
     }
 }
 pub mod regs {
-    #[doc = "Capture or Compare Register 0 to Capture or Compare Register (x)"]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cc16(pub u32);
-    impl Cc16 {
-        #[doc = "Capture or compare value"]
-        #[inline(always)]
-        pub const fn ccval(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
-        }
-        #[doc = "Capture or compare value"]
-        #[inline(always)]
-        pub fn set_ccval(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
-        }
-    }
-    impl Default for Cc16 {
-        #[inline(always)]
-        fn default() -> Cc16 {
-            Cc16(0)
-        }
-    }
-    #[doc = "Capture or Compare Register 0 to Capture or Compare Register (x)"]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cc32(pub u32);
-    impl Cc32 {
-        #[doc = "Capture or compare value"]
-        #[inline(always)]
-        pub const fn ccval(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Capture or compare value"]
-        #[inline(always)]
-        pub fn set_ccval(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Cc32 {
-        #[inline(always)]
-        fn default() -> Cc32 {
-            Cc32(0)
-        }
-    }
-    #[doc = "Capture or Compare Action Registers"]
+    #[doc = "Capture or Compare Action Registers 0/1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ccact(pub u32);
     impl Ccact {
         #[doc = "CCP Output Action on Zero Specifies what changes occur to CCP output as the result of a zero event."]
         #[inline(always)]
-        pub const fn zact(&self) -> super::vals::Ccact {
+        pub const fn zact(&self) -> super::vals::Act {
             let val = (self.0 >> 0usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Zero Specifies what changes occur to CCP output as the result of a zero event."]
         #[inline(always)]
-        pub fn set_zact(&mut self, val: super::vals::Ccact) {
+        pub fn set_zact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "CCP Output Action on Load Specifies what changes occur to CCP output as the result of a load event."]
         #[inline(always)]
-        pub const fn lact(&self) -> super::vals::Ccact {
+        pub const fn lact(&self) -> super::vals::Act {
             let val = (self.0 >> 3usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Load Specifies what changes occur to CCP output as the result of a load event."]
         #[inline(always)]
-        pub fn set_lact(&mut self, val: super::vals::Ccact) {
+        pub fn set_lact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u32) & 0x03) << 3usize);
         }
         #[doc = "CCP Output Action on Compare (Down) This field describes the resulting action of the signal generator upon detecting a compare event while counting down."]
         #[inline(always)]
-        pub const fn cdact(&self) -> super::vals::Ccact {
+        pub const fn cdact(&self) -> super::vals::Act {
             let val = (self.0 >> 6usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Compare (Down) This field describes the resulting action of the signal generator upon detecting a compare event while counting down."]
         #[inline(always)]
-        pub fn set_cdact(&mut self, val: super::vals::Ccact) {
+        pub fn set_cdact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 6usize)) | (((val.to_bits() as u32) & 0x03) << 6usize);
         }
         #[doc = "CCP Output Action on Compare (Up) This field describes the resulting action of the signal generator upon detecting a compare event while counting up."]
         #[inline(always)]
-        pub const fn cuact(&self) -> super::vals::Ccact {
+        pub const fn cuact(&self) -> super::vals::Act {
             let val = (self.0 >> 9usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Compare (Up) This field describes the resulting action of the signal generator upon detecting a compare event while counting up."]
         #[inline(always)]
-        pub fn set_cuact(&mut self, val: super::vals::Ccact) {
+        pub fn set_cuact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 9usize)) | (((val.to_bits() as u32) & 0x03) << 9usize);
         }
         #[doc = "CCP Output Action on CC2D event."]
         #[inline(always)]
-        pub const fn cc2dact(&self) -> super::vals::Ccact {
+        pub const fn cc2dact(&self) -> super::vals::Act {
             let val = (self.0 >> 12usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on CC2D event."]
         #[inline(always)]
-        pub fn set_cc2dact(&mut self, val: super::vals::Ccact) {
+        pub fn set_cc2dact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
         }
         #[doc = "CCP Output Action on CC2U event."]
         #[inline(always)]
-        pub const fn cc2uact(&self) -> super::vals::Ccact {
+        pub const fn cc2uact(&self) -> super::vals::Act {
             let val = (self.0 >> 15usize) & 0x03;
-            super::vals::Ccact::from_bits(val as u8)
+            super::vals::Act::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on CC2U event."]
         #[inline(always)]
-        pub fn set_cc2uact(&mut self, val: super::vals::Ccact) {
+        pub fn set_cc2uact(&mut self, val: super::vals::Act) {
             self.0 = (self.0 & !(0x03 << 15usize)) | (((val.to_bits() as u32) & 0x03) << 15usize);
         }
         #[doc = "CCP Output Action on Fault Entry This field describes the resulting action of the signal generator upon detecting a fault."]
         #[inline(always)]
-        pub const fn fenact(&self) -> super::vals::CcactF {
+        pub const fn fenact(&self) -> super::vals::Fact {
             let val = (self.0 >> 22usize) & 0x07;
-            super::vals::CcactF::from_bits(val as u8)
+            super::vals::Fact::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Fault Entry This field describes the resulting action of the signal generator upon detecting a fault."]
         #[inline(always)]
-        pub fn set_fenact(&mut self, val: super::vals::CcactF) {
+        pub fn set_fenact(&mut self, val: super::vals::Fact) {
             self.0 = (self.0 & !(0x07 << 22usize)) | (((val.to_bits() as u32) & 0x07) << 22usize);
         }
         #[doc = "CCP Output Action on Fault Exit This field describes the resulting action of the signal generator upon exiting the fault condition."]
         #[inline(always)]
-        pub const fn fexact(&self) -> super::vals::CcactF {
+        pub const fn fexact(&self) -> super::vals::Fact {
             let val = (self.0 >> 25usize) & 0x07;
-            super::vals::CcactF::from_bits(val as u8)
+            super::vals::Fact::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Fault Exit This field describes the resulting action of the signal generator upon exiting the fault condition."]
         #[inline(always)]
-        pub fn set_fexact(&mut self, val: super::vals::CcactF) {
+        pub fn set_fexact(&mut self, val: super::vals::Fact) {
             self.0 = (self.0 & !(0x07 << 25usize)) | (((val.to_bits() as u32) & 0x07) << 25usize);
         }
         #[doc = "CCP Output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
         #[inline(always)]
-        pub const fn swfrcact(&self) -> super::vals::CcactSwfrcact {
+        pub const fn swfrcact(&self) -> super::vals::Swfrcact {
             let val = (self.0 >> 28usize) & 0x03;
-            super::vals::CcactSwfrcact::from_bits(val as u8)
+            super::vals::Swfrcact::from_bits(val as u8)
         }
         #[doc = "CCP Output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
         #[inline(always)]
-        pub fn set_swfrcact(&mut self, val: super::vals::CcactSwfrcact) {
+        pub fn set_swfrcact(&mut self, val: super::vals::Swfrcact) {
             self.0 = (self.0 & !(0x03 << 28usize)) | (((val.to_bits() as u32) & 0x03) << 28usize);
         }
-        #[doc = "CCP_CMPL Output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
+        #[doc = "CCP Complimentary output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
         #[inline(always)]
-        pub const fn swfrcact_cmpl(&self) -> super::vals::CcactSwfrcact {
+        pub const fn swfrcact_cmpl(&self) -> super::vals::Swfrcact {
             let val = (self.0 >> 30usize) & 0x03;
-            super::vals::CcactSwfrcact::from_bits(val as u8)
+            super::vals::Swfrcact::from_bits(val as u8)
         }
-        #[doc = "CCP_CMPL Output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
+        #[doc = "CCP Complimentary output Action on Software Force Output This field describes the resulting action of software force. This action has a shadow register, which will be updated under specific condition. So that this register cannot take into effect immediately."]
         #[inline(always)]
-        pub fn set_swfrcact_cmpl(&mut self, val: super::vals::CcactSwfrcact) {
+        pub fn set_swfrcact_cmpl(&mut self, val: super::vals::Swfrcact) {
             self.0 = (self.0 & !(0x03 << 30usize)) | (((val.to_bits() as u32) & 0x03) << 30usize);
         }
     }
@@ -661,86 +490,86 @@ pub mod regs {
             Ccact(0)
         }
     }
-    #[doc = "Capture or Compare Control Registers"]
+    #[doc = "Capture or Compare Control Registers 0/1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ccctl(pub u32);
     impl Ccctl {
-        #[doc = "Capture Condition. #br# Specifies the condition that generates a capture pulse. 4h-Fh = Reserved"]
+        #[doc = "Capture Condition. #br# Specifies the condition that generates a capture pulse."]
         #[inline(always)]
-        pub const fn ccond(&self) -> super::vals::CctlCcond {
+        pub const fn ccond(&self) -> super::vals::Ccond {
             let val = (self.0 >> 0usize) & 0x07;
-            super::vals::CctlCcond::from_bits(val as u8)
+            super::vals::Ccond::from_bits(val as u8)
         }
-        #[doc = "Capture Condition. #br# Specifies the condition that generates a capture pulse. 4h-Fh = Reserved"]
+        #[doc = "Capture Condition. #br# Specifies the condition that generates a capture pulse."]
         #[inline(always)]
-        pub fn set_ccond(&mut self, val: super::vals::CctlCcond) {
+        pub fn set_ccond(&mut self, val: super::vals::Ccond) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
-        #[doc = "Advance Condition. #br# Specifies the condition that generates an advance pulse. 6h-Fh = Reserved"]
+        #[doc = "Advance Condition. #br# Specifies the condition that generates an advance pulse."]
         #[inline(always)]
-        pub const fn acond(&self) -> super::vals::CctlAcond {
+        pub const fn acond(&self) -> super::vals::Acond {
             let val = (self.0 >> 4usize) & 0x07;
-            super::vals::CctlAcond::from_bits(val as u8)
+            super::vals::Acond::from_bits(val as u8)
         }
-        #[doc = "Advance Condition. #br# Specifies the condition that generates an advance pulse. 6h-Fh = Reserved"]
+        #[doc = "Advance Condition. #br# Specifies the condition that generates an advance pulse."]
         #[inline(always)]
-        pub fn set_acond(&mut self, val: super::vals::CctlAcond) {
+        pub fn set_acond(&mut self, val: super::vals::Acond) {
             self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
         }
-        #[doc = "Load Condition. #br# Specifies the condition that generates a load pulse. 4h-Fh = Reserved"]
+        #[doc = "Load Condition. #br# Specifies the condition that generates a load pulse."]
         #[inline(always)]
-        pub const fn lcond(&self) -> super::vals::CctlLcond {
+        pub const fn lcond(&self) -> super::vals::Lcond {
             let val = (self.0 >> 8usize) & 0x07;
-            super::vals::CctlLcond::from_bits(val as u8)
+            super::vals::Lcond::from_bits(val as u8)
         }
-        #[doc = "Load Condition. #br# Specifies the condition that generates a load pulse. 4h-Fh = Reserved"]
+        #[doc = "Load Condition. #br# Specifies the condition that generates a load pulse."]
         #[inline(always)]
-        pub fn set_lcond(&mut self, val: super::vals::CctlLcond) {
+        pub fn set_lcond(&mut self, val: super::vals::Lcond) {
             self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
-        #[doc = "Zero Condition. #br# This field specifies the condition that generates a zero pulse. 4h-Fh = Reserved"]
+        #[doc = "Zero Condition. #br# This field specifies the condition that generates a zero pulse."]
         #[inline(always)]
-        pub const fn zcond(&self) -> super::vals::CctlZcond {
+        pub const fn zcond(&self) -> super::vals::Zcond {
             let val = (self.0 >> 12usize) & 0x07;
-            super::vals::CctlZcond::from_bits(val as u8)
+            super::vals::Zcond::from_bits(val as u8)
         }
-        #[doc = "Zero Condition. #br# This field specifies the condition that generates a zero pulse. 4h-Fh = Reserved"]
+        #[doc = "Zero Condition. #br# This field specifies the condition that generates a zero pulse."]
         #[inline(always)]
-        pub fn set_zcond(&mut self, val: super::vals::CctlZcond) {
+        pub fn set_zcond(&mut self, val: super::vals::Zcond) {
             self.0 = (self.0 & !(0x07 << 12usize)) | (((val.to_bits() as u32) & 0x07) << 12usize);
         }
         #[doc = "Capture or Compare. #br# Specifies whether the corresponding CC register is used as a capture register or a compare register (never both)."]
         #[inline(always)]
-        pub const fn coc(&self) -> super::vals::CctlCoc {
+        pub const fn coc(&self) -> super::vals::Coc {
             let val = (self.0 >> 17usize) & 0x01;
-            super::vals::CctlCoc::from_bits(val as u8)
+            super::vals::Coc::from_bits(val as u8)
         }
         #[doc = "Capture or Compare. #br# Specifies whether the corresponding CC register is used as a capture register or a compare register (never both)."]
         #[inline(always)]
-        pub fn set_coc(&mut self, val: super::vals::CctlCoc) {
+        pub fn set_coc(&mut self, val: super::vals::Coc) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val.to_bits() as u32) & 0x01) << 17usize);
         }
-        #[doc = "Capture and Compare Update Method This field controls how updates to the pipelined capture and compare register are performed (when operating in compare mode, COC=0)."]
+        #[doc = "Capture and Compare Update Method This field controls how updates to the shadow capture and compare register are performed (when operating in compare mode, COC=0)."]
         #[inline(always)]
-        pub const fn ccupd(&self) -> super::vals::CctlCcupd {
+        pub const fn ccupd(&self) -> super::vals::Ccupd {
             let val = (self.0 >> 18usize) & 0x07;
-            super::vals::CctlCcupd::from_bits(val as u8)
+            super::vals::Ccupd::from_bits(val as u8)
         }
-        #[doc = "Capture and Compare Update Method This field controls how updates to the pipelined capture and compare register are performed (when operating in compare mode, COC=0)."]
+        #[doc = "Capture and Compare Update Method This field controls how updates to the shadow capture and compare register are performed (when operating in compare mode, COC=0)."]
         #[inline(always)]
-        pub fn set_ccupd(&mut self, val: super::vals::CctlCcupd) {
+        pub fn set_ccupd(&mut self, val: super::vals::Ccupd) {
             self.0 = (self.0 & !(0x07 << 18usize)) | (((val.to_bits() as u32) & 0x07) << 18usize);
         }
         #[doc = "Selects the source second CCU event."]
         #[inline(always)]
-        pub const fn cc2selu(&self) -> super::vals::CctlCc2sel {
+        pub const fn cc2selu(&self) -> super::vals::Cc2selu {
             let val = (self.0 >> 22usize) & 0x07;
-            super::vals::CctlCc2sel::from_bits(val as u8)
+            super::vals::Cc2selu::from_bits(val as u8)
         }
         #[doc = "Selects the source second CCU event."]
         #[inline(always)]
-        pub fn set_cc2selu(&mut self, val: super::vals::CctlCc2sel) {
+        pub fn set_cc2selu(&mut self, val: super::vals::Cc2selu) {
             self.0 = (self.0 & !(0x07 << 22usize)) | (((val.to_bits() as u32) & 0x07) << 22usize);
         }
         #[doc = "Suppress Compare Event if Repeat Counter is Not Equal to Zero This bit suppresses the generation of the compare (CCD, CCU and RC) events from the counter when the repeat counter (RC) value is not 0."]
@@ -754,26 +583,26 @@ pub mod regs {
         pub fn set_scercnez(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
-        #[doc = "CCACT shadow register Update Method This field controls how updates to the CCCACT shadow register are performed"]
+        #[doc = "CCACT shadow register Update Method This field controls how updates to the CCACT shadow register are performed."]
         #[inline(always)]
-        pub const fn ccactupd(&self) -> super::vals::CctlCcupd {
+        pub const fn ccactupd(&self) -> super::vals::Ccactupd {
             let val = (self.0 >> 26usize) & 0x07;
-            super::vals::CctlCcupd::from_bits(val as u8)
+            super::vals::Ccactupd::from_bits(val as u8)
         }
-        #[doc = "CCACT shadow register Update Method This field controls how updates to the CCCACT shadow register are performed"]
+        #[doc = "CCACT shadow register Update Method This field controls how updates to the CCACT shadow register are performed."]
         #[inline(always)]
-        pub fn set_ccactupd(&mut self, val: super::vals::CctlCcupd) {
+        pub fn set_ccactupd(&mut self, val: super::vals::Ccactupd) {
             self.0 = (self.0 & !(0x07 << 26usize)) | (((val.to_bits() as u32) & 0x07) << 26usize);
         }
         #[doc = "Selects the source second CCD event."]
         #[inline(always)]
-        pub const fn cc2seld(&self) -> super::vals::CctlCc2sel {
+        pub const fn cc2seld(&self) -> super::vals::Cc2seld {
             let val = (self.0 >> 29usize) & 0x07;
-            super::vals::CctlCc2sel::from_bits(val as u8)
+            super::vals::Cc2seld::from_bits(val as u8)
         }
         #[doc = "Selects the source second CCD event."]
         #[inline(always)]
-        pub fn set_cc2seld(&mut self, val: super::vals::CctlCc2sel) {
+        pub fn set_cc2seld(&mut self, val: super::vals::Cc2seld) {
             self.0 = (self.0 & !(0x07 << 29usize)) | (((val.to_bits() as u32) & 0x07) << 29usize);
         }
     }
@@ -783,7 +612,7 @@ pub mod regs {
             Ccctl(0)
         }
     }
-    #[doc = "Counter Clock Control Register"]
+    #[doc = "Counter Clock Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cclkctl(pub u32);
@@ -806,12 +635,12 @@ pub mod regs {
             Cclkctl(0)
         }
     }
-    #[doc = "CCP Direction"]
+    #[doc = "CCP Direction."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ccpd(pub u32);
     impl Ccpd {
-        #[doc = "Counter CCP0"]
+        #[doc = "CCP0 direction."]
         #[inline(always)]
         pub const fn c0ccp(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -819,7 +648,7 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Counter CCP0"]
+        #[doc = "CCP0 direction."]
         #[inline(always)]
         pub fn set_c0ccp(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
@@ -833,21 +662,21 @@ pub mod regs {
             Ccpd(0)
         }
     }
-    #[doc = "Clock Divider"]
+    #[doc = "Clock Divider."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clkdiv(pub u32);
     impl Clkdiv {
-        #[doc = "Selects divide ratio of module clock"]
+        #[doc = "Selects divide ratio of module clock."]
         #[inline(always)]
-        pub const fn ratio(&self) -> super::vals::Ratio {
+        pub const fn ratio(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x07;
-            super::vals::Ratio::from_bits(val as u8)
+            val as u8
         }
-        #[doc = "Selects divide ratio of module clock"]
+        #[doc = "Selects divide ratio of module clock."]
         #[inline(always)]
-        pub fn set_ratio(&mut self, val: super::vals::Ratio) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
+        pub fn set_ratio(&mut self, val: u8) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
         }
     }
     impl Default for Clkdiv {
@@ -856,40 +685,40 @@ pub mod regs {
             Clkdiv(0)
         }
     }
-    #[doc = "Clock Select for Ultra Low Power peripherals"]
+    #[doc = "Clock Select for Ultra Low Power peripherals."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clksel(pub u32);
     impl Clksel {
-        #[doc = "Selects LFCLK as clock source if enabled"]
+        #[doc = "Selects LFCLK as clock source if enabled."]
         #[inline(always)]
         pub const fn lfclk_sel(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Selects LFCLK as clock source if enabled"]
+        #[doc = "Selects LFCLK as clock source if enabled."]
         #[inline(always)]
         pub fn set_lfclk_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Selects MFCLK as clock source if enabled"]
+        #[doc = "Selects MFCLK as clock source if enabled."]
         #[inline(always)]
         pub const fn mfclk_sel(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Selects MFCLK as clock source if enabled"]
+        #[doc = "Selects MFCLK as clock source if enabled."]
         #[inline(always)]
         pub fn set_mfclk_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "Selects BUSCLK as clock source if enabled"]
+        #[doc = "Selects BUSCLK as clock source if enabled."]
         #[inline(always)]
         pub const fn busclk_sel(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
-        #[doc = "Selects BUSCLK as clock source if enabled"]
+        #[doc = "Selects BUSCLK as clock source if enabled."]
         #[inline(always)]
         pub fn set_busclk_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
@@ -901,18 +730,18 @@ pub mod regs {
             Clksel(0)
         }
     }
-    #[doc = "Clock Prescale Register"]
+    #[doc = "Clock Prescale Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cps(pub u32);
     impl Cps {
-        #[doc = "Pre-Scale Count This field specifies the pre-scale count value. The selected TIMCLK source is divided by a value of (PCNT+1). A PCNT value of 0 divides TIMCLK by 1, effectively bypassing the divider. A PCNT value of greater than 0 divides the TIMCLK source generating a slower clock"]
+        #[doc = "Pre-Scale Count This field specifies the pre-scale count value. The selected TIMCLK source is divided by a value of (PCNT+1). A PCNT value of 0 divides TIMCLK by 1, effectively bypassing the divider. A PCNT value of greater than 0 divides the TIMCLK source generating a slower clock."]
         #[inline(always)]
         pub const fn pcnt(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
             val as u8
         }
-        #[doc = "Pre-Scale Count This field specifies the pre-scale count value. The selected TIMCLK source is divided by a value of (PCNT+1). A PCNT value of 0 divides TIMCLK by 1, effectively bypassing the divider. A PCNT value of greater than 0 divides the TIMCLK source generating a slower clock"]
+        #[doc = "Pre-Scale Count This field specifies the pre-scale count value. The selected TIMCLK source is divided by a value of (PCNT+1). A PCNT value of 0 divides TIMCLK by 1, effectively bypassing the divider. A PCNT value of greater than 0 divides the TIMCLK source generating a slower clock."]
         #[inline(always)]
         pub fn set_pcnt(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -924,18 +753,18 @@ pub mod regs {
             Cps(0)
         }
     }
-    #[doc = "Clock prescale count status register"]
+    #[doc = "Clock prescale count status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cpsv(pub u32);
     impl Cpsv {
-        #[doc = "Current Prescale Count Value"]
+        #[doc = "Current Prescale Count Value."]
         #[inline(always)]
         pub const fn cpsval(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
             val as u8
         }
-        #[doc = "Current Prescale Count Value"]
+        #[doc = "Current Prescale Count Value."]
         #[inline(always)]
         pub fn set_cpsval(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -947,53 +776,251 @@ pub mod regs {
             Cpsv(0)
         }
     }
-    #[doc = "Counter Register"]
+    #[doc = "Interrupt clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Ctr16(pub u32);
-    impl Ctr16 {
-        #[doc = "Current Counter value"]
+    pub struct CpuInt(pub u32);
+    impl CpuInt {
+        #[doc = "Zero event CLEAR."]
         #[inline(always)]
-        pub const fn cctr(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
+        pub const fn z(&self) -> bool {
+            let val = (self.0 >> 0usize) & 0x01;
+            val != 0
         }
-        #[doc = "Current Counter value"]
+        #[doc = "Zero event CLEAR."]
         #[inline(always)]
-        pub fn set_cctr(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        pub fn set_z(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        }
+        #[doc = "Load event CLEAR."]
+        #[inline(always)]
+        pub const fn l(&self) -> bool {
+            let val = (self.0 >> 1usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Load event CLEAR."]
+        #[inline(always)]
+        pub fn set_l(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub const fn ccd0(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub const fn ccd1(&self) -> bool {
+            let val = (self.0 >> 5usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub const fn ccd2(&self) -> bool {
+            let val = (self.0 >> 6usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd2(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub const fn ccd3(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare down event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd3(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub const fn ccu0(&self) -> bool {
+            let val = (self.0 >> 8usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub const fn ccu1(&self) -> bool {
+            let val = (self.0 >> 9usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub const fn ccu2(&self) -> bool {
+            let val = (self.0 >> 10usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu2(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub const fn ccu3(&self) -> bool {
+            let val = (self.0 >> 11usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Capture or compare up event CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu3(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+        }
+        #[doc = "Compare down event 4 CLEAR."]
+        #[inline(always)]
+        pub const fn ccd4(&self) -> bool {
+            let val = (self.0 >> 12usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Compare down event 4 CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd4(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+        }
+        #[doc = "Compare down event 5 CLEAR."]
+        #[inline(always)]
+        pub const fn ccd5(&self) -> bool {
+            let val = (self.0 >> 13usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Compare down event 5 CLEAR."]
+        #[inline(always)]
+        pub fn set_ccd5(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+        }
+        #[doc = "Compare up event 4 CLEAR."]
+        #[inline(always)]
+        pub const fn ccu4(&self) -> bool {
+            let val = (self.0 >> 14usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Compare up event 4 CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu4(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+        }
+        #[doc = "Compare up event 5 CLEAR."]
+        #[inline(always)]
+        pub const fn ccu5(&self) -> bool {
+            let val = (self.0 >> 15usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Compare up event 5 CLEAR."]
+        #[inline(always)]
+        pub fn set_ccu5(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        }
+        #[doc = "Fault event CLEAR."]
+        #[inline(always)]
+        pub const fn f(&self) -> bool {
+            let val = (self.0 >> 24usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Fault event CLEAR."]
+        #[inline(always)]
+        pub fn set_f(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
+        }
+        #[doc = "Trigger Overflow event CLEAR."]
+        #[inline(always)]
+        pub const fn tov(&self) -> bool {
+            let val = (self.0 >> 25usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Trigger Overflow event CLEAR."]
+        #[inline(always)]
+        pub fn set_tov(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
+        }
+        #[doc = "Repeat Counter Zero event CLEAR."]
+        #[inline(always)]
+        pub const fn repc(&self) -> bool {
+            let val = (self.0 >> 26usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Repeat Counter Zero event CLEAR."]
+        #[inline(always)]
+        pub fn set_repc(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
+        }
+        #[doc = "Direction change event"]
+        #[inline(always)]
+        pub const fn dc(&self) -> bool {
+            let val = (self.0 >> 27usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Direction change event"]
+        #[inline(always)]
+        pub fn set_dc(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
+        }
+        #[doc = "QEIERR event"]
+        #[inline(always)]
+        pub const fn qeierr(&self) -> bool {
+            let val = (self.0 >> 28usize) & 0x01;
+            val != 0
+        }
+        #[doc = "QEIERR event"]
+        #[inline(always)]
+        pub fn set_qeierr(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
     }
-    impl Default for Ctr16 {
+    impl Default for CpuInt {
         #[inline(always)]
-        fn default() -> Ctr16 {
-            Ctr16(0)
+        fn default() -> CpuInt {
+            CpuInt(0)
         }
     }
-    #[doc = "Counter Register"]
+    #[doc = "Interrupt index."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Ctr32(pub u32);
-    impl Ctr32 {
-        #[doc = "Current Counter value"]
+    pub struct CpuIntIidx(pub u32);
+    impl CpuIntIidx {
+        #[doc = "Interrupt index status."]
         #[inline(always)]
-        pub const fn cctr(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn stat(&self) -> super::vals::CpuIntIidxStat {
+            let val = (self.0 >> 0usize) & 0xff;
+            super::vals::CpuIntIidxStat::from_bits(val as u8)
         }
-        #[doc = "Current Counter value"]
+        #[doc = "Interrupt index status."]
         #[inline(always)]
-        pub fn set_cctr(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Ctr32 {
-        #[inline(always)]
-        fn default() -> Ctr32 {
-            Ctr32(0)
+        pub fn set_stat(&mut self, val: super::vals::CpuIntIidxStat) {
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
-    #[doc = "Counter Control Register"]
+    impl Default for CpuIntIidx {
+        #[inline(always)]
+        fn default() -> CpuIntIidx {
+            CpuIntIidx(0)
+        }
+    }
+    #[doc = "Counter Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctrctl(pub u32);
@@ -1020,13 +1047,13 @@ pub mod regs {
         pub fn set_repeat(&mut self, val: super::vals::Repeat) {
             self.0 = (self.0 & !(0x07 << 1usize)) | (((val.to_bits() as u32) & 0x07) << 1usize);
         }
-        #[doc = "Count Mode"]
+        #[doc = "Count Mode."]
         #[inline(always)]
         pub const fn cm(&self) -> super::vals::Cm {
             let val = (self.0 >> 4usize) & 0x03;
             super::vals::Cm::from_bits(val as u8)
         }
-        #[doc = "Count Mode"]
+        #[doc = "Count Mode."]
         #[inline(always)]
         pub fn set_cm(&mut self, val: super::vals::Cm) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
@@ -1075,13 +1102,13 @@ pub mod regs {
         pub fn set_drb(&mut self, val: super::vals::Drb) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val.to_bits() as u32) & 0x01) << 17usize);
         }
-        #[doc = "Fault Behavior This bit specifies whether the counter continues running or suspends during a fault mode. There is a separate control under REPEAT to indicate whether counting is to suspend at next Counter==0"]
+        #[doc = "Fault Behavior This bit specifies whether the counter continues running or suspends during a fault mode. There is a separate control under REPEAT to indicate whether counting is to suspend at next Counter==0."]
         #[inline(always)]
         pub const fn fb(&self) -> super::vals::Fb {
             let val = (self.0 >> 18usize) & 0x01;
             super::vals::Fb::from_bits(val as u8)
         }
-        #[doc = "Fault Behavior This bit specifies whether the counter continues running or suspends during a fault mode. There is a separate control under REPEAT to indicate whether counting is to suspend at next Counter==0"]
+        #[doc = "Fault Behavior This bit specifies whether the counter continues running or suspends during a fault mode. There is a separate control under REPEAT to indicate whether counting is to suspend at next Counter==0."]
         #[inline(always)]
         pub fn set_fb(&mut self, val: super::vals::Fb) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val.to_bits() as u32) & 0x01) << 18usize);
@@ -1137,7 +1164,7 @@ pub mod regs {
             Ctrctl(0)
         }
     }
-    #[doc = "Timer Cross Trigger Register"]
+    #[doc = "Timer Cross Trigger Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cttrig(pub u32);
@@ -1160,7 +1187,7 @@ pub mod regs {
             Cttrig(0)
         }
     }
-    #[doc = "Timer Cross Trigger Control Register"]
+    #[doc = "Timer Cross Trigger Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cttrigctl(pub u32);
@@ -1176,24 +1203,24 @@ pub mod regs {
         pub fn set_cten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Enable the Input Trigger Conditions to the Timer module as a condition for Cross Triggers. Refer Figure 8 Cross Trigger Generation Path"]
+        #[doc = "Enable the Input Trigger Conditions to the Timer module as a condition for Cross Triggers."]
         #[inline(always)]
         pub const fn evtcten(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the Input Trigger Conditions to the Timer module as a condition for Cross Triggers. Refer Figure 8 Cross Trigger Generation Path"]
+        #[doc = "Enable the Input Trigger Conditions to the Timer module as a condition for Cross Triggers."]
         #[inline(always)]
         pub fn set_evtcten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Used to Select the subscriber port that should be used for input cross trigger. Refer Figure 8 Cross Trigger Generation Path"]
+        #[doc = "Used to Select the subscriber port that should be used for input cross trigger."]
         #[inline(always)]
         pub const fn evtcttrigsel(&self) -> super::vals::Evtcttrigsel {
             let val = (self.0 >> 16usize) & 0x0f;
             super::vals::Evtcttrigsel::from_bits(val as u8)
         }
-        #[doc = "Used to Select the subscriber port that should be used for input cross trigger. Refer Figure 8 Cross Trigger Generation Path"]
+        #[doc = "Used to Select the subscriber port that should be used for input cross trigger."]
         #[inline(always)]
         pub fn set_evtcttrigsel(&mut self, val: super::vals::Evtcttrigsel) {
             self.0 = (self.0 & !(0x0f << 16usize)) | (((val.to_bits() as u32) & 0x0f) << 16usize);
@@ -1205,18 +1232,18 @@ pub mod regs {
             Cttrigctl(0)
         }
     }
-    #[doc = "Dead Band insertion control register"]
+    #[doc = "Dead Band insertion control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dbctl(pub u32);
     impl Dbctl {
-        #[doc = "Rise Delay The number of TIMCLK periods inserted between the fall of CCPi and the rise of CCPAo."]
+        #[doc = "Rise Delay The number of TIMCLK periods inserted between the fall edge of CCP signal and the rise edge of CCP complimentary signal."]
         #[inline(always)]
         pub const fn risedelay(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x0fff;
             val as u16
         }
-        #[doc = "Rise Delay The number of TIMCLK periods inserted between the fall of CCPi and the rise of CCPAo."]
+        #[doc = "Rise Delay The number of TIMCLK periods inserted between the fall edge of CCP signal and the rise edge of CCP complimentary signal."]
         #[inline(always)]
         pub fn set_risedelay(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
@@ -1232,13 +1259,13 @@ pub mod regs {
         pub fn set_m1_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
-        #[doc = "Fall Delay The number of TIMCLK periods inserted between the fall of CCPi and the rise of CCPBo"]
+        #[doc = "Fall Delay The number of TIMCLK periods inserted between the fall edge of CCP signal and the rise edge of CCP complimentary signal."]
         #[inline(always)]
         pub const fn falldelay(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
             val as u16
         }
-        #[doc = "Fall Delay The number of TIMCLK periods inserted between the fall of CCPi and the rise of CCPBo"]
+        #[doc = "Fall Delay The number of TIMCLK periods inserted between the fall edge of CCP signal and the rise edge of CCP complimentary signal."]
         #[inline(always)]
         pub fn set_falldelay(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
@@ -1250,51 +1277,51 @@ pub mod regs {
             Dbctl(0)
         }
     }
-    #[doc = "Module Description"]
+    #[doc = "Module Description."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Desc(pub u32);
     impl Desc {
-        #[doc = "Minor rev of the IP"]
+        #[doc = "Minor rev of the IP."]
         #[inline(always)]
         pub const fn minrev(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "Minor rev of the IP"]
+        #[doc = "Minor rev of the IP."]
         #[inline(always)]
         pub fn set_minrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Major rev of the IP"]
+        #[doc = "Major rev of the IP."]
         #[inline(always)]
         pub const fn majrev(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
             val as u8
         }
-        #[doc = "Major rev of the IP"]
+        #[doc = "Major rev of the IP."]
         #[inline(always)]
         pub fn set_majrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances"]
+        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
         #[inline(always)]
         pub const fn instnum(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
             val as u8
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances"]
+        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
         #[inline(always)]
         pub fn set_instnum(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
-        #[doc = "Feature Set for the module *instance*"]
+        #[doc = "Feature Set for the module *instance*."]
         #[inline(always)]
         pub const fn featurever(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
             val as u8
         }
-        #[doc = "Feature Set for the module *instance*"]
+        #[doc = "Feature Set for the module *instance*."]
         #[inline(always)]
         pub fn set_featurever(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
@@ -1317,24 +1344,35 @@ pub mod regs {
             Desc(0)
         }
     }
-    #[doc = "Event Mode"]
+    #[doc = "Event Mode."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EvtMode(pub u32);
     impl EvtMode {
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT\\]\\[0\\]"]
+        #[doc = "Event line mode select for event corresponding to CPU_INT."]
+        #[inline(always)]
+        pub const fn cpu_int_cfg(&self) -> super::vals::EvtCfg {
+            let val = (self.0 >> 0usize) & 0x03;
+            super::vals::EvtCfg::from_bits(val as u8)
+        }
+        #[doc = "Event line mode select for event corresponding to CPU_INT."]
+        #[inline(always)]
+        pub fn set_cpu_int_cfg(&mut self, val: super::vals::EvtCfg) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+        }
+        #[doc = "Event line mode select for event corresponding to GEN_EVENT0."]
         #[inline(always)]
         pub const fn evt_cfg(&self, n: usize) -> super::vals::EvtCfg {
-            assert!(n < 3usize);
-            let offs = 0usize + n * 2usize;
+            assert!(n < 2usize);
+            let offs = 2usize + n * 2usize;
             let val = (self.0 >> offs) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT\\]\\[0\\]"]
+        #[doc = "Event line mode select for event corresponding to GEN_EVENT0."]
         #[inline(always)]
         pub fn set_evt_cfg(&mut self, n: usize, val: super::vals::EvtCfg) {
-            assert!(n < 3usize);
-            let offs = 0usize + n * 2usize;
+            assert!(n < 2usize);
+            let offs = 2usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
@@ -1344,7 +1382,7 @@ pub mod regs {
             EvtMode(0)
         }
     }
-    #[doc = "Fault Control Register"]
+    #[doc = "Fault Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fctl(pub u32);
@@ -1393,35 +1431,71 @@ pub mod regs {
         pub fn set_tfim(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
-        #[doc = "Specifies whether the analog comparator0 fault sense is high or low active"]
+        #[doc = "Specifies whether the COMP0 output high/low is treated as fault condition."]
         #[inline(always)]
-        pub const fn fsenac(&self, n: usize) -> bool {
-            assert!(n < 3usize);
-            let offs = 8usize + n * 1usize;
-            let val = (self.0 >> offs) & 0x01;
+        pub const fn fsenac0(&self) -> bool {
+            let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "Specifies whether the analog comparator0 fault sense is high or low active"]
+        #[doc = "Specifies whether the COMP0 output high/low is treated as fault condition."]
         #[inline(always)]
-        pub fn set_fsenac(&mut self, n: usize, val: bool) {
-            assert!(n < 3usize);
-            let offs = 8usize + n * 1usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
+        pub fn set_fsenac0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
-        #[doc = "Specifies whether the external fault pin0 sense is high or low active"]
+        #[doc = "Specifies whether the COMP1 output high/low is treated as fault condition."]
         #[inline(always)]
-        pub const fn fsenext(&self, n: usize) -> bool {
-            assert!(n < 3usize);
-            let offs = 11usize + n * 1usize;
-            let val = (self.0 >> offs) & 0x01;
+        pub const fn fsenac1(&self) -> bool {
+            let val = (self.0 >> 9usize) & 0x01;
             val != 0
         }
-        #[doc = "Specifies whether the external fault pin0 sense is high or low active"]
+        #[doc = "Specifies whether the COMP1 output high/low is treated as fault condition."]
         #[inline(always)]
-        pub fn set_fsenext(&mut self, n: usize, val: bool) {
-            assert!(n < 3usize);
-            let offs = 11usize + n * 1usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
+        pub fn set_fsenac1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        }
+        #[doc = "Specifies whether the COMP2 output high/low is treated as fault condition."]
+        #[inline(always)]
+        pub const fn fsenac2(&self) -> bool {
+            let val = (self.0 >> 10usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Specifies whether the COMP2 output high/low is treated as fault condition."]
+        #[inline(always)]
+        pub fn set_fsenac2(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+        }
+        #[doc = "Specifies whether the external fault pin0 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub const fn fsenext0(&self) -> bool {
+            let val = (self.0 >> 11usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Specifies whether the external fault pin0 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub fn set_fsenext0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+        }
+        #[doc = "Specifies whether the external fault pin1 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub const fn fsenext1(&self) -> bool {
+            let val = (self.0 >> 12usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Specifies whether the external fault pin1 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub fn set_fsenext1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+        }
+        #[doc = "Specifies whether the external fault pin2 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub const fn fsenext2(&self) -> bool {
+            let val = (self.0 >> 13usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Specifies whether the external fault pin2 high/low is treated as fault condition."]
+        #[inline(always)]
+        pub fn set_fsenext2(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
     }
     impl Default for Fctl {
@@ -1430,7 +1504,7 @@ pub mod regs {
             Fctl(0)
         }
     }
-    #[doc = "Fault input Filter control register"]
+    #[doc = "Fault input Filter control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fifctl(pub u32);
@@ -1475,7 +1549,7 @@ pub mod regs {
             Fifctl(0)
         }
     }
-    #[doc = "Publisher Port 0"]
+    #[doc = "Publisher Port 0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fport(pub u32);
@@ -1498,51 +1572,87 @@ pub mod regs {
             Fport(0)
         }
     }
-    #[doc = "Fault Source Control"]
+    #[doc = "Fault Source Control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fsctl(pub u32);
     impl Fsctl {
-        #[doc = "This field controls whether the fault caused by the system clock fault is enable. 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault is caused by the system clock fault."]
         #[inline(always)]
         pub const fn fcen(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "This field controls whether the fault caused by the system clock fault is enable. 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault is caused by the system clock fault."]
         #[inline(always)]
         pub fn set_fcen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "This field controls whether the fault signal detected by the analog comparator0 is enable 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault signal is caused by COMP0 output."]
         #[inline(always)]
-        pub const fn fac(&self, n: usize) -> bool {
-            assert!(n < 3usize);
-            let offs = 1usize + n * 1usize;
-            let val = (self.0 >> offs) & 0x01;
+        pub const fn fac0en(&self) -> bool {
+            let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "This field controls whether the fault signal detected by the analog comparator0 is enable 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault signal is caused by COMP0 output."]
         #[inline(always)]
-        pub fn set_fac(&mut self, n: usize, val: bool) {
-            assert!(n < 3usize);
-            let offs = 1usize + n * 1usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
+        pub fn set_fac0en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "This field controls whether the fault caused by external fault pin0 is enable. 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault is caused by COMP1 output."]
         #[inline(always)]
-        pub const fn fex(&self, n: usize) -> bool {
-            assert!(n < 3usize);
-            let offs = 4usize + n * 1usize;
-            let val = (self.0 >> offs) & 0x01;
+        pub const fn fac1en(&self) -> bool {
+            let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "This field controls whether the fault caused by external fault pin0 is enable. 0: DISABLE 1: ENABLE"]
+        #[doc = "This field controls whether the fault is caused by COMP1 output."]
         #[inline(always)]
-        pub fn set_fex(&mut self, n: usize, val: bool) {
-            assert!(n < 3usize);
-            let offs = 4usize + n * 1usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
+        pub fn set_fac1en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        }
+        #[doc = "This field controls whether the fault is caused by COMP2 output."]
+        #[inline(always)]
+        pub const fn fac2en(&self) -> bool {
+            let val = (self.0 >> 3usize) & 0x01;
+            val != 0
+        }
+        #[doc = "This field controls whether the fault is caused by COMP2 output."]
+        #[inline(always)]
+        pub fn set_fac2en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 0."]
+        #[inline(always)]
+        pub const fn fex0en(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 0."]
+        #[inline(always)]
+        pub fn set_fex0en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 1."]
+        #[inline(always)]
+        pub const fn fex1en(&self) -> bool {
+            let val = (self.0 >> 5usize) & 0x01;
+            val != 0
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 1."]
+        #[inline(always)]
+        pub fn set_fex1en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 2."]
+        #[inline(always)]
+        pub const fn fex2en(&self) -> bool {
+            let val = (self.0 >> 6usize) & 0x01;
+            val != 0
+        }
+        #[doc = "This field controls whether the fault is caused by external fault pin 2."]
+        #[inline(always)]
+        pub fn set_fex2en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
     }
     impl Default for Fsctl {
@@ -1551,7 +1661,7 @@ pub mod regs {
             Fsctl(0)
         }
     }
-    #[doc = "Shadow to active load mask"]
+    #[doc = "Global control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gctl(pub u32);
@@ -1574,284 +1684,217 @@ pub mod regs {
             Gctl(0)
         }
     }
-    #[doc = "Input Filter Control Register"]
+    #[doc = "Interrupt index."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Ifctl(pub u32);
-    impl Ifctl {
-        #[doc = "Input Select (CCP0) This field selects the input source to the filter input. 4h-7h = Reserved"]
+    pub struct GenEventIidx(pub u32);
+    impl GenEventIidx {
+        #[doc = "Interrupt index status."]
         #[inline(always)]
-        pub const fn isel(&self) -> super::vals::IfctlIsel {
-            let val = (self.0 >> 0usize) & 0x0f;
-            super::vals::IfctlIsel::from_bits(val as u8)
-        }
-        #[doc = "Input Select (CCP0) This field selects the input source to the filter input. 4h-7h = Reserved"]
-        #[inline(always)]
-        pub fn set_isel(&mut self, val: super::vals::IfctlIsel) {
-            self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
-        }
-        #[doc = "Input Inversion This bit controls whether the selected input is inverted."]
-        #[inline(always)]
-        pub const fn inv(&self) -> bool {
-            let val = (self.0 >> 7usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Input Inversion This bit controls whether the selected input is inverted."]
-        #[inline(always)]
-        pub fn set_inv(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-        }
-        #[doc = "Filter Period. This field specifies the sample period for the input filter. I.e. The input is sampled for FP timer clocks during filtering."]
-        #[inline(always)]
-        pub const fn fp(&self) -> super::vals::IfctlFp {
-            let val = (self.0 >> 8usize) & 0x03;
-            super::vals::IfctlFp::from_bits(val as u8)
-        }
-        #[doc = "Filter Period. This field specifies the sample period for the input filter. I.e. The input is sampled for FP timer clocks during filtering."]
-        #[inline(always)]
-        pub fn set_fp(&mut self, val: super::vals::IfctlFp) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
-        }
-        #[doc = "Consecutive Period/Voting Select This bit controls whether the input filter uses a stricter consecutive period count or majority voting."]
-        #[inline(always)]
-        pub const fn cpv(&self) -> super::vals::IfctlCpv {
-            let val = (self.0 >> 11usize) & 0x01;
-            super::vals::IfctlCpv::from_bits(val as u8)
-        }
-        #[doc = "Consecutive Period/Voting Select This bit controls whether the input filter uses a stricter consecutive period count or majority voting."]
-        #[inline(always)]
-        pub fn set_cpv(&mut self, val: super::vals::IfctlCpv) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val.to_bits() as u32) & 0x01) << 11usize);
-        }
-        #[doc = "Filter Enable This bit controls whether the input is filtered by the input filter or bypasses to the edge detect."]
-        #[inline(always)]
-        pub const fn fe(&self) -> bool {
-            let val = (self.0 >> 12usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Filter Enable This bit controls whether the input is filtered by the input filter or bypasses to the edge detect."]
-        #[inline(always)]
-        pub fn set_fe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-        }
-    }
-    impl Default for Ifctl {
-        #[inline(always)]
-        fn default() -> Ifctl {
-            Ifctl(0)
-        }
-    }
-    #[doc = "Interrupt index"]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Iidx(pub u32);
-    impl Iidx {
-        #[doc = "Interrupt index status"]
-        #[inline(always)]
-        pub const fn stat(&self) -> super::vals::Stat {
+        pub const fn stat(&self) -> super::vals::GenEventIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
-            super::vals::Stat::from_bits(val as u8)
+            super::vals::GenEventIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status"]
+        #[doc = "Interrupt index status."]
         #[inline(always)]
-        pub fn set_stat(&mut self, val: super::vals::Stat) {
+        pub fn set_stat(&mut self, val: super::vals::GenEventIidxStat) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
-    impl Default for Iidx {
+    impl Default for GenEventIidx {
         #[inline(always)]
-        fn default() -> Iidx {
-            Iidx(0)
+        fn default() -> GenEventIidx {
+            GenEventIidx(0)
         }
     }
-    #[doc = "Interrupt clear"]
+    #[doc = "Interrupt clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Int(pub u32);
-    impl Int {
-        #[doc = "Zero event CLEAR"]
+    pub struct GenEventInt(pub u32);
+    impl GenEventInt {
+        #[doc = "Zero event CLEAR."]
         #[inline(always)]
         pub const fn z(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Zero event CLEAR"]
+        #[doc = "Zero event CLEAR."]
         #[inline(always)]
         pub fn set_z(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Load event CLEAR"]
+        #[doc = "Load event CLEAR."]
         #[inline(always)]
         pub const fn l(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Load event CLEAR"]
+        #[doc = "Load event CLEAR."]
         #[inline(always)]
         pub fn set_l(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub const fn ccd0(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub fn set_ccd0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub const fn ccd1(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub fn set_ccd1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub const fn ccd2(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub fn set_ccd2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub const fn ccd3(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare down event CLEAR"]
+        #[doc = "Capture or compare down event CLEAR."]
         #[inline(always)]
         pub fn set_ccd3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub const fn ccu0(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub fn set_ccu0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub const fn ccu1(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub fn set_ccu1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub const fn ccu2(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub fn set_ccu2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub const fn ccu3(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
             val != 0
         }
-        #[doc = "Capture or compare up event CLEAR"]
+        #[doc = "Capture or compare up event CLEAR."]
         #[inline(always)]
         pub fn set_ccu3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
-        #[doc = "Compare down event 4 CLEAR"]
+        #[doc = "Compare down event 4 CLEAR."]
         #[inline(always)]
         pub const fn ccd4(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
             val != 0
         }
-        #[doc = "Compare down event 4 CLEAR"]
+        #[doc = "Compare down event 4 CLEAR."]
         #[inline(always)]
         pub fn set_ccd4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
-        #[doc = "Compare down event 5 CLEAR"]
+        #[doc = "Compare down event 5 CLEAR."]
         #[inline(always)]
         pub const fn ccd5(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
             val != 0
         }
-        #[doc = "Compare down event 5 CLEAR"]
+        #[doc = "Compare down event 5 CLEAR."]
         #[inline(always)]
         pub fn set_ccd5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
-        #[doc = "Compare up event 4 CLEAR"]
+        #[doc = "Compare up event 4 CLEAR."]
         #[inline(always)]
         pub const fn ccu4(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
             val != 0
         }
-        #[doc = "Compare up event 4 CLEAR"]
+        #[doc = "Compare up event 4 CLEAR."]
         #[inline(always)]
         pub fn set_ccu4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
-        #[doc = "Compare up event 5 CLEAR"]
+        #[doc = "Compare up event 5 CLEAR."]
         #[inline(always)]
         pub const fn ccu5(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
             val != 0
         }
-        #[doc = "Compare up event 5 CLEAR"]
+        #[doc = "Compare up event 5 CLEAR."]
         #[inline(always)]
         pub fn set_ccu5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
-        #[doc = "Fault event CLEAR"]
+        #[doc = "Fault event CLEAR."]
         #[inline(always)]
         pub const fn f(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
             val != 0
         }
-        #[doc = "Fault event CLEAR"]
+        #[doc = "Fault event CLEAR."]
         #[inline(always)]
         pub fn set_f(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
-        #[doc = "Trigger Overflow event CLEAR"]
+        #[doc = "Trigger Overflow event CLEAR."]
         #[inline(always)]
         pub const fn tov(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
             val != 0
         }
-        #[doc = "Trigger Overflow event CLEAR"]
+        #[doc = "Trigger Overflow event CLEAR."]
         #[inline(always)]
         pub fn set_tov(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
-        #[doc = "Repeat Counter Zero event CLEAR"]
+        #[doc = "Repeat Counter Zero event CLEAR."]
         #[inline(always)]
         pub const fn repc(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
             val != 0
         }
-        #[doc = "Repeat Counter Zero event CLEAR"]
+        #[doc = "Repeat Counter Zero event CLEAR."]
         #[inline(always)]
         pub fn set_repc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
@@ -1879,72 +1922,93 @@ pub mod regs {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
     }
-    impl Default for Int {
+    impl Default for GenEventInt {
         #[inline(always)]
-        fn default() -> Int {
-            Int(0)
+        fn default() -> GenEventInt {
+            GenEventInt(0)
         }
     }
-    #[doc = "Load Register"]
+    #[doc = "Input Filter Control Register 0/1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Load16(pub u32);
-    impl Load16 {
-        #[doc = "Load Value"]
+    pub struct Ifctl(pub u32);
+    impl Ifctl {
+        #[doc = "Input Select (CCP0) This field selects the input source to the filter input. 4h-7h = Reserved."]
         #[inline(always)]
-        pub const fn ld(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
+        pub const fn isel(&self) -> super::vals::Isel {
+            let val = (self.0 >> 0usize) & 0x0f;
+            super::vals::Isel::from_bits(val as u8)
         }
-        #[doc = "Load Value"]
+        #[doc = "Input Select (CCP0) This field selects the input source to the filter input. 4h-7h = Reserved."]
         #[inline(always)]
-        pub fn set_ld(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        pub fn set_isel(&mut self, val: super::vals::Isel) {
+            self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
+        }
+        #[doc = "Input Inversion This bit controls whether the selected input is inverted."]
+        #[inline(always)]
+        pub const fn inv(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Input Inversion This bit controls whether the selected input is inverted."]
+        #[inline(always)]
+        pub fn set_inv(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        }
+        #[doc = "Filter Period. This field specifies the sample period for the input filter. I.e. The input is sampled for FP timer clocks during filtering."]
+        #[inline(always)]
+        pub const fn fp(&self) -> super::vals::Fp {
+            let val = (self.0 >> 8usize) & 0x03;
+            super::vals::Fp::from_bits(val as u8)
+        }
+        #[doc = "Filter Period. This field specifies the sample period for the input filter. I.e. The input is sampled for FP timer clocks during filtering."]
+        #[inline(always)]
+        pub fn set_fp(&mut self, val: super::vals::Fp) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
+        }
+        #[doc = "Consecutive Period/Voting Select This bit controls whether the input filter uses a stricter consecutive period count or majority voting."]
+        #[inline(always)]
+        pub const fn cpv(&self) -> super::vals::Cpv {
+            let val = (self.0 >> 11usize) & 0x01;
+            super::vals::Cpv::from_bits(val as u8)
+        }
+        #[doc = "Consecutive Period/Voting Select This bit controls whether the input filter uses a stricter consecutive period count or majority voting."]
+        #[inline(always)]
+        pub fn set_cpv(&mut self, val: super::vals::Cpv) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val.to_bits() as u32) & 0x01) << 11usize);
+        }
+        #[doc = "Filter Enable This bit controls whether the input is filtered by the input filter or bypasses to the edge detect."]
+        #[inline(always)]
+        pub const fn fe(&self) -> bool {
+            let val = (self.0 >> 12usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Filter Enable This bit controls whether the input is filtered by the input filter or bypasses to the edge detect."]
+        #[inline(always)]
+        pub fn set_fe(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
     }
-    impl Default for Load16 {
+    impl Default for Ifctl {
         #[inline(always)]
-        fn default() -> Load16 {
-            Load16(0)
+        fn default() -> Ifctl {
+            Ifctl(0)
         }
     }
-    #[doc = "Load Register"]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Load32(pub u32);
-    impl Load32 {
-        #[doc = "Load Value"]
-        #[inline(always)]
-        pub const fn ld(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Load Value"]
-        #[inline(always)]
-        pub fn set_ld(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Load32 {
-        #[inline(always)]
-        fn default() -> Load32 {
-            Load32(0)
-        }
-    }
-    #[doc = "CCP Output Control Registers"]
+    #[doc = "CCP Output Control Registers 0/1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Octl(pub u32);
     impl Octl {
-        #[doc = "CCP Output Source"]
+        #[doc = "CCP Output Source."]
         #[inline(always)]
-        pub const fn ccpo(&self) -> super::vals::OctlCcpo {
+        pub const fn ccpo(&self) -> super::vals::Ccpo {
             let val = (self.0 >> 0usize) & 0x0f;
-            super::vals::OctlCcpo::from_bits(val as u8)
+            super::vals::Ccpo::from_bits(val as u8)
         }
-        #[doc = "CCP Output Source"]
+        #[doc = "CCP Output Source."]
         #[inline(always)]
-        pub fn set_ccpo(&mut self, val: super::vals::OctlCcpo) {
+        pub fn set_ccpo(&mut self, val: super::vals::Ccpo) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
         }
         #[doc = "CCP Output Invert The output as selected by CCPO is conditionally inverted."]
@@ -1960,14 +2024,14 @@ pub mod regs {
         }
         #[doc = "CCP Initial Value This bit specifies the logical value put on the signal generator state while the counter is disabled (CTRCTL.EN == 0)."]
         #[inline(always)]
-        pub const fn ccpiv(&self) -> bool {
+        pub const fn ccpiv(&self) -> super::vals::Ccpiv {
             let val = (self.0 >> 5usize) & 0x01;
-            val != 0
+            super::vals::Ccpiv::from_bits(val as u8)
         }
         #[doc = "CCP Initial Value This bit specifies the logical value put on the signal generator state while the counter is disabled (CTRCTL.EN == 0)."]
         #[inline(always)]
-        pub fn set_ccpiv(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub fn set_ccpiv(&mut self, val: super::vals::Ccpiv) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val.to_bits() as u32) & 0x01) << 5usize);
         }
     }
     impl Default for Octl {
@@ -1976,25 +2040,25 @@ pub mod regs {
             Octl(0)
         }
     }
-    #[doc = "Output Disable"]
+    #[doc = "Output Disable."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Odis(pub u32);
     impl Odis {
-        #[doc = "Counter CCP0 Disable Mask Defines whether CCP0 of Counter n is forced low or not"]
+        #[doc = "Counter CCP0 Disable Mask Defines whether CCP0 of Counter n is forced low or not."]
         #[inline(always)]
-        pub const fn c0ccp(&self, n: usize) -> super::vals::OdisC0ccp {
+        pub const fn c0ccp(&self, n: usize) -> bool {
             assert!(n < 4usize);
             let offs = 0usize + n * 1usize;
             let val = (self.0 >> offs) & 0x01;
-            super::vals::OdisC0ccp::from_bits(val as u8)
+            val != 0
         }
-        #[doc = "Counter CCP0 Disable Mask Defines whether CCP0 of Counter n is forced low or not"]
+        #[doc = "Counter CCP0 Disable Mask Defines whether CCP0 of Counter n is forced low or not."]
         #[inline(always)]
-        pub fn set_c0ccp(&mut self, n: usize, val: super::vals::OdisC0ccp) {
+        pub fn set_c0ccp(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 0usize + n * 1usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val.to_bits() as u32) & 0x01) << offs);
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Odis {
@@ -2003,31 +2067,31 @@ pub mod regs {
             Odis(0)
         }
     }
-    #[doc = "Peripheral Debug Control"]
+    #[doc = "Peripheral Debug Control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdbgctl(pub u32);
     impl Pdbgctl {
-        #[doc = "Free run control"]
+        #[doc = "Free run control."]
         #[inline(always)]
         pub const fn free(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Free run control"]
+        #[doc = "Free run control."]
         #[inline(always)]
         pub fn set_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Soft halt boundary control. This function is only available, if \\[FREE\\]
-is set to 'STOP'"]
+is set to 'STOP'."]
         #[inline(always)]
         pub const fn soft(&self) -> super::vals::Soft {
             let val = (self.0 >> 1usize) & 0x01;
             super::vals::Soft::from_bits(val as u8)
         }
         #[doc = "Soft halt boundary control. This function is only available, if \\[FREE\\]
-is set to 'STOP'"]
+is set to 'STOP'."]
         #[inline(always)]
         pub fn set_soft(&mut self, val: super::vals::Soft) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
@@ -2039,18 +2103,18 @@ is set to 'STOP'"]
             Pdbgctl(0)
         }
     }
-    #[doc = "Counter Register"]
+    #[doc = "Phase Load Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pl(pub u32);
     impl Pl {
-        #[doc = "Phase Load value"]
+        #[doc = "Phase Load value."]
         #[inline(always)]
         pub const fn phase(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "Phase Load value"]
+        #[doc = "Phase Load value."]
         #[inline(always)]
         pub fn set_phase(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
@@ -2062,18 +2126,18 @@ is set to 'STOP'"]
             Pl(0)
         }
     }
-    #[doc = "Power enable"]
+    #[doc = "Power enable."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pwren(pub u32);
     impl Pwren {
-        #[doc = "Enable the power"]
+        #[doc = "Enable the power."]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the power"]
+        #[doc = "Enable the power."]
         #[inline(always)]
         pub fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -2116,18 +2180,18 @@ is set to 'STOP'"]
             Qdir(0)
         }
     }
-    #[doc = "Repeat counter"]
+    #[doc = "Repeat counter Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rc(pub u32);
     impl Rc {
-        #[doc = "Repeat Counter Value"]
+        #[doc = "Repeat Counter Value."]
         #[inline(always)]
         pub const fn rc(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
             val as u8
         }
-        #[doc = "Repeat Counter Value"]
+        #[doc = "Repeat Counter Value."]
         #[inline(always)]
         pub fn set_rc(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -2139,7 +2203,7 @@ is set to 'STOP'"]
             Rc(0)
         }
     }
-    #[doc = "Repeat counter"]
+    #[doc = "Repeat counter load Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rcld(pub u32);
@@ -2162,29 +2226,29 @@ is set to 'STOP'"]
             Rcld(0)
         }
     }
-    #[doc = "Reset Control"]
+    #[doc = "Reset Control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral"]
+        #[doc = "Assert reset to the peripheral."]
         #[inline(always)]
         pub const fn resetassert(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Assert reset to the peripheral"]
+        #[doc = "Assert reset to the peripheral."]
         #[inline(always)]
         pub fn set_resetassert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register"]
+        #[doc = "Clear the RESETSTKY bit in the STAT register."]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register"]
+        #[doc = "Clear the RESETSTKY bit in the STAT register."]
         #[inline(always)]
         pub fn set_resetstkyclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
@@ -2207,18 +2271,18 @@ is set to 'STOP'"]
             Rstctl(0)
         }
     }
-    #[doc = "Status Register"]
+    #[doc = "Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register"]
+        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
         #[inline(always)]
         pub const fn resetstky(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register"]
+        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
         #[inline(always)]
         pub fn set_resetstky(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
@@ -2230,29 +2294,29 @@ is set to 'STOP'"]
             Stat(0)
         }
     }
-    #[doc = "Trigger Select"]
+    #[doc = "Trigger Select Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Tsel(pub u32);
     impl Tsel {
-        #[doc = "External Trigger Select. #br# This selects which System Event is used if the input filter selects trigger. Triggers 0-15 are used to connect triggers generated by other timer modules in the same power domain. Refer to the SoC datasheet to get details. Triggers 16 and 17 are connected to event manager subscriber ports. Event lines 18-31 are reserved for future use."]
+        #[doc = "External Trigger Select. #br# This selects which System Event is used if the input filter selects trigger. Triggers 0-15 are used to connect triggers generated by other timer modules. Refer to the SoC datasheet for details related to timer trigger sources. Triggers 16 and 17 are connected to event manager subscriber ports. Event lines 18-31 are reserved for future use."]
         #[inline(always)]
         pub const fn etsel(&self) -> super::vals::Etsel {
             let val = (self.0 >> 0usize) & 0x1f;
             super::vals::Etsel::from_bits(val as u8)
         }
-        #[doc = "External Trigger Select. #br# This selects which System Event is used if the input filter selects trigger. Triggers 0-15 are used to connect triggers generated by other timer modules in the same power domain. Refer to the SoC datasheet to get details. Triggers 16 and 17 are connected to event manager subscriber ports. Event lines 18-31 are reserved for future use."]
+        #[doc = "External Trigger Select. #br# This selects which System Event is used if the input filter selects trigger. Triggers 0-15 are used to connect triggers generated by other timer modules. Refer to the SoC datasheet for details related to timer trigger sources. Triggers 16 and 17 are connected to event manager subscriber ports. Event lines 18-31 are reserved for future use."]
         #[inline(always)]
         pub fn set_etsel(&mut self, val: super::vals::Etsel) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val.to_bits() as u32) & 0x1f) << 0usize);
         }
-        #[doc = "Trigger Enable. This selects whether a trigger is enabled or not for this counter 0x0 = Triggers are not used 0x1 = Triggers are used as selected by the ETSEL field"]
+        #[doc = "Trigger Enable. This selects whether a trigger is enabled or not for this counter 0x0 = Triggers are not used 0x1 = Triggers are used as selected by the ETSEL field."]
         #[inline(always)]
         pub const fn te(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
             val != 0
         }
-        #[doc = "Trigger Enable. This selects whether a trigger is enabled or not for this counter 0x0 = Triggers are not used 0x1 = Triggers are used as selected by the ETSEL field"]
+        #[doc = "Trigger Enable. This selects whether a trigger is enabled or not for this counter 0x0 = Triggers are not used 0x1 = Triggers are used as selected by the ETSEL field."]
         #[inline(always)]
         pub fn set_te(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
@@ -2268,130 +2332,24 @@ is set to 'STOP'"]
 pub mod vals {
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Ccact {
-        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
-        DISABLED = 0x0,
-        #[doc = "CCP output value is set high"]
-        CCP_HIGH = 0x01,
-        #[doc = "CCP output value is set low"]
-        CCP_LOW = 0x02,
-        #[doc = "CCP output value is toggled"]
-        CCP_TOGGLE = 0x03,
-    }
-    impl Ccact {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Ccact {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Ccact {
-        #[inline(always)]
-        fn from(val: u8) -> Ccact {
-            Ccact::from_bits(val)
-        }
-    }
-    impl From<Ccact> for u8 {
-        #[inline(always)]
-        fn from(val: Ccact) -> u8 {
-            Ccact::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CcactF {
-        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
-        DISABLED = 0x0,
-        #[doc = "CCP output value is set high"]
-        CCP_HIGH = 0x01,
-        #[doc = "CCP output value is set low"]
-        CCP_LOW = 0x02,
-        #[doc = "CCP output value is toggled"]
-        CCP_TOGGLE = 0x03,
-        #[doc = "CCP output value is tristated"]
-        CCP_HIGHZ = 0x04,
-        _RESERVED_5 = 0x05,
-        _RESERVED_6 = 0x06,
-        _RESERVED_7 = 0x07,
-    }
-    impl CcactF {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> CcactF {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for CcactF {
-        #[inline(always)]
-        fn from(val: u8) -> CcactF {
-            CcactF::from_bits(val)
-        }
-    }
-    impl From<CcactF> for u8 {
-        #[inline(always)]
-        fn from(val: CcactF) -> u8 {
-            CcactF::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CcactSwfrcact {
-        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
-        DISABLED = 0x0,
-        #[doc = "CCP output value is set high"]
-        CCP_HIGH = 0x01,
-        #[doc = "CCP output value is set low"]
-        CCP_LOW = 0x02,
-        _RESERVED_3 = 0x03,
-    }
-    impl CcactSwfrcact {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> CcactSwfrcact {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for CcactSwfrcact {
-        #[inline(always)]
-        fn from(val: u8) -> CcactSwfrcact {
-            CcactSwfrcact::from_bits(val)
-        }
-    }
-    impl From<CcactSwfrcact> for u8 {
-        #[inline(always)]
-        fn from(val: CcactSwfrcact) -> u8 {
-            CcactSwfrcact::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlAcond {
-        #[doc = "Each TIMCLK"]
+    pub enum Acond {
+        #[doc = "Each TIMCLK."]
         TIMCLK = 0x0,
-        #[doc = "Rising edge of CCP or trigger assertion edge"]
+        #[doc = "Rising edge of CCP or trigger assertion edge."]
         CC_TRIG_RISE = 0x01,
-        #[doc = "Falling edge of CCP or trigger de-assertion edge"]
+        #[doc = "Falling edge of CCP or trigger de-assertion edge."]
         CC_TRIG_FALL = 0x02,
-        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)"]
+        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)."]
         CC_TRIG_EDGE = 0x03,
         _RESERVED_4 = 0x04,
-        #[doc = "CCP High or Trigger assertion (level)"]
+        #[doc = "CCP High or Trigger assertion (level)."]
         CC_TRIG_HIGH = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
     }
-    impl CctlAcond {
+    impl Acond {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlAcond {
+        pub const fn from_bits(val: u8) -> Acond {
             unsafe { core::mem::transmute(val & 0x07) }
         }
         #[inline(always)]
@@ -2399,39 +2357,73 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for CctlAcond {
+    impl From<u8> for Acond {
         #[inline(always)]
-        fn from(val: u8) -> CctlAcond {
-            CctlAcond::from_bits(val)
+        fn from(val: u8) -> Acond {
+            Acond::from_bits(val)
         }
     }
-    impl From<CctlAcond> for u8 {
+    impl From<Acond> for u8 {
         #[inline(always)]
-        fn from(val: CctlAcond) -> u8 {
-            CctlAcond::to_bits(val)
+        fn from(val: Acond) -> u8 {
+            Acond::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlCc2sel {
+    pub enum Act {
+        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
+        DISABLED = 0x0,
+        #[doc = "CCP output value is set high."]
+        CCP_HIGH = 0x01,
+        #[doc = "CCP output value is set low."]
+        CCP_LOW = 0x02,
+        #[doc = "CCP output value is toggled."]
+        CCP_TOGGLE = 0x03,
+    }
+    impl Act {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Act {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Act {
+        #[inline(always)]
+        fn from(val: u8) -> Act {
+            Act::from_bits(val)
+        }
+    }
+    impl From<Act> for u8 {
+        #[inline(always)]
+        fn from(val: Act) -> u8 {
+            Act::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Cc2seld {
         #[doc = "Selects CCD from CC0."]
-        SEL_CC0 = 0x0,
+        SEL_CCD0 = 0x0,
         #[doc = "Selects CCD from CC1."]
-        SEL_CC1 = 0x01,
+        SEL_CCD1 = 0x01,
         #[doc = "Selects CCD from CC2."]
-        SEL_CC2 = 0x02,
+        SEL_CCD2 = 0x02,
         #[doc = "Selects CCD from CC3."]
-        SEL_CC3 = 0x03,
+        SEL_CCD3 = 0x03,
         #[doc = "Selects CCD from CC4."]
-        SEL_CC4 = 0x04,
+        SEL_CCD4 = 0x04,
         #[doc = "Selects CCD from CC5."]
-        SEL_CC5 = 0x05,
+        SEL_CCD5 = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
     }
-    impl CctlCc2sel {
+    impl Cc2seld {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlCc2sel {
+        pub const fn from_bits(val: u8) -> Cc2seld {
             unsafe { core::mem::transmute(val & 0x07) }
         }
         #[inline(always)]
@@ -2439,37 +2431,118 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for CctlCc2sel {
+    impl From<u8> for Cc2seld {
         #[inline(always)]
-        fn from(val: u8) -> CctlCc2sel {
-            CctlCc2sel::from_bits(val)
+        fn from(val: u8) -> Cc2seld {
+            Cc2seld::from_bits(val)
         }
     }
-    impl From<CctlCc2sel> for u8 {
+    impl From<Cc2seld> for u8 {
         #[inline(always)]
-        fn from(val: CctlCc2sel) -> u8 {
-            CctlCc2sel::to_bits(val)
+        fn from(val: Cc2seld) -> u8 {
+            Cc2seld::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlCcond {
-        #[doc = "None (never captures)"]
+    pub enum Cc2selu {
+        #[doc = "Selects CCU from CC0."]
+        SEL_CCU0 = 0x0,
+        #[doc = "Selects CCU from CC1."]
+        SEL_CCU1 = 0x01,
+        #[doc = "Selects CCU from CC2."]
+        SEL_CCU2 = 0x02,
+        #[doc = "Selects CCU from CC3."]
+        SEL_CCU3 = 0x03,
+        #[doc = "Selects CCU from CC4."]
+        SEL_CCU4 = 0x04,
+        #[doc = "Selects CCU from CC5."]
+        SEL_CCU5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Cc2selu {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Cc2selu {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Cc2selu {
+        #[inline(always)]
+        fn from(val: u8) -> Cc2selu {
+            Cc2selu::from_bits(val)
+        }
+    }
+    impl From<Cc2selu> for u8 {
+        #[inline(always)]
+        fn from(val: Cc2selu) -> u8 {
+            Cc2selu::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Ccactupd {
+        #[doc = "Value written to the CCACT register has immediate effect."]
+        IMMEDIATELY = 0x0,
+        #[doc = "Following a zero event (CTR=0) Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0."]
+        ZERO_EVT = 0x01,
+        #[doc = "Following a CCD event (CTR=CC_xy) Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
+        COMPARE_DOWN_EVT = 0x02,
+        #[doc = "Following a CCU event (CTR=CC_xy) Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
+        COMPARE_UP_EVT = 0x03,
+        #[doc = "Following a zero event (CTR=0) or load event (CTR = LOAD) Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0 or CTR. Equals LDn. Note this update mechanism is defined for use only in configurations using up/down counting. This mode is not intended for use in down count configurations."]
+        ZERO_LOAD_EVT = 0x04,
+        #[doc = "Following a zero event (CTR=0) with repeat count also zero (RC=0). Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0 and if RC equal 0."]
+        ZERO_RC_ZERO_EVT = 0x05,
+        #[doc = "On a TRIG pulse, the value stored in CCACT_xy shadow register is loaded into CCACT_xy register."]
+        TRIG = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Ccactupd {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Ccactupd {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Ccactupd {
+        #[inline(always)]
+        fn from(val: u8) -> Ccactupd {
+            Ccactupd::from_bits(val)
+        }
+    }
+    impl From<Ccactupd> for u8 {
+        #[inline(always)]
+        fn from(val: Ccactupd) -> u8 {
+            Ccactupd::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Ccond {
+        #[doc = "None (never captures)."]
         NOCAPTURE = 0x0,
-        #[doc = "Rising edge of CCP or trigger assertion edge"]
+        #[doc = "Rising edge of CCP or trigger assertion edge."]
         CC_TRIG_RISE = 0x01,
-        #[doc = "Falling edge of CCP or trigger de-assertion edge"]
+        #[doc = "Falling edge of CCP or trigger de-assertion edge."]
         CC_TRIG_FALL = 0x02,
-        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)"]
+        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)."]
         CC_TRIG_EDGE = 0x03,
         _RESERVED_4 = 0x04,
         _RESERVED_5 = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
     }
-    impl CctlCcond {
+    impl Ccond {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlCcond {
+        pub const fn from_bits(val: u8) -> Ccond {
             unsafe { core::mem::transmute(val & 0x07) }
         }
         #[inline(always)]
@@ -2477,70 +2550,29 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for CctlCcond {
+    impl From<u8> for Ccond {
         #[inline(always)]
-        fn from(val: u8) -> CctlCcond {
-            CctlCcond::from_bits(val)
+        fn from(val: u8) -> Ccond {
+            Ccond::from_bits(val)
         }
     }
-    impl From<CctlCcond> for u8 {
+    impl From<Ccond> for u8 {
         #[inline(always)]
-        fn from(val: CctlCcond) -> u8 {
-            CctlCcond::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlCcupd {
-        #[doc = "Value written to the CCACT register has immediate effect."]
-        IMMEDIATELY = 0x0,
-        #[doc = "Following a zero event Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0."]
-        ZERO_EVT = 0x01,
-        #[doc = "Following a compare (down) event Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
-        COMPARE_DOWN_EVT = 0x02,
-        #[doc = "Following a compare (up) event Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
-        COMPARE_UP_EVT = 0x03,
-        #[doc = "Following a zero or load event Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0 or CTR. Equals LDn. Note this update mechanism is defined for use only in configurations using up/down counting. This mode is not intended for use in down count configurations."]
-        ZERO_LOAD_EVT = 0x04,
-        #[doc = "Following a zero event with repeat count also zero. Writes to the CCACTx_y register are stored in shadow register and transferred to CCACTx_y in the TIMCLK cycle following CTR equals 0 and if RC equal 0."]
-        ZERO_RC_ZERO_EVT = 0x05,
-        #[doc = "On a TRIG pulse, the value stored in CCACTx_y shadow register is loaded into CCACTx_y active register."]
-        TRIG = 0x06,
-        _RESERVED_7 = 0x07,
-    }
-    impl CctlCcupd {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlCcupd {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for CctlCcupd {
-        #[inline(always)]
-        fn from(val: u8) -> CctlCcupd {
-            CctlCcupd::from_bits(val)
-        }
-    }
-    impl From<CctlCcupd> for u8 {
-        #[inline(always)]
-        fn from(val: CctlCcupd) -> u8 {
-            CctlCcupd::to_bits(val)
+        fn from(val: Ccond) -> u8 {
+            Ccond::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlCoc {
-        #[doc = "Compare"]
-        COMPARE = 0x0,
-        #[doc = "Capture"]
-        CAPTURE = 0x01,
+    pub enum Ccpiv {
+        #[doc = "Low."]
+        LOW = 0x0,
+        #[doc = "High."]
+        HIGH = 0x01,
     }
-    impl CctlCoc {
+    impl Ccpiv {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlCoc {
+        pub const fn from_bits(val: u8) -> Ccpiv {
             unsafe { core::mem::transmute(val & 0x01) }
         }
         #[inline(always)]
@@ -2548,36 +2580,92 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for CctlCoc {
+    impl From<u8> for Ccpiv {
         #[inline(always)]
-        fn from(val: u8) -> CctlCoc {
-            CctlCoc::from_bits(val)
+        fn from(val: u8) -> Ccpiv {
+            Ccpiv::from_bits(val)
         }
     }
-    impl From<CctlCoc> for u8 {
+    impl From<Ccpiv> for u8 {
         #[inline(always)]
-        fn from(val: CctlCoc) -> u8 {
-            CctlCoc::to_bits(val)
+        fn from(val: Ccpiv) -> u8 {
+            Ccpiv::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlLcond {
-        _RESERVED_0 = 0x0,
-        #[doc = "Rising edge of CCP or trigger assertion edge"]
-        CC_TRIG_RISE = 0x01,
-        #[doc = "Falling edge of CCP or trigger de-assertion edge"]
-        CC_TRIG_FALL = 0x02,
-        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)"]
-        CC_TRIG_EDGE = 0x03,
-        _RESERVED_4 = 0x04,
-        _RESERVED_5 = 0x05,
-        _RESERVED_6 = 0x06,
+    pub enum Ccpo {
+        #[doc = "Signal generator value (for example, PWM, triggered PWM)."]
+        FUNCVAL = 0x0,
+        #[doc = "Load event."]
+        LOAD = 0x01,
+        #[doc = "CCU event or CCD event."]
+        CMPVAL = 0x02,
+        _RESERVED_3 = 0x03,
+        #[doc = "Zero event."]
+        ZERO = 0x04,
+        #[doc = "Capture event."]
+        CAPCOND = 0x05,
+        #[doc = "Fault condition."]
+        FAULTCOND = 0x06,
+        _RESERVED_7 = 0x07,
+        #[doc = "Mirror CCP of first capture and compare register to other capture compare blocks."]
+        CC0_MIRROR_ALL = 0x08,
+        #[doc = "Mirror CCP of second capture and compare register in other capture compare blocks."]
+        CC1_MIRROR_ALL = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        #[doc = "Signal generator output after deadband insertion."]
+        DEADBAND = 0x0c,
+        #[doc = "Counter direction."]
+        CNTDIR = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl Ccpo {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Ccpo {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Ccpo {
+        #[inline(always)]
+        fn from(val: u8) -> Ccpo {
+            Ccpo::from_bits(val)
+        }
+    }
+    impl From<Ccpo> for u8 {
+        #[inline(always)]
+        fn from(val: Ccpo) -> u8 {
+            Ccpo::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Ccupd {
+        #[doc = "Writes to the CCx_y register is written to the register directly and has immediate effect."]
+        IMMEDIATELY = 0x0,
+        #[doc = "Following a zero event (CTR=0) Writes to the CCx_y register are stored in shadow register and transferred to CCx_y in the TIMCLK cycle following CTR equals 0."]
+        ZERO_EVT = 0x01,
+        #[doc = "Following a CCD event (CTR=CC_xy) Writes to the CCx_y register are stored in shadow register and transferred to CCx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
+        COMPARE_DOWN_EVT = 0x02,
+        #[doc = "Following a CCU event (CTR=CC_xy) Writes to the CCx_y register are stored in shadow register and transferred to CCx_y in the TIMCLK cycle following CTR equals the CCx_y register value."]
+        COMPARE_UP_EVT = 0x03,
+        #[doc = "Following a zero event(CTR=0) or load event (CTR=LOAD) Writes to the CCx_y register are stored in shadow register and transferred to ECCx_y in the TIMCLK cycle following CTR equals 0 or CTR. Equals LD. Note this update mechanism is defined for use only in configurations using up/down counting. This mode is not intended for use in down count configurations."]
+        ZERO_LOAD_EVT = 0x04,
+        #[doc = "Following a zero event (CTR=0) with repeat count also zero (RC=0). Writes to the CCx_y register are stored in shadow register and transferred to CCx_y in the TIMCLK cycle following CTR equals 0 and if RC equal 0."]
+        ZERO_RC_ZERO_EVT = 0x05,
+        #[doc = "Following a TRIG pulse. Writes to the CCx_y register are stored in shadow register and transferred to CCx_y."]
+        TRIG = 0x06,
         _RESERVED_7 = 0x07,
     }
-    impl CctlLcond {
+    impl Ccupd {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlLcond {
+        pub const fn from_bits(val: u8) -> Ccupd {
             unsafe { core::mem::transmute(val & 0x07) }
         }
         #[inline(always)]
@@ -2585,61 +2673,24 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for CctlLcond {
+    impl From<u8> for Ccupd {
         #[inline(always)]
-        fn from(val: u8) -> CctlLcond {
-            CctlLcond::from_bits(val)
+        fn from(val: u8) -> Ccupd {
+            Ccupd::from_bits(val)
         }
     }
-    impl From<CctlLcond> for u8 {
+    impl From<Ccupd> for u8 {
         #[inline(always)]
-        fn from(val: CctlLcond) -> u8 {
-            CctlLcond::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CctlZcond {
-        _RESERVED_0 = 0x0,
-        #[doc = "Rising edge of CCP or trigger assertion edge"]
-        CC_TRIG_RISE = 0x01,
-        #[doc = "Falling edge of CCP or trigger de-assertion edge"]
-        CC_TRIG_FALL = 0x02,
-        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)"]
-        CC_TRIG_EDGE = 0x03,
-        _RESERVED_4 = 0x04,
-        _RESERVED_5 = 0x05,
-        _RESERVED_6 = 0x06,
-        _RESERVED_7 = 0x07,
-    }
-    impl CctlZcond {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> CctlZcond {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for CctlZcond {
-        #[inline(always)]
-        fn from(val: u8) -> CctlZcond {
-            CctlZcond::from_bits(val)
-        }
-    }
-    impl From<CctlZcond> for u8 {
-        #[inline(always)]
-        fn from(val: CctlZcond) -> u8 {
-            CctlZcond::to_bits(val)
+        fn from(val: Ccupd) -> u8 {
+            Ccupd::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Cm {
-        #[doc = "Down"]
+        #[doc = "Down."]
         DOWN = 0x0,
-        #[doc = "Up/Down"]
+        #[doc = "Up/Down."]
         UP_DOWN = 0x01,
         #[doc = "Counter counts up."]
         UP = 0x02,
@@ -2669,88 +2720,15 @@ pub mod vals {
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Cvae {
-        #[doc = "The counter is set to the LOAD register value"]
-        LDVAL = 0x0,
-        #[doc = "The counter value is unchanged from its current value which could have been initialized by software"]
-        NOCHANGE = 0x01,
-        #[doc = "The counter is set to zero"]
-        ZEROVAL = 0x02,
-        _RESERVED_3 = 0x03,
+    pub enum Coc {
+        #[doc = "Compare."]
+        COMPARE = 0x0,
+        #[doc = "Capture."]
+        CAPTURE = 0x01,
     }
-    impl Cvae {
+    impl Coc {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> Cvae {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Cvae {
-        #[inline(always)]
-        fn from(val: u8) -> Cvae {
-            Cvae::from_bits(val)
-        }
-    }
-    impl From<Cvae> for u8 {
-        #[inline(always)]
-        fn from(val: Cvae) -> u8 {
-            Cvae::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum CxC {
-        #[doc = "CCCTL_0 ACOND"]
-        CCTL0 = 0x0,
-        #[doc = "CCCTL_1 ACOND"]
-        CCTL1 = 0x01,
-        #[doc = "CCCTL_2 ACOND This value exists when there are 4 channels."]
-        CCTL2 = 0x02,
-        #[doc = "CCCTL_3 ACOND This value exists when there are 4 channels."]
-        CCTL3 = 0x03,
-        #[doc = "Controlled by 2-input QEI mode This value exists when gptimer support QEI feature."]
-        QEI_2INP = 0x04,
-        #[doc = "Controlled by 3-input QEI mode This value exists when gptimer support QEI feature."]
-        QEI_3INP = 0x05,
-        _RESERVED_6 = 0x06,
-        _RESERVED_7 = 0x07,
-    }
-    impl CxC {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> CxC {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for CxC {
-        #[inline(always)]
-        fn from(val: u8) -> CxC {
-            CxC::from_bits(val)
-        }
-    }
-    impl From<CxC> for u8 {
-        #[inline(always)]
-        fn from(val: CxC) -> u8 {
-            CxC::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Drb {
-        #[doc = "Resume counting"]
-        RESUME = 0x0,
-        #[doc = "Perform the action as specified by the CVAE field."]
-        CVAE_ACTION = 0x01,
-    }
-    impl Drb {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Drb {
+        pub const fn from_bits(val: u8) -> Coc {
             unsafe { core::mem::transmute(val & 0x01) }
         }
         #[inline(always)]
@@ -2758,733 +2736,52 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for Drb {
+    impl From<u8> for Coc {
         #[inline(always)]
-        fn from(val: u8) -> Drb {
-            Drb::from_bits(val)
+        fn from(val: u8) -> Coc {
+            Coc::from_bits(val)
         }
     }
-    impl From<Drb> for u8 {
+    impl From<Coc> for u8 {
         #[inline(always)]
-        fn from(val: Drb) -> u8 {
-            Drb::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Etsel {
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG0 = 0x0,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG1 = 0x01,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG2 = 0x02,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG3 = 0x03,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG4 = 0x04,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG5 = 0x05,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG6 = 0x06,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG7 = 0x07,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG8 = 0x08,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG9 = 0x09,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG10 = 0x0a,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG11 = 0x0b,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG12 = 0x0c,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG13 = 0x0d,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG14 = 0x0e,
-        #[doc = "TRIGx = External trigger input from timer x (if available) in the same power domain as the current timer."]
-        TRIG15 = 0x0f,
-        #[doc = "TRIG_SUBx = External trigger input from subscriber port x."]
-        TRIG_SUB0 = 0x10,
-        #[doc = "TRIG_SUBx = External trigger input from subscriber port x."]
-        TRIG_SUB1 = 0x11,
-        _RESERVED_12 = 0x12,
-        _RESERVED_13 = 0x13,
-        _RESERVED_14 = 0x14,
-        _RESERVED_15 = 0x15,
-        _RESERVED_16 = 0x16,
-        _RESERVED_17 = 0x17,
-        _RESERVED_18 = 0x18,
-        _RESERVED_19 = 0x19,
-        _RESERVED_1a = 0x1a,
-        _RESERVED_1b = 0x1b,
-        _RESERVED_1c = 0x1c,
-        _RESERVED_1d = 0x1d,
-        _RESERVED_1e = 0x1e,
-        _RESERVED_1f = 0x1f,
-    }
-    impl Etsel {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Etsel {
-            unsafe { core::mem::transmute(val & 0x1f) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Etsel {
-        #[inline(always)]
-        fn from(val: u8) -> Etsel {
-            Etsel::from_bits(val)
-        }
-    }
-    impl From<Etsel> for u8 {
-        #[inline(always)]
-        fn from(val: Etsel) -> u8 {
-            Etsel::to_bits(val)
+        fn from(val: Coc) -> u8 {
+            Coc::to_bits(val)
         }
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum EvtCfg {
-        #[doc = "The interrupt or event line is disabled."]
-        DISABLE = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
-        SOFTWARE = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
-        HARDWARE = 0x02,
-        _RESERVED_3 = 0x03,
-    }
-    impl EvtCfg {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> EvtCfg {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for EvtCfg {
-        #[inline(always)]
-        fn from(val: u8) -> EvtCfg {
-            EvtCfg::from_bits(val)
-        }
-    }
-    impl From<EvtCfg> for u8 {
-        #[inline(always)]
-        fn from(val: EvtCfg) -> u8 {
-            EvtCfg::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Evtcttrigsel {
-        #[doc = "Use FSUB0 as cross trigger source."]
-        FSUB0 = 0x0,
-        #[doc = "Use FSUB1 as cross trigger source."]
-        FSUB1 = 0x01,
-        #[doc = "Use Zero event as cross trigger source."]
-        Z = 0x02,
-        #[doc = "Use Load event as cross trigger source."]
-        L = 0x03,
-        #[doc = "Use CCD0 event as cross trigger source."]
-        CCD0 = 0x04,
-        #[doc = "Use CCD1 event as cross trigger source."]
-        CCD1 = 0x05,
-        #[doc = "Use CCD2 event as cross trigger source."]
-        CCD2 = 0x06,
-        #[doc = "Use CCD3 event as cross trigger source."]
-        CCD3 = 0x07,
-        #[doc = "Use CCU0 event as cross trigger source."]
-        CCU0 = 0x08,
-        #[doc = "Use CCU1 event as cross trigger source."]
-        CCU1 = 0x09,
-        #[doc = "Use CCU2 event as cross trigger source."]
-        CCU2 = 0x0a,
-        #[doc = "Use CCU3 event as cross trigger source."]
-        CCU3 = 0x0b,
-        _RESERVED_c = 0x0c,
-        _RESERVED_d = 0x0d,
-        _RESERVED_e = 0x0e,
-        _RESERVED_f = 0x0f,
-    }
-    impl Evtcttrigsel {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Evtcttrigsel {
-            unsafe { core::mem::transmute(val & 0x0f) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Evtcttrigsel {
-        #[inline(always)]
-        fn from(val: u8) -> Evtcttrigsel {
-            Evtcttrigsel::from_bits(val)
-        }
-    }
-    impl From<Evtcttrigsel> for u8 {
-        #[inline(always)]
-        fn from(val: Evtcttrigsel) -> u8 {
-            Evtcttrigsel::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Fb {
-        #[doc = "Continues counting"]
-        CONT_COUNT = 0x0,
-        #[doc = "Suspends counting"]
-        SUSP_COUNT = 0x01,
-    }
-    impl Fb {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Fb {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Fb {
-        #[inline(always)]
-        fn from(val: u8) -> Fb {
-            Fb::from_bits(val)
-        }
-    }
-    impl From<Fb> for u8 {
-        #[inline(always)]
-        fn from(val: Fb) -> u8 {
-            Fb::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum FifctlCpv {
-        #[doc = "Consecutive Periods. The input must be at a specific logic level for the period defined by FP before it is passed to the filter output."]
-        CONSEC_PER = 0x0,
-        #[doc = "Voting. The filter ignores one clock of opposite logic over the filter period. I.e. Over FP samples of the input, up to 1 sample may be of an opposite logic value (glitch) without affecting the output"]
-        VOTING = 0x01,
-    }
-    impl FifctlCpv {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> FifctlCpv {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for FifctlCpv {
-        #[inline(always)]
-        fn from(val: u8) -> FifctlCpv {
-            FifctlCpv::from_bits(val)
-        }
-    }
-    impl From<FifctlCpv> for u8 {
-        #[inline(always)]
-        fn from(val: FifctlCpv) -> u8 {
-            FifctlCpv::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum FifctlFp {
-        #[doc = "Filter Period 3"]
-        PER_3 = 0x0,
-        #[doc = "Filter Period 5"]
-        PER_5 = 0x01,
-        #[doc = "Filter Period 8"]
-        PER_8 = 0x02,
-        _RESERVED_3 = 0x03,
-    }
-    impl FifctlFp {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> FifctlFp {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for FifctlFp {
-        #[inline(always)]
-        fn from(val: u8) -> FifctlFp {
-            FifctlFp::from_bits(val)
-        }
-    }
-    impl From<FifctlFp> for u8 {
-        #[inline(always)]
-        fn from(val: FifctlFp) -> u8 {
-            FifctlFp::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Fl {
-        #[doc = "Overall fault condition is not dependent on the F bit in RIS"]
-        NO_LATCH = 0x0,
-        #[doc = "Overall fault condition is dependent on the F bit in RIS"]
-        LATCH_SW_CLR = 0x01,
-        #[doc = "Fault condition is latched. Fault condition is cleared on a zero event if the fault input is 0."]
-        LATCH_Z_CLR = 0x02,
-        #[doc = "Fault condition is latched. Fault condition is cleared on a load event if the fault input is 0."]
-        LATCH_LD_CLR = 0x03,
-    }
-    impl Fl {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Fl {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Fl {
-        #[inline(always)]
-        fn from(val: u8) -> Fl {
-            Fl::from_bits(val)
-        }
-    }
-    impl From<Fl> for u8 {
-        #[inline(always)]
-        fn from(val: Fl) -> u8 {
-            Fl::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Frb {
-        #[doc = "Resume counting"]
-        RESUME = 0x0,
-        #[doc = "Perform the action as specified by the CVAE field."]
-        CVAE_ACTION = 0x01,
-    }
-    impl Frb {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Frb {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Frb {
-        #[inline(always)]
-        fn from(val: u8) -> Frb {
-            Frb::from_bits(val)
-        }
-    }
-    impl From<Frb> for u8 {
-        #[inline(always)]
-        fn from(val: Frb) -> u8 {
-            Frb::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum IfctlCpv {
-        #[doc = "Consecutive Periods The input must be at a specific logic level for the period defined by FP before it is passed to the filter output."]
-        CONSECUTIVE = 0x0,
-        #[doc = "Voting The filter ignores one clock of opposite logic over the filter period. I.e. Over FP samples of the input, up to 1 sample may be of an opposite logic value (glitch) without affecting the output."]
-        VOTING = 0x01,
-    }
-    impl IfctlCpv {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> IfctlCpv {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for IfctlCpv {
-        #[inline(always)]
-        fn from(val: u8) -> IfctlCpv {
-            IfctlCpv::from_bits(val)
-        }
-    }
-    impl From<IfctlCpv> for u8 {
-        #[inline(always)]
-        fn from(val: IfctlCpv) -> u8 {
-            IfctlCpv::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum IfctlFp {
-        #[doc = "The division factor is 3"]
-        _3 = 0x0,
-        #[doc = "The division factor is 5"]
-        _5 = 0x01,
-        #[doc = "The division factor is 8"]
-        _8 = 0x02,
-        _RESERVED_3 = 0x03,
-    }
-    impl IfctlFp {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> IfctlFp {
-            unsafe { core::mem::transmute(val & 0x03) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for IfctlFp {
-        #[inline(always)]
-        fn from(val: u8) -> IfctlFp {
-            IfctlFp::from_bits(val)
-        }
-    }
-    impl From<IfctlFp> for u8 {
-        #[inline(always)]
-        fn from(val: IfctlFp) -> u8 {
-            IfctlFp::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum IfctlIsel {
-        #[doc = "CCP of the corresponding capture compare unit"]
-        CCPX_INPUT = 0x0,
-        #[doc = "Input pair CCPX of the capture compare unit. For CCP0 input pair is CCP1 and for CCP1 input pair is CCP0."]
-        CCPX_INPUT_PAIR = 0x01,
-        #[doc = "CCP0 of the counter"]
-        CCP0_INPUT = 0x02,
-        #[doc = "Trigger"]
-        TRIG_INPUT = 0x03,
-        #[doc = "XOR of CCP inputs as input source."]
-        CCP_XOR = 0x04,
-        #[doc = "subscriber 0 event as input source."]
-        FSUB0 = 0x05,
-        #[doc = "subscriber 1 event as input source."]
-        FSUB1 = 0x06,
-        #[doc = "Comparator 0 output."]
-        COMP0 = 0x07,
-        #[doc = "Comparator 1 output."]
-        COMP1 = 0x08,
-        #[doc = "Comparator 2 output."]
-        COMP2 = 0x09,
-        _RESERVED_a = 0x0a,
-        _RESERVED_b = 0x0b,
-        _RESERVED_c = 0x0c,
-        _RESERVED_d = 0x0d,
-        _RESERVED_e = 0x0e,
-        _RESERVED_f = 0x0f,
-    }
-    impl IfctlIsel {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> IfctlIsel {
-            unsafe { core::mem::transmute(val & 0x0f) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for IfctlIsel {
-        #[inline(always)]
-        fn from(val: u8) -> IfctlIsel {
-            IfctlIsel::from_bits(val)
-        }
-    }
-    impl From<IfctlIsel> for u8 {
-        #[inline(always)]
-        fn from(val: IfctlIsel) -> u8 {
-            IfctlIsel::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum OctlCcpo {
-        #[doc = "Signal generator value (for example, PWM, triggered PWM)"]
-        FUNCVAL = 0x0,
-        #[doc = "Load condition"]
-        LOAD = 0x01,
-        #[doc = "Compare value = counter condition"]
-        CMPVAL = 0x02,
-        _RESERVED_3 = 0x03,
-        #[doc = "Zero condition"]
-        ZERO = 0x04,
-        #[doc = "Capture condition"]
-        CAPCOND = 0x05,
-        #[doc = "Fault Condition"]
-        FAULTCOND = 0x06,
-        _RESERVED_7 = 0x07,
-        #[doc = "Mirror CCP of first capture and compare register in counter group"]
-        CC0_MIRROR_ALL = 0x08,
-        #[doc = "Mirror CCP of second capture and compare register in counter group"]
-        CC1_MIRROR_ALL = 0x09,
-        _RESERVED_a = 0x0a,
-        _RESERVED_b = 0x0b,
-        #[doc = "Deadband Inserted Output"]
-        DEADBAND = 0x0c,
-        #[doc = "Counter direction"]
-        CNTDIR = 0x0d,
-        _RESERVED_e = 0x0e,
-        _RESERVED_f = 0x0f,
-    }
-    impl OctlCcpo {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> OctlCcpo {
-            unsafe { core::mem::transmute(val & 0x0f) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for OctlCcpo {
-        #[inline(always)]
-        fn from(val: u8) -> OctlCcpo {
-            OctlCcpo::from_bits(val)
-        }
-    }
-    impl From<OctlCcpo> for u8 {
-        #[inline(always)]
-        fn from(val: OctlCcpo) -> u8 {
-            OctlCcpo::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum OdisC0ccp {
-        #[doc = "Output function as selected by the OCTL register CCPO field are provided to occpout\\[0\\]."]
-        CCP_OUTPUT_OCTL = 0x0,
-        #[doc = "CCP output occpout\\[0\\]
-is forced low."]
-        CCP_OUTPUT_LOW = 0x01,
-    }
-    impl OdisC0ccp {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> OdisC0ccp {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for OdisC0ccp {
-        #[inline(always)]
-        fn from(val: u8) -> OdisC0ccp {
-            OdisC0ccp::from_bits(val)
-        }
-    }
-    impl From<OdisC0ccp> for u8 {
-        #[inline(always)]
-        fn from(val: OdisC0ccp) -> u8 {
-            OdisC0ccp::to_bits(val)
-        }
-    }
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub struct PwrenKey(pub u8);
-    impl PwrenKey {
-        pub const KEY: Self = Self(0x26);
-    }
-    impl PwrenKey {
-        pub const fn from_bits(val: u8) -> PwrenKey {
-            Self(val & 0xff)
-        }
-        pub const fn to_bits(self) -> u8 {
-            self.0
-        }
-    }
-    impl From<u8> for PwrenKey {
-        #[inline(always)]
-        fn from(val: u8) -> PwrenKey {
-            PwrenKey::from_bits(val)
-        }
-    }
-    impl From<PwrenKey> for u8 {
-        #[inline(always)]
-        fn from(val: PwrenKey) -> u8 {
-            PwrenKey::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Ratio {
-        #[doc = "Do not divide clock source"]
-        DIV_BY_1 = 0x0,
-        #[doc = "Divide clock source by 2"]
-        DIV_BY_2 = 0x01,
-        #[doc = "Divide clock source by 3"]
-        DIV_BY_3 = 0x02,
-        #[doc = "Divide clock source by 4"]
-        DIV_BY_4 = 0x03,
-        #[doc = "Divide clock source by 5"]
-        DIV_BY_5 = 0x04,
-        #[doc = "Divide clock source by 6"]
-        DIV_BY_6 = 0x05,
-        #[doc = "Divide clock source by 7"]
-        DIV_BY_7 = 0x06,
-        #[doc = "Divide clock source by 8"]
-        DIV_BY_8 = 0x07,
-    }
-    impl Ratio {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Ratio {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Ratio {
-        #[inline(always)]
-        fn from(val: u8) -> Ratio {
-            Ratio::from_bits(val)
-        }
-    }
-    impl From<Ratio> for u8 {
-        #[inline(always)]
-        fn from(val: Ratio) -> u8 {
-            Ratio::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Repeat {
-        #[doc = "Does not automatically advance following a zero event."]
-        REPEAT_0 = 0x0,
-        #[doc = "Continues to advance following a zero event."]
-        REPEAT_1 = 0x01,
-        #[doc = "Reserved"]
-        REPEAT_2 = 0x02,
-        #[doc = "Continues to advance following a zero event if the debug mode is not in effect, or following the release of the debug mode."]
-        REPEAT_3 = 0x03,
-        #[doc = "Reserved"]
-        REPEAT_4 = 0x04,
-        _RESERVED_5 = 0x05,
-        _RESERVED_6 = 0x06,
-        _RESERVED_7 = 0x07,
-    }
-    impl Repeat {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Repeat {
-            unsafe { core::mem::transmute(val & 0x07) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Repeat {
-        #[inline(always)]
-        fn from(val: u8) -> Repeat {
-            Repeat::from_bits(val)
-        }
-    }
-    impl From<Repeat> for u8 {
-        #[inline(always)]
-        fn from(val: Repeat) -> u8 {
-            Repeat::to_bits(val)
-        }
-    }
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub struct ResetKey(pub u8);
-    impl ResetKey {
-        pub const KEY: Self = Self(0xb1);
-    }
-    impl ResetKey {
-        pub const fn from_bits(val: u8) -> ResetKey {
-            Self(val & 0xff)
-        }
-        pub const fn to_bits(self) -> u8 {
-            self.0
-        }
-    }
-    impl From<u8> for ResetKey {
-        #[inline(always)]
-        fn from(val: u8) -> ResetKey {
-            ResetKey::from_bits(val)
-        }
-    }
-    impl From<ResetKey> for u8 {
-        #[inline(always)]
-        fn from(val: ResetKey) -> u8 {
-            ResetKey::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Soft {
-        #[doc = "The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted"]
-        IMMEDIATE = 0x0,
-        #[doc = "The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption"]
-        DELAYED = 0x01,
-    }
-    impl Soft {
-        #[inline(always)]
-        pub const fn from_bits(val: u8) -> Soft {
-            unsafe { core::mem::transmute(val & 0x01) }
-        }
-        #[inline(always)]
-        pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
-        }
-    }
-    impl From<u8> for Soft {
-        #[inline(always)]
-        fn from(val: u8) -> Soft {
-            Soft::from_bits(val)
-        }
-    }
-    impl From<Soft> for u8 {
-        #[inline(always)]
-        fn from(val: Soft) -> u8 {
-            Soft::to_bits(val)
-        }
-    }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum Stat {
-        #[doc = "No interrupt pending"]
+    pub enum CpuIntIidxStat {
+        #[doc = "No interrupt pending."]
         NO_INTR = 0x0,
-        #[doc = "Interrupt Source: Zero event"]
+        #[doc = "Interrupt Source: Zero event (Z)."]
         Z = 0x01,
-        #[doc = "REPLACE THIS WITH AN ACTUAL IRQ NAME"]
+        #[doc = "nterrupt Source: Load event (L)."]
         L = 0x02,
         _RESERVED_3 = 0x03,
         _RESERVED_4 = 0x04,
-        #[doc = "Interrupt Source: Capture or compare down event (CCD0)"]
+        #[doc = "Interrupt Source: Capture or compare down event (CCD0)."]
         CCD0 = 0x05,
-        #[doc = "Interrupt Source: Capture or compare down event (CCD1)"]
+        #[doc = "Interrupt Source: Capture or compare down event (CCD1)."]
         CCD1 = 0x06,
-        #[doc = "Interrupt Source: Capture or compare down event (CCD2)"]
+        #[doc = "Interrupt Source: Capture or compare down event (CCD2)."]
         CCD2 = 0x07,
-        #[doc = "Interrupt Source: Capture or compare down event (CCD3)"]
+        #[doc = "Interrupt Source: Capture or compare down event (CCD3)."]
         CCD3 = 0x08,
-        #[doc = "Interrupt Source: Capture or compare up event (CCU0)"]
+        #[doc = "Interrupt Source: Capture or compare up event (CCU0)."]
         CCU0 = 0x09,
-        #[doc = "Interrupt Source: Capture or compare up event (CCU1)"]
+        #[doc = "Interrupt Source: Capture or compare up event (CCU1)."]
         CCU1 = 0x0a,
-        #[doc = "Interrupt Source: Capture or compare up event (CCU2)"]
+        #[doc = "Interrupt Source: Capture or compare up event (CCU2)."]
         CCU2 = 0x0b,
-        #[doc = "Interrupt Source: Capture or compare up event (CCU3)"]
+        #[doc = "Interrupt Source: Capture or compare up event (CCU3)."]
         CCU3 = 0x0c,
-        #[doc = "Interrupt Source: Compare down event (CCD4)"]
+        #[doc = "Interrupt Source: Compare down event (CCD4)."]
         CCD4 = 0x0d,
-        #[doc = "Interrupt Source: Compare down event (CCD5)"]
+        #[doc = "Interrupt Source: Compare down event (CCD5)."]
         CCD5 = 0x0e,
-        #[doc = "Interrupt Source: Compare down event (CCU4)"]
+        #[doc = "Interrupt Source: Compare down event (CCU4)."]
         CCU4 = 0x0f,
-        #[doc = "Interrupt Source: Compare down event (CCU5)"]
+        #[doc = "Interrupt Source: Compare down event (CCU5)."]
         CCU5 = 0x10,
         _RESERVED_11 = 0x11,
         _RESERVED_12 = 0x12,
@@ -3494,15 +2791,15 @@ is forced low."]
         _RESERVED_16 = 0x16,
         _RESERVED_17 = 0x17,
         _RESERVED_18 = 0x18,
-        #[doc = "Interrupt Source: Fault Event generated an interrupt."]
+        #[doc = "Interrupt Source: Fault Event generated an interrupt. (F)."]
         F = 0x19,
-        #[doc = "Interrupt Source: Trigger overflow"]
+        #[doc = "Interrupt Source: Trigger overflow (TOV)."]
         TOV = 0x1a,
-        #[doc = "Repeat Counter Zero"]
+        #[doc = "Interrupt Source: Repeat Counter Zero (REPC)."]
         REPC = 0x1b,
-        #[doc = "Interrupt Source: Direction Change"]
+        #[doc = "Interrupt Source: Direction Change (DC)."]
         DC = 0x1c,
-        #[doc = "QEI Incorrect state transition error"]
+        #[doc = "Interrupt Source:QEI Incorrect state transition error (QEIERR)."]
         QEIERR = 0x1d,
         _RESERVED_1e = 0x1e,
         _RESERVED_1f = 0x1f,
@@ -3731,9 +3028,9 @@ is forced low."]
         _RESERVED_fe = 0xfe,
         _RESERVED_ff = 0xff,
     }
-    impl Stat {
+    impl CpuIntIidxStat {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> Stat {
+        pub const fn from_bits(val: u8) -> CpuIntIidxStat {
             unsafe { core::mem::transmute(val & 0xff) }
         }
         #[inline(always)]
@@ -3741,16 +3038,1125 @@ is forced low."]
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for Stat {
+    impl From<u8> for CpuIntIidxStat {
         #[inline(always)]
-        fn from(val: u8) -> Stat {
-            Stat::from_bits(val)
+        fn from(val: u8) -> CpuIntIidxStat {
+            CpuIntIidxStat::from_bits(val)
         }
     }
-    impl From<Stat> for u8 {
+    impl From<CpuIntIidxStat> for u8 {
         #[inline(always)]
-        fn from(val: Stat) -> u8 {
-            Stat::to_bits(val)
+        fn from(val: CpuIntIidxStat) -> u8 {
+            CpuIntIidxStat::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Cpv {
+        #[doc = "Consecutive Periods The input must be at a specific logic level for the period defined by FP before it is passed to the filter output."]
+        CONSECUTIVE = 0x0,
+        #[doc = "Voting The filter ignores one clock of opposite logic over the filter period. I.e. Over FP samples of the input, up to 1 sample may be of an opposite logic value (glitch) without affecting the output."]
+        VOTING = 0x01,
+    }
+    impl Cpv {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Cpv {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Cpv {
+        #[inline(always)]
+        fn from(val: u8) -> Cpv {
+            Cpv::from_bits(val)
+        }
+    }
+    impl From<Cpv> for u8 {
+        #[inline(always)]
+        fn from(val: Cpv) -> u8 {
+            Cpv::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Cvae {
+        #[doc = "The counter is set to the LOAD register value."]
+        LDVAL = 0x0,
+        #[doc = "The counter value is unchanged from its current value which could have been initialized by software."]
+        NOCHANGE = 0x01,
+        #[doc = "The counter is set to zero."]
+        ZEROVAL = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl Cvae {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Cvae {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Cvae {
+        #[inline(always)]
+        fn from(val: u8) -> Cvae {
+            Cvae::from_bits(val)
+        }
+    }
+    impl From<Cvae> for u8 {
+        #[inline(always)]
+        fn from(val: Cvae) -> u8 {
+            Cvae::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum CxC {
+        #[doc = "CCCTL_0 ACOND."]
+        CCTL0 = 0x0,
+        #[doc = "CCCTL_1 ACOND."]
+        CCTL1 = 0x01,
+        #[doc = "CCCTL_2 ACOND This value exists when there are 4 channels."]
+        CCTL2 = 0x02,
+        #[doc = "CCCTL_3 ACOND This value exists when there are 4 channels."]
+        CCTL3 = 0x03,
+        #[doc = "Controlled by 2-input QEI mode This value exists when TIMER support QEI feature."]
+        QEI_2INP = 0x04,
+        #[doc = "Controlled by 3-input QEI mode This value exists when TIMER support QEI feature."]
+        QEI_3INP = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl CxC {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> CxC {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for CxC {
+        #[inline(always)]
+        fn from(val: u8) -> CxC {
+            CxC::from_bits(val)
+        }
+    }
+    impl From<CxC> for u8 {
+        #[inline(always)]
+        fn from(val: CxC) -> u8 {
+            CxC::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Drb {
+        #[doc = "Resume counting."]
+        RESUME = 0x0,
+        #[doc = "Perform the action as specified by the CVAE field."]
+        CVAE_ACTION = 0x01,
+    }
+    impl Drb {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Drb {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Drb {
+        #[inline(always)]
+        fn from(val: u8) -> Drb {
+            Drb::from_bits(val)
+        }
+    }
+    impl From<Drb> for u8 {
+        #[inline(always)]
+        fn from(val: Drb) -> u8 {
+            Drb::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Etsel {
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG0 = 0x0,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG1 = 0x01,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG2 = 0x02,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG3 = 0x03,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG4 = 0x04,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG5 = 0x05,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG6 = 0x06,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG7 = 0x07,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG8 = 0x08,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG9 = 0x09,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG10 = 0x0a,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG11 = 0x0b,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG12 = 0x0c,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG13 = 0x0d,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG14 = 0x0e,
+        #[doc = "TRIGx = External trigger input from TIM x."]
+        TRIG15 = 0x0f,
+        #[doc = "TRIG_SUBx = External trigger input from subscriber port x."]
+        TRIG_SUB0 = 0x10,
+        #[doc = "TRIG_SUBx = External trigger input from subscriber port x."]
+        TRIG_SUB1 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        _RESERVED_1a = 0x1a,
+        _RESERVED_1b = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+    }
+    impl Etsel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Etsel {
+            unsafe { core::mem::transmute(val & 0x1f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Etsel {
+        #[inline(always)]
+        fn from(val: u8) -> Etsel {
+            Etsel::from_bits(val)
+        }
+    }
+    impl From<Etsel> for u8 {
+        #[inline(always)]
+        fn from(val: Etsel) -> u8 {
+            Etsel::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum EvtCfg {
+        #[doc = "The interrupt or event line is disabled."]
+        DISABLE = 0x0,
+        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        SOFTWARE = 0x01,
+        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        HARDWARE = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl EvtCfg {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> EvtCfg {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for EvtCfg {
+        #[inline(always)]
+        fn from(val: u8) -> EvtCfg {
+            EvtCfg::from_bits(val)
+        }
+    }
+    impl From<EvtCfg> for u8 {
+        #[inline(always)]
+        fn from(val: EvtCfg) -> u8 {
+            EvtCfg::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Evtcttrigsel {
+        #[doc = "Use FSUB0 as cross trigger source."]
+        FSUB0 = 0x0,
+        #[doc = "Use FSUB1 as cross trigger source."]
+        FSUB1 = 0x01,
+        #[doc = "Use Zero event as cross trigger source."]
+        Z = 0x02,
+        #[doc = "Use Load event as cross trigger source."]
+        L = 0x03,
+        #[doc = "Use CCD0 event as cross trigger source."]
+        CCD0 = 0x04,
+        #[doc = "Use CCD1 event as cross trigger source."]
+        CCD1 = 0x05,
+        #[doc = "Use CCD2 event as cross trigger source."]
+        CCD2 = 0x06,
+        #[doc = "Use CCD3 event as cross trigger source."]
+        CCD3 = 0x07,
+        #[doc = "Use CCU0 event as cross trigger source."]
+        CCU0 = 0x08,
+        #[doc = "Use CCU1 event as cross trigger source."]
+        CCU1 = 0x09,
+        #[doc = "Use CCU2 event as cross trigger source."]
+        CCU2 = 0x0a,
+        #[doc = "Use CCU3 event as cross trigger source."]
+        CCU3 = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl Evtcttrigsel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Evtcttrigsel {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Evtcttrigsel {
+        #[inline(always)]
+        fn from(val: u8) -> Evtcttrigsel {
+            Evtcttrigsel::from_bits(val)
+        }
+    }
+    impl From<Evtcttrigsel> for u8 {
+        #[inline(always)]
+        fn from(val: Evtcttrigsel) -> u8 {
+            Evtcttrigsel::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Fact {
+        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
+        DISABLED = 0x0,
+        #[doc = "CCP output value is set high."]
+        CCP_HIGH = 0x01,
+        #[doc = "CCP output value is set low."]
+        CCP_LOW = 0x02,
+        #[doc = "CCP output value is toggled."]
+        CCP_TOGGLE = 0x03,
+        #[doc = "CCP output value is tristated."]
+        CCP_HIGHZ = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Fact {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Fact {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Fact {
+        #[inline(always)]
+        fn from(val: u8) -> Fact {
+            Fact::from_bits(val)
+        }
+    }
+    impl From<Fact> for u8 {
+        #[inline(always)]
+        fn from(val: Fact) -> u8 {
+            Fact::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Fb {
+        #[doc = "Continues counting."]
+        CONT_COUNT = 0x0,
+        #[doc = "Suspends counting."]
+        SUSP_COUNT = 0x01,
+    }
+    impl Fb {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Fb {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Fb {
+        #[inline(always)]
+        fn from(val: u8) -> Fb {
+            Fb::from_bits(val)
+        }
+    }
+    impl From<Fb> for u8 {
+        #[inline(always)]
+        fn from(val: Fb) -> u8 {
+            Fb::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FifctlCpv {
+        #[doc = "Consecutive Periods. The input must be at a specific logic level for the period defined by FP before it is passed to the filter output."]
+        CONSEC_PER = 0x0,
+        #[doc = "Voting. The filter ignores one clock of opposite logic over the filter period. I.e. Over FP samples of the input, up to 1 sample may be of an opposite logic value (glitch) without affecting the output."]
+        VOTING = 0x01,
+    }
+    impl FifctlCpv {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FifctlCpv {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FifctlCpv {
+        #[inline(always)]
+        fn from(val: u8) -> FifctlCpv {
+            FifctlCpv::from_bits(val)
+        }
+    }
+    impl From<FifctlCpv> for u8 {
+        #[inline(always)]
+        fn from(val: FifctlCpv) -> u8 {
+            FifctlCpv::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FifctlFp {
+        #[doc = "Filter Period 3."]
+        PER_3 = 0x0,
+        #[doc = "Filter Period 5."]
+        PER_5 = 0x01,
+        #[doc = "Filter Period 8."]
+        PER_8 = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl FifctlFp {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FifctlFp {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FifctlFp {
+        #[inline(always)]
+        fn from(val: u8) -> FifctlFp {
+            FifctlFp::from_bits(val)
+        }
+    }
+    impl From<FifctlFp> for u8 {
+        #[inline(always)]
+        fn from(val: FifctlFp) -> u8 {
+            FifctlFp::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Fl {
+        #[doc = "Overall fault condition is not dependent on the F bit in RIS."]
+        NO_LATCH = 0x0,
+        #[doc = "Overall fault condition is dependent on the F bit in RIS."]
+        LATCH_SW_CLR = 0x01,
+        #[doc = "Fault condition is latched. Fault condition is cleared on a zero event if the fault input is 0."]
+        LATCH_Z_CLR = 0x02,
+        #[doc = "Fault condition is latched. Fault condition is cleared on a load event if the fault input is 0."]
+        LATCH_LD_CLR = 0x03,
+    }
+    impl Fl {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Fl {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Fl {
+        #[inline(always)]
+        fn from(val: u8) -> Fl {
+            Fl::from_bits(val)
+        }
+    }
+    impl From<Fl> for u8 {
+        #[inline(always)]
+        fn from(val: Fl) -> u8 {
+            Fl::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Fp {
+        #[doc = "The division factor is 3."]
+        _3 = 0x0,
+        #[doc = "The division factor is 5."]
+        _5 = 0x01,
+        #[doc = "The division factor is 8."]
+        _8 = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl Fp {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Fp {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Fp {
+        #[inline(always)]
+        fn from(val: u8) -> Fp {
+            Fp::from_bits(val)
+        }
+    }
+    impl From<Fp> for u8 {
+        #[inline(always)]
+        fn from(val: Fp) -> u8 {
+            Fp::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Frb {
+        #[doc = "Resume counting."]
+        RESUME = 0x0,
+        #[doc = "Perform the action as specified by the CVAE field."]
+        CVAE_ACTION = 0x01,
+    }
+    impl Frb {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Frb {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Frb {
+        #[inline(always)]
+        fn from(val: u8) -> Frb {
+            Frb::from_bits(val)
+        }
+    }
+    impl From<Frb> for u8 {
+        #[inline(always)]
+        fn from(val: Frb) -> u8 {
+            Frb::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum GenEventIidxStat {
+        #[doc = "No interrupt pending."]
+        NO_INTR = 0x0,
+        #[doc = "Interrupt Source: Zero event (Z)."]
+        Z = 0x01,
+        #[doc = "nterrupt Source: Load event (L)."]
+        L = 0x02,
+        _RESERVED_3 = 0x03,
+        _RESERVED_4 = 0x04,
+        #[doc = "Interrupt Source: Capture or compare down event (CCD0)."]
+        CCD0 = 0x05,
+        #[doc = "Interrupt Source: Capture or compare down event (CCD1)."]
+        CCD1 = 0x06,
+        #[doc = "Interrupt Source: Capture or compare down event (CCD2)."]
+        CCD2 = 0x07,
+        #[doc = "Interrupt Source: Capture or compare down event (CCD3)."]
+        CCD3 = 0x08,
+        #[doc = "Interrupt Source: Capture or compare up event (CCU0)."]
+        CCU0 = 0x09,
+        #[doc = "Interrupt Source: Capture or compare up event (CCU1)."]
+        CCU1 = 0x0a,
+        #[doc = "Interrupt Source: Capture or compare up event (CCU2)."]
+        CCU2 = 0x0b,
+        #[doc = "Interrupt Source: Capture or compare up event (CCU3)."]
+        CCU3 = 0x0c,
+        #[doc = "Interrupt Source: Compare down event (CCD4)."]
+        CCD4 = 0x0d,
+        #[doc = "Interrupt Source: Compare down event (CCD5)."]
+        CCD5 = 0x0e,
+        #[doc = "Interrupt Source: Compare down event (CCU4)."]
+        CCU4 = 0x0f,
+        #[doc = "Interrupt Source: Compare down event (CCU5)."]
+        CCU5 = 0x10,
+        _RESERVED_11 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        #[doc = "Interrupt Source: Fault Event generated an interrupt. (F)."]
+        F = 0x19,
+        #[doc = "Interrupt Source: Trigger overflow (TOV)."]
+        TOV = 0x1a,
+        #[doc = "Interrupt Source: Repeat Counter Zero (REPC)."]
+        REPC = 0x1b,
+        #[doc = "Interrupt Source: Direction Change (DC)."]
+        DC = 0x1c,
+        #[doc = "Interrupt Source:QEI Incorrect state transition error (QEIERR)."]
+        QEIERR = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+        _RESERVED_20 = 0x20,
+        _RESERVED_21 = 0x21,
+        _RESERVED_22 = 0x22,
+        _RESERVED_23 = 0x23,
+        _RESERVED_24 = 0x24,
+        _RESERVED_25 = 0x25,
+        _RESERVED_26 = 0x26,
+        _RESERVED_27 = 0x27,
+        _RESERVED_28 = 0x28,
+        _RESERVED_29 = 0x29,
+        _RESERVED_2a = 0x2a,
+        _RESERVED_2b = 0x2b,
+        _RESERVED_2c = 0x2c,
+        _RESERVED_2d = 0x2d,
+        _RESERVED_2e = 0x2e,
+        _RESERVED_2f = 0x2f,
+        _RESERVED_30 = 0x30,
+        _RESERVED_31 = 0x31,
+        _RESERVED_32 = 0x32,
+        _RESERVED_33 = 0x33,
+        _RESERVED_34 = 0x34,
+        _RESERVED_35 = 0x35,
+        _RESERVED_36 = 0x36,
+        _RESERVED_37 = 0x37,
+        _RESERVED_38 = 0x38,
+        _RESERVED_39 = 0x39,
+        _RESERVED_3a = 0x3a,
+        _RESERVED_3b = 0x3b,
+        _RESERVED_3c = 0x3c,
+        _RESERVED_3d = 0x3d,
+        _RESERVED_3e = 0x3e,
+        _RESERVED_3f = 0x3f,
+        _RESERVED_40 = 0x40,
+        _RESERVED_41 = 0x41,
+        _RESERVED_42 = 0x42,
+        _RESERVED_43 = 0x43,
+        _RESERVED_44 = 0x44,
+        _RESERVED_45 = 0x45,
+        _RESERVED_46 = 0x46,
+        _RESERVED_47 = 0x47,
+        _RESERVED_48 = 0x48,
+        _RESERVED_49 = 0x49,
+        _RESERVED_4a = 0x4a,
+        _RESERVED_4b = 0x4b,
+        _RESERVED_4c = 0x4c,
+        _RESERVED_4d = 0x4d,
+        _RESERVED_4e = 0x4e,
+        _RESERVED_4f = 0x4f,
+        _RESERVED_50 = 0x50,
+        _RESERVED_51 = 0x51,
+        _RESERVED_52 = 0x52,
+        _RESERVED_53 = 0x53,
+        _RESERVED_54 = 0x54,
+        _RESERVED_55 = 0x55,
+        _RESERVED_56 = 0x56,
+        _RESERVED_57 = 0x57,
+        _RESERVED_58 = 0x58,
+        _RESERVED_59 = 0x59,
+        _RESERVED_5a = 0x5a,
+        _RESERVED_5b = 0x5b,
+        _RESERVED_5c = 0x5c,
+        _RESERVED_5d = 0x5d,
+        _RESERVED_5e = 0x5e,
+        _RESERVED_5f = 0x5f,
+        _RESERVED_60 = 0x60,
+        _RESERVED_61 = 0x61,
+        _RESERVED_62 = 0x62,
+        _RESERVED_63 = 0x63,
+        _RESERVED_64 = 0x64,
+        _RESERVED_65 = 0x65,
+        _RESERVED_66 = 0x66,
+        _RESERVED_67 = 0x67,
+        _RESERVED_68 = 0x68,
+        _RESERVED_69 = 0x69,
+        _RESERVED_6a = 0x6a,
+        _RESERVED_6b = 0x6b,
+        _RESERVED_6c = 0x6c,
+        _RESERVED_6d = 0x6d,
+        _RESERVED_6e = 0x6e,
+        _RESERVED_6f = 0x6f,
+        _RESERVED_70 = 0x70,
+        _RESERVED_71 = 0x71,
+        _RESERVED_72 = 0x72,
+        _RESERVED_73 = 0x73,
+        _RESERVED_74 = 0x74,
+        _RESERVED_75 = 0x75,
+        _RESERVED_76 = 0x76,
+        _RESERVED_77 = 0x77,
+        _RESERVED_78 = 0x78,
+        _RESERVED_79 = 0x79,
+        _RESERVED_7a = 0x7a,
+        _RESERVED_7b = 0x7b,
+        _RESERVED_7c = 0x7c,
+        _RESERVED_7d = 0x7d,
+        _RESERVED_7e = 0x7e,
+        _RESERVED_7f = 0x7f,
+        _RESERVED_80 = 0x80,
+        _RESERVED_81 = 0x81,
+        _RESERVED_82 = 0x82,
+        _RESERVED_83 = 0x83,
+        _RESERVED_84 = 0x84,
+        _RESERVED_85 = 0x85,
+        _RESERVED_86 = 0x86,
+        _RESERVED_87 = 0x87,
+        _RESERVED_88 = 0x88,
+        _RESERVED_89 = 0x89,
+        _RESERVED_8a = 0x8a,
+        _RESERVED_8b = 0x8b,
+        _RESERVED_8c = 0x8c,
+        _RESERVED_8d = 0x8d,
+        _RESERVED_8e = 0x8e,
+        _RESERVED_8f = 0x8f,
+        _RESERVED_90 = 0x90,
+        _RESERVED_91 = 0x91,
+        _RESERVED_92 = 0x92,
+        _RESERVED_93 = 0x93,
+        _RESERVED_94 = 0x94,
+        _RESERVED_95 = 0x95,
+        _RESERVED_96 = 0x96,
+        _RESERVED_97 = 0x97,
+        _RESERVED_98 = 0x98,
+        _RESERVED_99 = 0x99,
+        _RESERVED_9a = 0x9a,
+        _RESERVED_9b = 0x9b,
+        _RESERVED_9c = 0x9c,
+        _RESERVED_9d = 0x9d,
+        _RESERVED_9e = 0x9e,
+        _RESERVED_9f = 0x9f,
+        _RESERVED_a0 = 0xa0,
+        _RESERVED_a1 = 0xa1,
+        _RESERVED_a2 = 0xa2,
+        _RESERVED_a3 = 0xa3,
+        _RESERVED_a4 = 0xa4,
+        _RESERVED_a5 = 0xa5,
+        _RESERVED_a6 = 0xa6,
+        _RESERVED_a7 = 0xa7,
+        _RESERVED_a8 = 0xa8,
+        _RESERVED_a9 = 0xa9,
+        _RESERVED_aa = 0xaa,
+        _RESERVED_ab = 0xab,
+        _RESERVED_ac = 0xac,
+        _RESERVED_ad = 0xad,
+        _RESERVED_ae = 0xae,
+        _RESERVED_af = 0xaf,
+        _RESERVED_b0 = 0xb0,
+        _RESERVED_b1 = 0xb1,
+        _RESERVED_b2 = 0xb2,
+        _RESERVED_b3 = 0xb3,
+        _RESERVED_b4 = 0xb4,
+        _RESERVED_b5 = 0xb5,
+        _RESERVED_b6 = 0xb6,
+        _RESERVED_b7 = 0xb7,
+        _RESERVED_b8 = 0xb8,
+        _RESERVED_b9 = 0xb9,
+        _RESERVED_ba = 0xba,
+        _RESERVED_bb = 0xbb,
+        _RESERVED_bc = 0xbc,
+        _RESERVED_bd = 0xbd,
+        _RESERVED_be = 0xbe,
+        _RESERVED_bf = 0xbf,
+        _RESERVED_c0 = 0xc0,
+        _RESERVED_c1 = 0xc1,
+        _RESERVED_c2 = 0xc2,
+        _RESERVED_c3 = 0xc3,
+        _RESERVED_c4 = 0xc4,
+        _RESERVED_c5 = 0xc5,
+        _RESERVED_c6 = 0xc6,
+        _RESERVED_c7 = 0xc7,
+        _RESERVED_c8 = 0xc8,
+        _RESERVED_c9 = 0xc9,
+        _RESERVED_ca = 0xca,
+        _RESERVED_cb = 0xcb,
+        _RESERVED_cc = 0xcc,
+        _RESERVED_cd = 0xcd,
+        _RESERVED_ce = 0xce,
+        _RESERVED_cf = 0xcf,
+        _RESERVED_d0 = 0xd0,
+        _RESERVED_d1 = 0xd1,
+        _RESERVED_d2 = 0xd2,
+        _RESERVED_d3 = 0xd3,
+        _RESERVED_d4 = 0xd4,
+        _RESERVED_d5 = 0xd5,
+        _RESERVED_d6 = 0xd6,
+        _RESERVED_d7 = 0xd7,
+        _RESERVED_d8 = 0xd8,
+        _RESERVED_d9 = 0xd9,
+        _RESERVED_da = 0xda,
+        _RESERVED_db = 0xdb,
+        _RESERVED_dc = 0xdc,
+        _RESERVED_dd = 0xdd,
+        _RESERVED_de = 0xde,
+        _RESERVED_df = 0xdf,
+        _RESERVED_e0 = 0xe0,
+        _RESERVED_e1 = 0xe1,
+        _RESERVED_e2 = 0xe2,
+        _RESERVED_e3 = 0xe3,
+        _RESERVED_e4 = 0xe4,
+        _RESERVED_e5 = 0xe5,
+        _RESERVED_e6 = 0xe6,
+        _RESERVED_e7 = 0xe7,
+        _RESERVED_e8 = 0xe8,
+        _RESERVED_e9 = 0xe9,
+        _RESERVED_ea = 0xea,
+        _RESERVED_eb = 0xeb,
+        _RESERVED_ec = 0xec,
+        _RESERVED_ed = 0xed,
+        _RESERVED_ee = 0xee,
+        _RESERVED_ef = 0xef,
+        _RESERVED_f0 = 0xf0,
+        _RESERVED_f1 = 0xf1,
+        _RESERVED_f2 = 0xf2,
+        _RESERVED_f3 = 0xf3,
+        _RESERVED_f4 = 0xf4,
+        _RESERVED_f5 = 0xf5,
+        _RESERVED_f6 = 0xf6,
+        _RESERVED_f7 = 0xf7,
+        _RESERVED_f8 = 0xf8,
+        _RESERVED_f9 = 0xf9,
+        _RESERVED_fa = 0xfa,
+        _RESERVED_fb = 0xfb,
+        _RESERVED_fc = 0xfc,
+        _RESERVED_fd = 0xfd,
+        _RESERVED_fe = 0xfe,
+        _RESERVED_ff = 0xff,
+    }
+    impl GenEventIidxStat {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> GenEventIidxStat {
+            unsafe { core::mem::transmute(val & 0xff) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for GenEventIidxStat {
+        #[inline(always)]
+        fn from(val: u8) -> GenEventIidxStat {
+            GenEventIidxStat::from_bits(val)
+        }
+    }
+    impl From<GenEventIidxStat> for u8 {
+        #[inline(always)]
+        fn from(val: GenEventIidxStat) -> u8 {
+            GenEventIidxStat::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Isel {
+        #[doc = "CCP of the corresponding capture compare unit."]
+        CCPX_INPUT = 0x0,
+        #[doc = "Input pair CCPX of the capture compare unit. For CCP0 input pair is CCP1 and for CCP1 input pair is CCP0."]
+        CCPX_INPUT_PAIR = 0x01,
+        #[doc = "CCP0 of the counter."]
+        CCP0_INPUT = 0x02,
+        #[doc = "Trigger."]
+        TRIG_INPUT = 0x03,
+        #[doc = "XOR of CCP inputs as input source (Used in Hall input mode)."]
+        CCP_XOR = 0x04,
+        #[doc = "subscriber 0 event as input source."]
+        FSUB0 = 0x05,
+        #[doc = "subscriber 1 event as input source."]
+        FSUB1 = 0x06,
+        #[doc = "Comparator 0 output."]
+        COMP0 = 0x07,
+        #[doc = "Comparator 1 output."]
+        COMP1 = 0x08,
+        #[doc = "Comparator 2 output."]
+        COMP2 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl Isel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Isel {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Isel {
+        #[inline(always)]
+        fn from(val: u8) -> Isel {
+            Isel::from_bits(val)
+        }
+    }
+    impl From<Isel> for u8 {
+        #[inline(always)]
+        fn from(val: Isel) -> u8 {
+            Isel::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Lcond {
+        #[doc = "CCP edges have no effect."]
+        CC_TRIG_NO_EFFECT = 0x0,
+        #[doc = "Rising edge of CCP or trigger assertion edge."]
+        CC_TRIG_RISE = 0x01,
+        #[doc = "Falling edge of CCP or trigger de-assertion edge."]
+        CC_TRIG_FALL = 0x02,
+        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)."]
+        CC_TRIG_EDGE = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Lcond {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Lcond {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Lcond {
+        #[inline(always)]
+        fn from(val: u8) -> Lcond {
+            Lcond::from_bits(val)
+        }
+    }
+    impl From<Lcond> for u8 {
+        #[inline(always)]
+        fn from(val: Lcond) -> u8 {
+            Lcond::to_bits(val)
+        }
+    }
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct PwrenKey(pub u8);
+    impl PwrenKey {
+        pub const KEY: Self = Self(0x26);
+    }
+    impl PwrenKey {
+        pub const fn from_bits(val: u8) -> PwrenKey {
+            Self(val & 0xff)
+        }
+        pub const fn to_bits(self) -> u8 {
+            self.0
+        }
+    }
+    impl From<u8> for PwrenKey {
+        #[inline(always)]
+        fn from(val: u8) -> PwrenKey {
+            PwrenKey::from_bits(val)
+        }
+    }
+    impl From<PwrenKey> for u8 {
+        #[inline(always)]
+        fn from(val: PwrenKey) -> u8 {
+            PwrenKey::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Repeat {
+        #[doc = "Does not automatically advance following a zero event."]
+        REPEAT_0 = 0x0,
+        #[doc = "Continues to advance following a zero event."]
+        REPEAT_1 = 0x01,
+        #[doc = "Reserved."]
+        REPEAT_2 = 0x02,
+        #[doc = "Continues to advance following a zero event if the debug mode is not in effect, or following the release of the debug mode."]
+        REPEAT_3 = 0x03,
+        #[doc = "Reserved."]
+        REPEAT_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Repeat {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Repeat {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Repeat {
+        #[inline(always)]
+        fn from(val: u8) -> Repeat {
+            Repeat::from_bits(val)
+        }
+    }
+    impl From<Repeat> for u8 {
+        #[inline(always)]
+        fn from(val: Repeat) -> u8 {
+            Repeat::to_bits(val)
+        }
+    }
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct ResetKey(pub u8);
+    impl ResetKey {
+        pub const KEY: Self = Self(0xb1);
+    }
+    impl ResetKey {
+        pub const fn from_bits(val: u8) -> ResetKey {
+            Self(val & 0xff)
+        }
+        pub const fn to_bits(self) -> u8 {
+            self.0
+        }
+    }
+    impl From<u8> for ResetKey {
+        #[inline(always)]
+        fn from(val: u8) -> ResetKey {
+            ResetKey::from_bits(val)
+        }
+    }
+    impl From<ResetKey> for u8 {
+        #[inline(always)]
+        fn from(val: ResetKey) -> u8 {
+            ResetKey::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Soft {
+        #[doc = "The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted."]
+        IMMEDIATE = 0x0,
+        #[doc = "The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption."]
+        DELAYED = 0x01,
+    }
+    impl Soft {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Soft {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Soft {
+        #[inline(always)]
+        fn from(val: u8) -> Soft {
+            Soft::from_bits(val)
+        }
+    }
+    impl From<Soft> for u8 {
+        #[inline(always)]
+        fn from(val: Soft) -> u8 {
+            Soft::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Swfrcact {
+        #[doc = "This event is disabled and a lower priority event is selected if asserting. The CCP output value is unaffected by the event."]
+        DISABLED = 0x0,
+        #[doc = "CCP output value is set high."]
+        CCP_HIGH = 0x01,
+        #[doc = "CCP output value is set low."]
+        CCP_LOW = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl Swfrcact {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Swfrcact {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Swfrcact {
+        #[inline(always)]
+        fn from(val: u8) -> Swfrcact {
+            Swfrcact::from_bits(val)
+        }
+    }
+    impl From<Swfrcact> for u8 {
+        #[inline(always)]
+        fn from(val: Swfrcact) -> u8 {
+            Swfrcact::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Zcond {
+        #[doc = "CCP edges have no effect."]
+        CC_TRIG_NO_EFFECT = 0x0,
+        #[doc = "Rising edge of CCP or trigger assertion edge."]
+        CC_TRIG_RISE = 0x01,
+        #[doc = "Falling edge of CCP or trigger de-assertion edge."]
+        CC_TRIG_FALL = 0x02,
+        #[doc = "Either edge of CCP or trigger change (assertion/de-assertion edge)."]
+        CC_TRIG_EDGE = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Zcond {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Zcond {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Zcond {
+        #[inline(always)]
+        fn from(val: u8) -> Zcond {
+            Zcond::from_bits(val)
+        }
+    }
+    impl From<Zcond> for u8 {
+        #[inline(always)]
+        fn from(val: Zcond) -> u8 {
+            Zcond::to_bits(val)
         }
     }
 }
