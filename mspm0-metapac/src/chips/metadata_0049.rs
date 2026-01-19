@@ -1104,6 +1104,165 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: Some(4usize),
     },
     Peripheral {
+        name: "SYSCTL",
+        kind: "sysctl",
+        version: Some("h321x"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "BEEPER",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "BEEPER",
+                pf: Some(8u8),
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "BEEPER",
+                pf: Some(10u8),
+            },
+            PeripheralPin {
+                pin: "PB7",
+                signal: "BEEPER",
+                pf: Some(12u8),
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "BEEPER",
+                pf: Some(14u8),
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "CLK_OUT",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "CLK_OUT",
+                pf: Some(8u8),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "CLK_OUT",
+                pf: Some(14u8),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "FCC_IN",
+                pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "FCC_IN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "FCC_IN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "FCC_IN",
+                pf: Some(7u8),
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "FCC_IN",
+                pf: Some(9u8),
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "HFCLKIN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA8",
+                signal: "HFCLKIN",
+                pf: Some(10u8),
+            },
+            PeripheralPin {
+                pin: "PB2",
+                signal: "HFCLKIN",
+                pf: Some(10u8),
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "HFCLKIN",
+                pf: Some(11u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "HFCLKIN",
+                pf: Some(13u8),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "HFXIN",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "HFXOUT",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "LFCLKIN",
+                pf: Some(14u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "LFXIN",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "LFXIN",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "LFXOUT",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "LFXOUT",
+                pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
         name: "TIMA0",
         kind: "tim",
         version: Some("v1"),

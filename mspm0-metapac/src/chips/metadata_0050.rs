@@ -343,6 +343,35 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: Some(4usize),
     },
     Peripheral {
+        name: "SYSCTL",
+        kind: "sysctl",
+        version: Some("l110x_l130x_l134x"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA22",
+                signal: "CLK_OUT",
+                pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "FCC_IN",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "FCC_IN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "ROSC",
+                pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
         name: "TIMG0",
         kind: "tim",
         version: Some("v1"),

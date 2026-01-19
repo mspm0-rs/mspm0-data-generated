@@ -669,6 +669,80 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: Some(4usize),
     },
     Peripheral {
+        name: "SYSCTL",
+        kind: "sysctl",
+        version: Some("c110x"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "BEEPER",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "BEEPER",
+                pf: Some(8u8),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "CLK_OUT",
+                pf: Some(8u8),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "CLK_OUT",
+                pf: Some(14u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "FCC_IN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "FCC_IN",
+                pf: Some(7u8),
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "HFCLKIN",
+                pf: Some(11u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "HFCLKIN",
+                pf: Some(13u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "LFCLKIN",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "LFXIN",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "LFXOUT",
+                pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
         name: "TIMA0",
         kind: "tim",
         version: Some("v1"),
