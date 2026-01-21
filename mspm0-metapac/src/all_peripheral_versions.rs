@@ -1,5 +1,6 @@
 pub static ALL_PERIPHERAL_VERSIONS: &[(&str, &[&str])] = &[
     ("adc", &["v1"]),
+    ("canfd", &["v1"]),
     ("cpuss", &["v1"]),
     ("dma", &["v1"]),
     ("gpio", &["v1"]),

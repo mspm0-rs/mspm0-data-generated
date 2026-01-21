@@ -3164,6 +3164,7 @@
     "CANFD0": {
       "name": "CANFD0",
       "type": "Canfd",
+      "version": "v1",
       "address": 1079017472,
       "power_domain": "Pd1",
       "pins": [
@@ -3192,6 +3193,7 @@
     "CANFD1": {
       "name": "CANFD1",
       "type": "Canfd",
+      "version": "v1",
       "address": 1079050240,
       "power_domain": "Pd1",
       "pins": [

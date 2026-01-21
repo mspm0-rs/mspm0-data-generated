@@ -161,6 +161,8 @@ pub use cortex_m_rt::interrupt;
 pub use Interrupt as interrupt;
 #[path = "../../peripherals/adc_v1.rs"]
 pub mod adc;
+#[path = "../../peripherals/canfd_v1.rs"]
+pub mod canfd;
 #[path = "../../peripherals/cpuss_v1.rs"]
 pub mod cpuss;
 #[path = "../../peripherals/dma_v1.rs"]
@@ -187,8 +189,7 @@ pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073741824 as *mut _) };
 pub const ADC1: adc::Adc = unsafe { adc::Adc::from_ptr(1073750016 as *mut _) };
 #[doc = "Address: 1078206464"]
 pub const AES: () = ();
-#[doc = "Address: 1079017472"]
-pub const CANFD0: () = ();
+pub const CANFD0: canfd::Canfd = unsafe { canfd::Canfd::from_ptr(1079017472 as *mut _) };
 #[doc = "Address: 1073774592"]
 pub const COMP0: () = ();
 #[doc = "Address: 1073782784"]

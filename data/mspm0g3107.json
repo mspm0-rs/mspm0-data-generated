@@ -705,6 +705,7 @@
     "CANFD0": {
       "name": "CANFD0",
       "type": "Canfd",
+      "version": "v1",
       "address": 1079017472,
       "power_domain": "Pd1",
       "pins": [
