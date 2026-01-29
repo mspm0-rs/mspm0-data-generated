@@ -31,7 +31,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(0u8),
             },
             PeripheralPin {
-                pin: "PA28",
+                pin: "PA21",
                 signal: "5",
                 pf: Some(0u8),
             },
@@ -46,9 +46,58 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(0u8),
             },
             PeripheralPin {
-                pin: "PA17",
+                pin: "PA16",
+                signal: "8",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
                 signal: "9",
                 pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "COMP0",
+        kind: "comp",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "IN0+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "IN0-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA20",
+                signal: "IN1+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "OUT",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "OUT",
+                pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "OUT",
+                pf: Some(6u8),
             },
         ],
         power_domain: PowerDomain::Pd0,
@@ -117,7 +166,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         name: "GPAMP",
         kind: "gpamp",
         version: None,
-        pins: &[],
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "IN+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "IN-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "OUT",
+                pf: Some(0u8),
+            },
+        ],
         power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
@@ -137,8 +202,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(1u8),
             },
             PeripheralPin {
+                pin: "PA10",
+                signal: "PA10",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
                 pin: "PA11",
                 signal: "PA11",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "PA14",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "PA15",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "PA16",
                 pf: Some(1u8),
             },
             PeripheralPin {
@@ -164,6 +249,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA20",
                 signal: "PA20",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "PA21",
                 pf: Some(1u8),
             },
             PeripheralPin {
@@ -197,8 +287,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(1u8),
             },
             PeripheralPin {
-                pin: "PA28",
-                signal: "PA28",
+                pin: "PA3",
+                signal: "PA3",
                 pf: Some(1u8),
             },
             PeripheralPin {
@@ -207,8 +297,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(1u8),
             },
             PeripheralPin {
+                pin: "PA5",
+                signal: "PA5",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
                 pin: "PA6",
                 signal: "PA6",
+                pf: Some(1u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "PA9",
                 pf: Some(1u8),
             },
         ],
@@ -223,27 +323,129 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA1",
                 signal: "SCL",
-                pf: Some(2u8),
+                pf: Some(3u8),
             },
             PeripheralPin {
                 pin: "PA11",
                 signal: "SCL",
-                pf: Some(3u8),
+                pf: Some(4u8),
             },
             PeripheralPin {
                 pin: "PA0",
                 signal: "SDA",
                 pf: Some(3u8),
             },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "SDA",
+                pf: Some(4u8),
+            },
         ],
         power_domain: PowerDomain::Pd0,
-        sys_fentries: Some(4usize),
+        sys_fentries: Some(8usize),
+    },
+    Peripheral {
+        name: "I2C1",
+        kind: "i2c",
+        version: Some("v1"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA15",
+                signal: "SCL",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "SCL",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA20",
+                signal: "SCL",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "SCL",
+                pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "SDA",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "SDA",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "SDA",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "SDA",
+                pf: Some(6u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: Some(8usize),
     },
     Peripheral {
         name: "IOMUX",
         kind: "iomux",
         version: Some("v1"),
         pins: &[],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "OPA0",
+        kind: "opa",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA25",
+                signal: "IN0+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "OUT",
+                pf: Some(0u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "OPA1",
+        kind: "opa",
+        version: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA18",
+                signal: "IN0+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "IN1-",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "OUT",
+                pf: Some(0u8),
+            },
+        ],
         power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
@@ -258,9 +460,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(3u8),
             },
             PeripheralPin {
-                pin: "PA6",
-                signal: "CS0",
-                pf: Some(6u8),
+                pin: "PA3",
+                signal: "CS1_POCI1",
+                pf: Some(3u8),
             },
             PeripheralPin {
                 pin: "PA0",
@@ -278,6 +480,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(2u8),
             },
             PeripheralPin {
+                pin: "PA15",
+                signal: "CS2_POCI2",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
                 pin: "PA23",
                 signal: "CS3_CD_POCI3",
                 pf: Some(3u8),
@@ -293,9 +500,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(3u8),
             },
             PeripheralPin {
-                pin: "PA20",
+                pin: "PA5",
                 signal: "PICO",
-                pf: Some(4u8),
+                pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "PICO",
+                pf: Some(3u8),
             },
             PeripheralPin {
                 pin: "PA25",
@@ -303,7 +515,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(4u8),
             },
             PeripheralPin {
-                pin: "PA22",
+                pin: "PA10",
                 signal: "POCI",
                 pf: Some(3u8),
             },
@@ -311,6 +523,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pin: "PA4",
                 signal: "POCI",
                 pf: Some(3u8),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "POCI",
+                pf: Some(4u8),
             },
             PeripheralPin {
                 pin: "PA19",
@@ -323,17 +540,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(4u8),
             },
             PeripheralPin {
-                pin: "PA27",
-                signal: "POCI",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
                 pin: "PA11",
-                signal: "SCLK",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA19",
                 signal: "SCLK",
                 pf: Some(3u8),
             },
@@ -354,27 +561,32 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "SYSCTL",
         kind: "sysctl",
-        version: Some("c110x"),
+        version: Some("l110x_l130x_l134x"),
         pins: &[
             PeripheralPin {
-                pin: "PA0",
-                signal: "BEEPER",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "BEEPER",
-                pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA18",
+                pin: "PA14",
                 signal: "CLK_OUT",
-                pf: Some(5u8),
+                pf: Some(3u8),
             },
             PeripheralPin {
                 pin: "PA22",
                 signal: "CLK_OUT",
                 pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CLK_OUT",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "FCC_IN",
+                pf: Some(4u8),
             },
             PeripheralPin {
                 pin: "PA0",
@@ -382,23 +594,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(6u8),
             },
             PeripheralPin {
-                pin: "PA1",
-                signal: "HFCLKIN",
-                pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "HFCLKIN",
-                pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "LFCLKIN",
-                pf: Some(4u8),
+                pin: "PA16",
+                signal: "FCC_IN",
+                pf: Some(6u8),
             },
             PeripheralPin {
                 pin: "NRST",
                 signal: "NRST",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "ROSC",
                 pf: Some(0u8),
             },
         ],
@@ -406,241 +613,150 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: None,
     },
     Peripheral {
-        name: "TIMA0",
+        name: "TIMG0",
         kind: "tim",
         version: Some("v1"),
         pins: &[
             PeripheralPin {
-                pin: "PA28",
+                pin: "PA5",
                 signal: "CCP0",
                 pf: Some(2u8),
             },
             PeripheralPin {
-                pin: "PA2",
+                pin: "PA23",
                 signal: "CCP0",
                 pf: Some(4u8),
             },
             PeripheralPin {
-                pin: "PA20",
+                pin: "PA16",
                 signal: "CCP0",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "CCP0_CMPL",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "CCP0_CMPL",
-                pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "CCP0_CMPL",
-                pf: Some(4u8),
+                pf: Some(5u8),
             },
             PeripheralPin {
                 pin: "PA6",
                 signal: "CCP1",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "CCP1",
+                pf: Some(3u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "TIMG1",
+        kind: "tim",
+        version: Some("v1"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA26",
+                signal: "CCP0",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "CCP0",
                 pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "CCP0",
+                pf: Some(5u8),
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "CCP1",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "CCP1",
+                pf: Some(2u8),
             },
             PeripheralPin {
                 pin: "PA1",
                 signal: "CCP1",
-                pf: Some(5u8),
+                pf: Some(4u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "TIMG2",
+        kind: "tim",
+        version: Some("v1"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA21",
+                signal: "CCP0",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "CCP0",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CCP1",
+                pf: Some(2u8),
             },
             PeripheralPin {
                 pin: "PA22",
                 signal: "CCP1",
-                pf: Some(6u8),
+                pf: Some(3u8),
             },
             PeripheralPin {
-                pin: "PA18",
-                signal: "CCP1_CMPL",
+                pin: "PA9",
+                signal: "CCP1",
+                pf: Some(5u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: None,
+    },
+    Peripheral {
+        name: "TIMG4",
+        kind: "tim",
+        version: Some("v1"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA20",
+                signal: "CCP0",
                 pf: Some(4u8),
             },
             PeripheralPin {
-                pin: "PA4",
-                signal: "CCP1_CMPL",
-                pf: Some(6u8),
+                pin: "PA10",
+                signal: "CCP0",
+                pf: Some(5u8),
             },
             PeripheralPin {
                 pin: "PA17",
-                signal: "CCP2",
+                signal: "CCP0",
                 pf: Some(5u8),
             },
             PeripheralPin {
-                pin: "PA19",
-                signal: "CCP2",
-                pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "CCP2_CMPL",
-                pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "CCP3",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CCP3",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "CCP3",
-                pf: Some(7u8),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "CCP3_CMPL",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "CCP3_CMPL",
-                pf: Some(7u8),
+                pin: "PA25",
+                signal: "CCP1",
+                pf: Some(2u8),
             },
             PeripheralPin {
                 pin: "PA11",
-                signal: "FAULT0",
-                pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "FAULT0",
-                pf: Some(7u8),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "FAULT0",
-                pf: Some(7u8),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "FAULT1",
-                pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA0",
-                signal: "FAULT1",
-                pf: Some(7u8),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "FAULT2",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "FAULT2",
-                pf: Some(7u8),
-            },
-        ],
-        power_domain: PowerDomain::Pd0,
-        sys_fentries: None,
-    },
-    Peripheral {
-        name: "TIMG14",
-        kind: "tim",
-        version: Some("v1"),
-        pins: &[
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CCP0",
-                pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "CCP0",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "CCP0",
-                pf: Some(6u8),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "CCP1",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "CCP1",
-                pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA25",
                 signal: "CCP1",
                 pf: Some(5u8),
             },
             PeripheralPin {
-                pin: "PA23",
+                pin: "PA15",
                 signal: "CCP1",
-                pf: Some(7u8),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "CCP2",
                 pf: Some(5u8),
             },
             PeripheralPin {
-                pin: "PA6",
-                signal: "CCP2",
-                pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "CCP3",
-                pf: Some(2u8),
-            },
-        ],
-        power_domain: PowerDomain::Pd0,
-        sys_fentries: None,
-    },
-    Peripheral {
-        name: "TIMG8",
-        kind: "tim",
-        version: Some("v1"),
-        pins: &[
-            PeripheralPin {
-                pin: "PA26",
-                signal: "CCP0",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA0",
-                signal: "CCP0",
-                pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA2",
+                pin: "PA18",
                 signal: "CCP1",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "CCP1",
-                pf: Some(2u8),
-            },
-            PeripheralPin {
-                pin: "PA1",
-                signal: "CCP1",
-                pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "IDX",
-                pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "IDX",
                 pf: Some(5u8),
             },
         ],
@@ -653,14 +769,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         version: Some("v1"),
         pins: &[
             PeripheralPin {
+                pin: "PA21",
+                signal: "CTS",
+                pf: Some(3u8),
+            },
+            PeripheralPin {
                 pin: "PA23",
                 signal: "CTS",
                 pf: Some(5u8),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "CTS",
-                pf: Some(7u8),
             },
             PeripheralPin {
                 pin: "PA22",
@@ -671,11 +787,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pin: "PA24",
                 signal: "RTS",
                 pf: Some(4u8),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "RTS",
-                pf: Some(7u8),
             },
             PeripheralPin {
                 pin: "PA18",
@@ -688,19 +799,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(2u8),
             },
             PeripheralPin {
+                pin: "PA9",
+                signal: "RX",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
                 pin: "PA26",
                 signal: "RX",
                 pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "RX",
-                pf: Some(3u8),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "RX",
-                pf: Some(7u8),
             },
             PeripheralPin {
                 pin: "PA17",
@@ -718,9 +824,78 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pf: Some(3u8),
             },
             PeripheralPin {
-                pin: "PA27",
+                pin: "PA21",
                 signal: "TX",
-                pf: Some(5u8),
+                pf: Some(4u8),
+            },
+        ],
+        power_domain: PowerDomain::Pd0,
+        sys_fentries: Some(4usize),
+    },
+    Peripheral {
+        name: "UART1",
+        kind: "uart",
+        version: Some("v1"),
+        pins: &[
+            PeripheralPin {
+                pin: "PA14",
+                signal: "CTS",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "CTS",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CTS",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "RTS",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "RTS",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "RX",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "RX",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "RX",
+                pf: Some(6u8),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "TX",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "TX",
+                pf: Some(2u8),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "TX",
+                pf: Some(4u8),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "TX",
+                pf: Some(6u8),
             },
         ],
         power_domain: PowerDomain::Pd0,
@@ -730,7 +905,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         name: "VREF",
         kind: "vref",
         version: None,
-        pins: &[],
+        pins: &[
+            PeripheralPin {
+                pin: "PA23",
+                signal: "VREF+",
+                pf: Some(0u8),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "VREF-",
+                pf: Some(0u8),
+            },
+        ],
         power_domain: PowerDomain::Pd0,
         sys_fentries: None,
     },
@@ -757,11 +943,11 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 0,
     },
     Interrupt {
-        name: "GPIOA",
+        name: "GROUP1",
         number: 1,
     },
     Interrupt {
-        name: "TIMG8",
+        name: "TIMG1",
         number: 2,
     },
     Interrupt {
@@ -773,68 +959,138 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 9,
     },
     Interrupt {
+        name: "UART1",
+        number: 13,
+    },
+    Interrupt {
         name: "UART0",
         number: 15,
     },
     Interrupt {
-        name: "TIMG14",
+        name: "TIMG0",
         number: 16,
     },
     Interrupt {
-        name: "TIMA0",
+        name: "TIMG2",
         number: 18,
+    },
+    Interrupt {
+        name: "TIMG4",
+        number: 20,
     },
     Interrupt {
         name: "I2C0",
         number: 24,
     },
     Interrupt {
+        name: "I2C1",
+        number: 25,
+    },
+    Interrupt {
         name: "DMA",
         number: 31,
     },
 ];
-pub(crate) static INTERRUPT_GROUPS: &[InterruptGroup] = &[InterruptGroup {
-    name: "GROUP0",
-    number: 0,
-    interrupts: &[
-        GroupInterrupt {
-            name: "WWDT0",
-            number: 0,
-        },
-        GroupInterrupt {
-            name: "DEBUGSS",
-            number: 2,
-        },
-        GroupInterrupt {
-            name: "FLASHCTL",
-            number: 3,
-        },
-        GroupInterrupt {
-            name: "SYSCTL",
-            number: 6,
-        },
-    ],
-}];
-pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[DmaChannel {
-    number: 0,
-    full: false,
-}];
+pub(crate) static INTERRUPT_GROUPS: &[InterruptGroup] = &[
+    InterruptGroup {
+        name: "GROUP0",
+        number: 0,
+        interrupts: &[
+            GroupInterrupt {
+                name: "WWDT0",
+                number: 0,
+            },
+            GroupInterrupt {
+                name: "DEBUGSS",
+                number: 2,
+            },
+            GroupInterrupt {
+                name: "FLASHCTL",
+                number: 3,
+            },
+            GroupInterrupt {
+                name: "SYSCTL",
+                number: 6,
+            },
+        ],
+    },
+    InterruptGroup {
+        name: "GROUP1",
+        number: 1,
+        interrupts: &[
+            GroupInterrupt {
+                name: "GPIOA",
+                number: 0,
+            },
+            GroupInterrupt {
+                name: "COMP0",
+                number: 2,
+            },
+        ],
+    },
+];
+pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
+    DmaChannel {
+        number: 0,
+        full: true,
+    },
+    DmaChannel {
+        number: 1,
+        full: false,
+    },
+    DmaChannel {
+        number: 2,
+        full: false,
+    },
+];
 pub(crate) static PINS: &[Pin] = &[
     Pin {
         pin: "PA26",
         pincm: 27u8,
     },
     Pin {
+        pin: "PA3",
+        pincm: 4u8,
+    },
+    Pin {
+        pin: "PA4",
+        pincm: 5u8,
+    },
+    Pin {
+        pin: "PA5",
+        pincm: 6u8,
+    },
+    Pin {
         pin: "PA6",
         pincm: 7u8,
     },
     Pin {
-        pin: "PA0",
-        pincm: 1u8,
+        pin: "PA9",
+        pincm: 10u8,
     },
     Pin {
-        pin: "PA1",
-        pincm: 2u8,
+        pin: "PA10",
+        pincm: 11u8,
+    },
+    Pin {
+        pin: "PA11",
+        pincm: 12u8,
+    },
+    Pin {
+        pin: "PA14",
+        pincm: 15u8,
+    },
+    Pin {
+        pin: "PA15",
+        pincm: 16u8,
+    },
+    Pin {
+        pin: "PA16",
+        pincm: 17u8,
+    },
+    Pin {
+        pin: "PA27",
+        pincm: 28u8,
     },
     Pin {
         pin: "PA17",
@@ -853,6 +1109,10 @@ pub(crate) static PINS: &[Pin] = &[
         pincm: 21u8,
     },
     Pin {
+        pin: "PA21",
+        pincm: 22u8,
+    },
+    Pin {
         pin: "PA22",
         pincm: 23u8,
     },
@@ -865,24 +1125,16 @@ pub(crate) static PINS: &[Pin] = &[
         pincm: 25u8,
     },
     Pin {
-        pin: "PA27",
-        pincm: 28u8,
-    },
-    Pin {
         pin: "PA25",
         pincm: 26u8,
     },
     Pin {
-        pin: "PA28",
-        pincm: 29u8,
+        pin: "PA0",
+        pincm: 1u8,
     },
     Pin {
-        pin: "PA4",
-        pincm: 5u8,
-    },
-    Pin {
-        pin: "PA11",
-        pincm: 12u8,
+        pin: "PA1",
+        pincm: 2u8,
     },
     Pin {
         pin: "PA2",
