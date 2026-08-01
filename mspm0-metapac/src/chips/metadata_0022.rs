@@ -347,6 +347,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sys_fentries: None,
     },
     Peripheral {
+        name: "FACTORYREGION",
+        kind: "factoryregion",
+        version: Some("v1"),
+        pins: &[],
+        power_domain: PowerDomain::Pd1,
+        sys_fentries: None,
+    },
+    Peripheral {
         name: "FLASHCTL",
         kind: "flashctl",
         version: Some("v1"),

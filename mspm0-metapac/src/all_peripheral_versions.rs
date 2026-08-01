@@ -3,6 +3,7 @@ pub static ALL_PERIPHERAL_VERSIONS: &[(&str, &[&str])] = &[
     ("canfd", &["v1"]),
     ("cpuss", &["v1"]),
     ("dma", &["v1"]),
+    ("factoryregion", &["v1"]),
     ("flashctl", &["v1"]),
     ("gpio", &["v1"]),
     ("i2c", &["v1"]),

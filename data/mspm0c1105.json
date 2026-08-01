@@ -2213,6 +2213,14 @@
       "power_domain": "Pd0",
       "pins": []
     },
+    "FACTORYREGION": {
+      "name": "FACTORYREGION",
+      "type": "FactoryRegion",
+      "version": "v1",
+      "address": 1103364096,
+      "power_domain": "Pd1",
+      "pins": []
+    },
     "FLASHCTL": {
       "name": "FLASHCTL",
       "type": "FlashCtl",
