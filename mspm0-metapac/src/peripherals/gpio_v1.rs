@@ -1536,24 +1536,24 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "Fport {{ chanid: {=u8:?} }}", self.chanid())
         }
     }
-    #[doc = "Interrupt clear."]
+    #[doc = "Generic event mask, one bit per DIO."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GenEvent(pub u32);
     impl GenEvent {
-        #[doc = "DIO0 event."]
+        #[doc = "DIO event."]
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
-            assert!(n < 16usize);
+            assert!(n < 32usize);
             let offs = 0usize + n * 1usize;
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "DIO0 event."]
+        #[doc = "DIO event."]
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
-            assert!(n < 16usize);
+            assert!(n < 32usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
@@ -1583,13 +1583,29 @@ is enabled, this register is used to manually control the peripheral's clock req
                 .field("dio[13]", &self.dio(13usize))
                 .field("dio[14]", &self.dio(14usize))
                 .field("dio[15]", &self.dio(15usize))
+                .field("dio[16]", &self.dio(16usize))
+                .field("dio[17]", &self.dio(17usize))
+                .field("dio[18]", &self.dio(18usize))
+                .field("dio[19]", &self.dio(19usize))
+                .field("dio[20]", &self.dio(20usize))
+                .field("dio[21]", &self.dio(21usize))
+                .field("dio[22]", &self.dio(22usize))
+                .field("dio[23]", &self.dio(23usize))
+                .field("dio[24]", &self.dio(24usize))
+                .field("dio[25]", &self.dio(25usize))
+                .field("dio[26]", &self.dio(26usize))
+                .field("dio[27]", &self.dio(27usize))
+                .field("dio[28]", &self.dio(28usize))
+                .field("dio[29]", &self.dio(29usize))
+                .field("dio[30]", &self.dio(30usize))
+                .field("dio[31]", &self.dio(31usize))
                 .finish()
         }
     }
     #[cfg(feature = "defmt")]
     impl defmt::Format for GenEvent {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "GenEvent {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize))
+            defmt :: write ! (f , "GenEvent {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
         }
     }
     #[doc = "Interrupt index."]

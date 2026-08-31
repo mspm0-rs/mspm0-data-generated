@@ -281,13 +281,13 @@ pub mod regs {
         #[must_use]
         #[inline(always)]
         pub const fn int(&self) -> super::vals::Iclr {
-            let val = (self.0 >> 0usize) & 0x01;
+            let val = (self.0 >> 0usize) & 0xff;
             super::vals::Iclr::from_bits(val as u8)
         }
         #[doc = "Clears INT in RIS register."]
         #[inline(always)]
         pub const fn set_int(&mut self, val: super::vals::Iclr) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for Iclr {
@@ -386,13 +386,13 @@ pub mod regs {
         #[must_use]
         #[inline(always)]
         pub const fn int(&self) -> super::vals::Iset {
-            let val = (self.0 >> 0usize) & 0x01;
+            let val = (self.0 >> 0usize) & 0xff;
             super::vals::Iset::from_bits(val as u8)
         }
         #[doc = "Sets INT in RIS register."]
         #[inline(always)]
         pub const fn set_int(&mut self, val: super::vals::Iset) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for Iset {
@@ -421,13 +421,13 @@ pub mod regs {
         #[must_use]
         #[inline(always)]
         pub const fn int(&self) -> super::vals::Mis {
-            let val = (self.0 >> 0usize) & 0x01;
+            let val = (self.0 >> 0usize) & 0xff;
             super::vals::Mis::from_bits(val as u8)
         }
         #[doc = "Masked interrupt status for INT."]
         #[inline(always)]
         pub const fn set_int(&mut self, val: super::vals::Mis) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for Mis {
@@ -515,23 +515,40 @@ pub mod vals {
             Icache::to_bits(val)
         }
     }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
-    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
-    pub enum Iclr {
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct Iclr(u8);
+    impl Iclr {
         #[doc = "Writing a 0 has no effect."]
-        NoEffect = 0x0,
+        pub const NoEffect: Self = Self(0x0);
         #[doc = "RIS bit corresponding to INT is cleared."]
-        Clr = 0x01,
+        pub const Clr: Self = Self(0x01);
     }
     impl Iclr {
-        #[inline(always)]
         pub const fn from_bits(val: u8) -> Iclr {
-            unsafe { core::mem::transmute(val & 0x01) }
+            Self(val & 0xff)
         }
-        #[inline(always)]
         pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
+            self.0
+        }
+    }
+    impl core::fmt::Debug for Iclr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("NoEffect"),
+                0x01 => f.write_str("Clr"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Iclr {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "NoEffect"),
+                0x01 => defmt::write!(f, "Clr"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for Iclr {
@@ -704,23 +721,40 @@ pub mod vals {
             IntCfg::to_bits(val)
         }
     }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
-    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
-    pub enum Iset {
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct Iset(u8);
+    impl Iset {
         #[doc = "Writing a 0 has no effect."]
-        NoEffect = 0x0,
+        pub const NoEffect: Self = Self(0x0);
         #[doc = "RIS bit corresponding to INT is set."]
-        Set = 0x01,
+        pub const Set: Self = Self(0x01);
     }
     impl Iset {
-        #[inline(always)]
         pub const fn from_bits(val: u8) -> Iset {
-            unsafe { core::mem::transmute(val & 0x01) }
+            Self(val & 0xff)
         }
-        #[inline(always)]
         pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
+            self.0
+        }
+    }
+    impl core::fmt::Debug for Iset {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("NoEffect"),
+                0x01 => f.write_str("Set"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Iset {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "NoEffect"),
+                0x01 => defmt::write!(f, "Set"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for Iset {
@@ -766,23 +800,40 @@ pub mod vals {
             Liten::to_bits(val)
         }
     }
-    #[repr(u8)]
-    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
-    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
-    pub enum Mis {
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct Mis(u8);
+    impl Mis {
         #[doc = "INT does not request an interrupt service routine."]
-        Clr = 0x0,
+        pub const Clr: Self = Self(0x0);
         #[doc = "INT requests an interrupt service routine."]
-        Set = 0x01,
+        pub const Set: Self = Self(0x01);
     }
     impl Mis {
-        #[inline(always)]
         pub const fn from_bits(val: u8) -> Mis {
-            unsafe { core::mem::transmute(val & 0x01) }
+            Self(val & 0xff)
         }
-        #[inline(always)]
         pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
+            self.0
+        }
+    }
+    impl core::fmt::Debug for Mis {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("Clr"),
+                0x01 => f.write_str("Set"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Mis {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "Clr"),
+                0x01 => defmt::write!(f, "Set"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for Mis {
