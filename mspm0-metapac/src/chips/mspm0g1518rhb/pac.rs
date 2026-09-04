@@ -175,6 +175,8 @@ pub use cortex_m_rt::interrupt;
 pub use Interrupt as interrupt;
 #[path = "../../peripherals/adc_v1.rs"]
 pub mod adc;
+#[path = "../../peripherals/aesadv_v1.rs"]
+pub mod aesadv;
 #[path = "../../peripherals/cpuss_v1.rs"]
 pub mod cpuss;
 #[path = "../../peripherals/dma_v1.rs"]
@@ -203,8 +205,7 @@ pub mod uart;
 pub mod wwdt;
 pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073741824 as *mut _) };
 pub const ADC1: adc::Adc = unsafe { adc::Adc::from_ptr(1073750016 as *mut _) };
-#[doc = "Address: 1078206464"]
-pub const AESADV: () = ();
+pub const AESADV: aesadv::Aesadv = unsafe { aesadv::Aesadv::from_ptr(1078206464 as *mut _) };
 #[doc = "Address: 1073774592"]
 pub const COMP0: () = ();
 #[doc = "Address: 1073782784"]

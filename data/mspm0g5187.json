@@ -1898,6 +1898,7 @@
     "AESADV": {
       "name": "AESADV",
       "type": "AesAdv",
+      "version": "v1",
       "address": 1078206464,
       "power_domain": "Pd1",
       "pins": []
