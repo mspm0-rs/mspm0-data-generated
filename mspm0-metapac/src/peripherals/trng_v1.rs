@@ -3,7 +3,6 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Gprcm {
     ptr: *mut u8,
@@ -19,23 +18,23 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::GprcmStat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
 }
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Trng {
     ptr: *mut u8,
@@ -55,84 +54,87 @@ impl Trng {
     pub const fn gprcm(self) -> Gprcm {
         unsafe { Gprcm::from_ptr(self.ptr.wrapping_add(0x0800usize) as _) }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::Iidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1020usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1028usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::Int, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1030usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::Int, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1038usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::Int, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1040usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::Int, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1048usize) as _) }
     }
-    #[doc = "Module descriptions."]
+    ///Module descriptions.
     #[inline(always)]
     pub const fn desc(self) -> crate::common::Reg<regs::Desc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10fcusize) as _) }
     }
-    #[doc = "Controls the command and decimation rate."]
+    ///Controls the command and decimation rate.
     #[inline(always)]
     pub const fn ctl(self) -> crate::common::Reg<regs::Ctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1100usize) as _) }
     }
-    #[doc = "Status register that informs health test results and last issued command."]
+    ///Status register that informs health test results and last issued command.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1104usize) as _) }
     }
-    #[doc = "Captured word buffer of RNG data."]
+    ///Captured word buffer of RNG data.
     #[inline(always)]
     pub const fn data_capture(self) -> crate::common::Reg<u32, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1108usize) as _) }
     }
-    #[doc = "Test results from TEST_ANA and TEST_DIG."]
+    ///Test results from TEST_ANA and TEST_DIG.
     #[inline(always)]
-    pub const fn test_results(self) -> crate::common::Reg<regs::TestResults, crate::common::R> {
+    pub const fn test_results(
+        self,
+    ) -> crate::common::Reg<regs::TestResults, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x110cusize) as _) }
     }
-    #[doc = "Clock Divider."]
+    ///Clock Divider.
     #[inline(always)]
     pub const fn clkdiv(self) -> crate::common::Reg<regs::Clkdiv, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1110usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "Clock Divider."]
+    ///Clock Divider.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clkdiv(pub u32);
     impl Clkdiv {
-        #[doc = "Selects divide ratio of module clock."]
+        ///Selects divide ratio of module clock.
         #[must_use]
         #[inline(always)]
         pub const fn ratio(&self) -> super::vals::Ratio {
             let val = (self.0 >> 0usize) & 0x07;
             super::vals::Ratio::from_bits(val as u8)
         }
-        #[doc = "Selects divide ratio of module clock."]
+        ///Selects divide ratio of module clock.
         #[inline(always)]
         pub const fn set_ratio(&mut self, val: super::vals::Ratio) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
+            self.0 = (self.0 & !(0x07 << 0usize))
+                | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
     }
     impl Default for Clkdiv {
@@ -143,9 +145,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Clkdiv {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Clkdiv")
-                .field("ratio", &self.ratio())
-                .finish()
+            f.debug_struct("Clkdiv").field("ratio", &self.ratio()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -154,70 +154,74 @@ pub mod regs {
             defmt::write!(f, "Clkdiv {{ ratio: {:?} }}", self.ratio())
         }
     }
-    #[doc = "Controls the command and decimation rate."]
+    ///Controls the command and decimation rate.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl(pub u32);
     impl Ctl {
-        #[doc = "Sets the TRNG mode through a command. The mode will not be updated until the previous command is done, as indicated by IRQ_CMD_DONE."]
+        ///Sets the TRNG mode through a command. The mode will not be updated until the previous command is done, as indicated by IRQ_CMD_DONE.
         #[must_use]
         #[inline(always)]
         pub const fn cmd(&self) -> super::vals::Cmd {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::Cmd::from_bits(val as u8)
         }
-        #[doc = "Sets the TRNG mode through a command. The mode will not be updated until the previous command is done, as indicated by IRQ_CMD_DONE."]
+        ///Sets the TRNG mode through a command. The mode will not be updated until the previous command is done, as indicated by IRQ_CMD_DONE.
         #[inline(always)]
         pub const fn set_cmd(&mut self, val: super::vals::Cmd) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "Set decimation rate."]
+        ///Set decimation rate.
         #[must_use]
         #[inline(always)]
         pub const fn decim_rate(&self) -> super::vals::DecimRate {
             let val = (self.0 >> 8usize) & 0x07;
             super::vals::DecimRate::from_bits(val as u8)
         }
-        #[doc = "Set decimation rate."]
+        ///Set decimation rate.
         #[inline(always)]
         pub const fn set_decim_rate(&mut self, val: super::vals::DecimRate) {
-            self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
+            self.0 = (self.0 & !(0x07 << 8usize))
+                | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
-        #[doc = "When '1', the powerup sequence will take twice as long (i.e., clock frequency halved)."]
+        ///When '1', the powerup sequence will take twice as long (i.e., clock frequency halved).
         #[must_use]
         #[inline(always)]
         pub const fn pwrup_clkdiv(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "When '1', the powerup sequence will take twice as long (i.e., clock frequency halved)."]
+        ///When '1', the powerup sequence will take twice as long (i.e., clock frequency halved).
         #[inline(always)]
         pub const fn set_pwrup_clkdiv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
-        #[doc = "Configure PCHARGE sequence length."]
+        ///Configure PCHARGE sequence length.
         #[must_use]
         #[inline(always)]
         pub const fn pwrup_pchrg_cfg(&self) -> super::vals::PwrupPchrg {
             let val = (self.0 >> 17usize) & 0x03;
             super::vals::PwrupPchrg::from_bits(val as u8)
         }
-        #[doc = "Configure PCHARGE sequence length."]
+        ///Configure PCHARGE sequence length.
         #[inline(always)]
         pub const fn set_pwrup_pchrg_cfg(&mut self, val: super::vals::PwrupPchrg) {
-            self.0 = (self.0 & !(0x03 << 17usize)) | (((val.to_bits() as u32) & 0x03) << 17usize);
+            self.0 = (self.0 & !(0x03 << 17usize))
+                | (((val.to_bits() as u32) & 0x03) << 17usize);
         }
-        #[doc = "Configure pulse startup sequence length."]
+        ///Configure pulse startup sequence length.
         #[must_use]
         #[inline(always)]
         pub const fn pwrup_pstart_cfg(&self) -> super::vals::PwrupPstart {
             let val = (self.0 >> 19usize) & 0x03;
             super::vals::PwrupPstart::from_bits(val as u8)
         }
-        #[doc = "Configure pulse startup sequence length."]
+        ///Configure pulse startup sequence length.
         #[inline(always)]
         pub const fn set_pwrup_pstart_cfg(&mut self, val: super::vals::PwrupPstart) {
-            self.0 = (self.0 & !(0x03 << 19usize)) | (((val.to_bits() as u32) & 0x03) << 19usize);
+            self.0 = (self.0 & !(0x03 << 19usize))
+                | (((val.to_bits() as u32) & 0x03) << 19usize);
         }
     }
     impl Default for Ctl {
@@ -240,73 +244,79 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctl {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctl {{ cmd: {:?}, decim_rate: {:?}, pwrup_clkdiv: {=bool:?}, pwrup_pchrg_cfg: {:?}, pwrup_pstart_cfg: {:?} }}" , self . cmd () , self . decim_rate () , self . pwrup_clkdiv () , self . pwrup_pchrg_cfg () , self . pwrup_pstart_cfg ())
+            defmt::write!(
+                f,
+                "Ctl {{ cmd: {:?}, decim_rate: {:?}, pwrup_clkdiv: {=bool:?}, pwrup_pchrg_cfg: {:?}, pwrup_pstart_cfg: {:?} }}",
+                self.cmd(), self.decim_rate(), self.pwrup_clkdiv(), self
+                .pwrup_pchrg_cfg(), self.pwrup_pstart_cfg()
+            )
         }
     }
-    #[doc = "Module descriptions."]
+    ///Module descriptions.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Desc(pub u32);
     impl Desc {
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn minrev(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[inline(always)]
         pub const fn set_minrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn majrev(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
             val as u8
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[inline(always)]
         pub const fn set_majrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
+        ///Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances.
         #[must_use]
         #[inline(always)]
         pub const fn instnum(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
             val as u8
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
+        ///Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances.
         #[inline(always)]
         pub const fn set_instnum(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[must_use]
         #[inline(always)]
         pub const fn featurever(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
             val as u8
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[inline(always)]
         pub const fn set_featurever(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
-        #[doc = "Module Identifier - An internal TI page has been created to request unique module IDs."]
+        ///Module Identifier - An internal TI page has been created to request unique module IDs.
         #[must_use]
         #[inline(always)]
         pub const fn moduleid(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
             val as u16
         }
-        #[doc = "Module Identifier - An internal TI page has been created to request unique module IDs."]
+        ///Module Identifier - An internal TI page has been created to request unique module IDs.
         #[inline(always)]
         pub const fn set_moduleid(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
+            self.0 = (self.0 & !(0xffff << 16usize))
+                | (((val as u32) & 0xffff) << 16usize);
         }
     }
     impl Default for Desc {
@@ -329,22 +339,27 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Desc {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, instnum: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}" , self . minrev () , self . majrev () , self . instnum () , self . featurever () , self . moduleid ())
+            defmt::write!(
+                f,
+                "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, instnum: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}",
+                self.minrev(), self.majrev(), self.instnum(), self.featurever(), self
+                .moduleid()
+            )
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GprcmStat(pub u32);
     impl GprcmStat {
-        #[doc = "This bit indicates if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstky(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[inline(always)]
         pub const fn set_resetstky(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
@@ -358,9 +373,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for GprcmStat {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("GprcmStat")
-                .field("resetstky", &self.resetstky())
-                .finish()
+            f.debug_struct("GprcmStat").field("resetstky", &self.resetstky()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -369,22 +382,23 @@ pub mod regs {
             defmt::write!(f, "GprcmStat {{ resetstky: {=bool:?} }}", self.resetstky())
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iidx(pub u32);
     impl Iidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::Stat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::Stat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::Stat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for Iidx {
@@ -404,55 +418,55 @@ pub mod regs {
             defmt::write!(f, "Iidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Int(pub u32);
     impl Int {
-        #[doc = "Mask for IRQ_HEALTH_FAIL. Indicates that a health test has failed."]
+        ///Mask for IRQ_HEALTH_FAIL. Indicates that a health test has failed.
         #[must_use]
         #[inline(always)]
         pub const fn irq_health_fail(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Mask for IRQ_HEALTH_FAIL. Indicates that a health test has failed."]
+        ///Mask for IRQ_HEALTH_FAIL. Indicates that a health test has failed.
         #[inline(always)]
         pub const fn set_irq_health_fail(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Masked interrupt source for IRQ_CMD_FAIL. Indicates that the just issued command/mode has been rejected."]
+        ///Masked interrupt source for IRQ_CMD_FAIL. Indicates that the just issued command/mode has been rejected.
         #[must_use]
         #[inline(always)]
         pub const fn irq_cmd_fail(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Masked interrupt source for IRQ_CMD_FAIL. Indicates that the just issued command/mode has been rejected."]
+        ///Masked interrupt source for IRQ_CMD_FAIL. Indicates that the just issued command/mode has been rejected.
         #[inline(always)]
         pub const fn set_irq_cmd_fail(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Mask for IRQ_CMD_DONE. Indicates that a command has finished."]
+        ///Mask for IRQ_CMD_DONE. Indicates that a command has finished.
         #[must_use]
         #[inline(always)]
         pub const fn irq_cmd_done(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Mask for IRQ_CMD_DONE. Indicates that a command has finished."]
+        ///Mask for IRQ_CMD_DONE. Indicates that a command has finished.
         #[inline(always)]
         pub const fn set_irq_cmd_done(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "Mask for IRQ_CAPTURED_RDY. Indicates to the CPU that the Captured Word is ready to be read."]
+        ///Mask for IRQ_CAPTURED_RDY. Indicates to the CPU that the Captured Word is ready to be read.
         #[must_use]
         #[inline(always)]
         pub const fn irq_captured_rdy(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
-        #[doc = "Mask for IRQ_CAPTURED_RDY. Indicates to the CPU that the Captured Word is ready to be read."]
+        ///Mask for IRQ_CAPTURED_RDY. Indicates to the CPU that the Captured Word is ready to be read.
         #[inline(always)]
         pub const fn set_irq_captured_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
@@ -477,37 +491,43 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Int {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Int {{ irq_health_fail: {=bool:?}, irq_cmd_fail: {=bool:?}, irq_cmd_done: {=bool:?}, irq_captured_rdy: {=bool:?} }}" , self . irq_health_fail () , self . irq_cmd_fail () , self . irq_cmd_done () , self . irq_captured_rdy ())
+            defmt::write!(
+                f,
+                "Int {{ irq_health_fail: {=bool:?}, irq_cmd_fail: {=bool:?}, irq_cmd_done: {=bool:?}, irq_captured_rdy: {=bool:?} }}",
+                self.irq_health_fail(), self.irq_cmd_fail(), self.irq_cmd_done(), self
+                .irq_captured_rdy()
+            )
         }
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pwren(pub u32);
     impl Pwren {
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[must_use]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[inline(always)]
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "KEY to allow Power State Change."]
+        ///KEY to allow Power State Change.
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::PwrenKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::PwrenKey::from_bits(val as u8)
         }
-        #[doc = "KEY to allow Power State Change."]
+        ///KEY to allow Power State Change.
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::PwrenKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Pwren {
@@ -528,53 +548,51 @@ pub mod regs {
     impl defmt::Format for Pwren {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pwren {{ enable: {=bool:?}, key: {:?} }}",
-                self.enable(),
-                self.key()
+                f, "Pwren {{ enable: {=bool:?}, key: {:?} }}", self.enable(), self.key()
             )
         }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[must_use]
         #[inline(always)]
         pub const fn resetassert(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[inline(always)]
         pub const fn set_resetassert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[inline(always)]
         pub const fn set_resetstkyclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Unlock key."]
+        ///Unlock key.
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::RstctlKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::RstctlKey::from_bits(val as u8)
         }
-        #[doc = "Unlock key."]
+        ///Unlock key.
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::RstctlKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Rstctl {
@@ -598,64 +616,64 @@ pub mod regs {
             defmt::write!(
                 f,
                 "Rstctl {{ resetassert: {=bool:?}, resetstkyclr: {=bool:?}, key: {:?} }}",
-                self.resetassert(),
-                self.resetstkyclr(),
-                self.key()
+                self.resetassert(), self.resetstkyclr(), self.key()
             )
         }
     }
-    #[doc = "Status register that informs health test results and last issued command."]
+    ///Status register that informs health test results and last issued command.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "Indicates that the Adaptive Proportion Test (1,2,3, or 4-bit counters) failed by having too many or too few counted samples in the last 1024 bit window."]
+        ///Indicates that the Adaptive Proportion Test (1,2,3, or 4-bit counters) failed by having too many or too few counted samples in the last 1024 bit window.
         #[must_use]
         #[inline(always)]
         pub const fn adap_fail(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Indicates that the Adaptive Proportion Test (1,2,3, or 4-bit counters) failed by having too many or too few counted samples in the last 1024 bit window."]
+        ///Indicates that the Adaptive Proportion Test (1,2,3, or 4-bit counters) failed by having too many or too few counted samples in the last 1024 bit window.
         #[inline(always)]
         pub const fn set_adap_fail(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Indicates that the repetition counter test caused the most recent failure. Thus, the health count numbers are most likely not for a complete 1024-bit window."]
+        ///Indicates that the repetition counter test caused the most recent failure. Thus, the health count numbers are most likely not for a complete 1024-bit window.
         #[must_use]
         #[inline(always)]
         pub const fn rep_fail(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Indicates that the repetition counter test caused the most recent failure. Thus, the health count numbers are most likely not for a complete 1024-bit window."]
+        ///Indicates that the repetition counter test caused the most recent failure. Thus, the health count numbers are most likely not for a complete 1024-bit window.
         #[inline(always)]
         pub const fn set_rep_fail(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Indicates the last accepted command that is issued to the TRNG interface. Upon writing a valid command, this register will update and the command will be in progress until CMD_DONE_IRQ is set. CMD_DONE_IRQ indicates that the state is in PWROFF, NORM_FUNC, or ERROR. These states will accept new commands."]
+        ///Indicates the last accepted command that is issued to the TRNG interface. Upon writing a valid command, this register will update and the command will be in progress until CMD_DONE_IRQ is set. CMD_DONE_IRQ indicates that the state is in PWROFF, NORM_FUNC, or ERROR. These states will accept new commands.
         #[must_use]
         #[inline(always)]
         pub const fn issued_cmd(&self) -> super::vals::Cmd {
             let val = (self.0 >> 8usize) & 0x03;
             super::vals::Cmd::from_bits(val as u8)
         }
-        #[doc = "Indicates the last accepted command that is issued to the TRNG interface. Upon writing a valid command, this register will update and the command will be in progress until CMD_DONE_IRQ is set. CMD_DONE_IRQ indicates that the state is in PWROFF, NORM_FUNC, or ERROR. These states will accept new commands."]
+        ///Indicates the last accepted command that is issued to the TRNG interface. Upon writing a valid command, this register will update and the command will be in progress until CMD_DONE_IRQ is set. CMD_DONE_IRQ indicates that the state is in PWROFF, NORM_FUNC, or ERROR. These states will accept new commands.
         #[inline(always)]
         pub const fn set_issued_cmd(&mut self, val: super::vals::Cmd) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize))
+                | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
-        #[doc = "Current state of the front end FSM (behind a clock domain crossing). 2 reads are REQUIRED as there is a chance of metastability when reading this."]
+        ///Current state of the front end FSM (behind a clock domain crossing). 2 reads are REQUIRED as there is a chance of metastability when reading this.
         #[must_use]
         #[inline(always)]
         pub const fn fsm_state(&self) -> super::vals::FsmState {
             let val = (self.0 >> 16usize) & 0x0f;
             super::vals::FsmState::from_bits(val as u8)
         }
-        #[doc = "Current state of the front end FSM (behind a clock domain crossing). 2 reads are REQUIRED as there is a chance of metastability when reading this."]
+        ///Current state of the front end FSM (behind a clock domain crossing). 2 reads are REQUIRED as there is a chance of metastability when reading this.
         #[inline(always)]
         pub const fn set_fsm_state(&mut self, val: super::vals::FsmState) {
-            self.0 = (self.0 & !(0x0f << 16usize)) | (((val.to_bits() as u32) & 0x0f) << 16usize);
+            self.0 = (self.0 & !(0x0f << 16usize))
+                | (((val.to_bits() as u32) & 0x0f) << 16usize);
         }
     }
     impl Default for Stat {
@@ -677,15 +695,19 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Stat {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Stat {{ adap_fail: {=bool:?}, rep_fail: {=bool:?}, issued_cmd: {:?}, fsm_state: {:?} }}" , self . adap_fail () , self . rep_fail () , self . issued_cmd () , self . fsm_state ())
+            defmt::write!(
+                f,
+                "Stat {{ adap_fail: {=bool:?}, rep_fail: {=bool:?}, issued_cmd: {:?}, fsm_state: {:?} }}",
+                self.adap_fail(), self.rep_fail(), self.issued_cmd(), self.fsm_state()
+            )
         }
     }
-    #[doc = "Test results from TEST_ANA and TEST_DIG."]
+    ///Test results from TEST_ANA and TEST_DIG.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TestResults(pub u32);
     impl TestResults {
-        #[doc = "Indicates if the decimation rate test and health test (verifies conditioning, decimation, and captured buffer) has succeeded."]
+        ///Indicates if the decimation rate test and health test (verifies conditioning, decimation, and captured buffer) has succeeded.
         #[must_use]
         #[inline(always)]
         pub const fn dig_test(&self, n: usize) -> bool {
@@ -694,21 +716,21 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Indicates if the decimation rate test and health test (verifies conditioning, decimation, and captured buffer) has succeeded."]
+        ///Indicates if the decimation rate test and health test (verifies conditioning, decimation, and captured buffer) has succeeded.
         #[inline(always)]
         pub const fn set_dig_test(&mut self, n: usize, val: bool) {
             assert!(n < 8usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
-        #[doc = "Runs through 4096 samples from an enabled entropy source and verifies that none of the health tests failed, indicating sufficient entropy was produced by the analog components."]
+        ///Runs through 4096 samples from an enabled entropy source and verifies that none of the health tests failed, indicating sufficient entropy was produced by the analog components.
         #[must_use]
         #[inline(always)]
         pub const fn ana_test(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "Runs through 4096 samples from an enabled entropy source and verifies that none of the health tests failed, indicating sufficient entropy was produced by the analog components."]
+        ///Runs through 4096 samples from an enabled entropy source and verifies that none of the health tests failed, indicating sufficient entropy was produced by the analog components.
         #[inline(always)]
         pub const fn set_ana_test(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
@@ -738,7 +760,13 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for TestResults {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "TestResults {{ dig_test[0]: {=bool:?}, dig_test[1]: {=bool:?}, dig_test[2]: {=bool:?}, dig_test[3]: {=bool:?}, dig_test[4]: {=bool:?}, dig_test[5]: {=bool:?}, dig_test[6]: {=bool:?}, dig_test[7]: {=bool:?}, ana_test: {=bool:?} }}" , self . dig_test (0usize) , self . dig_test (1usize) , self . dig_test (2usize) , self . dig_test (3usize) , self . dig_test (4usize) , self . dig_test (5usize) , self . dig_test (6usize) , self . dig_test (7usize) , self . ana_test ())
+            defmt::write!(
+                f,
+                "TestResults {{ dig_test[0]: {=bool:?}, dig_test[1]: {=bool:?}, dig_test[2]: {=bool:?}, dig_test[3]: {=bool:?}, dig_test[4]: {=bool:?}, dig_test[5]: {=bool:?}, dig_test[6]: {=bool:?}, dig_test[7]: {=bool:?}, ana_test: {=bool:?} }}",
+                self.dig_test(0usize), self.dig_test(1usize), self.dig_test(2usize), self
+                .dig_test(3usize), self.dig_test(4usize), self.dig_test(5usize), self
+                .dig_test(6usize), self.dig_test(7usize), self.ana_test()
+            )
         }
     }
 }
@@ -747,13 +775,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Cmd {
-        #[doc = "Turns the power off of the analog source and clocks the digital interface."]
+        ///Turns the power off of the analog source and clocks the digital interface.
         PwrOff = 0x0,
-        #[doc = "Initiates the powerup test sequence for the digital components. This verifies that the digital components are properly working. IRQ_CMD_DONE indicates that the test is done. The results of this test are in DIG_TEST of the TEST_RESULTS register."]
+        ///Initiates the powerup test sequence for the digital components. This verifies that the digital components are properly working. IRQ_CMD_DONE indicates that the test is done. The results of this test are in DIG_TEST of the TEST_RESULTS register.
         PwrupDig = 0x01,
-        #[doc = "Initiates the powerup test sequence for the analog TRNG. This verifies that the analog component is generating sequences with enough entropy. IRQ_CMD_DONE indicates that the test is done. The results of this test are ANA_TEST of the TEST_RESULTS register."]
+        ///Initiates the powerup test sequence for the analog TRNG. This verifies that the analog component is generating sequences with enough entropy. IRQ_CMD_DONE indicates that the test is done. The results of this test are ANA_TEST of the TEST_RESULTS register.
         PwrupAna = 0x02,
-        #[doc = "Normal operating mode for TRNG. All components are turned on."]
+        ///Normal operating mode for TRNG. All components are turned on.
         NormFunc = 0x03,
     }
     impl Cmd {
@@ -782,21 +810,21 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum DecimRate {
-        #[doc = "Decimation by 1 (no decimation)"]
+        ///Decimation by 1 (no decimation)
         Decim1 = 0x0,
-        #[doc = "Decimation by 2 (skip every other sample)"]
+        ///Decimation by 2 (skip every other sample)
         Decim2 = 0x01,
-        #[doc = "Decimation by 3 (take every 3rd sample)"]
+        ///Decimation by 3 (take every 3rd sample)
         Decim3 = 0x02,
-        #[doc = "Decimation by 4 (take every 4th sample)"]
+        ///Decimation by 4 (take every 4th sample)
         Decim4 = 0x03,
-        #[doc = "Decimation by 5 (take every 5th sample)"]
+        ///Decimation by 5 (take every 5th sample)
         Decim5 = 0x04,
-        #[doc = "Decimation by 6 (take every 6th sample)"]
+        ///Decimation by 6 (take every 6th sample)
         Decim6 = 0x05,
-        #[doc = "Decimation by 7 (take every 7th sample)"]
+        ///Decimation by 7 (take every 7th sample)
         Decim7 = 0x06,
-        #[doc = "Decimation by 8 (take every 8th sample)"]
+        ///Decimation by 8 (take every 8th sample)
         Decim8 = 0x07,
     }
     impl DecimRate {
@@ -912,11 +940,11 @@ pub mod vals {
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum PwrupPchrg {
         Disable = 0x0,
-        #[doc = "20 us PCHARGE"]
+        ///20 us PCHARGE
         Us20 = 0x01,
-        #[doc = "30 us PCHARGE (default)"]
+        ///30 us PCHARGE (default)
         Us30 = 0x02,
-        #[doc = "40 us PCHARGE"]
+        ///40 us PCHARGE
         Us40 = 0x03,
     }
     impl PwrupPchrg {
@@ -946,11 +974,11 @@ pub mod vals {
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum PwrupPstart {
         Disable = 0x0,
-        #[doc = "rise at 10us, fall at 50us"]
+        ///rise at 10us, fall at 50us
         Rise10Fall50 = 0x01,
-        #[doc = "rise at 10us, fall at 70us (default)"]
+        ///rise at 10us, fall at 70us (default)
         Rise10Fall70 = 0x02,
-        #[doc = "rise at 10us, fall at 90us"]
+        ///rise at 10us, fall at 90us
         Rise10Fall90 = 0x03,
     }
     impl PwrupPstart {
@@ -979,18 +1007,18 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Ratio {
-        #[doc = "Do not divide clock source."]
+        ///Do not divide clock source.
         DivBy1 = 0x0,
-        #[doc = "Divide clock source by 2."]
+        ///Divide clock source by 2.
         DivBy2 = 0x01,
         _RESERVED_2 = 0x02,
-        #[doc = "Divide clock source by 4."]
+        ///Divide clock source by 4.
         DivBy4 = 0x03,
         _RESERVED_4 = 0x04,
-        #[doc = "Divide clock source by 6."]
+        ///Divide clock source by 6.
         DivBy6 = 0x05,
         _RESERVED_6 = 0x06,
-        #[doc = "Divide clock source by 8."]
+        ///Divide clock source by 8.
         DivBy8 = 0x07,
     }
     impl Ratio {
@@ -1062,15 +1090,15 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct Stat(u8);
     impl Stat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "Indicates that a health test has failed. The TRNG is in an error state until the interrupt is cleared."]
+        ///Indicates that a health test has failed. The TRNG is in an error state until the interrupt is cleared.
         pub const IrqHealthFail: Self = Self(0x01);
-        #[doc = "Indicates that the just issued command was rejected and is not being performed."]
+        ///Indicates that the just issued command was rejected and is not being performed.
         pub const IrqCmdFail: Self = Self(0x02);
-        #[doc = "Indicates that the current command/mode is done. This may have different meanings based on the mode: OFF --> Power has been turned off PWRUP_DIG --> Digital powerup tests are done PWRUP_ANA --> Analog powerup tests are done NORM_FUNC --> No IRQ, since mode runs indefinitely until a new command is issued."]
+        ///Indicates that the current command/mode is done. This may have different meanings based on the mode: OFF --> Power has been turned off PWRUP_DIG --> Digital powerup tests are done PWRUP_ANA --> Analog powerup tests are done NORM_FUNC --> No IRQ, since mode runs indefinitely until a new command is issued.
         pub const IrqCmdDone: Self = Self(0x03);
-        #[doc = "Indicates that the captured word buffer is ready to be copied to memory."]
+        ///Indicates that the captured word buffer is ready to be copied to memory.
         pub const IrqCapturedRdy: Self = Self(0x04);
     }
     impl Stat {

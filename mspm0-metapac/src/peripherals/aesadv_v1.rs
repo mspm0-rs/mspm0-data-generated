@@ -3,8 +3,7 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Aesadv {
     ptr: *mut u8,
@@ -25,7 +24,7 @@ impl Aesadv {
         assert!(n < 1usize);
         unsafe { Gprcm::from_ptr(self.ptr.wrapping_add(0x0800usize + n * 24usize) as _) }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[inline(always)]
     pub const fn pdbgctl(self) -> crate::common::Reg<regs::Pdbgctl, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1018usize) as _) }
@@ -33,127 +32,152 @@ impl Aesadv {
     #[inline(always)]
     pub const fn cpu_int(self, n: usize) -> CpuInt {
         assert!(n < 1usize);
-        unsafe { CpuInt::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _) }
+        unsafe {
+            CpuInt::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _)
+        }
     }
     #[inline(always)]
     pub const fn dma_trig_datain(self, n: usize) -> DmaTrigDatain {
         assert!(n < 1usize);
-        unsafe { DmaTrigDatain::from_ptr(self.ptr.wrapping_add(0x1050usize + n * 44usize) as _) }
+        unsafe {
+            DmaTrigDatain::from_ptr(
+                self.ptr.wrapping_add(0x1050usize + n * 44usize) as _,
+            )
+        }
     }
     #[inline(always)]
     pub const fn dma_trig_dataout(self, n: usize) -> DmaTrigDataout {
         assert!(n < 1usize);
-        unsafe { DmaTrigDataout::from_ptr(self.ptr.wrapping_add(0x1080usize + n * 44usize) as _) }
+        unsafe {
+            DmaTrigDataout::from_ptr(
+                self.ptr.wrapping_add(0x1080usize + n * 44usize) as _,
+            )
+        }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[inline(always)]
     pub const fn evt_mode(self) -> crate::common::Reg<regs::EvtMode, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10e0usize) as _) }
     }
-    #[doc = "CBC-MAC third key (LSW) / GCM &amp; CCM Intermediate TAG (LSW)."]
+    ///CBC-MAC third key (LSW) / GCM &amp; CCM Intermediate TAG (LSW).
     #[inline(always)]
-    pub const fn gcmccm_tag(self, n: usize) -> crate::common::Reg<u32, crate::common::W> {
+    pub const fn gcmccm_tag(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<u32, crate::common::W> {
         assert!(n < 4usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1100usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1100usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "CCM &amp; CBC-MAC second key (LSW) / GCM Hash Key input (LSW)."]
+    ///CCM &amp; CBC-MAC second key (LSW) / GCM Hash Key input (LSW).
     #[inline(always)]
     pub const fn ghash_h(self, n: usize) -> crate::common::Reg<u32, crate::common::W> {
         assert!(n < 4usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1110usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1110usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "KEY (LSW)."]
+    ///KEY (LSW).
     #[inline(always)]
     pub const fn key(self, n: usize) -> crate::common::Reg<u32, crate::common::W> {
         assert!(n < 8usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1120usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1120usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "IV (LSW)."]
+    ///IV (LSW).
     #[inline(always)]
     pub const fn iv(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 4usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1140usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1140usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Input/Output Buffer Control and Mode selection."]
+    ///Input/Output Buffer Control and Mode selection.
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1150usize) as _) }
     }
-    #[doc = "Crypto data length (LSW)."]
+    ///Crypto data length (LSW).
     #[inline(always)]
     pub const fn c_length_0(self) -> crate::common::Reg<u32, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1154usize) as _) }
     }
-    #[doc = "Crypto data length (MSW)."]
+    ///Crypto data length (MSW).
     #[inline(always)]
     pub const fn c_length_1(self) -> crate::common::Reg<u32, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1158usize) as _) }
     }
-    #[doc = "AAD Data Length."]
+    ///AAD Data Length.
     #[inline(always)]
     pub const fn aad_length(self) -> crate::common::Reg<u32, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x115cusize) as _) }
     }
-    #[doc = "Data input (LSW) / Data output (LSW)."]
+    ///Data input (LSW) / Data output (LSW).
     #[inline(always)]
     pub const fn data(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 4usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1160usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1160usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Hash result (LSW)."]
+    ///Hash result (LSW).
     #[inline(always)]
     pub const fn tag(self, n: usize) -> crate::common::Reg<u32, crate::common::R> {
         assert!(n < 4usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1170usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1170usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Status."]
+    ///Status.
     #[inline(always)]
     pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1180usize) as _) }
     }
-    #[doc = "Data in alias register."]
+    ///Data in alias register.
     #[inline(always)]
     pub const fn data_in(self) -> crate::common::Reg<u32, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1184usize) as _) }
     }
-    #[doc = "Data out alias register."]
+    ///Data out alias register.
     #[inline(always)]
     pub const fn data_out(self) -> crate::common::Reg<u32, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1188usize) as _) }
     }
-    #[doc = "Data control register for input data."]
+    ///Data control register for input data.
     #[inline(always)]
     pub const fn force_in_av(self) -> crate::common::Reg<u32, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x11d0usize) as _) }
     }
-    #[doc = "AES-CCM AAD alignment data word."]
+    ///AES-CCM AAD alignment data word.
     #[inline(always)]
     pub const fn ccm_aln_wrd(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x11d4usize) as _) }
     }
-    #[doc = "Internal block counter (LSW)."]
+    ///Internal block counter (LSW).
     #[inline(always)]
     pub const fn blk_cnt0(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x11d8usize) as _) }
     }
-    #[doc = "Internal block counter (MSW)."]
+    ///Internal block counter (MSW).
     #[inline(always)]
     pub const fn blk_cnt1(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x11dcusize) as _) }
     }
-    #[doc = "Control register for DMA handshaking."]
+    ///Control register for DMA handshaking.
     #[inline(always)]
     pub const fn dma_hs(self) -> crate::common::Reg<regs::DmaHs, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x11f4usize) as _) }
@@ -174,32 +198,32 @@ impl CpuInt {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::CpuIntIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::CpuInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -220,34 +244,46 @@ impl DmaTrigDatain {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[inline(always)]
-    pub const fn iidx(self) -> crate::common::Reg<regs::DmaTrigDatainIidx, crate::common::R> {
+    pub const fn iidx(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
-    pub const fn imask(self) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::RW> {
+    pub const fn imask(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
-    pub const fn ris(self) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::R> {
+    pub const fn ris(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
-    pub const fn mis(self) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::R> {
+    pub const fn mis(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
-    pub const fn iset(self) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::W> {
+    pub const fn iset(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
-    pub const fn iclr(self) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::W> {
+    pub const fn iclr(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDatainInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
 }
@@ -266,34 +302,46 @@ impl DmaTrigDataout {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[inline(always)]
-    pub const fn iidx(self) -> crate::common::Reg<regs::DmaTrigDataoutIidx, crate::common::R> {
+    pub const fn iidx(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
-    pub const fn imask(self) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::RW> {
+    pub const fn imask(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
-    pub const fn ris(self) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::R> {
+    pub const fn ris(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
-    pub const fn mis(self) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::R> {
+    pub const fn mis(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
-    pub const fn iset(self) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::W> {
+    pub const fn iset(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
-    pub const fn iclr(self) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::W> {
+    pub const fn iclr(
+        self,
+    ) -> crate::common::Reg<regs::DmaTrigDataoutInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
 }
@@ -312,72 +360,72 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuInt(pub u32);
     impl CpuInt {
-        #[doc = "This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         #[must_use]
         #[inline(always)]
         pub const fn outputrdy(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         #[inline(always)]
         pub const fn set_outputrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         #[must_use]
         #[inline(always)]
         pub const fn inputrdy(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         #[inline(always)]
         pub const fn set_inputrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit."]
+        ///This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit.
         #[must_use]
         #[inline(always)]
         pub const fn savedcntxtrdy(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit."]
+        ///This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit.
         #[inline(always)]
         pub const fn set_savedcntxtrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write next context."]
+        ///This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write next context.
         #[must_use]
         #[inline(always)]
         pub const fn cntxtrdy(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write next context."]
+        ///This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write next context.
         #[inline(always)]
         pub const fn set_cntxtrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
@@ -402,25 +450,30 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for CpuInt {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "CpuInt {{ outputrdy: {=bool:?}, inputrdy: {=bool:?}, savedcntxtrdy: {=bool:?}, cntxtrdy: {=bool:?} }}" , self . outputrdy () , self . inputrdy () , self . savedcntxtrdy () , self . cntxtrdy ())
+            defmt::write!(
+                f,
+                "CpuInt {{ outputrdy: {=bool:?}, inputrdy: {=bool:?}, savedcntxtrdy: {=bool:?}, cntxtrdy: {=bool:?} }}",
+                self.outputrdy(), self.inputrdy(), self.savedcntxtrdy(), self.cntxtrdy()
+            )
         }
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuIntIidx(pub u32);
     impl CpuIntIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::CpuIntIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::CpuIntIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::CpuIntIidxStat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for CpuIntIidx {
@@ -431,9 +484,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for CpuIntIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("CpuIntIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("CpuIntIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -442,247 +493,250 @@ pub mod regs {
             defmt::write!(f, "CpuIntIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Input/Output Buffer Control and Mode selection."]
+    ///Input/Output Buffer Control and Mode selection.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctrl(pub u32);
     impl Ctrl {
-        #[doc = "Output Ready. If 1b, this read-only status bit indicates that an AES output block is available for the CPU to retrieve."]
+        ///Output Ready. If 1b, this read-only status bit indicates that an AES output block is available for the CPU to retrieve.
         #[must_use]
         #[inline(always)]
         pub const fn output_rdy(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Output Ready. If 1b, this read-only status bit indicates that an AES output block is available for the CPU to retrieve."]
+        ///Output Ready. If 1b, this read-only status bit indicates that an AES output block is available for the CPU to retrieve.
         #[inline(always)]
         pub const fn set_output_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Ready for input. If 1b, this read-only status bit indicates that the 16-byte input buffer is empty, and the CPU is permitted to write the next block of data. After reset, this bit is 0. After writing a context, this bit will become 1b."]
+        ///Ready for input. If 1b, this read-only status bit indicates that the 16-byte input buffer is empty, and the CPU is permitted to write the next block of data. After reset, this bit is 0. After writing a context, this bit will become 1b.
         #[must_use]
         #[inline(always)]
         pub const fn input_rdy(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Ready for input. If 1b, this read-only status bit indicates that the 16-byte input buffer is empty, and the CPU is permitted to write the next block of data. After reset, this bit is 0. After writing a context, this bit will become 1b."]
+        ///Ready for input. If 1b, this read-only status bit indicates that the 16-byte input buffer is empty, and the CPU is permitted to write the next block of data. After reset, this bit is 0. After writing a context, this bit will become 1b.
         #[inline(always)]
         pub const fn set_input_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Direction. If set to 1b an encrypt operation is performed. If set to 0b a decrypt operation is performed. Note: This bit must be written with a 1b when CBC-MAC is selected."]
+        ///Direction. If set to 1b an encrypt operation is performed. If set to 0b a decrypt operation is performed. Note: This bit must be written with a 1b when CBC-MAC is selected.
         #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Direction. If set to 1b an encrypt operation is performed. If set to 0b a decrypt operation is performed. Note: This bit must be written with a 1b when CBC-MAC is selected."]
+        ///Direction. If set to 1b an encrypt operation is performed. If set to 0b a decrypt operation is performed. Note: This bit must be written with a 1b when CBC-MAC is selected.
         #[inline(always)]
         pub const fn set_dir(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "Specifies the encryption strength / key width."]
+        ///Specifies the encryption strength / key width.
         #[must_use]
         #[inline(always)]
         pub const fn keysize(&self) -> super::vals::Keysize {
             let val = (self.0 >> 3usize) & 0x03;
             super::vals::Keysize::from_bits(val as u8)
         }
-        #[doc = "Specifies the encryption strength / key width."]
+        ///Specifies the encryption strength / key width.
         #[inline(always)]
         pub const fn set_keysize(&mut self, val: super::vals::Keysize) {
-            self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u32) & 0x03) << 3usize);
+            self.0 = (self.0 & !(0x03 << 3usize))
+                | (((val.to_bits() as u32) & 0x03) << 3usize);
         }
-        #[doc = "If set to 1b, cipher-block-chaining (CBC) mode is selected."]
+        ///If set to 1b, cipher-block-chaining (CBC) mode is selected.
         #[must_use]
         #[inline(always)]
         pub const fn cbc(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
-        #[doc = "If set to 1b, cipher-block-chaining (CBC) mode is selected."]
+        ///If set to 1b, cipher-block-chaining (CBC) mode is selected.
         #[inline(always)]
         pub const fn set_cbc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "If set to 1b, AES counter mode (CTR) is selected. Note: This bit must also be set for GCM and CCM, when encryption/decryption is required."]
+        ///If set to 1b, AES counter mode (CTR) is selected. Note: This bit must also be set for GCM and CCM, when encryption/decryption is required.
         #[must_use]
         #[inline(always)]
         pub const fn ctr(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
-        #[doc = "If set to 1b, AES counter mode (CTR) is selected. Note: This bit must also be set for GCM and CCM, when encryption/decryption is required."]
+        ///If set to 1b, AES counter mode (CTR) is selected. Note: This bit must also be set for GCM and CCM, when encryption/decryption is required.
         #[inline(always)]
         pub const fn set_ctr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
-        #[doc = "When the CTR bit is set, specifies the counter width for AES-CTR mode. When the CFB bit is set, specifies the CFB mode feedback width:."]
+        ///When the CTR bit is set, specifies the counter width for AES-CTR mode. When the CFB bit is set, specifies the CFB mode feedback width:.
         #[must_use]
         #[inline(always)]
         pub const fn ctr_width(&self) -> super::vals::CtrWidth {
             let val = (self.0 >> 7usize) & 0x03;
             super::vals::CtrWidth::from_bits(val as u8)
         }
-        #[doc = "When the CTR bit is set, specifies the counter width for AES-CTR mode. When the CFB bit is set, specifies the CFB mode feedback width:."]
+        ///When the CTR bit is set, specifies the counter width for AES-CTR mode. When the CFB bit is set, specifies the CFB mode feedback width:.
         #[inline(always)]
         pub const fn set_ctr_width(&mut self, val: super::vals::CtrWidth) {
-            self.0 = (self.0 & !(0x03 << 7usize)) | (((val.to_bits() as u32) & 0x03) << 7usize);
+            self.0 = (self.0 & !(0x03 << 7usize))
+                | (((val.to_bits() as u32) & 0x03) << 7usize);
         }
-        #[doc = "When the CFB bit is set, specifies the CFB mode feedback width:."]
+        ///When the CFB bit is set, specifies the CFB mode feedback width:.
         #[must_use]
         #[inline(always)]
         pub const fn icm(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
             val != 0
         }
-        #[doc = "When the CFB bit is set, specifies the CFB mode feedback width:."]
+        ///When the CFB bit is set, specifies the CFB mode feedback width:.
         #[inline(always)]
         pub const fn set_icm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
-        #[doc = "If set to 1b, AES cipher feedback mode CFB is selected. Use the ctr_width field to specify the feedback width."]
+        ///If set to 1b, AES cipher feedback mode CFB is selected. Use the ctr_width field to specify the feedback width.
         #[must_use]
         #[inline(always)]
         pub const fn cfb(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
             val != 0
         }
-        #[doc = "If set to 1b, AES cipher feedback mode CFB is selected. Use the ctr_width field to specify the feedback width."]
+        ///If set to 1b, AES cipher feedback mode CFB is selected. Use the ctr_width field to specify the feedback width.
         #[inline(always)]
         pub const fn set_cfb(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "If set to 1b, AES-CBC MAC is selected, the Direction bit must be set to 1 for this mode."]
+        ///If set to 1b, AES-CBC MAC is selected, the Direction bit must be set to 1 for this mode.
         #[must_use]
         #[inline(always)]
         pub const fn cbcmac(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
             val != 0
         }
-        #[doc = "If set to 1b, AES-CBC MAC is selected, the Direction bit must be set to 1 for this mode."]
+        ///If set to 1b, AES-CBC MAC is selected, the Direction bit must be set to 1 for this mode.
         #[inline(always)]
         pub const fn set_cbcmac(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
-        #[doc = "If not set to 00b, AES-GCM mode is selected, this is a combined mode, using the Galois field multiplier GF(2128) for authentication and AES-CTR mode for encryption, the bits specify the GCM mode: 01b = GHASH with H loaded and Y0-encrypted forced to zero 10b = GHASH with H loaded and Y0-encrypted calculated internally 11b = Autonomous GHASH (both H and Y0-encrypted calculated internally) Note: Besides GCM, the CTR mode bits must also be set to 1b to enable GCM with AES-CTR; if the CTR bit is not set a GHASH (authentication) only operation is performed. A GHASH only operation is only allowed if the GCM mode is set to '01b' and the direction bit is set to '0b'. Other modes may not be selected in combination with GCM. Table 14 below shows the valid combinations for the GCM and CTR mode bits, all other options are invalid and must not be selected."]
+        ///If not set to 00b, AES-GCM mode is selected, this is a combined mode, using the Galois field multiplier GF(2128) for authentication and AES-CTR mode for encryption, the bits specify the GCM mode: 01b = GHASH with H loaded and Y0-encrypted forced to zero 10b = GHASH with H loaded and Y0-encrypted calculated internally 11b = Autonomous GHASH (both H and Y0-encrypted calculated internally) Note: Besides GCM, the CTR mode bits must also be set to 1b to enable GCM with AES-CTR; if the CTR bit is not set a GHASH (authentication) only operation is performed. A GHASH only operation is only allowed if the GCM mode is set to '01b' and the direction bit is set to '0b'. Other modes may not be selected in combination with GCM. Table 14 below shows the valid combinations for the GCM and CTR mode bits, all other options are invalid and must not be selected.
         #[must_use]
         #[inline(always)]
         pub const fn gcm(&self) -> super::vals::Gcm {
             let val = (self.0 >> 16usize) & 0x03;
             super::vals::Gcm::from_bits(val as u8)
         }
-        #[doc = "If not set to 00b, AES-GCM mode is selected, this is a combined mode, using the Galois field multiplier GF(2128) for authentication and AES-CTR mode for encryption, the bits specify the GCM mode: 01b = GHASH with H loaded and Y0-encrypted forced to zero 10b = GHASH with H loaded and Y0-encrypted calculated internally 11b = Autonomous GHASH (both H and Y0-encrypted calculated internally) Note: Besides GCM, the CTR mode bits must also be set to 1b to enable GCM with AES-CTR; if the CTR bit is not set a GHASH (authentication) only operation is performed. A GHASH only operation is only allowed if the GCM mode is set to '01b' and the direction bit is set to '0b'. Other modes may not be selected in combination with GCM. Table 14 below shows the valid combinations for the GCM and CTR mode bits, all other options are invalid and must not be selected."]
+        ///If not set to 00b, AES-GCM mode is selected, this is a combined mode, using the Galois field multiplier GF(2128) for authentication and AES-CTR mode for encryption, the bits specify the GCM mode: 01b = GHASH with H loaded and Y0-encrypted forced to zero 10b = GHASH with H loaded and Y0-encrypted calculated internally 11b = Autonomous GHASH (both H and Y0-encrypted calculated internally) Note: Besides GCM, the CTR mode bits must also be set to 1b to enable GCM with AES-CTR; if the CTR bit is not set a GHASH (authentication) only operation is performed. A GHASH only operation is only allowed if the GCM mode is set to '01b' and the direction bit is set to '0b'. Other modes may not be selected in combination with GCM. Table 14 below shows the valid combinations for the GCM and CTR mode bits, all other options are invalid and must not be selected.
         #[inline(always)]
         pub const fn set_gcm(&mut self, val: super::vals::Gcm) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
+            self.0 = (self.0 & !(0x03 << 16usize))
+                | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
-        #[doc = "If set to 1b, AES-CCM is selected, this is a combined mode, using AES for both authentication and encryption. In addition to the CCM bit, the CTR mode bit must be set such that AES-CTR is enabled. Other combinations with CCM are invalid."]
+        ///If set to 1b, AES-CCM is selected, this is a combined mode, using AES for both authentication and encryption. In addition to the CCM bit, the CTR mode bit must be set such that AES-CTR is enabled. Other combinations with CCM are invalid.
         #[must_use]
         #[inline(always)]
         pub const fn ccm(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
             val != 0
         }
-        #[doc = "If set to 1b, AES-CCM is selected, this is a combined mode, using AES for both authentication and encryption. In addition to the CCM bit, the CTR mode bit must be set such that AES-CTR is enabled. Other combinations with CCM are invalid."]
+        ///If set to 1b, AES-CCM is selected, this is a combined mode, using AES for both authentication and encryption. In addition to the CCM bit, the CTR mode bit must be set such that AES-CTR is enabled. Other combinations with CCM are invalid.
         #[inline(always)]
         pub const fn set_ccm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
-        #[doc = "Defines L that indicates the width of the length field for CCM operations; the length field in bytes equals the value of CMM-L plus one. All values are supported."]
+        ///Defines L that indicates the width of the length field for CCM operations; the length field in bytes equals the value of CMM-L plus one. All values are supported.
         #[must_use]
         #[inline(always)]
         pub const fn ccml(&self) -> u8 {
             let val = (self.0 >> 19usize) & 0x07;
             val as u8
         }
-        #[doc = "Defines L that indicates the width of the length field for CCM operations; the length field in bytes equals the value of CMM-L plus one. All values are supported."]
+        ///Defines L that indicates the width of the length field for CCM operations; the length field in bytes equals the value of CMM-L plus one. All values are supported.
         #[inline(always)]
         pub const fn set_ccml(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 19usize)) | (((val as u32) & 0x07) << 19usize);
         }
-        #[doc = "Defines M that indicates the length of the authentication field for CCM operations; the authentication field length equals two times (the value of CCM-M plus one). Note: The EIP-39 always returns a 128-bit authentication field, of which the M least significant bytes are valid. All values are supported."]
+        ///Defines M that indicates the length of the authentication field for CCM operations; the authentication field length equals two times (the value of CCM-M plus one). Note: The EIP-39 always returns a 128-bit authentication field, of which the M least significant bytes are valid. All values are supported.
         #[must_use]
         #[inline(always)]
         pub const fn ccmm(&self) -> u8 {
             let val = (self.0 >> 22usize) & 0x07;
             val as u8
         }
-        #[doc = "Defines M that indicates the length of the authentication field for CCM operations; the authentication field length equals two times (the value of CCM-M plus one). Note: The EIP-39 always returns a 128-bit authentication field, of which the M least significant bytes are valid. All values are supported."]
+        ///Defines M that indicates the length of the authentication field for CCM operations; the authentication field length equals two times (the value of CCM-M plus one). Note: The EIP-39 always returns a 128-bit authentication field, of which the M least significant bytes are valid. All values are supported.
         #[inline(always)]
         pub const fn set_ccmm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 22usize)) | (((val as u32) & 0x07) << 22usize);
         }
-        #[doc = "This bit has a dual use, depending on the selection of CCM/GCM, see bits \\[18:16\\]. If CCM/GCM is not selected: If this bit is set to 1b, full block AES output feedback mode (OFB-128) is selected. If CCM/GCM is selected: Continue processing of an interrupted AES-GCM or AES-CCM operation in the AAD phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full AAD block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG, block counter and the CCM align data word (the latter is for CCM mode only). The mode can be written together with this bit, as it is part of the same register."]
+        ///This bit has a dual use, depending on the selection of CCM/GCM, see bits \[18:16\]. If CCM/GCM is not selected: If this bit is set to 1b, full block AES output feedback mode (OFB-128) is selected. If CCM/GCM is selected: Continue processing of an interrupted AES-GCM or AES-CCM operation in the AAD phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full AAD block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG, block counter and the CCM align data word (the latter is for CCM mode only). The mode can be written together with this bit, as it is part of the same register.
         #[must_use]
         #[inline(always)]
         pub const fn ofb_gcm_ccm_cont(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit has a dual use, depending on the selection of CCM/GCM, see bits \\[18:16\\]. If CCM/GCM is not selected: If this bit is set to 1b, full block AES output feedback mode (OFB-128) is selected. If CCM/GCM is selected: Continue processing of an interrupted AES-GCM or AES-CCM operation in the AAD phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full AAD block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG, block counter and the CCM align data word (the latter is for CCM mode only). The mode can be written together with this bit, as it is part of the same register."]
+        ///This bit has a dual use, depending on the selection of CCM/GCM, see bits \[18:16\]. If CCM/GCM is not selected: If this bit is set to 1b, full block AES output feedback mode (OFB-128) is selected. If CCM/GCM is selected: Continue processing of an interrupted AES-GCM or AES-CCM operation in the AAD phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full AAD block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG, block counter and the CCM align data word (the latter is for CCM mode only). The mode can be written together with this bit, as it is part of the same register.
         #[inline(always)]
         pub const fn set_ofb_gcm_ccm_cont(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
-        #[doc = "Interrupt processing and generate an intermediate digest during an AES-GCM or AES-CCM operation. Set this write-only signal to 1b to interrupt GCM or CCM processing at the next full block (128 bits) boundary. An intermediate digest may be requested during the encryption/decryption data phase or in the AAD phase. Note: Interruption can only be done on full block (128 bits) boundaries. The minimum number of remaining bytes to resume and finalize the operation, must be greater than or equal to 1."]
+        ///Interrupt processing and generate an intermediate digest during an AES-GCM or AES-CCM operation. Set this write-only signal to 1b to interrupt GCM or CCM processing at the next full block (128 bits) boundary. An intermediate digest may be requested during the encryption/decryption data phase or in the AAD phase. Note: Interruption can only be done on full block (128 bits) boundaries. The minimum number of remaining bytes to resume and finalize the operation, must be greater than or equal to 1.
         #[must_use]
         #[inline(always)]
         pub const fn get_digest(&self) -> bool {
             let val = (self.0 >> 27usize) & 0x01;
             val != 0
         }
-        #[doc = "Interrupt processing and generate an intermediate digest during an AES-GCM or AES-CCM operation. Set this write-only signal to 1b to interrupt GCM or CCM processing at the next full block (128 bits) boundary. An intermediate digest may be requested during the encryption/decryption data phase or in the AAD phase. Note: Interruption can only be done on full block (128 bits) boundaries. The minimum number of remaining bytes to resume and finalize the operation, must be greater than or equal to 1."]
+        ///Interrupt processing and generate an intermediate digest during an AES-GCM or AES-CCM operation. Set this write-only signal to 1b to interrupt GCM or CCM processing at the next full block (128 bits) boundary. An intermediate digest may be requested during the encryption/decryption data phase or in the AAD phase. Note: Interruption can only be done on full block (128 bits) boundaries. The minimum number of remaining bytes to resume and finalize the operation, must be greater than or equal to 1.
         #[inline(always)]
         pub const fn set_get_digest(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
         }
-        #[doc = "Continue processing of an interrupted AES-GCM or AES-CCM operation in the crypto/payload phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG and block counter. The mode can be written together with this bit, as it is part of the same register."]
+        ///Continue processing of an interrupted AES-GCM or AES-CCM operation in the crypto/payload phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG and block counter. The mode can be written together with this bit, as it is part of the same register.
         #[must_use]
         #[inline(always)]
         pub const fn gcm_cont(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
             val != 0
         }
-        #[doc = "Continue processing of an interrupted AES-GCM or AES-CCM operation in the crypto/payload phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG and block counter. The mode can be written together with this bit, as it is part of the same register."]
+        ///Continue processing of an interrupted AES-GCM or AES-CCM operation in the crypto/payload phase. Set this write-only signal to 1b together with the regular mode bit settings for a GCM or CCM operation, to continue processing from the next full block (128 bits) boundary. Before setting this bit all applicable context to resume processing must have been loaded into the engine: Keys, IV, intermediate digest/TAG and block counter. The mode can be written together with this bit, as it is part of the same register.
         #[inline(always)]
         pub const fn set_gcm_cont(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
-        #[doc = "This bit is used to indicate that an authentication TAG or result IV needs to be stored as a result context. If this bit is set, context output DMA and/or interrupt will be asserted if the operation is finished, and related signals are enabled. Typically, this value must be set for authentication modes returning a TAG (CBC-MAC, GCM and CCM), or for basic encryption modes that require future continuation with the current result IV. If this bit is set, the engine will hold its full context until the TAG and/or IV registers are read. Only after reading the TAG or IV, a new DMA request for a new (input) context will be asserted. If this bit is not set, the engine will assert the context input DMA request signal directly after starting to process the last block with the current context."]
+        ///This bit is used to indicate that an authentication TAG or result IV needs to be stored as a result context. If this bit is set, context output DMA and/or interrupt will be asserted if the operation is finished, and related signals are enabled. Typically, this value must be set for authentication modes returning a TAG (CBC-MAC, GCM and CCM), or for basic encryption modes that require future continuation with the current result IV. If this bit is set, the engine will hold its full context until the TAG and/or IV registers are read. Only after reading the TAG or IV, a new DMA request for a new (input) context will be asserted. If this bit is not set, the engine will assert the context input DMA request signal directly after starting to process the last block with the current context.
         #[must_use]
         #[inline(always)]
         pub const fn save_cntxt(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit is used to indicate that an authentication TAG or result IV needs to be stored as a result context. If this bit is set, context output DMA and/or interrupt will be asserted if the operation is finished, and related signals are enabled. Typically, this value must be set for authentication modes returning a TAG (CBC-MAC, GCM and CCM), or for basic encryption modes that require future continuation with the current result IV. If this bit is set, the engine will hold its full context until the TAG and/or IV registers are read. Only after reading the TAG or IV, a new DMA request for a new (input) context will be asserted. If this bit is not set, the engine will assert the context input DMA request signal directly after starting to process the last block with the current context."]
+        ///This bit is used to indicate that an authentication TAG or result IV needs to be stored as a result context. If this bit is set, context output DMA and/or interrupt will be asserted if the operation is finished, and related signals are enabled. Typically, this value must be set for authentication modes returning a TAG (CBC-MAC, GCM and CCM), or for basic encryption modes that require future continuation with the current result IV. If this bit is set, the engine will hold its full context until the TAG and/or IV registers are read. Only after reading the TAG or IV, a new DMA request for a new (input) context will be asserted. If this bit is not set, the engine will assert the context input DMA request signal directly after starting to process the last block with the current context.
         #[inline(always)]
         pub const fn set_save_cntxt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
-        #[doc = "If 1b, this read-only status bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the Host to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit."]
+        ///If 1b, this read-only status bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the Host to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit.
         #[must_use]
         #[inline(always)]
         pub const fn saved_cntxt_rdy(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
             val != 0
         }
-        #[doc = "If 1b, this read-only status bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the Host to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit."]
+        ///If 1b, this read-only status bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the Host to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit.
         #[inline(always)]
         pub const fn set_saved_cntxt_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
-        #[doc = "If 1b, this read-only status bit indicates that the context data registers can be overwritten, and the CPU is permitted to write the next context."]
+        ///If 1b, this read-only status bit indicates that the context data registers can be overwritten, and the CPU is permitted to write the next context.
         #[must_use]
         #[inline(always)]
         pub const fn cntxt_rdy(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
             val != 0
         }
-        #[doc = "If 1b, this read-only status bit indicates that the context data registers can be overwritten, and the CPU is permitted to write the next context."]
+        ///If 1b, this read-only status bit indicates that the context data registers can be overwritten, and the CPU is permitted to write the next context.
         #[inline(always)]
         pub const fn set_cntxt_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
@@ -723,22 +777,30 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctrl {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctrl {{ output_rdy: {=bool:?}, input_rdy: {=bool:?}, dir: {=bool:?}, keysize: {:?}, cbc: {=bool:?}, ctr: {=bool:?}, ctr_width: {:?}, icm: {=bool:?}, cfb: {=bool:?}, cbcmac: {=bool:?}, gcm: {:?}, ccm: {=bool:?}, ccml: {=u8:?}, ccmm: {=u8:?}, ofb_gcm_ccm_cont: {=bool:?}, get_digest: {=bool:?}, gcm_cont: {=bool:?}, save_cntxt: {=bool:?}, saved_cntxt_rdy: {=bool:?}, cntxt_rdy: {=bool:?} }}" , self . output_rdy () , self . input_rdy () , self . dir () , self . keysize () , self . cbc () , self . ctr () , self . ctr_width () , self . icm () , self . cfb () , self . cbcmac () , self . gcm () , self . ccm () , self . ccml () , self . ccmm () , self . ofb_gcm_ccm_cont () , self . get_digest () , self . gcm_cont () , self . save_cntxt () , self . saved_cntxt_rdy () , self . cntxt_rdy ())
+            defmt::write!(
+                f,
+                "Ctrl {{ output_rdy: {=bool:?}, input_rdy: {=bool:?}, dir: {=bool:?}, keysize: {:?}, cbc: {=bool:?}, ctr: {=bool:?}, ctr_width: {:?}, icm: {=bool:?}, cfb: {=bool:?}, cbcmac: {=bool:?}, gcm: {:?}, ccm: {=bool:?}, ccml: {=u8:?}, ccmm: {=u8:?}, ofb_gcm_ccm_cont: {=bool:?}, get_digest: {=bool:?}, gcm_cont: {=bool:?}, save_cntxt: {=bool:?}, saved_cntxt_rdy: {=bool:?}, cntxt_rdy: {=bool:?} }}",
+                self.output_rdy(), self.input_rdy(), self.dir(), self.keysize(), self
+                .cbc(), self.ctr(), self.ctr_width(), self.icm(), self.cfb(), self
+                .cbcmac(), self.gcm(), self.ccm(), self.ccml(), self.ccmm(), self
+                .ofb_gcm_ccm_cont(), self.get_digest(), self.gcm_cont(), self
+                .save_cntxt(), self.saved_cntxt_rdy(), self.cntxt_rdy()
+            )
         }
     }
-    #[doc = "Control register for DMA handshaking."]
+    ///Control register for DMA handshaking.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaHs(pub u32);
     impl DmaHs {
-        #[doc = "When this bit is 0b, input and output data acknowledge is I/O register based, as specified in the description of the AES_DATA_IN_n / AES_DATA_OUT_n registers. When this bit is 1b, input and ouput data acknowledge is based on DMA handshake signals."]
+        ///When this bit is 0b, input and output data acknowledge is I/O register based, as specified in the description of the AES_DATA_IN_n / AES_DATA_OUT_n registers. When this bit is 1b, input and ouput data acknowledge is based on DMA handshake signals.
         #[must_use]
         #[inline(always)]
         pub const fn dma_data_ack(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "When this bit is 0b, input and output data acknowledge is I/O register based, as specified in the description of the AES_DATA_IN_n / AES_DATA_OUT_n registers. When this bit is 1b, input and ouput data acknowledge is based on DMA handshake signals."]
+        ///When this bit is 0b, input and output data acknowledge is I/O register based, as specified in the description of the AES_DATA_IN_n / AES_DATA_OUT_n registers. When this bit is 1b, input and ouput data acknowledge is based on DMA handshake signals.
         #[inline(always)]
         pub const fn set_dma_data_ack(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -752,37 +814,32 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaHs {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaHs")
-                .field("dma_data_ack", &self.dma_data_ack())
-                .finish()
+            f.debug_struct("DmaHs").field("dma_data_ack", &self.dma_data_ack()).finish()
         }
     }
     #[cfg(feature = "defmt")]
     impl defmt::Format for DmaHs {
         fn format(&self, f: defmt::Formatter) {
-            defmt::write!(
-                f,
-                "DmaHs {{ dma_data_ack: {=bool:?} }}",
-                self.dma_data_ack()
-            )
+            defmt::write!(f, "DmaHs {{ dma_data_ack: {=bool:?} }}", self.dma_data_ack())
         }
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrigDatainIidx(pub u32);
     impl DmaTrigDatainIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::DmaTrigDatainIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::DmaTrigDatainIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::DmaTrigDatainIidxStat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for DmaTrigDatainIidx {
@@ -793,9 +850,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaTrigDatainIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaTrigDatainIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("DmaTrigDatainIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -804,19 +859,19 @@ pub mod regs {
             defmt::write!(f, "DmaTrigDatainIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrigDatainInt(pub u32);
     impl DmaTrigDatainInt {
-        #[doc = "TRIG0 event."]
+        ///TRIG0 event.
         #[must_use]
         #[inline(always)]
         pub const fn trig0(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "TRIG0 event."]
+        ///TRIG0 event.
         #[inline(always)]
         pub const fn set_trig0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -830,9 +885,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaTrigDatainInt {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaTrigDatainInt")
-                .field("trig0", &self.trig0())
-                .finish()
+            f.debug_struct("DmaTrigDatainInt").field("trig0", &self.trig0()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -841,22 +894,23 @@ pub mod regs {
             defmt::write!(f, "DmaTrigDatainInt {{ trig0: {=bool:?} }}", self.trig0())
         }
     }
-    #[doc = "Interrupt Index Register."]
+    ///Interrupt Index Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrigDataoutIidx(pub u32);
     impl DmaTrigDataoutIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::DmaTrigDataoutIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::DmaTrigDataoutIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::DmaTrigDataoutIidxStat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for DmaTrigDataoutIidx {
@@ -867,9 +921,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaTrigDataoutIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaTrigDataoutIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("DmaTrigDataoutIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -878,19 +930,19 @@ pub mod regs {
             defmt::write!(f, "DmaTrigDataoutIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrigDataoutInt(pub u32);
     impl DmaTrigDataoutInt {
-        #[doc = "TRIG1 event."]
+        ///TRIG1 event.
         #[must_use]
         #[inline(always)]
         pub const fn trig1(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "TRIG1 event."]
+        ///TRIG1 event.
         #[inline(always)]
         pub const fn set_trig1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -904,9 +956,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaTrigDataoutInt {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaTrigDataoutInt")
-                .field("trig1", &self.trig1())
-                .finish()
+            f.debug_struct("DmaTrigDataoutInt").field("trig1", &self.trig1()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -915,46 +965,49 @@ pub mod regs {
             defmt::write!(f, "DmaTrigDataoutInt {{ trig1: {=bool:?} }}", self.trig1())
         }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EvtMode(pub u32);
     impl EvtMode {
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT0\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT0\].
         #[must_use]
         #[inline(always)]
         pub const fn cpu_int(&self) -> super::vals::Int0Cfg {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::Int0Cfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT0\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT0\].
         #[inline(always)]
         pub const fn set_cpu_int(&mut self, val: super::vals::Int0Cfg) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT1\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT1\].
         #[must_use]
         #[inline(always)]
         pub const fn dma_trig_datain(&self) -> super::vals::EvtCfg {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT1\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT1\].
         #[inline(always)]
         pub const fn set_dma_trig_datain(&mut self, val: super::vals::EvtCfg) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize))
+                | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT2\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT2\].
         #[must_use]
         #[inline(always)]
         pub const fn dma_trig_dataout(&self) -> super::vals::EvtCfg {
             let val = (self.0 >> 4usize) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.INT_EVENT2\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.INT_EVENT2\].
         #[inline(always)]
         pub const fn set_dma_trig_dataout(&mut self, val: super::vals::EvtCfg) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
+            self.0 = (self.0 & !(0x03 << 4usize))
+                | (((val.to_bits() as u32) & 0x03) << 4usize);
         }
     }
     impl Default for EvtMode {
@@ -978,25 +1031,23 @@ pub mod regs {
             defmt::write!(
                 f,
                 "EvtMode {{ cpu_int: {:?}, dma_trig_datain: {:?}, dma_trig_dataout: {:?} }}",
-                self.cpu_int(),
-                self.dma_trig_datain(),
-                self.dma_trig_dataout()
+                self.cpu_int(), self.dma_trig_datain(), self.dma_trig_dataout()
             )
         }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdbgctl(pub u32);
     impl Pdbgctl {
-        #[doc = "Free run control."]
+        ///Free run control.
         #[must_use]
         #[inline(always)]
         pub const fn free(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Free run control."]
+        ///Free run control.
         #[inline(always)]
         pub const fn set_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -1010,9 +1061,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Pdbgctl {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Pdbgctl")
-                .field("free", &self.free())
-                .finish()
+            f.debug_struct("Pdbgctl").field("free", &self.free()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1021,34 +1070,35 @@ pub mod regs {
             defmt::write!(f, "Pdbgctl {{ free: {=bool:?} }}", self.free())
         }
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pwren(pub u32);
     impl Pwren {
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[must_use]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[inline(always)]
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::PwrenKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::PwrenKey::from_bits(val as u8)
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::PwrenKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Pwren {
@@ -1069,53 +1119,51 @@ pub mod regs {
     impl defmt::Format for Pwren {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pwren {{ enable: {=bool:?}, key: {:?} }}",
-                self.enable(),
-                self.key()
+                f, "Pwren {{ enable: {=bool:?}, key: {:?} }}", self.enable(), self.key()
             )
         }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[must_use]
         #[inline(always)]
         pub const fn resetassert(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[inline(always)]
         pub const fn set_resetassert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[inline(always)]
         pub const fn set_resetstkyclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::ResetKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::ResetKey::from_bits(val as u8)
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::ResetKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Rstctl {
@@ -1139,25 +1187,23 @@ pub mod regs {
             defmt::write!(
                 f,
                 "Rstctl {{ resetassert: {=bool:?}, resetstkyclr: {=bool:?}, key: {:?} }}",
-                self.resetassert(),
-                self.resetstkyclr(),
-                self.key()
+                self.resetassert(), self.resetstkyclr(), self.key()
             )
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstky(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[inline(always)]
         pub const fn set_resetstky(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
@@ -1171,9 +1217,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Stat {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Stat")
-                .field("resetstky", &self.resetstky())
-                .finish()
+            f.debug_struct("Stat").field("resetstky", &self.resetstky()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1182,19 +1226,19 @@ pub mod regs {
             defmt::write!(f, "Stat {{ resetstky: {=bool:?} }}", self.resetstky())
         }
     }
-    #[doc = "Status."]
+    ///Status.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Status(pub u32);
     impl Status {
-        #[doc = "Key write status. 0 - user write to KEY register is allowed. 1 - user write to KEY register is ignored. In order to allow user write, perform a module reset."]
+        ///Key write status. 0 - user write to KEY register is allowed. 1 - user write to KEY register is ignored. In order to allow user write, perform a module reset.
         #[must_use]
         #[inline(always)]
         pub const fn keywr(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Key write status. 0 - user write to KEY register is allowed. 1 - user write to KEY register is ignored. In order to allow user write, perform a module reset."]
+        ///Key write status. 0 - user write to KEY register is allowed. 1 - user write to KEY register is ignored. In order to allow user write, perform a module reset.
         #[inline(always)]
         pub const fn set_keywr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -1208,9 +1252,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Status {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Status")
-                .field("keywr", &self.keywr())
-                .finish()
+            f.debug_struct("Status").field("keywr", &self.keywr()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1225,15 +1267,15 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct CpuIntIidxStat(u8);
     impl CpuIntIidxStat {
-        #[doc = "No interrupt pending."]
+        ///No interrupt pending.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the core has an output available to be read out. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         pub const Outputrdy: Self = Self(0x01);
-        #[doc = "This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1)."]
+        ///This indicates that the engine can take new input. This should not be used if DMA handshake is used (AES_DMA_HS.DMA_DATA_ACK set to 1).
         pub const Inputrdy: Self = Self(0x02);
-        #[doc = "This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit."]
+        ///This bit indicates that an AES authentication TAG and/or IV block(s) is/are available for the CPU to retrieve. This bit is only asserted if the save_context bit is set to 1b. The bit is mutually exclusive with the context_ready bit.
         pub const Savedcntxtrdy: Self = Self(0x03);
-        #[doc = "This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write new context."]
+        ///This bit indicates that the context data registers can be overwritten, and the CPU is permitted to write new context.
         pub const Cntxtrdy: Self = Self(0x04);
     }
     impl CpuIntIidxStat {
@@ -1285,13 +1327,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum CtrWidth {
-        #[doc = "CFB-128 mode."]
+        ///CFB-128 mode.
         Cfb128 = 0x0,
-        #[doc = "64-bit counter."]
+        ///64-bit counter.
         Ctr64 = 0x01,
-        #[doc = "96-bit counter."]
+        ///96-bit counter.
         Ctr96 = 0x02,
-        #[doc = "128-bit counter."]
+        ///128-bit counter.
         Ctr128 = 0x03,
     }
     impl CtrWidth {
@@ -1320,9 +1362,9 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct DmaTrigDatainIidxStat(u8);
     impl DmaTrigDatainIidxStat {
-        #[doc = "No interrupt pending."]
+        ///No interrupt pending.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "AES trigger 0 DMA (Data Input trigger)."]
+        ///AES trigger 0 DMA (Data Input trigger).
         pub const Trig0: Self = Self(0x01);
     }
     impl DmaTrigDatainIidxStat {
@@ -1368,9 +1410,9 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct DmaTrigDataoutIidxStat(u8);
     impl DmaTrigDataoutIidxStat {
-        #[doc = "No interrupt pending."]
+        ///No interrupt pending.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "AES DMA Trigger 1 (Data Output trigger)."]
+        ///AES DMA Trigger 1 (Data Output trigger).
         pub const Trig1: Self = Self(0x01);
     }
     impl DmaTrigDataoutIidxStat {
@@ -1416,11 +1458,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum EvtCfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -1451,11 +1493,11 @@ pub mod vals {
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Gcm {
         _RESERVED_0 = 0x0,
-        #[doc = "GHASH with H loaded and Y0-encrypted forced to 0."]
+        ///GHASH with H loaded and Y0-encrypted forced to 0.
         ForceZero = 0x01,
-        #[doc = "GHASH with H loaded and Y0-encrypted calculated internally."]
+        ///GHASH with H loaded and Y0-encrypted calculated internally.
         LoadHashKey = 0x02,
-        #[doc = "Autonomous GHASH (both H and Y0-encrypted calculated internally)."]
+        ///Autonomous GHASH (both H and Y0-encrypted calculated internally).
         Autonomous = 0x03,
     }
     impl Gcm {
@@ -1484,11 +1526,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Int0Cfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -1519,10 +1561,10 @@ pub mod vals {
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Keysize {
         _RESERVED_0 = 0x0,
-        #[doc = "128-bit key."]
+        ///128-bit key.
         K128 = 0x01,
         _RESERVED_2 = 0x02,
-        #[doc = "256-bit key."]
+        ///256-bit key.
         K256 = 0x03,
     }
     impl Keysize {

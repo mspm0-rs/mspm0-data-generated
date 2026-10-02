@@ -182,21 +182,25 @@ pub mod uart;
 #[path = "../../peripherals/wwdt_v1.rs"]
 pub mod wwdt;
 pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073758208 as *mut _) };
-pub const AESADV: aesadv::Aesadv = unsafe { aesadv::Aesadv::from_ptr(1078206464 as *mut _) };
-#[doc = "Address: 1073774592"]
+pub const AESADV: aesadv::Aesadv = unsafe {
+    aesadv::Aesadv::from_ptr(1078206464 as *mut _)
+};
+///Address: 1073774592
 pub const COMP0: () = ();
 pub const CPUSS: cpuss::Cpuss = unsafe { cpuss::Cpuss::from_ptr(1077936128 as *mut _) };
-#[doc = "Address: 1078198272"]
+///Address: 1078198272
 pub const CRCP0: () = ();
-#[doc = "Address: 1074556928"]
+///Address: 1074556928
 pub const DEBUGSS: () = ();
 pub const DMA: dma::Dma = unsafe { dma::Dma::from_ptr(1078108160 as *mut _) };
-#[doc = "Address: 1074565120"]
+///Address: 1074565120
 pub const EVENT: () = ();
-pub const FACTORYREGION: factoryregion::Factoryregion =
-    unsafe { factoryregion::Factoryregion::from_ptr(1103364096 as *mut _) };
-pub const FLASHCTL: flashctl::Flashctl =
-    unsafe { flashctl::Flashctl::from_ptr(1074581504 as *mut _) };
+pub const FACTORYREGION: factoryregion::Factoryregion = unsafe {
+    factoryregion::Factoryregion::from_ptr(1103364096 as *mut _)
+};
+pub const FLASHCTL: flashctl::Flashctl = unsafe {
+    flashctl::Flashctl::from_ptr(1074581504 as *mut _)
+};
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074405376 as *mut _) };
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074413568 as *mut _) };
@@ -204,17 +208,19 @@ pub const I2C0: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074724864 as *mut _) };
 pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074733056 as *mut _) };
 pub const I2C2: i2c::I2c = unsafe { i2c::I2c::from_ptr(1074741248 as *mut _) };
 pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *mut _) };
-#[doc = "Address: 1074446336"]
+///Address: 1074446336
 pub const KEYSTORECTL: () = ();
-#[doc = "Address: 1074200576"]
+///Address: 1074200576
 pub const LCD: () = ();
-#[doc = "Address: 1074348032"]
+///Address: 1074348032
 pub const LFSS: () = ();
-#[doc = "Address: 1078362112"]
+///Address: 1078362112
 pub const SPI0: () = ();
-#[doc = "Address: 1078370304"]
+///Address: 1078370304
 pub const SPI1: () = ();
-pub const SYSCTL: sysctl::Sysctl = unsafe { sysctl::Sysctl::from_ptr(1074458624 as *mut _) };
+pub const SYSCTL: sysctl::Sysctl = unsafe {
+    sysctl::Sysctl::from_ptr(1074458624 as *mut _)
+};
 pub const TIMA0: tim::Tim = unsafe { tim::Tim::from_ptr(1082523648 as *mut _) };
 pub const TIMG0: tim::Tim = unsafe { tim::Tim::from_ptr(1074282496 as *mut _) };
 pub const TIMG12: tim::Tim = unsafe { tim::Tim::from_ptr(1082589184 as *mut _) };
@@ -227,8 +233,8 @@ pub const UART1: uart::Uart = unsafe { uart::Uart::from_ptr(1074831360 as *mut _
 pub const UART2: uart::Uart = unsafe { uart::Uart::from_ptr(1074790400 as *mut _) };
 pub const UART3: uart::Uart = unsafe { uart::Uart::from_ptr(1074798592 as *mut _) };
 pub const UART4: uart::Uart = unsafe { uart::Uart::from_ptr(1074806784 as *mut _) };
-#[doc = "Address: 1073938432"]
+///Address: 1073938432
 pub const VREF: () = ();
-#[doc = "Address: 1078083584"]
+///Address: 1078083584
 pub const WUC: () = ();
 pub const WWDT0: wwdt::Wwdt = unsafe { wwdt::Wwdt::from_ptr(1074266112 as *mut _) };

@@ -3,7 +3,6 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct CpuInt {
     ptr: *mut u8,
@@ -19,32 +18,32 @@ impl CpuInt {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::CpuIntIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::CpuInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -65,38 +64,38 @@ impl GenEvent {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::GenEventIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::GenEvent, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::GenEvent, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::GenEvent, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::GenEvent, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::GenEvent, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
 }
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Gpio {
     ptr: *mut u8,
@@ -112,32 +111,42 @@ impl Gpio {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Subsciber Port 0."]
+    ///Subsciber Port 0.
     #[inline(always)]
-    pub const fn fsub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
+    pub const fn fsub(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 2usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x0400usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Publisher Port 0."]
+    ///Publisher Port 0.
     #[inline(always)]
-    pub const fn fpub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
+    pub const fn fpub(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 2usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0444usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x0444usize + n * 4usize) as _,
+            )
         }
     }
     #[inline(always)]
     pub const fn gprcm(self) -> Gprcm {
         unsafe { Gprcm::from_ptr(self.ptr.wrapping_add(0x0800usize) as _) }
     }
-    #[doc = "Clock Override."]
+    ///Clock Override.
     #[inline(always)]
     pub const fn clkovr(self) -> crate::common::Reg<regs::Clkovr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1010usize) as _) }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[inline(always)]
     pub const fn pdbgctl(self) -> crate::common::Reg<regs::Pdbgctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1018usize) as _) }
@@ -149,113 +158,150 @@ impl Gpio {
     #[inline(always)]
     pub const fn gen_event(self, n: usize) -> GenEvent {
         assert!(n < 2usize);
-        unsafe { GenEvent::from_ptr(self.ptr.wrapping_add(0x1050usize + n * 48usize) as _) }
+        unsafe {
+            GenEvent::from_ptr(self.ptr.wrapping_add(0x1050usize + n * 48usize) as _)
+        }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[inline(always)]
     pub const fn evt_mode(self) -> crate::common::Reg<regs::EvtMode, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10e0usize) as _) }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[inline(always)]
     pub const fn desc(self) -> crate::common::Reg<regs::Desc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10fcusize) as _) }
     }
-    #[doc = "Data output 3 to 0."]
+    ///Data output 3 to 0.
     #[inline(always)]
-    pub const fn dout_y_x4(self, n: usize) -> crate::common::Reg<regs::DoutX4, crate::common::W> {
+    pub const fn dout_y_x4(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::DoutX4, crate::common::W> {
         assert!(n < 8usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1200usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1200usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Data output 31 to 0."]
+    ///Data output 31 to 0.
     #[inline(always)]
     pub const fn dout31_0(self) -> crate::common::Reg<regs::Dout310, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1280usize) as _) }
     }
-    #[doc = "Data output set 31 to 0."]
+    ///Data output set 31 to 0.
     #[inline(always)]
-    pub const fn doutset31_0(self) -> crate::common::Reg<regs::Doutset310, crate::common::W> {
+    pub const fn doutset31_0(
+        self,
+    ) -> crate::common::Reg<regs::Doutset310, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1290usize) as _) }
     }
-    #[doc = "Data output clear 31 to 0."]
+    ///Data output clear 31 to 0.
     #[inline(always)]
-    pub const fn doutclr31_0(self) -> crate::common::Reg<regs::Doutclr310, crate::common::W> {
+    pub const fn doutclr31_0(
+        self,
+    ) -> crate::common::Reg<regs::Doutclr310, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x12a0usize) as _) }
     }
-    #[doc = "Data output toggle 31 to 0."]
+    ///Data output toggle 31 to 0.
     #[inline(always)]
-    pub const fn douttgl31_0(self) -> crate::common::Reg<regs::Douttgl310, crate::common::W> {
+    pub const fn douttgl31_0(
+        self,
+    ) -> crate::common::Reg<regs::Douttgl310, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x12b0usize) as _) }
     }
-    #[doc = "Data output enable 31 to 0."]
+    ///Data output enable 31 to 0.
     #[inline(always)]
     pub const fn doe31_0(self) -> crate::common::Reg<regs::Doe310, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x12c0usize) as _) }
     }
-    #[doc = "Data output enable set 31 to 0."]
+    ///Data output enable set 31 to 0.
     #[inline(always)]
-    pub const fn doeset31_0(self) -> crate::common::Reg<regs::Doeset310, crate::common::W> {
+    pub const fn doeset31_0(
+        self,
+    ) -> crate::common::Reg<regs::Doeset310, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x12d0usize) as _) }
     }
-    #[doc = "Data output enable clear 31 to 0."]
+    ///Data output enable clear 31 to 0.
     #[inline(always)]
-    pub const fn doeclr31_0(self) -> crate::common::Reg<regs::Doeclr310, crate::common::W> {
+    pub const fn doeclr31_0(
+        self,
+    ) -> crate::common::Reg<regs::Doeclr310, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x12e0usize) as _) }
     }
-    #[doc = "Data input 3 to 0."]
+    ///Data input 3 to 0.
     #[inline(always)]
-    pub const fn din_y_x4(self, n: usize) -> crate::common::Reg<regs::DinX4, crate::common::R> {
+    pub const fn din_y_x4(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::DinX4, crate::common::R> {
         assert!(n < 8usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1300usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1300usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Data input 31 to 0."]
+    ///Data input 31 to 0.
     #[inline(always)]
     pub const fn din31_0(self) -> crate::common::Reg<regs::Din310, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1380usize) as _) }
     }
-    #[doc = "Polarity 15 to 0."]
+    ///Polarity 15 to 0.
     #[inline(always)]
-    pub const fn polarity15_0(self) -> crate::common::Reg<regs::Polarity150, crate::common::RW> {
+    pub const fn polarity15_0(
+        self,
+    ) -> crate::common::Reg<regs::Polarity150, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1390usize) as _) }
     }
-    #[doc = "Polarity 31 to 16."]
+    ///Polarity 31 to 16.
     #[inline(always)]
-    pub const fn polarity31_16(self) -> crate::common::Reg<regs::Polarity3116, crate::common::RW> {
+    pub const fn polarity31_16(
+        self,
+    ) -> crate::common::Reg<regs::Polarity3116, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x13a0usize) as _) }
     }
-    #[doc = "FAST WAKE GLOBAL EN."]
+    ///FAST WAKE GLOBAL EN.
     #[inline(always)]
     pub const fn ctl(self) -> crate::common::Reg<regs::Ctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1400usize) as _) }
     }
-    #[doc = "FAST WAKE ENABLE."]
+    ///FAST WAKE ENABLE.
     #[inline(always)]
-    pub const fn fastwake(self) -> crate::common::Reg<regs::Fastwake, crate::common::RW> {
+    pub const fn fastwake(
+        self,
+    ) -> crate::common::Reg<regs::Fastwake, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1404usize) as _) }
     }
-    #[doc = "Subscriber 0 configuration."]
+    ///Subscriber 0 configuration.
     #[inline(always)]
-    pub const fn subcfg(self, n: usize) -> crate::common::Reg<regs::Subcfg, crate::common::RW> {
+    pub const fn subcfg(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Subcfg, crate::common::RW> {
         assert!(n < 2usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1500usize + n * 32usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1500usize + n * 32usize) as _,
+            )
         }
     }
-    #[doc = "Filter Enable 15 to 0."]
+    ///Filter Enable 15 to 0.
     #[inline(always)]
-    pub const fn filteren15_0(self) -> crate::common::Reg<regs::Filteren, crate::common::RW> {
+    pub const fn filteren15_0(
+        self,
+    ) -> crate::common::Reg<regs::Filteren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1508usize) as _) }
     }
-    #[doc = "Filter Enable 31 to 16."]
+    ///Filter Enable 31 to 16.
     #[inline(always)]
-    pub const fn filteren31_16(self) -> crate::common::Reg<regs::Filteren, crate::common::RW> {
+    pub const fn filteren31_16(
+        self,
+    ) -> crate::common::Reg<regs::Filteren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x150cusize) as _) }
     }
-    #[doc = "DMA Write MASK."]
+    ///DMA Write MASK.
     #[inline(always)]
     pub const fn dmamask(self) -> crate::common::Reg<regs::Dmamask, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1510usize) as _) }
@@ -276,55 +322,56 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "Clock Override."]
+    ///Clock Override.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clkovr(pub u32);
     impl Clkovr {
-        #[doc = "Unlocks the functionality of \\[RUN_STOP\\]
-to override the automatic peripheral clock request."]
+        /**Unlocks the functionality of \[RUN_STOP\]
+to override the automatic peripheral clock request.*/
         #[must_use]
         #[inline(always)]
         pub const fn override_(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Unlocks the functionality of \\[RUN_STOP\\]
-to override the automatic peripheral clock request."]
+        /**Unlocks the functionality of \[RUN_STOP\]
+to override the automatic peripheral clock request.*/
         #[inline(always)]
         pub const fn set_override_(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "If \\[OVERRIDE\\]
-is enabled, this register is used to manually control the peripheral's clock request to the system."]
+        /**If \[OVERRIDE\]
+is enabled, this register is used to manually control the peripheral's clock request to the system.*/
         #[must_use]
         #[inline(always)]
         pub const fn run_stop(&self) -> super::vals::RunStop {
             let val = (self.0 >> 1usize) & 0x01;
             super::vals::RunStop::from_bits(val as u8)
         }
-        #[doc = "If \\[OVERRIDE\\]
-is enabled, this register is used to manually control the peripheral's clock request to the system."]
+        /**If \[OVERRIDE\]
+is enabled, this register is used to manually control the peripheral's clock request to the system.*/
         #[inline(always)]
         pub const fn set_run_stop(&mut self, val: super::vals::RunStop) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize))
+                | (((val.to_bits() as u32) & 0x01) << 1usize);
         }
     }
     impl Default for Clkovr {
@@ -345,19 +392,17 @@ is enabled, this register is used to manually control the peripheral's clock req
     impl defmt::Format for Clkovr {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Clkovr {{ override_: {=bool:?}, run_stop: {:?} }}",
-                self.override_(),
+                f, "Clkovr {{ override_: {=bool:?}, run_stop: {:?} }}", self.override_(),
                 self.run_stop()
             )
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuInt(pub u32);
     impl CpuInt {
-        #[doc = "DIO0 event."]
+        ///DIO0 event.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -366,7 +411,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "DIO0 event."]
+        ///DIO0 event.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -421,25 +466,38 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for CpuInt {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "CpuInt {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "CpuInt {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuIntIidx(pub u32);
     impl CpuIntIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::CpuIntIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::CpuIntIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::CpuIntIidxStat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for CpuIntIidx {
@@ -450,9 +508,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for CpuIntIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("CpuIntIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("CpuIntIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -461,19 +517,19 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "CpuIntIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "FAST WAKE GLOBAL EN."]
+    ///FAST WAKE GLOBAL EN.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl(pub u32);
     impl Ctl {
-        #[doc = "FASTWAKEONLY for the global control of fastwake."]
+        ///FASTWAKEONLY for the global control of fastwake.
         #[must_use]
         #[inline(always)]
         pub const fn fastwakeonly(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "FASTWAKEONLY for the global control of fastwake."]
+        ///FASTWAKEONLY for the global control of fastwake.
         #[inline(always)]
         pub const fn set_fastwakeonly(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -487,9 +543,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for Ctl {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Ctl")
-                .field("fastwakeonly", &self.fastwakeonly())
-                .finish()
+            f.debug_struct("Ctl").field("fastwakeonly", &self.fastwakeonly()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -498,58 +552,59 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "Ctl {{ fastwakeonly: {=bool:?} }}", self.fastwakeonly())
         }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Desc(pub u32);
     impl Desc {
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn minrev(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[inline(always)]
         pub const fn set_minrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn majrev(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
             val as u8
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[inline(always)]
         pub const fn set_majrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[must_use]
         #[inline(always)]
         pub const fn featurever(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
             val as u8
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[inline(always)]
         pub const fn set_featurever(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[must_use]
         #[inline(always)]
         pub const fn moduleid(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
             val as u16
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[inline(always)]
         pub const fn set_moduleid(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
+            self.0 = (self.0 & !(0xffff << 16usize))
+                | (((val as u32) & 0xffff) << 16usize);
         }
     }
     impl Default for Desc {
@@ -571,15 +626,19 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Desc {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}" , self . minrev () , self . majrev () , self . featurever () , self . moduleid ())
+            defmt::write!(
+                f,
+                "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}",
+                self.minrev(), self.majrev(), self.featurever(), self.moduleid()
+            )
         }
     }
-    #[doc = "Data input 31 to 0."]
+    ///Data input 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Din310(pub u32);
     impl Din310 {
-        #[doc = "This bit reads the data input value of DIO0."]
+        ///This bit reads the data input value of DIO0.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -588,7 +647,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "This bit reads the data input value of DIO0."]
+        ///This bit reads the data input value of DIO0.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -643,15 +702,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Din310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Din310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Din310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data input 11 to 8."]
+    ///Data input 11 to 8.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DinX4(pub u32);
     impl DinX4 {
-        #[doc = "This bit reads the data input value of DIO8."]
+        ///This bit reads the data input value of DIO8.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -660,7 +731,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "This bit reads the data input value of DIO8."]
+        ///This bit reads the data input value of DIO8.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
@@ -687,15 +758,19 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for DinX4 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "DinX4 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize))
+            defmt::write!(
+                f,
+                "DinX4 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize)
+            )
         }
     }
-    #[doc = "DMA Write MASK."]
+    ///DMA Write MASK.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmamask(pub u32);
     impl Dmamask {
-        #[doc = "DMA is allowed to modify DOUT0."]
+        ///DMA is allowed to modify DOUT0.
         #[must_use]
         #[inline(always)]
         pub const fn dout(&self, n: usize) -> bool {
@@ -704,7 +779,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "DMA is allowed to modify DOUT0."]
+        ///DMA is allowed to modify DOUT0.
         #[inline(always)]
         pub const fn set_dout(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -759,15 +834,29 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Dmamask {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Dmamask {{ dout[0]: {=bool:?}, dout[1]: {=bool:?}, dout[2]: {=bool:?}, dout[3]: {=bool:?}, dout[4]: {=bool:?}, dout[5]: {=bool:?}, dout[6]: {=bool:?}, dout[7]: {=bool:?}, dout[8]: {=bool:?}, dout[9]: {=bool:?}, dout[10]: {=bool:?}, dout[11]: {=bool:?}, dout[12]: {=bool:?}, dout[13]: {=bool:?}, dout[14]: {=bool:?}, dout[15]: {=bool:?}, dout[16]: {=bool:?}, dout[17]: {=bool:?}, dout[18]: {=bool:?}, dout[19]: {=bool:?}, dout[20]: {=bool:?}, dout[21]: {=bool:?}, dout[22]: {=bool:?}, dout[23]: {=bool:?}, dout[24]: {=bool:?}, dout[25]: {=bool:?}, dout[26]: {=bool:?}, dout[27]: {=bool:?}, dout[28]: {=bool:?}, dout[29]: {=bool:?}, dout[30]: {=bool:?}, dout[31]: {=bool:?} }}" , self . dout (0usize) , self . dout (1usize) , self . dout (2usize) , self . dout (3usize) , self . dout (4usize) , self . dout (5usize) , self . dout (6usize) , self . dout (7usize) , self . dout (8usize) , self . dout (9usize) , self . dout (10usize) , self . dout (11usize) , self . dout (12usize) , self . dout (13usize) , self . dout (14usize) , self . dout (15usize) , self . dout (16usize) , self . dout (17usize) , self . dout (18usize) , self . dout (19usize) , self . dout (20usize) , self . dout (21usize) , self . dout (22usize) , self . dout (23usize) , self . dout (24usize) , self . dout (25usize) , self . dout (26usize) , self . dout (27usize) , self . dout (28usize) , self . dout (29usize) , self . dout (30usize) , self . dout (31usize))
+            defmt::write!(
+                f,
+                "Dmamask {{ dout[0]: {=bool:?}, dout[1]: {=bool:?}, dout[2]: {=bool:?}, dout[3]: {=bool:?}, dout[4]: {=bool:?}, dout[5]: {=bool:?}, dout[6]: {=bool:?}, dout[7]: {=bool:?}, dout[8]: {=bool:?}, dout[9]: {=bool:?}, dout[10]: {=bool:?}, dout[11]: {=bool:?}, dout[12]: {=bool:?}, dout[13]: {=bool:?}, dout[14]: {=bool:?}, dout[15]: {=bool:?}, dout[16]: {=bool:?}, dout[17]: {=bool:?}, dout[18]: {=bool:?}, dout[19]: {=bool:?}, dout[20]: {=bool:?}, dout[21]: {=bool:?}, dout[22]: {=bool:?}, dout[23]: {=bool:?}, dout[24]: {=bool:?}, dout[25]: {=bool:?}, dout[26]: {=bool:?}, dout[27]: {=bool:?}, dout[28]: {=bool:?}, dout[29]: {=bool:?}, dout[30]: {=bool:?}, dout[31]: {=bool:?} }}",
+                self.dout(0usize), self.dout(1usize), self.dout(2usize), self
+                .dout(3usize), self.dout(4usize), self.dout(5usize), self.dout(6usize),
+                self.dout(7usize), self.dout(8usize), self.dout(9usize), self
+                .dout(10usize), self.dout(11usize), self.dout(12usize), self
+                .dout(13usize), self.dout(14usize), self.dout(15usize), self
+                .dout(16usize), self.dout(17usize), self.dout(18usize), self
+                .dout(19usize), self.dout(20usize), self.dout(21usize), self
+                .dout(22usize), self.dout(23usize), self.dout(24usize), self
+                .dout(25usize), self.dout(26usize), self.dout(27usize), self
+                .dout(28usize), self.dout(29usize), self.dout(30usize), self
+                .dout(31usize)
+            )
         }
     }
-    #[doc = "Data output enable 31 to 0."]
+    ///Data output enable 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Doe310(pub u32);
     impl Doe310 {
-        #[doc = "Enables data output for DIO0."]
+        ///Enables data output for DIO0.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -776,7 +865,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Enables data output for DIO0."]
+        ///Enables data output for DIO0.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -831,15 +920,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Doe310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Doe310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Doe310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output enable clear 31 to 0."]
+    ///Data output enable clear 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Doeclr310(pub u32);
     impl Doeclr310 {
-        #[doc = "Writing 1 to this bit clears the DIO0 bit in the DOE31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit clears the DIO0 bit in the DOE31_0 register. Writing 0 has no effect.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -848,7 +949,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Writing 1 to this bit clears the DIO0 bit in the DOE31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit clears the DIO0 bit in the DOE31_0 register. Writing 0 has no effect.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -903,15 +1004,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Doeclr310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Doeclr310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Doeclr310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output enable set 31 to 0."]
+    ///Data output enable set 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Doeset310(pub u32);
     impl Doeset310 {
-        #[doc = "Writing 1 to this bit sets the DIO0 bit in the DOE31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit sets the DIO0 bit in the DOE31_0 register. Writing 0 has no effect.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -920,7 +1033,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Writing 1 to this bit sets the DIO0 bit in the DOE31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit sets the DIO0 bit in the DOE31_0 register. Writing 0 has no effect.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -975,15 +1088,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Doeset310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Doeset310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Doeset310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output 31 to 0."]
+    ///Data output 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dout310(pub u32);
     impl Dout310 {
-        #[doc = "This bit sets the value of the pin configured as DIO0 when the output is enabled through DOE31_0 register."]
+        ///This bit sets the value of the pin configured as DIO0 when the output is enabled through DOE31_0 register.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -992,7 +1117,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "This bit sets the value of the pin configured as DIO0 when the output is enabled through DOE31_0 register."]
+        ///This bit sets the value of the pin configured as DIO0 when the output is enabled through DOE31_0 register.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1047,15 +1172,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Dout310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Dout310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Dout310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output 11 to 8."]
+    ///Data output 11 to 8.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DoutX4(pub u32);
     impl DoutX4 {
-        #[doc = "This bit sets the value of the pin configured as DIO8 when the output is enabled through DOE31_0 register."]
+        ///This bit sets the value of the pin configured as DIO8 when the output is enabled through DOE31_0 register.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -1064,7 +1201,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "This bit sets the value of the pin configured as DIO8 when the output is enabled through DOE31_0 register."]
+        ///This bit sets the value of the pin configured as DIO8 when the output is enabled through DOE31_0 register.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
@@ -1091,15 +1228,19 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for DoutX4 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "DoutX4 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize))
+            defmt::write!(
+                f,
+                "DoutX4 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize)
+            )
         }
     }
-    #[doc = "Data output clear 31 to 0."]
+    ///Data output clear 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Doutclr310(pub u32);
     impl Doutclr310 {
-        #[doc = "Writing 1 to this bit clears the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit clears the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -1108,7 +1249,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Writing 1 to this bit clears the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit clears the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1163,15 +1304,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Doutclr310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Doutclr310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Doutclr310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output set 31 to 0."]
+    ///Data output set 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Doutset310(pub u32);
     impl Doutset310 {
-        #[doc = "Writing 1 to this bit sets the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit sets the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -1180,7 +1333,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Writing 1 to this bit sets the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect."]
+        ///Writing 1 to this bit sets the DIO0 bit in the DOUT31_0 register. Writing 0 has no effect.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1235,15 +1388,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Doutset310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Doutset310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Doutset310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Data output toggle 31 to 0."]
+    ///Data output toggle 31 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Douttgl310(pub u32);
     impl Douttgl310 {
-        #[doc = "This bit is used to toggle DIO0 output."]
+        ///This bit is used to toggle DIO0 output.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -1252,7 +1417,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "This bit is used to toggle DIO0 output."]
+        ///This bit is used to toggle DIO0 output.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1307,27 +1472,40 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Douttgl310 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Douttgl310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "Douttgl310 {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EvtMode(pub u32);
     impl EvtMode {
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.CPU_INT\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.CPU_INT\].
         #[must_use]
         #[inline(always)]
         pub const fn cpu_cfg(&self) -> super::vals::EvtCfg {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.CPU_INT\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.CPU_INT\].
         #[inline(always)]
         pub const fn set_cpu_cfg(&mut self, val: super::vals::EvtCfg) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.GEN_EVENT0\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.GEN_EVENT0\].
         #[must_use]
         #[inline(always)]
         pub const fn gen_evt_cfg(&self, n: usize) -> super::vals::EvtCfg {
@@ -1336,12 +1514,13 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to \\[IPSTANDARD.GEN_EVENT0\\]."]
+        ///Event line mode select for event corresponding to \[IPSTANDARD.GEN_EVENT0\].
         #[inline(always)]
         pub const fn set_gen_evt_cfg(&mut self, n: usize, val: super::vals::EvtCfg) {
             assert!(n < 2usize);
             let offs = 2usize + n * 2usize;
-            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
+            self.0 = (self.0 & !(0x03 << offs))
+                | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for EvtMode {
@@ -1365,18 +1544,16 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(
                 f,
                 "EvtMode {{ cpu_cfg: {:?}, gen_evt_cfg[0]: {:?}, gen_evt_cfg[1]: {:?} }}",
-                self.cpu_cfg(),
-                self.gen_evt_cfg(0usize),
-                self.gen_evt_cfg(1usize)
+                self.cpu_cfg(), self.gen_evt_cfg(0usize), self.gen_evt_cfg(1usize)
             )
         }
     }
-    #[doc = "FAST WAKE ENABLE."]
+    ///FAST WAKE ENABLE.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fastwake(pub u32);
     impl Fastwake {
-        #[doc = "Enable fastwake feature for DIN0."]
+        ///Enable fastwake feature for DIN0.
         #[must_use]
         #[inline(always)]
         pub const fn din(&self, n: usize) -> bool {
@@ -1385,7 +1562,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Enable fastwake feature for DIN0."]
+        ///Enable fastwake feature for DIN0.
         #[inline(always)]
         pub const fn set_din(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1440,15 +1617,27 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Fastwake {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Fastwake {{ din[0]: {=bool:?}, din[1]: {=bool:?}, din[2]: {=bool:?}, din[3]: {=bool:?}, din[4]: {=bool:?}, din[5]: {=bool:?}, din[6]: {=bool:?}, din[7]: {=bool:?}, din[8]: {=bool:?}, din[9]: {=bool:?}, din[10]: {=bool:?}, din[11]: {=bool:?}, din[12]: {=bool:?}, din[13]: {=bool:?}, din[14]: {=bool:?}, din[15]: {=bool:?}, din[16]: {=bool:?}, din[17]: {=bool:?}, din[18]: {=bool:?}, din[19]: {=bool:?}, din[20]: {=bool:?}, din[21]: {=bool:?}, din[22]: {=bool:?}, din[23]: {=bool:?}, din[24]: {=bool:?}, din[25]: {=bool:?}, din[26]: {=bool:?}, din[27]: {=bool:?}, din[28]: {=bool:?}, din[29]: {=bool:?}, din[30]: {=bool:?}, din[31]: {=bool:?} }}" , self . din (0usize) , self . din (1usize) , self . din (2usize) , self . din (3usize) , self . din (4usize) , self . din (5usize) , self . din (6usize) , self . din (7usize) , self . din (8usize) , self . din (9usize) , self . din (10usize) , self . din (11usize) , self . din (12usize) , self . din (13usize) , self . din (14usize) , self . din (15usize) , self . din (16usize) , self . din (17usize) , self . din (18usize) , self . din (19usize) , self . din (20usize) , self . din (21usize) , self . din (22usize) , self . din (23usize) , self . din (24usize) , self . din (25usize) , self . din (26usize) , self . din (27usize) , self . din (28usize) , self . din (29usize) , self . din (30usize) , self . din (31usize))
+            defmt::write!(
+                f,
+                "Fastwake {{ din[0]: {=bool:?}, din[1]: {=bool:?}, din[2]: {=bool:?}, din[3]: {=bool:?}, din[4]: {=bool:?}, din[5]: {=bool:?}, din[6]: {=bool:?}, din[7]: {=bool:?}, din[8]: {=bool:?}, din[9]: {=bool:?}, din[10]: {=bool:?}, din[11]: {=bool:?}, din[12]: {=bool:?}, din[13]: {=bool:?}, din[14]: {=bool:?}, din[15]: {=bool:?}, din[16]: {=bool:?}, din[17]: {=bool:?}, din[18]: {=bool:?}, din[19]: {=bool:?}, din[20]: {=bool:?}, din[21]: {=bool:?}, din[22]: {=bool:?}, din[23]: {=bool:?}, din[24]: {=bool:?}, din[25]: {=bool:?}, din[26]: {=bool:?}, din[27]: {=bool:?}, din[28]: {=bool:?}, din[29]: {=bool:?}, din[30]: {=bool:?}, din[31]: {=bool:?} }}",
+                self.din(0usize), self.din(1usize), self.din(2usize), self.din(3usize),
+                self.din(4usize), self.din(5usize), self.din(6usize), self.din(7usize),
+                self.din(8usize), self.din(9usize), self.din(10usize), self.din(11usize),
+                self.din(12usize), self.din(13usize), self.din(14usize), self
+                .din(15usize), self.din(16usize), self.din(17usize), self.din(18usize),
+                self.din(19usize), self.din(20usize), self.din(21usize), self
+                .din(22usize), self.din(23usize), self.din(24usize), self.din(25usize),
+                self.din(26usize), self.din(27usize), self.din(28usize), self
+                .din(29usize), self.din(30usize), self.din(31usize)
+            )
         }
     }
-    #[doc = "Filter Enable 15 to 0."]
+    ///Filter Enable 15 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Filteren(pub u32);
     impl Filteren {
-        #[doc = "Programmable counter length of digital glitch filter for DIN0."]
+        ///Programmable counter length of digital glitch filter for DIN0.
         #[must_use]
         #[inline(always)]
         pub const fn din(&self, n: usize) -> super::vals::Filteren {
@@ -1457,12 +1646,13 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x03;
             super::vals::Filteren::from_bits(val as u8)
         }
-        #[doc = "Programmable counter length of digital glitch filter for DIN0."]
+        ///Programmable counter length of digital glitch filter for DIN0.
         #[inline(always)]
         pub const fn set_din(&mut self, n: usize, val: super::vals::Filteren) {
             assert!(n < 16usize);
             let offs = 0usize + n * 2usize;
-            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
+            self.0 = (self.0 & !(0x03 << offs))
+                | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for Filteren {
@@ -1496,22 +1686,30 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Filteren {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Filteren {{ din[0]: {:?}, din[1]: {:?}, din[2]: {:?}, din[3]: {:?}, din[4]: {:?}, din[5]: {:?}, din[6]: {:?}, din[7]: {:?}, din[8]: {:?}, din[9]: {:?}, din[10]: {:?}, din[11]: {:?}, din[12]: {:?}, din[13]: {:?}, din[14]: {:?}, din[15]: {:?} }}" , self . din (0usize) , self . din (1usize) , self . din (2usize) , self . din (3usize) , self . din (4usize) , self . din (5usize) , self . din (6usize) , self . din (7usize) , self . din (8usize) , self . din (9usize) , self . din (10usize) , self . din (11usize) , self . din (12usize) , self . din (13usize) , self . din (14usize) , self . din (15usize))
+            defmt::write!(
+                f,
+                "Filteren {{ din[0]: {:?}, din[1]: {:?}, din[2]: {:?}, din[3]: {:?}, din[4]: {:?}, din[5]: {:?}, din[6]: {:?}, din[7]: {:?}, din[8]: {:?}, din[9]: {:?}, din[10]: {:?}, din[11]: {:?}, din[12]: {:?}, din[13]: {:?}, din[14]: {:?}, din[15]: {:?} }}",
+                self.din(0usize), self.din(1usize), self.din(2usize), self.din(3usize),
+                self.din(4usize), self.din(5usize), self.din(6usize), self.din(7usize),
+                self.din(8usize), self.din(9usize), self.din(10usize), self.din(11usize),
+                self.din(12usize), self.din(13usize), self.din(14usize), self
+                .din(15usize)
+            )
         }
     }
-    #[doc = "Publisher Port 0."]
+    ///Publisher Port 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fport(pub u32);
     impl Fport {
-        #[doc = "0 = disconnected. 1-15 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-15 = connected to channelID = CHANID.
         #[must_use]
         #[inline(always)]
         pub const fn chanid(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "0 = disconnected. 1-15 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-15 = connected to channelID = CHANID.
         #[inline(always)]
         pub const fn set_chanid(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
@@ -1525,9 +1723,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for Fport {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Fport")
-                .field("chanid", &self.chanid())
-                .finish()
+            f.debug_struct("Fport").field("chanid", &self.chanid()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1536,12 +1732,12 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "Fport {{ chanid: {=u8:?} }}", self.chanid())
         }
     }
-    #[doc = "Generic event mask, one bit per DIO."]
+    ///Generic event mask, one bit per DIO.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GenEvent(pub u32);
     impl GenEvent {
-        #[doc = "DIO event."]
+        ///DIO event.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> bool {
@@ -1550,7 +1746,7 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "DIO event."]
+        ///DIO event.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: bool) {
             assert!(n < 32usize);
@@ -1605,25 +1801,38 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for GenEvent {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "GenEvent {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize) , self . dio (16usize) , self . dio (17usize) , self . dio (18usize) , self . dio (19usize) , self . dio (20usize) , self . dio (21usize) , self . dio (22usize) , self . dio (23usize) , self . dio (24usize) , self . dio (25usize) , self . dio (26usize) , self . dio (27usize) , self . dio (28usize) , self . dio (29usize) , self . dio (30usize) , self . dio (31usize))
+            defmt::write!(
+                f,
+                "GenEvent {{ dio[0]: {=bool:?}, dio[1]: {=bool:?}, dio[2]: {=bool:?}, dio[3]: {=bool:?}, dio[4]: {=bool:?}, dio[5]: {=bool:?}, dio[6]: {=bool:?}, dio[7]: {=bool:?}, dio[8]: {=bool:?}, dio[9]: {=bool:?}, dio[10]: {=bool:?}, dio[11]: {=bool:?}, dio[12]: {=bool:?}, dio[13]: {=bool:?}, dio[14]: {=bool:?}, dio[15]: {=bool:?}, dio[16]: {=bool:?}, dio[17]: {=bool:?}, dio[18]: {=bool:?}, dio[19]: {=bool:?}, dio[20]: {=bool:?}, dio[21]: {=bool:?}, dio[22]: {=bool:?}, dio[23]: {=bool:?}, dio[24]: {=bool:?}, dio[25]: {=bool:?}, dio[26]: {=bool:?}, dio[27]: {=bool:?}, dio[28]: {=bool:?}, dio[29]: {=bool:?}, dio[30]: {=bool:?}, dio[31]: {=bool:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize), self.dio(16usize), self.dio(17usize), self.dio(18usize),
+                self.dio(19usize), self.dio(20usize), self.dio(21usize), self
+                .dio(22usize), self.dio(23usize), self.dio(24usize), self.dio(25usize),
+                self.dio(26usize), self.dio(27usize), self.dio(28usize), self
+                .dio(29usize), self.dio(30usize), self.dio(31usize)
+            )
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GenEventIidx(pub u32);
     impl GenEventIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::GenEventIidxStat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::GenEventIidxStat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::GenEventIidxStat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for GenEventIidx {
@@ -1634,9 +1843,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for GenEventIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("GenEventIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("GenEventIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1645,19 +1852,19 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "GenEventIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdbgctl(pub u32);
     impl Pdbgctl {
-        #[doc = "Free run control."]
+        ///Free run control.
         #[must_use]
         #[inline(always)]
         pub const fn free(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Free run control."]
+        ///Free run control.
         #[inline(always)]
         pub const fn set_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -1671,9 +1878,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for Pdbgctl {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Pdbgctl")
-                .field("free", &self.free())
-                .finish()
+            f.debug_struct("Pdbgctl").field("free", &self.free()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1682,12 +1887,12 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "Pdbgctl {{ free: {=bool:?} }}", self.free())
         }
     }
-    #[doc = "Polarity 15 to 0."]
+    ///Polarity 15 to 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Polarity150(pub u32);
     impl Polarity150 {
-        #[doc = "Enables and configures edge detection polarity for DIO0."]
+        ///Enables and configures edge detection polarity for DIO0.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> super::vals::Polarity {
@@ -1696,12 +1901,13 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x03;
             super::vals::Polarity::from_bits(val as u8)
         }
-        #[doc = "Enables and configures edge detection polarity for DIO0."]
+        ///Enables and configures edge detection polarity for DIO0.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: super::vals::Polarity) {
             assert!(n < 16usize);
             let offs = 0usize + n * 2usize;
-            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
+            self.0 = (self.0 & !(0x03 << offs))
+                | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for Polarity150 {
@@ -1735,15 +1941,23 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Polarity150 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Polarity150 {{ dio[0]: {:?}, dio[1]: {:?}, dio[2]: {:?}, dio[3]: {:?}, dio[4]: {:?}, dio[5]: {:?}, dio[6]: {:?}, dio[7]: {:?}, dio[8]: {:?}, dio[9]: {:?}, dio[10]: {:?}, dio[11]: {:?}, dio[12]: {:?}, dio[13]: {:?}, dio[14]: {:?}, dio[15]: {:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize))
+            defmt::write!(
+                f,
+                "Polarity150 {{ dio[0]: {:?}, dio[1]: {:?}, dio[2]: {:?}, dio[3]: {:?}, dio[4]: {:?}, dio[5]: {:?}, dio[6]: {:?}, dio[7]: {:?}, dio[8]: {:?}, dio[9]: {:?}, dio[10]: {:?}, dio[11]: {:?}, dio[12]: {:?}, dio[13]: {:?}, dio[14]: {:?}, dio[15]: {:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize)
+            )
         }
     }
-    #[doc = "Polarity 31 to 16."]
+    ///Polarity 31 to 16.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Polarity3116(pub u32);
     impl Polarity3116 {
-        #[doc = "Enables and configures edge detection polarity for DIO16."]
+        ///Enables and configures edge detection polarity for DIO16.
         #[must_use]
         #[inline(always)]
         pub const fn dio(&self, n: usize) -> super::vals::Polarity {
@@ -1752,12 +1966,13 @@ is enabled, this register is used to manually control the peripheral's clock req
             let val = (self.0 >> offs) & 0x03;
             super::vals::Polarity::from_bits(val as u8)
         }
-        #[doc = "Enables and configures edge detection polarity for DIO16."]
+        ///Enables and configures edge detection polarity for DIO16.
         #[inline(always)]
         pub const fn set_dio(&mut self, n: usize, val: super::vals::Polarity) {
             assert!(n < 16usize);
             let offs = 0usize + n * 2usize;
-            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
+            self.0 = (self.0 & !(0x03 << offs))
+                | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for Polarity3116 {
@@ -1791,7 +2006,15 @@ is enabled, this register is used to manually control the peripheral's clock req
     #[cfg(feature = "defmt")]
     impl defmt::Format for Polarity3116 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Polarity3116 {{ dio[0]: {:?}, dio[1]: {:?}, dio[2]: {:?}, dio[3]: {:?}, dio[4]: {:?}, dio[5]: {:?}, dio[6]: {:?}, dio[7]: {:?}, dio[8]: {:?}, dio[9]: {:?}, dio[10]: {:?}, dio[11]: {:?}, dio[12]: {:?}, dio[13]: {:?}, dio[14]: {:?}, dio[15]: {:?} }}" , self . dio (0usize) , self . dio (1usize) , self . dio (2usize) , self . dio (3usize) , self . dio (4usize) , self . dio (5usize) , self . dio (6usize) , self . dio (7usize) , self . dio (8usize) , self . dio (9usize) , self . dio (10usize) , self . dio (11usize) , self . dio (12usize) , self . dio (13usize) , self . dio (14usize) , self . dio (15usize))
+            defmt::write!(
+                f,
+                "Polarity3116 {{ dio[0]: {:?}, dio[1]: {:?}, dio[2]: {:?}, dio[3]: {:?}, dio[4]: {:?}, dio[5]: {:?}, dio[6]: {:?}, dio[7]: {:?}, dio[8]: {:?}, dio[9]: {:?}, dio[10]: {:?}, dio[11]: {:?}, dio[12]: {:?}, dio[13]: {:?}, dio[14]: {:?}, dio[15]: {:?} }}",
+                self.dio(0usize), self.dio(1usize), self.dio(2usize), self.dio(3usize),
+                self.dio(4usize), self.dio(5usize), self.dio(6usize), self.dio(7usize),
+                self.dio(8usize), self.dio(9usize), self.dio(10usize), self.dio(11usize),
+                self.dio(12usize), self.dio(13usize), self.dio(14usize), self
+                .dio(15usize)
+            )
         }
     }
     #[repr(transparent)]
@@ -1808,17 +2031,18 @@ is enabled, this register is used to manually control the peripheral's clock req
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::PwrenKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::PwrenKey::from_bits(val as u8)
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::PwrenKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Pwren {
@@ -1839,53 +2063,51 @@ is enabled, this register is used to manually control the peripheral's clock req
     impl defmt::Format for Pwren {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pwren {{ enable: {=bool:?}, key: {:?} }}",
-                self.enable(),
-                self.key()
+                f, "Pwren {{ enable: {=bool:?}, key: {:?} }}", self.enable(), self.key()
             )
         }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[must_use]
         #[inline(always)]
         pub const fn resetassert(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[inline(always)]
         pub const fn set_resetassert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[inline(always)]
         pub const fn set_resetstkyclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::ResetKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::ResetKey::from_bits(val as u8)
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::ResetKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Rstctl {
@@ -1909,25 +2131,23 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(
                 f,
                 "Rstctl {{ resetassert: {=bool:?}, resetstkyclr: {=bool:?}, key: {:?} }}",
-                self.resetassert(),
-                self.resetstkyclr(),
-                self.key()
+                self.resetassert(), self.resetstkyclr(), self.key()
             )
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstky(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[inline(always)]
         pub const fn set_resetstky(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
@@ -1941,9 +2161,7 @@ is enabled, this register is used to manually control the peripheral's clock req
     }
     impl core::fmt::Debug for Stat {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Stat")
-                .field("resetstky", &self.resetstky())
-                .finish()
+            f.debug_struct("Stat").field("resetstky", &self.resetstky()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1952,43 +2170,44 @@ is enabled, this register is used to manually control the peripheral's clock req
             defmt::write!(f, "Stat {{ resetstky: {=bool:?} }}", self.resetstky())
         }
     }
-    #[doc = "Subscriber 0 configuration."]
+    ///Subscriber 0 configuration.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Subcfg(pub u32);
     impl Subcfg {
-        #[doc = "This bit is used to enable subscriber 0 event."]
+        ///This bit is used to enable subscriber 0 event.
         #[must_use]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit is used to enable subscriber 0 event."]
+        ///This bit is used to enable subscriber 0 event.
         #[inline(always)]
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "These bits configure the output policy for subscriber 0 event."]
+        ///These bits configure the output policy for subscriber 0 event.
         #[must_use]
         #[inline(always)]
         pub const fn outpolicy(&self) -> super::vals::SubcfgOutpolicy {
             let val = (self.0 >> 8usize) & 0x03;
             super::vals::SubcfgOutpolicy::from_bits(val as u8)
         }
-        #[doc = "These bits configure the output policy for subscriber 0 event."]
+        ///These bits configure the output policy for subscriber 0 event.
         #[inline(always)]
         pub const fn set_outpolicy(&mut self, val: super::vals::SubcfgOutpolicy) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize))
+                | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
-        #[doc = "Indicates the specific bit among lower 16 bits that is targeted by the subscriber action."]
+        ///Indicates the specific bit among lower 16 bits that is targeted by the subscriber action.
         #[must_use]
         #[inline(always)]
         pub const fn index(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x0f;
             val as u8
         }
-        #[doc = "Indicates the specific bit among lower 16 bits that is targeted by the subscriber action."]
+        ///Indicates the specific bit among lower 16 bits that is targeted by the subscriber action.
         #[inline(always)]
         pub const fn set_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
@@ -2013,11 +2232,8 @@ is enabled, this register is used to manually control the peripheral's clock req
     impl defmt::Format for Subcfg {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Subcfg {{ enable: {=bool:?}, outpolicy: {:?}, index: {=u8:?} }}",
-                self.enable(),
-                self.outpolicy(),
-                self.index()
+                f, "Subcfg {{ enable: {=bool:?}, outpolicy: {:?}, index: {=u8:?} }}",
+                self.enable(), self.outpolicy(), self.index()
             )
         }
     }
@@ -2027,71 +2243,71 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct CpuIntIidxStat(u8);
     impl CpuIntIidxStat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "DIO0 interrupt."]
+        ///DIO0 interrupt.
         pub const Dio0: Self = Self(0x01);
-        #[doc = "DIO1 interrupt."]
+        ///DIO1 interrupt.
         pub const Dio1: Self = Self(0x02);
-        #[doc = "DIO2 interrupt."]
+        ///DIO2 interrupt.
         pub const Dio2: Self = Self(0x03);
-        #[doc = "DIO3 interrupt."]
+        ///DIO3 interrupt.
         pub const Dio3: Self = Self(0x04);
-        #[doc = "DIO4 interrupt."]
+        ///DIO4 interrupt.
         pub const Dio4: Self = Self(0x05);
-        #[doc = "DIO5 interrupt."]
+        ///DIO5 interrupt.
         pub const Dio5: Self = Self(0x06);
-        #[doc = "DIO6 interrupt."]
+        ///DIO6 interrupt.
         pub const Dio6: Self = Self(0x07);
-        #[doc = "DIO7 interrupt."]
+        ///DIO7 interrupt.
         pub const Dio7: Self = Self(0x08);
-        #[doc = "DIO8 interrupt."]
+        ///DIO8 interrupt.
         pub const Dio8: Self = Self(0x09);
-        #[doc = "DIO9 interrupt."]
+        ///DIO9 interrupt.
         pub const Dio9: Self = Self(0x0a);
-        #[doc = "DIO10 interrupt."]
+        ///DIO10 interrupt.
         pub const Dio10: Self = Self(0x0b);
-        #[doc = "DIO11 interrupt."]
+        ///DIO11 interrupt.
         pub const Dio11: Self = Self(0x0c);
-        #[doc = "DIO12 interrupt."]
+        ///DIO12 interrupt.
         pub const Dio12: Self = Self(0x0d);
-        #[doc = "DIO13 interrupt."]
+        ///DIO13 interrupt.
         pub const Dio13: Self = Self(0x0e);
-        #[doc = "DIO14 interrupt."]
+        ///DIO14 interrupt.
         pub const Dio14: Self = Self(0x0f);
-        #[doc = "DIO15 interrupt."]
+        ///DIO15 interrupt.
         pub const Dio15: Self = Self(0x10);
-        #[doc = "DIO16 interrupt."]
+        ///DIO16 interrupt.
         pub const Dio16: Self = Self(0x11);
-        #[doc = "DIO17 interrupt."]
+        ///DIO17 interrupt.
         pub const Dio17: Self = Self(0x12);
-        #[doc = "DIO18 interrupt."]
+        ///DIO18 interrupt.
         pub const Dio18: Self = Self(0x13);
-        #[doc = "DIO19 interrupt."]
+        ///DIO19 interrupt.
         pub const Dio19: Self = Self(0x14);
-        #[doc = "DIO20 interrupt."]
+        ///DIO20 interrupt.
         pub const Dio20: Self = Self(0x15);
-        #[doc = "DIO21 interrupt."]
+        ///DIO21 interrupt.
         pub const Dio21: Self = Self(0x16);
-        #[doc = "DIO22 interrupt."]
+        ///DIO22 interrupt.
         pub const Dio22: Self = Self(0x17);
-        #[doc = "DIO23 interrupt."]
+        ///DIO23 interrupt.
         pub const Dio23: Self = Self(0x18);
-        #[doc = "DIO24 interrupt."]
+        ///DIO24 interrupt.
         pub const Dio24: Self = Self(0x19);
-        #[doc = "DIO25 interrupt."]
+        ///DIO25 interrupt.
         pub const Dio25: Self = Self(0x1a);
-        #[doc = "DIO26 interrupt."]
+        ///DIO26 interrupt.
         pub const Dio26: Self = Self(0x1b);
-        #[doc = "DIO27 interrupt."]
+        ///DIO27 interrupt.
         pub const Dio27: Self = Self(0x1c);
-        #[doc = "DIO28 interrupt."]
+        ///DIO28 interrupt.
         pub const Dio28: Self = Self(0x1d);
-        #[doc = "DIO29 interrupt."]
+        ///DIO29 interrupt.
         pub const Dio29: Self = Self(0x1e);
-        #[doc = "DIO30 interrupt."]
+        ///DIO30 interrupt.
         pub const Dio30: Self = Self(0x1f);
-        #[doc = "DIO31 interrupt."]
+        ///DIO31 interrupt.
         pub const Dio31: Self = Self(0x20);
     }
     impl CpuIntIidxStat {
@@ -2199,11 +2415,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum EvtCfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -2233,13 +2449,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Filteren {
-        #[doc = "No additional filter beyond the CDC synchronization sample."]
+        ///No additional filter beyond the CDC synchronization sample.
         Disable = 0x0,
-        #[doc = "1 ULPCLK minimum sample."]
+        ///1 ULPCLK minimum sample.
         OneCycle = 0x01,
-        #[doc = "3 ULPCLK minimum sample."]
+        ///3 ULPCLK minimum sample.
         ThreeCycle = 0x02,
-        #[doc = "8 ULPCLK minimum sample."]
+        ///8 ULPCLK minimum sample.
         EightCycle = 0x03,
     }
     impl Filteren {
@@ -2268,39 +2484,39 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct GenEventIidxStat(u8);
     impl GenEventIidxStat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "DIO0 interrupt."]
+        ///DIO0 interrupt.
         pub const Dio0: Self = Self(0x01);
-        #[doc = "DIO1 interrupt."]
+        ///DIO1 interrupt.
         pub const Dio1: Self = Self(0x02);
-        #[doc = "DIO2 interrupt."]
+        ///DIO2 interrupt.
         pub const Dio2: Self = Self(0x03);
-        #[doc = "DIO3 interrupt."]
+        ///DIO3 interrupt.
         pub const Dio3: Self = Self(0x04);
-        #[doc = "DIO4 interrupt."]
+        ///DIO4 interrupt.
         pub const Dio4: Self = Self(0x05);
-        #[doc = "DIO5 interrupt."]
+        ///DIO5 interrupt.
         pub const Dio5: Self = Self(0x06);
-        #[doc = "DIO6 interrupt."]
+        ///DIO6 interrupt.
         pub const Dio6: Self = Self(0x07);
-        #[doc = "DIO7 interrupt."]
+        ///DIO7 interrupt.
         pub const Dio7: Self = Self(0x08);
-        #[doc = "DIO8 interrupt."]
+        ///DIO8 interrupt.
         pub const Dio8: Self = Self(0x09);
-        #[doc = "DIO9 interrupt."]
+        ///DIO9 interrupt.
         pub const Dio9: Self = Self(0x0a);
-        #[doc = "DIO10 interrupt."]
+        ///DIO10 interrupt.
         pub const Dio10: Self = Self(0x0b);
-        #[doc = "DIO11 interrupt."]
+        ///DIO11 interrupt.
         pub const Dio11: Self = Self(0x0c);
-        #[doc = "DIO12 interrupt."]
+        ///DIO12 interrupt.
         pub const Dio12: Self = Self(0x0d);
-        #[doc = "DIO13 interrupt."]
+        ///DIO13 interrupt.
         pub const Dio13: Self = Self(0x0e);
-        #[doc = "DIO14 interrupt."]
+        ///DIO14 interrupt.
         pub const Dio14: Self = Self(0x0f);
-        #[doc = "DIO15 interrupt."]
+        ///DIO15 interrupt.
         pub const Dio15: Self = Self(0x10);
     }
     impl GenEventIidxStat {
@@ -2376,13 +2592,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Polarity {
-        #[doc = "Edge detection disabled."]
+        ///Edge detection disabled.
         Disable = 0x0,
-        #[doc = "Detects rising edge of input event."]
+        ///Detects rising edge of input event.
         Rise = 0x01,
-        #[doc = "Detects falling edge of input event."]
+        ///Detects falling edge of input event.
         Fall = 0x02,
-        #[doc = "Detects both rising and falling edge of input event."]
+        ///Detects both rising and falling edge of input event.
         RiseFall = 0x03,
     }
     impl Polarity {
@@ -2497,9 +2713,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum RunStop {
-        #[doc = "Run/ungate functional clock."]
+        ///Run/ungate functional clock.
         Run = 0x0,
-        #[doc = "Stop/gate functional clock."]
+        ///Stop/gate functional clock.
         Stop = 0x01,
     }
     impl RunStop {
@@ -2528,11 +2744,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum SubcfgOutpolicy {
-        #[doc = "Selected DIO pins are set."]
+        ///Selected DIO pins are set.
         Set = 0x0,
-        #[doc = "Selected DIO pins are cleared."]
+        ///Selected DIO pins are cleared.
         Clr = 0x01,
-        #[doc = "Selected DIO pins are toggled."]
+        ///Selected DIO pins are toggled.
         Toggle = 0x02,
         _RESERVED_3 = 0x03,
     }

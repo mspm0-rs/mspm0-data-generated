@@ -3,8 +3,7 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Adc {
     ptr: *mut u8,
@@ -20,12 +19,12 @@ impl Adc {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Subscriber Configuration Register."]
+    ///Subscriber Configuration Register.
     #[inline(always)]
     pub const fn fsub(self) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize) as _) }
     }
-    #[doc = "Publisher Configuration Register."]
+    ///Publisher Configuration Register.
     #[inline(always)]
     pub const fn fpub(self) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0444usize) as _) }
@@ -38,85 +37,101 @@ impl Adc {
     #[inline(always)]
     pub const fn cpu_int(self, n: usize) -> CpuInt {
         assert!(n < 1usize);
-        unsafe { CpuInt::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _) }
+        unsafe {
+            CpuInt::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _)
+        }
     }
     #[inline(always)]
     pub const fn gen_event(self, n: usize) -> GenEvent {
         assert!(n < 1usize);
-        unsafe { GenEvent::from_ptr(self.ptr.wrapping_add(0x1050usize + n * 44usize) as _) }
+        unsafe {
+            GenEvent::from_ptr(self.ptr.wrapping_add(0x1050usize + n * 44usize) as _)
+        }
     }
     #[inline(always)]
     pub const fn dma_trig(self, n: usize) -> DmaTrig {
         assert!(n < 1usize);
-        unsafe { DmaTrig::from_ptr(self.ptr.wrapping_add(0x1080usize + n * 44usize) as _) }
+        unsafe {
+            DmaTrig::from_ptr(self.ptr.wrapping_add(0x1080usize + n * 44usize) as _)
+        }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[inline(always)]
     pub const fn evt_mode(self) -> crate::common::Reg<regs::EvtMode, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10e0usize) as _) }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[inline(always)]
     pub const fn desc(self) -> crate::common::Reg<regs::Desc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10fcusize) as _) }
     }
-    #[doc = "Control Register 0."]
+    ///Control Register 0.
     #[inline(always)]
     pub const fn ctl0(self) -> crate::common::Reg<regs::Ctl0, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1100usize) as _) }
     }
-    #[doc = "Control Register 1."]
+    ///Control Register 1.
     #[inline(always)]
     pub const fn ctl1(self) -> crate::common::Reg<regs::Ctl1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1104usize) as _) }
     }
-    #[doc = "Control Register 2."]
+    ///Control Register 2.
     #[inline(always)]
     pub const fn ctl2(self) -> crate::common::Reg<regs::Ctl2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1108usize) as _) }
     }
-    #[doc = "Sample Clock Frequency Range Register."]
+    ///Sample Clock Frequency Range Register.
     #[inline(always)]
     pub const fn clkfreq(self) -> crate::common::Reg<regs::Clkfreq, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1110usize) as _) }
     }
-    #[doc = "Sample Time Compare 0 Register."]
+    ///Sample Time Compare 0 Register.
     #[inline(always)]
     pub const fn scomp0(self) -> crate::common::Reg<regs::Scomp0, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1114usize) as _) }
     }
-    #[doc = "Sample Time Compare 1 Register."]
+    ///Sample Time Compare 1 Register.
     #[inline(always)]
     pub const fn scomp1(self) -> crate::common::Reg<regs::Scomp1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1118usize) as _) }
     }
-    #[doc = "Window Comparator Low Threshold Register."]
+    ///Window Comparator Low Threshold Register.
     #[inline(always)]
     pub const fn wclow(self) -> crate::common::Reg<regs::Wclow, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1148usize) as _) }
     }
-    #[doc = "Window Comparator High Threshold Register."]
+    ///Window Comparator High Threshold Register.
     #[inline(always)]
     pub const fn wchigh(self) -> crate::common::Reg<regs::Wchigh, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1150usize) as _) }
     }
-    #[doc = "Conversion Memory Control Register."]
+    ///Conversion Memory Control Register.
     #[inline(always)]
-    pub const fn memctl(self, n: usize) -> crate::common::Reg<regs::Memctl, crate::common::RW> {
+    pub const fn memctl(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Memctl, crate::common::RW> {
         assert!(n < 24usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1180usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1180usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Memory result register."]
+    ///Memory result register.
     #[inline(always)]
-    pub const fn memres(self, n: usize) -> crate::common::Reg<regs::Memres, crate::common::R> {
+    pub const fn memres(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Memres, crate::common::R> {
         assert!(n < 24usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1280usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x1280usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1340usize) as _) }
@@ -137,32 +152,32 @@ impl CpuInt {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::CpuIntIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::CpuInt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::CpuInt, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::CpuInt, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -183,32 +198,32 @@ impl DmaTrig {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::DmaTrigIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask extension."]
+    ///Interrupt mask extension.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::DmaTrig, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status extension."]
+    ///Raw interrupt status extension.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::DmaTrig, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status extension."]
+    ///Masked interrupt status extension.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::DmaTrig, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set extension."]
+    ///Interrupt set extension.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::DmaTrig, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear extension."]
+    ///Interrupt clear extension.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::DmaTrig, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -229,32 +244,32 @@ impl GenEvent {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::GenEventIidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::GenEvent, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::GenEvent, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::GenEvent, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::GenEvent, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::GenEvent, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -275,80 +290,82 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "ADC clock configuration Register."]
+    ///ADC clock configuration Register.
     #[inline(always)]
     pub const fn clkcfg(self) -> crate::common::Reg<regs::Clkcfg, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "ADC clock configuration Register."]
+    ///ADC clock configuration Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clkcfg(pub u32);
     impl Clkcfg {
-        #[doc = "ADC sample clock source selection."]
+        ///ADC sample clock source selection.
         #[must_use]
         #[inline(always)]
         pub const fn sampclk(&self) -> super::vals::Sampclk {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::Sampclk::from_bits(val as u8)
         }
-        #[doc = "ADC sample clock source selection."]
+        ///ADC sample clock source selection.
         #[inline(always)]
         pub const fn set_sampclk(&mut self, val: super::vals::Sampclk) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "CCONRUN: Forces SYSOSC to run at base frequency when device is in RUN mode which can be used as ADC sample or conversion clock source."]
+        ///CCONRUN: Forces SYSOSC to run at base frequency when device is in RUN mode which can be used as ADC sample or conversion clock source.
         #[must_use]
         #[inline(always)]
         pub const fn cconrun(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "CCONRUN: Forces SYSOSC to run at base frequency when device is in RUN mode which can be used as ADC sample or conversion clock source."]
+        ///CCONRUN: Forces SYSOSC to run at base frequency when device is in RUN mode which can be used as ADC sample or conversion clock source.
         #[inline(always)]
         pub const fn set_cconrun(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "CCONSTOP: Forces SYSOSC to run at base frequency when device is in STOP mode which can be used as ADC sample or conversion clock source."]
+        ///CCONSTOP: Forces SYSOSC to run at base frequency when device is in STOP mode which can be used as ADC sample or conversion clock source.
         #[must_use]
         #[inline(always)]
         pub const fn cconstop(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
-        #[doc = "CCONSTOP: Forces SYSOSC to run at base frequency when device is in STOP mode which can be used as ADC sample or conversion clock source."]
+        ///CCONSTOP: Forces SYSOSC to run at base frequency when device is in STOP mode which can be used as ADC sample or conversion clock source.
         #[inline(always)]
         pub const fn set_cconstop(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "KEY to Allow State Change A9h = KEY to allow write access to this register"]
+        ///KEY to Allow State Change A9h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::ClkcfgKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::ClkcfgKey::from_bits(val as u8)
         }
-        #[doc = "KEY to Allow State Change A9h = KEY to allow write access to this register"]
+        ///KEY to Allow State Change A9h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::ClkcfgKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Clkcfg {
@@ -373,29 +390,27 @@ pub mod regs {
             defmt::write!(
                 f,
                 "Clkcfg {{ sampclk: {:?}, cconrun: {=bool:?}, cconstop: {=bool:?}, key: {:?} }}",
-                self.sampclk(),
-                self.cconrun(),
-                self.cconstop(),
-                self.key()
+                self.sampclk(), self.cconrun(), self.cconstop(), self.key()
             )
         }
     }
-    #[doc = "Sample Clock Frequency Range Register."]
+    ///Sample Clock Frequency Range Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clkfreq(pub u32);
     impl Clkfreq {
-        #[doc = "Frequency Range."]
+        ///Frequency Range.
         #[must_use]
         #[inline(always)]
         pub const fn frange(&self) -> super::vals::Frange {
             let val = (self.0 >> 0usize) & 0x07;
             super::vals::Frange::from_bits(val as u8)
         }
-        #[doc = "Frequency Range."]
+        ///Frequency Range.
         #[inline(always)]
         pub const fn set_frange(&mut self, val: super::vals::Frange) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
+            self.0 = (self.0 & !(0x07 << 0usize))
+                | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
     }
     impl Default for Clkfreq {
@@ -406,9 +421,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Clkfreq {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Clkfreq")
-                .field("frange", &self.frange())
-                .finish()
+            f.debug_struct("Clkfreq").field("frange", &self.frange()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -417,96 +430,96 @@ pub mod regs {
             defmt::write!(f, "Clkfreq {{ frange: {:?} }}", self.frange())
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuInt(pub u32);
     impl CpuInt {
-        #[doc = "Raw interrupt flag for MEMRESx overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for MEMRESx overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn ovifg(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for MEMRESx overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for MEMRESx overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_ovifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Raw interrupt flag for sequence conversion timeout overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for sequence conversion timeout overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn tovifg(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for sequence conversion timeout overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for sequence conversion timeout overflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_tovifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn highifg(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_highifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn lowifg(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_lowifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
-        #[doc = "Mask INIFG in MIS_EX register."]
+        ///Mask INIFG in MIS_EX register.
         #[must_use]
         #[inline(always)]
         pub const fn inifg(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "Mask INIFG in MIS_EX register."]
+        ///Mask INIFG in MIS_EX register.
         #[inline(always)]
         pub const fn set_inifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "Raw interrupt flag for DMADONE. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for DMADONE. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn dmadone(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for DMADONE. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for DMADONE. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_dmadone(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "Raw interrupt flag for MEMRESx underflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for MEMRESx underflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn uvifg(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for MEMRESx underflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for MEMRESx underflow. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_uvifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn memresifg(&self, n: usize) -> bool {
@@ -515,7 +528,7 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[inline(always)]
         pub const fn set_memresifg(&mut self, n: usize, val: bool) {
             assert!(n < 24usize);
@@ -569,25 +582,40 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for CpuInt {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "CpuInt {{ ovifg: {=bool:?}, tovifg: {=bool:?}, highifg: {=bool:?}, lowifg: {=bool:?}, inifg: {=bool:?}, dmadone: {=bool:?}, uvifg: {=bool:?}, memresifg[0]: {=bool:?}, memresifg[1]: {=bool:?}, memresifg[2]: {=bool:?}, memresifg[3]: {=bool:?}, memresifg[4]: {=bool:?}, memresifg[5]: {=bool:?}, memresifg[6]: {=bool:?}, memresifg[7]: {=bool:?}, memresifg[8]: {=bool:?}, memresifg[9]: {=bool:?}, memresifg[10]: {=bool:?}, memresifg[11]: {=bool:?}, memresifg[12]: {=bool:?}, memresifg[13]: {=bool:?}, memresifg[14]: {=bool:?}, memresifg[15]: {=bool:?}, memresifg[16]: {=bool:?}, memresifg[17]: {=bool:?}, memresifg[18]: {=bool:?}, memresifg[19]: {=bool:?}, memresifg[20]: {=bool:?}, memresifg[21]: {=bool:?}, memresifg[22]: {=bool:?}, memresifg[23]: {=bool:?} }}" , self . ovifg () , self . tovifg () , self . highifg () , self . lowifg () , self . inifg () , self . dmadone () , self . uvifg () , self . memresifg (0usize) , self . memresifg (1usize) , self . memresifg (2usize) , self . memresifg (3usize) , self . memresifg (4usize) , self . memresifg (5usize) , self . memresifg (6usize) , self . memresifg (7usize) , self . memresifg (8usize) , self . memresifg (9usize) , self . memresifg (10usize) , self . memresifg (11usize) , self . memresifg (12usize) , self . memresifg (13usize) , self . memresifg (14usize) , self . memresifg (15usize) , self . memresifg (16usize) , self . memresifg (17usize) , self . memresifg (18usize) , self . memresifg (19usize) , self . memresifg (20usize) , self . memresifg (21usize) , self . memresifg (22usize) , self . memresifg (23usize))
+            defmt::write!(
+                f,
+                "CpuInt {{ ovifg: {=bool:?}, tovifg: {=bool:?}, highifg: {=bool:?}, lowifg: {=bool:?}, inifg: {=bool:?}, dmadone: {=bool:?}, uvifg: {=bool:?}, memresifg[0]: {=bool:?}, memresifg[1]: {=bool:?}, memresifg[2]: {=bool:?}, memresifg[3]: {=bool:?}, memresifg[4]: {=bool:?}, memresifg[5]: {=bool:?}, memresifg[6]: {=bool:?}, memresifg[7]: {=bool:?}, memresifg[8]: {=bool:?}, memresifg[9]: {=bool:?}, memresifg[10]: {=bool:?}, memresifg[11]: {=bool:?}, memresifg[12]: {=bool:?}, memresifg[13]: {=bool:?}, memresifg[14]: {=bool:?}, memresifg[15]: {=bool:?}, memresifg[16]: {=bool:?}, memresifg[17]: {=bool:?}, memresifg[18]: {=bool:?}, memresifg[19]: {=bool:?}, memresifg[20]: {=bool:?}, memresifg[21]: {=bool:?}, memresifg[22]: {=bool:?}, memresifg[23]: {=bool:?} }}",
+                self.ovifg(), self.tovifg(), self.highifg(), self.lowifg(), self.inifg(),
+                self.dmadone(), self.uvifg(), self.memresifg(0usize), self
+                .memresifg(1usize), self.memresifg(2usize), self.memresifg(3usize), self
+                .memresifg(4usize), self.memresifg(5usize), self.memresifg(6usize), self
+                .memresifg(7usize), self.memresifg(8usize), self.memresifg(9usize), self
+                .memresifg(10usize), self.memresifg(11usize), self.memresifg(12usize),
+                self.memresifg(13usize), self.memresifg(14usize), self
+                .memresifg(15usize), self.memresifg(16usize), self.memresifg(17usize),
+                self.memresifg(18usize), self.memresifg(19usize), self
+                .memresifg(20usize), self.memresifg(21usize), self.memresifg(22usize),
+                self.memresifg(23usize)
+            )
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CpuIntIidx(pub u32);
     impl CpuIntIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::CpuIntIidxStat {
             let val = (self.0 >> 0usize) & 0x03ff;
             super::vals::CpuIntIidxStat::from_bits(val as u16)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::CpuIntIidxStat) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val.to_bits() as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize))
+                | (((val.to_bits() as u32) & 0x03ff) << 0usize);
         }
     }
     impl Default for CpuIntIidx {
@@ -598,9 +626,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for CpuIntIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("CpuIntIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("CpuIntIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -609,46 +635,48 @@ pub mod regs {
             defmt::write!(f, "CpuIntIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Control Register 0."]
+    ///Control Register 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl0(pub u32);
     impl Ctl0 {
-        #[doc = "Enable conversion."]
+        ///Enable conversion.
         #[must_use]
         #[inline(always)]
         pub const fn enc(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable conversion."]
+        ///Enable conversion.
         #[inline(always)]
         pub const fn set_enc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Power down policy."]
+        ///Power down policy.
         #[must_use]
         #[inline(always)]
         pub const fn pwrdn(&self) -> super::vals::Pwrdn {
             let val = (self.0 >> 16usize) & 0x01;
             super::vals::Pwrdn::from_bits(val as u8)
         }
-        #[doc = "Power down policy."]
+        ///Power down policy.
         #[inline(always)]
         pub const fn set_pwrdn(&mut self, val: super::vals::Pwrdn) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
+            self.0 = (self.0 & !(0x01 << 16usize))
+                | (((val.to_bits() as u32) & 0x01) << 16usize);
         }
-        #[doc = "Sample clock divider."]
+        ///Sample clock divider.
         #[must_use]
         #[inline(always)]
         pub const fn sclkdiv(&self) -> super::vals::Sclkdiv {
             let val = (self.0 >> 24usize) & 0x07;
             super::vals::Sclkdiv::from_bits(val as u8)
         }
-        #[doc = "Sample clock divider."]
+        ///Sample clock divider.
         #[inline(always)]
         pub const fn set_sclkdiv(&mut self, val: super::vals::Sclkdiv) {
-            self.0 = (self.0 & !(0x07 << 24usize)) | (((val.to_bits() as u32) & 0x07) << 24usize);
+            self.0 = (self.0 & !(0x07 << 24usize))
+                | (((val.to_bits() as u32) & 0x07) << 24usize);
         }
     }
     impl Default for Ctl0 {
@@ -670,87 +698,89 @@ pub mod regs {
     impl defmt::Format for Ctl0 {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Ctl0 {{ enc: {=bool:?}, pwrdn: {:?}, sclkdiv: {:?} }}",
-                self.enc(),
-                self.pwrdn(),
-                self.sclkdiv()
+                f, "Ctl0 {{ enc: {=bool:?}, pwrdn: {:?}, sclkdiv: {:?} }}", self.enc(),
+                self.pwrdn(), self.sclkdiv()
             )
         }
     }
-    #[doc = "Control Register 1."]
+    ///Control Register 1.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl1(pub u32);
     impl Ctl1 {
-        #[doc = "Sample trigger source."]
+        ///Sample trigger source.
         #[must_use]
         #[inline(always)]
         pub const fn trigsrc(&self) -> super::vals::Trigsrc {
             let val = (self.0 >> 0usize) & 0x01;
             super::vals::Trigsrc::from_bits(val as u8)
         }
-        #[doc = "Sample trigger source."]
+        ///Sample trigger source.
         #[inline(always)]
         pub const fn set_trigsrc(&mut self, val: super::vals::Trigsrc) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize))
+                | (((val.to_bits() as u32) & 0x01) << 0usize);
         }
-        #[doc = "Start of conversion."]
+        ///Start of conversion.
         #[must_use]
         #[inline(always)]
         pub const fn sc(&self) -> super::vals::Sc {
             let val = (self.0 >> 8usize) & 0x01;
             super::vals::Sc::from_bits(val as u8)
         }
-        #[doc = "Start of conversion."]
+        ///Start of conversion.
         #[inline(always)]
         pub const fn set_sc(&mut self, val: super::vals::Sc) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
+            self.0 = (self.0 & !(0x01 << 8usize))
+                | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
-        #[doc = "Conversion sequence mode."]
+        ///Conversion sequence mode.
         #[must_use]
         #[inline(always)]
         pub const fn conseq(&self) -> super::vals::Conseq {
             let val = (self.0 >> 16usize) & 0x03;
             super::vals::Conseq::from_bits(val as u8)
         }
-        #[doc = "Conversion sequence mode."]
+        ///Conversion sequence mode.
         #[inline(always)]
         pub const fn set_conseq(&mut self, val: super::vals::Conseq) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
+            self.0 = (self.0 & !(0x03 << 16usize))
+                | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
-        #[doc = "Sample mode. This bit selects the source of the sampling signal. MANUAL option is not valid when TRIGSRC is selected as hardware event trigger."]
+        ///Sample mode. This bit selects the source of the sampling signal. MANUAL option is not valid when TRIGSRC is selected as hardware event trigger.
         #[must_use]
         #[inline(always)]
         pub const fn sampmode(&self) -> super::vals::Sampmode {
             let val = (self.0 >> 20usize) & 0x01;
             super::vals::Sampmode::from_bits(val as u8)
         }
-        #[doc = "Sample mode. This bit selects the source of the sampling signal. MANUAL option is not valid when TRIGSRC is selected as hardware event trigger."]
+        ///Sample mode. This bit selects the source of the sampling signal. MANUAL option is not valid when TRIGSRC is selected as hardware event trigger.
         #[inline(always)]
         pub const fn set_sampmode(&mut self, val: super::vals::Sampmode) {
-            self.0 = (self.0 & !(0x01 << 20usize)) | (((val.to_bits() as u32) & 0x01) << 20usize);
+            self.0 = (self.0 & !(0x01 << 20usize))
+                | (((val.to_bits() as u32) & 0x01) << 20usize);
         }
-        #[doc = "Hardware averager numerator. Selects number of conversions to accumulate for current MEMCTLx and then it is divided by AVGD. Result will be stored in MEMRESx."]
+        ///Hardware averager numerator. Selects number of conversions to accumulate for current MEMCTLx and then it is divided by AVGD. Result will be stored in MEMRESx.
         #[must_use]
         #[inline(always)]
         pub const fn avgn(&self) -> super::vals::Avgn {
             let val = (self.0 >> 24usize) & 0x07;
             super::vals::Avgn::from_bits(val as u8)
         }
-        #[doc = "Hardware averager numerator. Selects number of conversions to accumulate for current MEMCTLx and then it is divided by AVGD. Result will be stored in MEMRESx."]
+        ///Hardware averager numerator. Selects number of conversions to accumulate for current MEMCTLx and then it is divided by AVGD. Result will be stored in MEMRESx.
         #[inline(always)]
         pub const fn set_avgn(&mut self, val: super::vals::Avgn) {
-            self.0 = (self.0 & !(0x07 << 24usize)) | (((val.to_bits() as u32) & 0x07) << 24usize);
+            self.0 = (self.0 & !(0x07 << 24usize))
+                | (((val.to_bits() as u32) & 0x07) << 24usize);
         }
-        #[doc = "Hardware averager denominator. The number to divide the accumulated value by (this is a shift). Note result register is maximum of 16-bits long so if not shifted appropriately result will be truncated."]
+        ///Hardware averager denominator. The number to divide the accumulated value by (this is a shift). Note result register is maximum of 16-bits long so if not shifted appropriately result will be truncated.
         #[must_use]
         #[inline(always)]
         pub const fn avgd(&self) -> u8 {
             let val = (self.0 >> 28usize) & 0x07;
             val as u8
         }
-        #[doc = "Hardware averager denominator. The number to divide the accumulated value by (this is a shift). Note result register is maximum of 16-bits long so if not shifted appropriately result will be truncated."]
+        ///Hardware averager denominator. The number to divide the accumulated value by (this is a shift). Note result register is maximum of 16-bits long so if not shifted appropriately result will be truncated.
         #[inline(always)]
         pub const fn set_avgd(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 28usize)) | (((val as u32) & 0x07) << 28usize);
@@ -777,106 +807,113 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctl1 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctl1 {{ trigsrc: {:?}, sc: {:?}, conseq: {:?}, sampmode: {:?}, avgn: {:?}, avgd: {=u8:?} }}" , self . trigsrc () , self . sc () , self . conseq () , self . sampmode () , self . avgn () , self . avgd ())
+            defmt::write!(
+                f,
+                "Ctl1 {{ trigsrc: {:?}, sc: {:?}, conseq: {:?}, sampmode: {:?}, avgn: {:?}, avgd: {=u8:?} }}",
+                self.trigsrc(), self.sc(), self.conseq(), self.sampmode(), self.avgn(),
+                self.avgd()
+            )
         }
     }
-    #[doc = "Control Register 2."]
+    ///Control Register 2.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl2(pub u32);
     impl Ctl2 {
-        #[doc = "Data read-back format. Data is always stored in binary unsigned format."]
+        ///Data read-back format. Data is always stored in binary unsigned format.
         #[must_use]
         #[inline(always)]
         pub const fn df(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Data read-back format. Data is always stored in binary unsigned format."]
+        ///Data read-back format. Data is always stored in binary unsigned format.
         #[inline(always)]
         pub const fn set_df(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Resolution. These bits define the resolution of ADC conversion result. Note : A value of 3 defaults to 12-bits resolution."]
+        ///Resolution. These bits define the resolution of ADC conversion result. Note : A value of 3 defaults to 12-bits resolution.
         #[must_use]
         #[inline(always)]
         pub const fn res(&self) -> super::vals::Res {
             let val = (self.0 >> 1usize) & 0x03;
             super::vals::Res::from_bits(val as u8)
         }
-        #[doc = "Resolution. These bits define the resolution of ADC conversion result. Note : A value of 3 defaults to 12-bits resolution."]
+        ///Resolution. These bits define the resolution of ADC conversion result. Note : A value of 3 defaults to 12-bits resolution.
         #[inline(always)]
         pub const fn set_res(&mut self, val: super::vals::Res) {
-            self.0 = (self.0 & !(0x03 << 1usize)) | (((val.to_bits() as u32) & 0x03) << 1usize);
+            self.0 = (self.0 & !(0x03 << 1usize))
+                | (((val.to_bits() as u32) & 0x03) << 1usize);
         }
-        #[doc = "0: Sample and hold capacitor is not explicitly discharged at the end of conversion. 1: Sample and hold capacitor is discharged at the end of conversion. This incurs one additional conversion clock cycle."]
+        ///0: Sample and hold capacitor is not explicitly discharged at the end of conversion. 1: Sample and hold capacitor is discharged at the end of conversion. This incurs one additional conversion clock cycle.
         #[must_use]
         #[inline(always)]
         pub const fn rstsampcapen(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "0: Sample and hold capacitor is not explicitly discharged at the end of conversion. 1: Sample and hold capacitor is discharged at the end of conversion. This incurs one additional conversion clock cycle."]
+        ///0: Sample and hold capacitor is not explicitly discharged at the end of conversion. 1: Sample and hold capacitor is discharged at the end of conversion. This incurs one additional conversion clock cycle.
         #[inline(always)]
         pub const fn set_rstsampcapen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "Enable DMA trigger for data transfer. Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of data transfer. Software has to re-enable DMAEN bit for ADC to generate DMA triggers."]
+        ///Enable DMA trigger for data transfer. Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of data transfer. Software has to re-enable DMAEN bit for ADC to generate DMA triggers.
         #[must_use]
         #[inline(always)]
         pub const fn dmaen(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable DMA trigger for data transfer. Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of data transfer. Software has to re-enable DMAEN bit for ADC to generate DMA triggers."]
+        ///Enable DMA trigger for data transfer. Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of data transfer. Software has to re-enable DMAEN bit for ADC to generate DMA triggers.
         #[inline(always)]
         pub const fn set_dmaen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
-        #[doc = "Enable FIFO based operation."]
+        ///Enable FIFO based operation.
         #[must_use]
         #[inline(always)]
         pub const fn fifoen(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable FIFO based operation."]
+        ///Enable FIFO based operation.
         #[inline(always)]
         pub const fn set_fifoen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "Number of ADC converted samples to be transferred on a DMA trigger."]
+        ///Number of ADC converted samples to be transferred on a DMA trigger.
         #[must_use]
         #[inline(always)]
         pub const fn sampcnt(&self) -> super::vals::Sampcnt {
             let val = (self.0 >> 11usize) & 0x1f;
             super::vals::Sampcnt::from_bits(val as u8)
         }
-        #[doc = "Number of ADC converted samples to be transferred on a DMA trigger."]
+        ///Number of ADC converted samples to be transferred on a DMA trigger.
         #[inline(always)]
         pub const fn set_sampcnt(&mut self, val: super::vals::Sampcnt) {
-            self.0 = (self.0 & !(0x1f << 11usize)) | (((val.to_bits() as u32) & 0x1f) << 11usize);
+            self.0 = (self.0 & !(0x1f << 11usize))
+                | (((val.to_bits() as u32) & 0x1f) << 11usize);
         }
-        #[doc = "Sequencer start address. These bits select which MEMCTLx is used for single conversion or as first MEMCTL for sequence mode. The value of STARTADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23."]
+        ///Sequencer start address. These bits select which MEMCTLx is used for single conversion or as first MEMCTL for sequence mode. The value of STARTADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23.
         #[must_use]
         #[inline(always)]
         pub const fn startadd(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
             val as u8
         }
-        #[doc = "Sequencer start address. These bits select which MEMCTLx is used for single conversion or as first MEMCTL for sequence mode. The value of STARTADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23."]
+        ///Sequencer start address. These bits select which MEMCTLx is used for single conversion or as first MEMCTL for sequence mode. The value of STARTADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23.
         #[inline(always)]
         pub const fn set_startadd(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
-        #[doc = "Sequence end address. These bits select which MEMCTLx is the last one for the sequence mode. The value of ENDADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23."]
+        ///Sequence end address. These bits select which MEMCTLx is the last one for the sequence mode. The value of ENDADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23.
         #[must_use]
         #[inline(always)]
         pub const fn endadd(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
             val as u8
         }
-        #[doc = "Sequence end address. These bits select which MEMCTLx is the last one for the sequence mode. The value of ENDADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23."]
+        ///Sequence end address. These bits select which MEMCTLx is the last one for the sequence mode. The value of ENDADD is 0x00 to 0x17, corresponding to MEMRES0 to MEMRES23.
         #[inline(always)]
         pub const fn set_endadd(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
@@ -905,73 +942,79 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctl2 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctl2 {{ df: {=bool:?}, res: {:?}, rstsampcapen: {=bool:?}, dmaen: {=bool:?}, fifoen: {=bool:?}, sampcnt: {:?}, startadd: {=u8:?}, endadd: {=u8:?} }}" , self . df () , self . res () , self . rstsampcapen () , self . dmaen () , self . fifoen () , self . sampcnt () , self . startadd () , self . endadd ())
+            defmt::write!(
+                f,
+                "Ctl2 {{ df: {=bool:?}, res: {:?}, rstsampcapen: {=bool:?}, dmaen: {=bool:?}, fifoen: {=bool:?}, sampcnt: {:?}, startadd: {=u8:?}, endadd: {=u8:?} }}",
+                self.df(), self.res(), self.rstsampcapen(), self.dmaen(), self.fifoen(),
+                self.sampcnt(), self.startadd(), self.endadd()
+            )
         }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Desc(pub u32);
     impl Desc {
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn minrev(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[inline(always)]
         pub const fn set_minrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn majrev(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
             val as u8
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[inline(always)]
         pub const fn set_majrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
+        ///Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances.
         #[must_use]
         #[inline(always)]
         pub const fn instnum(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
             val as u8
         }
-        #[doc = "Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances."]
+        ///Instance Number within the device. This will be a parameter to the RTL for modules that can have multiple instances.
         #[inline(always)]
         pub const fn set_instnum(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[must_use]
         #[inline(always)]
         pub const fn featurever(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
             val as u8
         }
-        #[doc = "Feature Set for the module *instance*."]
+        ///Feature Set for the module *instance*.
         #[inline(always)]
         pub const fn set_featurever(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[must_use]
         #[inline(always)]
         pub const fn moduleid(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
             val as u16
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[inline(always)]
         pub const fn set_moduleid(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
+            self.0 = (self.0 & !(0xffff << 16usize))
+                | (((val as u32) & 0xffff) << 16usize);
         }
     }
     impl Default for Desc {
@@ -994,15 +1037,20 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Desc {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, instnum: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}" , self . minrev () , self . majrev () , self . instnum () , self . featurever () , self . moduleid ())
+            defmt::write!(
+                f,
+                "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, instnum: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}",
+                self.minrev(), self.majrev(), self.instnum(), self.featurever(), self
+                .moduleid()
+            )
         }
     }
-    #[doc = "Interrupt clear extension."]
+    ///Interrupt clear extension.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrig(pub u32);
     impl DmaTrig {
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn memresifg(&self, n: usize) -> bool {
@@ -1011,7 +1059,7 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[inline(always)]
         pub const fn set_memresifg(&mut self, n: usize, val: bool) {
             assert!(n < 24usize);
@@ -1058,25 +1106,38 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for DmaTrig {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "DmaTrig {{ memresifg[0]: {=bool:?}, memresifg[1]: {=bool:?}, memresifg[2]: {=bool:?}, memresifg[3]: {=bool:?}, memresifg[4]: {=bool:?}, memresifg[5]: {=bool:?}, memresifg[6]: {=bool:?}, memresifg[7]: {=bool:?}, memresifg[8]: {=bool:?}, memresifg[9]: {=bool:?}, memresifg[10]: {=bool:?}, memresifg[11]: {=bool:?}, memresifg[12]: {=bool:?}, memresifg[13]: {=bool:?}, memresifg[14]: {=bool:?}, memresifg[15]: {=bool:?}, memresifg[16]: {=bool:?}, memresifg[17]: {=bool:?}, memresifg[18]: {=bool:?}, memresifg[19]: {=bool:?}, memresifg[20]: {=bool:?}, memresifg[21]: {=bool:?}, memresifg[22]: {=bool:?}, memresifg[23]: {=bool:?} }}" , self . memresifg (0usize) , self . memresifg (1usize) , self . memresifg (2usize) , self . memresifg (3usize) , self . memresifg (4usize) , self . memresifg (5usize) , self . memresifg (6usize) , self . memresifg (7usize) , self . memresifg (8usize) , self . memresifg (9usize) , self . memresifg (10usize) , self . memresifg (11usize) , self . memresifg (12usize) , self . memresifg (13usize) , self . memresifg (14usize) , self . memresifg (15usize) , self . memresifg (16usize) , self . memresifg (17usize) , self . memresifg (18usize) , self . memresifg (19usize) , self . memresifg (20usize) , self . memresifg (21usize) , self . memresifg (22usize) , self . memresifg (23usize))
+            defmt::write!(
+                f,
+                "DmaTrig {{ memresifg[0]: {=bool:?}, memresifg[1]: {=bool:?}, memresifg[2]: {=bool:?}, memresifg[3]: {=bool:?}, memresifg[4]: {=bool:?}, memresifg[5]: {=bool:?}, memresifg[6]: {=bool:?}, memresifg[7]: {=bool:?}, memresifg[8]: {=bool:?}, memresifg[9]: {=bool:?}, memresifg[10]: {=bool:?}, memresifg[11]: {=bool:?}, memresifg[12]: {=bool:?}, memresifg[13]: {=bool:?}, memresifg[14]: {=bool:?}, memresifg[15]: {=bool:?}, memresifg[16]: {=bool:?}, memresifg[17]: {=bool:?}, memresifg[18]: {=bool:?}, memresifg[19]: {=bool:?}, memresifg[20]: {=bool:?}, memresifg[21]: {=bool:?}, memresifg[22]: {=bool:?}, memresifg[23]: {=bool:?} }}",
+                self.memresifg(0usize), self.memresifg(1usize), self.memresifg(2usize),
+                self.memresifg(3usize), self.memresifg(4usize), self.memresifg(5usize),
+                self.memresifg(6usize), self.memresifg(7usize), self.memresifg(8usize),
+                self.memresifg(9usize), self.memresifg(10usize), self.memresifg(11usize),
+                self.memresifg(12usize), self.memresifg(13usize), self
+                .memresifg(14usize), self.memresifg(15usize), self.memresifg(16usize),
+                self.memresifg(17usize), self.memresifg(18usize), self
+                .memresifg(19usize), self.memresifg(20usize), self.memresifg(21usize),
+                self.memresifg(22usize), self.memresifg(23usize)
+            )
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaTrigIidx(pub u32);
     impl DmaTrigIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::DmaTrigIidxStat {
             let val = (self.0 >> 0usize) & 0x03ff;
             super::vals::DmaTrigIidxStat::from_bits(val as u16)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::DmaTrigIidxStat) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val.to_bits() as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize))
+                | (((val.to_bits() as u32) & 0x03ff) << 0usize);
         }
     }
     impl Default for DmaTrigIidx {
@@ -1087,9 +1148,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for DmaTrigIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("DmaTrigIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("DmaTrigIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1098,34 +1157,36 @@ pub mod regs {
             defmt::write!(f, "DmaTrigIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EvtMode(pub u32);
     impl EvtMode {
-        #[doc = "Event line mode select for event corresponding to CPU_INT."]
+        ///Event line mode select for event corresponding to CPU_INT.
         #[must_use]
         #[inline(always)]
         pub const fn cpu(&self) -> super::vals::IntCfg {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::IntCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to CPU_INT."]
+        ///Event line mode select for event corresponding to CPU_INT.
         #[inline(always)]
         pub const fn set_cpu(&mut self, val: super::vals::IntCfg) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "Event line mode select for event corresponding to GEN_EVENT."]
+        ///Event line mode select for event corresponding to GEN_EVENT.
         #[must_use]
         #[inline(always)]
         pub const fn evt1_cfg(&self) -> super::vals::Evt1Cfg {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::Evt1Cfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to GEN_EVENT."]
+        ///Event line mode select for event corresponding to GEN_EVENT.
         #[inline(always)]
         pub const fn set_evt1_cfg(&mut self, val: super::vals::Evt1Cfg) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize))
+                | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
     }
     impl Default for EvtMode {
@@ -1146,26 +1207,23 @@ pub mod regs {
     impl defmt::Format for EvtMode {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "EvtMode {{ cpu: {:?}, evt1_cfg: {:?} }}",
-                self.cpu(),
-                self.evt1_cfg()
+                f, "EvtMode {{ cpu: {:?}, evt1_cfg: {:?} }}", self.cpu(), self.evt1_cfg()
             )
         }
     }
-    #[doc = "Publisher Configuration Register."]
+    ///Publisher Configuration Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fport(pub u32);
     impl Fport {
-        #[doc = "0 = disconnected. 1-15 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-15 = connected to channelID = CHANID.
         #[must_use]
         #[inline(always)]
         pub const fn chanid(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "0 = disconnected. 1-15 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-15 = connected to channelID = CHANID.
         #[inline(always)]
         pub const fn set_chanid(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
@@ -1179,9 +1237,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Fport {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Fport")
-                .field("chanid", &self.chanid())
-                .finish()
+            f.debug_struct("Fport").field("chanid", &self.chanid()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1190,55 +1246,55 @@ pub mod regs {
             defmt::write!(f, "Fport {{ chanid: {=u8:?} }}", self.chanid())
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GenEvent(pub u32);
     impl GenEvent {
-        #[doc = "Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn highifg(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being higher than the WCHIGHx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_highifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn lowifg(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1."]
+        ///Raw interrupt flag for the MEMRESx result register being below than the WCLOWx threshold of the window comparator. This bit is reset to 0 by IIDX read or when corresponding bit in ICLR_EX is set to 1.
         #[inline(always)]
         pub const fn set_lowifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
-        #[doc = "Mask INIFG in MIS_EX register."]
+        ///Mask INIFG in MIS_EX register.
         #[must_use]
         #[inline(always)]
         pub const fn inifg(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "Mask INIFG in MIS_EX register."]
+        ///Mask INIFG in MIS_EX register.
         #[inline(always)]
         pub const fn set_inifg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[must_use]
         #[inline(always)]
         pub const fn memresifg0(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1."]
+        ///Raw interrupt status for MEMRES0. This bit is set to 1 when MEMRES0 is loaded with a new conversion result. Reading MEMRES0 register will clear this bit, or when the corresponding bit in ICLR is set to 1.
         #[inline(always)]
         pub const fn set_memresifg0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
@@ -1263,25 +1319,30 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for GenEvent {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "GenEvent {{ highifg: {=bool:?}, lowifg: {=bool:?}, inifg: {=bool:?}, memresifg0: {=bool:?} }}" , self . highifg () , self . lowifg () , self . inifg () , self . memresifg0 ())
+            defmt::write!(
+                f,
+                "GenEvent {{ highifg: {=bool:?}, lowifg: {=bool:?}, inifg: {=bool:?}, memresifg0: {=bool:?} }}",
+                self.highifg(), self.lowifg(), self.inifg(), self.memresifg0()
+            )
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GenEventIidx(pub u32);
     impl GenEventIidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::GenEventIidxStat {
             let val = (self.0 >> 0usize) & 0x03ff;
             super::vals::GenEventIidxStat::from_bits(val as u16)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::GenEventIidxStat) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val.to_bits() as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize))
+                | (((val.to_bits() as u32) & 0x03ff) << 0usize);
         }
     }
     impl Default for GenEventIidx {
@@ -1292,9 +1353,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for GenEventIidx {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("GenEventIidx")
-                .field("stat", &self.stat())
-                .finish()
+            f.debug_struct("GenEventIidx").field("stat", &self.stat()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1303,91 +1362,94 @@ pub mod regs {
             defmt::write!(f, "GenEventIidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Conversion Memory Control Register."]
+    ///Conversion Memory Control Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Memctl(pub u32);
     impl Memctl {
-        #[doc = "Input channel select."]
+        ///Input channel select.
         #[must_use]
         #[inline(always)]
         pub const fn chansel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
             val as u8
         }
-        #[doc = "Input channel select."]
+        ///Input channel select.
         #[inline(always)]
         pub const fn set_chansel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
-        #[doc = "Voltage reference selection. VEREFM must be connected to on-board ground when external reference option is selected. Note: Writing value 0x3 defaults to INTREF."]
+        ///Voltage reference selection. VEREFM must be connected to on-board ground when external reference option is selected. Note: Writing value 0x3 defaults to INTREF.
         #[must_use]
         #[inline(always)]
         pub const fn vrsel(&self) -> super::vals::Vrsel {
             let val = (self.0 >> 8usize) & 0x07;
             super::vals::Vrsel::from_bits(val as u8)
         }
-        #[doc = "Voltage reference selection. VEREFM must be connected to on-board ground when external reference option is selected. Note: Writing value 0x3 defaults to INTREF."]
+        ///Voltage reference selection. VEREFM must be connected to on-board ground when external reference option is selected. Note: Writing value 0x3 defaults to INTREF.
         #[inline(always)]
         pub const fn set_vrsel(&mut self, val: super::vals::Vrsel) {
-            self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
+            self.0 = (self.0 & !(0x07 << 8usize))
+                | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
-        #[doc = "Selects the source of sample timer period between SCOMP0 and SCOMP1."]
+        ///Selects the source of sample timer period between SCOMP0 and SCOMP1.
         #[must_use]
         #[inline(always)]
         pub const fn stime(&self) -> super::vals::Stime {
             let val = (self.0 >> 12usize) & 0x01;
             super::vals::Stime::from_bits(val as u8)
         }
-        #[doc = "Selects the source of sample timer period between SCOMP0 and SCOMP1."]
+        ///Selects the source of sample timer period between SCOMP0 and SCOMP1.
         #[inline(always)]
         pub const fn set_stime(&mut self, val: super::vals::Stime) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize))
+                | (((val.to_bits() as u32) & 0x01) << 12usize);
         }
-        #[doc = "Enable hardware averaging."]
+        ///Enable hardware averaging.
         #[must_use]
         #[inline(always)]
         pub const fn avgen(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable hardware averaging."]
+        ///Enable hardware averaging.
         #[inline(always)]
         pub const fn set_avgen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
-        #[doc = "Enable burn out current source."]
+        ///Enable burn out current source.
         #[must_use]
         #[inline(always)]
         pub const fn bcsen(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable burn out current source."]
+        ///Enable burn out current source.
         #[inline(always)]
         pub const fn set_bcsen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
-        #[doc = "Trigger policy. Indicates if a trigger will be needed to step to the next MEMCTL in the sequence or to perform next conversion in the case of repeat single channel conversions."]
+        ///Trigger policy. Indicates if a trigger will be needed to step to the next MEMCTL in the sequence or to perform next conversion in the case of repeat single channel conversions.
         #[must_use]
         #[inline(always)]
         pub const fn trig(&self) -> super::vals::Trig {
             let val = (self.0 >> 24usize) & 0x01;
             super::vals::Trig::from_bits(val as u8)
         }
-        #[doc = "Trigger policy. Indicates if a trigger will be needed to step to the next MEMCTL in the sequence or to perform next conversion in the case of repeat single channel conversions."]
+        ///Trigger policy. Indicates if a trigger will be needed to step to the next MEMCTL in the sequence or to perform next conversion in the case of repeat single channel conversions.
         #[inline(always)]
         pub const fn set_trig(&mut self, val: super::vals::Trig) {
-            self.0 = (self.0 & !(0x01 << 24usize)) | (((val.to_bits() as u32) & 0x01) << 24usize);
+            self.0 = (self.0 & !(0x01 << 24usize))
+                | (((val.to_bits() as u32) & 0x01) << 24usize);
         }
-        #[doc = "Enable window comparator."]
+        ///Enable window comparator.
         #[must_use]
         #[inline(always)]
         pub const fn wincomp(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable window comparator."]
+        ///Enable window comparator.
         #[inline(always)]
         pub const fn set_wincomp(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
@@ -1415,10 +1477,15 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Memctl {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Memctl {{ chansel: {=u8:?}, vrsel: {:?}, stime: {:?}, avgen: {=bool:?}, bcsen: {=bool:?}, trig: {:?}, wincomp: {=bool:?} }}" , self . chansel () , self . vrsel () , self . stime () , self . avgen () , self . bcsen () , self . trig () , self . wincomp ())
+            defmt::write!(
+                f,
+                "Memctl {{ chansel: {=u8:?}, vrsel: {:?}, stime: {:?}, avgen: {=bool:?}, bcsen: {=bool:?}, trig: {:?}, wincomp: {=bool:?} }}",
+                self.chansel(), self.vrsel(), self.stime(), self.avgen(), self.bcsen(),
+                self.trig(), self.wincomp()
+            )
         }
     }
-    #[doc = "MEMRES result register."]
+    ///MEMRES result register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Memres(pub u32);
@@ -1431,7 +1498,8 @@ pub mod regs {
         }
         #[inline(always)]
         pub const fn set_data(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize))
+                | (((val as u32) & 0xffff) << 0usize);
         }
     }
     impl Default for Memres {
@@ -1442,9 +1510,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Memres {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Memres")
-                .field("data", &self.data())
-                .finish()
+            f.debug_struct("Memres").field("data", &self.data()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1453,34 +1519,35 @@ pub mod regs {
             defmt::write!(f, "Memres {{ data: {=u16:?} }}", self.data())
         }
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pwren(pub u32);
     impl Pwren {
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[must_use]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[inline(always)]
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::PwrenKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::PwrenKey::from_bits(val as u8)
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::PwrenKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Pwren {
@@ -1501,53 +1568,51 @@ pub mod regs {
     impl defmt::Format for Pwren {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pwren {{ enable: {=bool:?}, key: {:?} }}",
-                self.enable(),
-                self.key()
+                f, "Pwren {{ enable: {=bool:?}, key: {:?} }}", self.enable(), self.key()
             )
         }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[must_use]
         #[inline(always)]
         pub const fn resetassert(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[inline(always)]
         pub const fn set_resetassert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[inline(always)]
         pub const fn set_resetstkyclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::ResetKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::ResetKey::from_bits(val as u8)
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::ResetKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Rstctl {
@@ -1571,28 +1636,27 @@ pub mod regs {
             defmt::write!(
                 f,
                 "Rstctl {{ resetassert: {=bool:?}, resetstkyclr: {=bool:?}, key: {:?} }}",
-                self.resetassert(),
-                self.resetstkyclr(),
-                self.key()
+                self.resetassert(), self.resetstkyclr(), self.key()
             )
         }
     }
-    #[doc = "Sample Time Compare 0 Register."]
+    ///Sample Time Compare 0 Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scomp0(pub u32);
     impl Scomp0 {
-        #[doc = "Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles."]
+        ///Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles.
         #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x03ff;
             val as u16
         }
-        #[doc = "Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles."]
+        ///Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles.
         #[inline(always)]
         pub const fn set_val(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize))
+                | (((val as u32) & 0x03ff) << 0usize);
         }
     }
     impl Default for Scomp0 {
@@ -1612,22 +1676,23 @@ pub mod regs {
             defmt::write!(f, "Scomp0 {{ val: {=u16:?} }}", self.val())
         }
     }
-    #[doc = "Sample Time Compare 1 Register."]
+    ///Sample Time Compare 1 Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scomp1(pub u32);
     impl Scomp1 {
-        #[doc = "Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles."]
+        ///Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles.
         #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x03ff;
             val as u16
         }
-        #[doc = "Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles."]
+        ///Specifies the number of sample clocks. When VAL = 0 or 1, number of sample clocks = Sample clock divide value. When VAL > 1, number of sample clocks = VAL x Sample clock divide value. Note: Sample clock divide value is not the value written to SCLKDIV but the actual divide value (SCLKDIV = 2 implies divide value is 4). Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles.
         #[inline(always)]
         pub const fn set_val(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize))
+                | (((val as u32) & 0x03ff) << 0usize);
         }
     }
     impl Default for Scomp1 {
@@ -1647,19 +1712,19 @@ pub mod regs {
             defmt::write!(f, "Scomp1 {{ val: {=u16:?} }}", self.val())
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstky(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
             val != 0
         }
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[inline(always)]
         pub const fn set_resetstky(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
@@ -1673,9 +1738,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Stat {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Stat")
-                .field("resetstky", &self.resetstky())
-                .finish()
+            f.debug_struct("Stat").field("resetstky", &self.resetstky()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1684,31 +1747,31 @@ pub mod regs {
             defmt::write!(f, "Stat {{ resetstky: {=bool:?} }}", self.resetstky())
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Status(pub u32);
     impl Status {
-        #[doc = "Busy. This bit indicates that an active ADC sample or conversion operation is in progress."]
+        ///Busy. This bit indicates that an active ADC sample or conversion operation is in progress.
         #[must_use]
         #[inline(always)]
         pub const fn busy(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Busy. This bit indicates that an active ADC sample or conversion operation is in progress."]
+        ///Busy. This bit indicates that an active ADC sample or conversion operation is in progress.
         #[inline(always)]
         pub const fn set_busy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Indicates reference buffer is powered up and ready."]
+        ///Indicates reference buffer is powered up and ready.
         #[must_use]
         #[inline(always)]
         pub const fn refbufrdy(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Indicates reference buffer is powered up and ready."]
+        ///Indicates reference buffer is powered up and ready.
         #[inline(always)]
         pub const fn set_refbufrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
@@ -1732,29 +1795,28 @@ pub mod regs {
     impl defmt::Format for Status {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Status {{ busy: {=bool:?}, refbufrdy: {=bool:?} }}",
-                self.busy(),
+                f, "Status {{ busy: {=bool:?}, refbufrdy: {=bool:?} }}", self.busy(),
                 self.refbufrdy()
             )
         }
     }
-    #[doc = "Window Comparator High Threshold Register."]
+    ///Window Comparator High Threshold Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wchigh(pub u32);
     impl Wchigh {
-        #[doc = "If DF = 0, unsigned binary format has to be used. The threshold value has to be right aligned, with the MSB on the left. For 10-bits and 8-bits resolution, unused bit have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bit have to be 0s."]
+        ///If DF = 0, unsigned binary format has to be used. The threshold value has to be right aligned, with the MSB on the left. For 10-bits and 8-bits resolution, unused bit have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bit have to be 0s.
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "If DF = 0, unsigned binary format has to be used. The threshold value has to be right aligned, with the MSB on the left. For 10-bits and 8-bits resolution, unused bit have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bit have to be 0s."]
+        ///If DF = 0, unsigned binary format has to be used. The threshold value has to be right aligned, with the MSB on the left. For 10-bits and 8-bits resolution, unused bit have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bit have to be 0s.
         #[inline(always)]
         pub const fn set_data(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize))
+                | (((val as u32) & 0xffff) << 0usize);
         }
     }
     impl Default for Wchigh {
@@ -1765,9 +1827,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Wchigh {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Wchigh")
-                .field("data", &self.data())
-                .finish()
+            f.debug_struct("Wchigh").field("data", &self.data()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -1776,22 +1836,23 @@ pub mod regs {
             defmt::write!(f, "Wchigh {{ data: {=u16:?} }}", self.data())
         }
     }
-    #[doc = "Window Comparator Low Threshold Register."]
+    ///Window Comparator Low Threshold Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wclow(pub u32);
     impl Wclow {
-        #[doc = "If DF = 0, unsigned binary format has to be used. The value based on the resolution has to be right aligned with the MSB on the left. For 10-bits and 8-bits resolution, unused bits have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bits have to be 0s."]
+        ///If DF = 0, unsigned binary format has to be used. The value based on the resolution has to be right aligned with the MSB on the left. For 10-bits and 8-bits resolution, unused bits have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bits have to be 0s.
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "If DF = 0, unsigned binary format has to be used. The value based on the resolution has to be right aligned with the MSB on the left. For 10-bits and 8-bits resolution, unused bits have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bits have to be 0s."]
+        ///If DF = 0, unsigned binary format has to be used. The value based on the resolution has to be right aligned with the MSB on the left. For 10-bits and 8-bits resolution, unused bits have to be 0s. If DF = 1, 2s-complement format has to be used. The value based on the resolution has to be left aligned with the LSB on the right. For 10-bits and 8-bits resolution, unused bits have to be 0s.
         #[inline(always)]
         pub const fn set_data(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize))
+                | (((val as u32) & 0xffff) << 0usize);
         }
     }
     impl Default for Wclow {
@@ -1817,21 +1878,21 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Avgn {
-        #[doc = "Disables averager."]
+        ///Disables averager.
         Disable = 0x0,
-        #[doc = "Averages 2 conversions before storing in MEMRESx register."]
+        ///Averages 2 conversions before storing in MEMRESx register.
         Avg2 = 0x01,
-        #[doc = "Averages 4 conversions before storing in MEMRESx register."]
+        ///Averages 4 conversions before storing in MEMRESx register.
         Avg4 = 0x02,
-        #[doc = "Averages 8 conversions before storing in MEMRESx register."]
+        ///Averages 8 conversions before storing in MEMRESx register.
         Avg8 = 0x03,
-        #[doc = "Averages 16 conversions before storing in MEMRESx register."]
+        ///Averages 16 conversions before storing in MEMRESx register.
         Avg16 = 0x04,
-        #[doc = "Averages 32 conversions before storing in MEMRESx register."]
+        ///Averages 32 conversions before storing in MEMRESx register.
         Avg32 = 0x05,
-        #[doc = "Averages 64 conversions before storing in MEMRESx register."]
+        ///Averages 64 conversions before storing in MEMRESx register.
         Avg64 = 0x06,
-        #[doc = "Averages 128 conversions before storing in MEMRESx register."]
+        ///Averages 128 conversions before storing in MEMRESx register.
         Avg128 = 0x07,
     }
     impl Avgn {
@@ -1903,13 +1964,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Conseq {
-        #[doc = "ADC channel in MEMCTLx pointed by STARTADD will be converted once."]
+        ///ADC channel in MEMCTLx pointed by STARTADD will be converted once.
         Single = 0x0,
-        #[doc = "ADC channel sequence pointed by STARTADD and ENDADD will be converted once."]
+        ///ADC channel sequence pointed by STARTADD and ENDADD will be converted once.
         Sequence = 0x01,
-        #[doc = "ADC channel in MEMCTLx pointed by STARTADD will be converted repeatedly."]
+        ///ADC channel in MEMCTLx pointed by STARTADD will be converted repeatedly.
         Repeatsingle = 0x02,
-        #[doc = "ADC channel sequence pointed by STARTADD and ENDADD will be converted repeatedly."]
+        ///ADC channel sequence pointed by STARTADD and ENDADD will be converted repeatedly.
         Repeatsequence = 0x03,
     }
     impl Conseq {
@@ -1938,69 +1999,69 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct CpuIntIidxStat(u16);
     impl CpuIntIidxStat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "MEMRESx overflow interrupt."]
+        ///MEMRESx overflow interrupt.
         pub const Ovifg: Self = Self(0x01);
-        #[doc = "Sequence Conversion time overflow interrupt."]
+        ///Sequence Conversion time overflow interrupt.
         pub const Tovifg: Self = Self(0x02);
-        #[doc = "High threshold compare interrupt."]
+        ///High threshold compare interrupt.
         pub const Highifg: Self = Self(0x03);
-        #[doc = "Low threshold compare interrupt."]
+        ///Low threshold compare interrupt.
         pub const Lowifg: Self = Self(0x04);
-        #[doc = "Primary Sequence In range comparator interrupt."]
+        ///Primary Sequence In range comparator interrupt.
         pub const Inifg: Self = Self(0x05);
-        #[doc = "DMA done interrupt, generated on DMA transfer completion,."]
+        ///DMA done interrupt, generated on DMA transfer completion,.
         pub const Dmadone: Self = Self(0x06);
-        #[doc = "MEMRESx underflow interrupt."]
+        ///MEMRESx underflow interrupt.
         pub const Uvifg: Self = Self(0x07);
-        #[doc = "MEMRES0 data loaded interrupt."]
+        ///MEMRES0 data loaded interrupt.
         pub const Memresifg0: Self = Self(0x09);
-        #[doc = "MEMRES1 data loaded interrupt."]
+        ///MEMRES1 data loaded interrupt.
         pub const Memresifg1: Self = Self(0x0a);
-        #[doc = "MEMRES2 data loaded interrupt."]
+        ///MEMRES2 data loaded interrupt.
         pub const Memresifg2: Self = Self(0x0b);
-        #[doc = "MEMRES3 data loaded interrupt."]
+        ///MEMRES3 data loaded interrupt.
         pub const Memresifg3: Self = Self(0x0c);
-        #[doc = "MEMRES4 data loaded interrupt."]
+        ///MEMRES4 data loaded interrupt.
         pub const Memresifg4: Self = Self(0x0d);
-        #[doc = "MEMRES5 data loaded interrupt."]
+        ///MEMRES5 data loaded interrupt.
         pub const Memresifg5: Self = Self(0x0e);
-        #[doc = "MEMRES6 data loaded interrupt."]
+        ///MEMRES6 data loaded interrupt.
         pub const Memresifg6: Self = Self(0x0f);
-        #[doc = "MEMRES7 data loaded interrupt."]
+        ///MEMRES7 data loaded interrupt.
         pub const Memresifg7: Self = Self(0x10);
-        #[doc = "MEMRES8 data loaded interrupt."]
+        ///MEMRES8 data loaded interrupt.
         pub const Memresifg8: Self = Self(0x11);
-        #[doc = "MEMRES9 data loaded interrupt."]
+        ///MEMRES9 data loaded interrupt.
         pub const Memresifg9: Self = Self(0x12);
-        #[doc = "MEMRES10 data loaded interrupt."]
+        ///MEMRES10 data loaded interrupt.
         pub const Memresifg10: Self = Self(0x13);
-        #[doc = "MEMRES11 data loaded interrupt."]
+        ///MEMRES11 data loaded interrupt.
         pub const Memresifg11: Self = Self(0x14);
-        #[doc = "MEMRES12 data loaded interrupt."]
+        ///MEMRES12 data loaded interrupt.
         pub const Memresifg12: Self = Self(0x15);
-        #[doc = "MEMRES13 data loaded interrupt."]
+        ///MEMRES13 data loaded interrupt.
         pub const Memresifg13: Self = Self(0x16);
-        #[doc = "MEMRES14 data loaded interrupt."]
+        ///MEMRES14 data loaded interrupt.
         pub const Memresifg14: Self = Self(0x17);
-        #[doc = "MEMRES15 data loaded interrupt."]
+        ///MEMRES15 data loaded interrupt.
         pub const Memresifg15: Self = Self(0x18);
-        #[doc = "MEMRES16 data loaded interrupt."]
+        ///MEMRES16 data loaded interrupt.
         pub const Memresifg16: Self = Self(0x19);
-        #[doc = "MEMRES17 data loaded interrupt."]
+        ///MEMRES17 data loaded interrupt.
         pub const Memresifg17: Self = Self(0x1a);
-        #[doc = "MEMRES18 data loaded interrupt."]
+        ///MEMRES18 data loaded interrupt.
         pub const Memresifg18: Self = Self(0x1b);
-        #[doc = "MEMRES19 data loaded interrupt."]
+        ///MEMRES19 data loaded interrupt.
         pub const Memresifg19: Self = Self(0x1c);
-        #[doc = "MEMRES20 data loaded interrupt."]
+        ///MEMRES20 data loaded interrupt.
         pub const Memresifg20: Self = Self(0x1d);
-        #[doc = "MEMRES21 data loaded interrupt."]
+        ///MEMRES21 data loaded interrupt.
         pub const Memresifg21: Self = Self(0x1e);
-        #[doc = "MEMRES22 data loaded interrupt."]
+        ///MEMRES22 data loaded interrupt.
         pub const Memresifg22: Self = Self(0x1f);
-        #[doc = "MEMRES23 data loaded interrupt."]
+        ///MEMRES23 data loaded interrupt.
         pub const Memresifg23: Self = Self(0x20);
     }
     impl CpuIntIidxStat {
@@ -2106,55 +2167,55 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct DmaTrigIidxStat(u16);
     impl DmaTrigIidxStat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "MEMRES0 data loaded interrupt."]
+        ///MEMRES0 data loaded interrupt.
         pub const Memresifg0: Self = Self(0x09);
-        #[doc = "MEMRES1 data loaded interrupt."]
+        ///MEMRES1 data loaded interrupt.
         pub const Memresifg1: Self = Self(0x0a);
-        #[doc = "MEMRES2 data loaded interrupt."]
+        ///MEMRES2 data loaded interrupt.
         pub const Memresifg2: Self = Self(0x0b);
-        #[doc = "MEMRES3 data loaded interrupt."]
+        ///MEMRES3 data loaded interrupt.
         pub const Memresifg3: Self = Self(0x0c);
-        #[doc = "MEMRES4 data loaded interrupt."]
+        ///MEMRES4 data loaded interrupt.
         pub const Memresifg4: Self = Self(0x0d);
-        #[doc = "MEMRES5 data loaded interrupt."]
+        ///MEMRES5 data loaded interrupt.
         pub const Memresifg5: Self = Self(0x0e);
-        #[doc = "MEMRES6 data loaded interrupt."]
+        ///MEMRES6 data loaded interrupt.
         pub const Memresifg6: Self = Self(0x0f);
-        #[doc = "MEMRES7 data loaded interrupt."]
+        ///MEMRES7 data loaded interrupt.
         pub const Memresifg7: Self = Self(0x10);
-        #[doc = "MEMRES8 data loaded interrupt."]
+        ///MEMRES8 data loaded interrupt.
         pub const Memresifg8: Self = Self(0x11);
-        #[doc = "MEMRES9 data loaded interrupt."]
+        ///MEMRES9 data loaded interrupt.
         pub const Memresifg9: Self = Self(0x12);
-        #[doc = "MEMRES10 data loaded interrupt."]
+        ///MEMRES10 data loaded interrupt.
         pub const Memresifg10: Self = Self(0x13);
-        #[doc = "MEMRES11 data loaded interrupt."]
+        ///MEMRES11 data loaded interrupt.
         pub const Memresifg11: Self = Self(0x14);
-        #[doc = "MEMRES12 data loaded interrupt."]
+        ///MEMRES12 data loaded interrupt.
         pub const Memresifg12: Self = Self(0x15);
-        #[doc = "MEMRES13 data loaded interrupt."]
+        ///MEMRES13 data loaded interrupt.
         pub const Memresifg13: Self = Self(0x16);
-        #[doc = "MEMRES14 data loaded interrupt."]
+        ///MEMRES14 data loaded interrupt.
         pub const Memresifg14: Self = Self(0x17);
-        #[doc = "MEMRES15 data loaded interrupt."]
+        ///MEMRES15 data loaded interrupt.
         pub const Memresifg15: Self = Self(0x18);
-        #[doc = "MEMRES16 data loaded interrupt."]
+        ///MEMRES16 data loaded interrupt.
         pub const Memresifg16: Self = Self(0x19);
-        #[doc = "MEMRES17 data loaded interrupt."]
+        ///MEMRES17 data loaded interrupt.
         pub const Memresifg17: Self = Self(0x1a);
-        #[doc = "MEMRES18 data loaded interrupt."]
+        ///MEMRES18 data loaded interrupt.
         pub const Memresifg18: Self = Self(0x1b);
-        #[doc = "MEMRES19 data loaded interrupt."]
+        ///MEMRES19 data loaded interrupt.
         pub const Memresifg19: Self = Self(0x1c);
-        #[doc = "MEMRES20 data loaded interrupt."]
+        ///MEMRES20 data loaded interrupt.
         pub const Memresifg20: Self = Self(0x1d);
-        #[doc = "MEMRES21 data loaded interrupt."]
+        ///MEMRES21 data loaded interrupt.
         pub const Memresifg21: Self = Self(0x1e);
-        #[doc = "MEMRES22 data loaded interrupt."]
+        ///MEMRES22 data loaded interrupt.
         pub const Memresifg22: Self = Self(0x1f);
-        #[doc = "MEMRES23 data loaded interrupt."]
+        ///MEMRES23 data loaded interrupt.
         pub const Memresifg23: Self = Self(0x20);
     }
     impl DmaTrigIidxStat {
@@ -2246,11 +2307,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Evt1Cfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -2280,21 +2341,21 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Frange {
-        #[doc = "1 to 4 MHz."]
+        ///1 to 4 MHz.
         Range1to4 = 0x0,
-        #[doc = ">4 to 8 MHz."]
+        ///>4 to 8 MHz.
         Range4to8 = 0x01,
-        #[doc = ">8 to 16 MHz."]
+        ///>8 to 16 MHz.
         Range8to16 = 0x02,
-        #[doc = ">16 to 20 MHz."]
+        ///>16 to 20 MHz.
         Range16to20 = 0x03,
-        #[doc = ">20 to 24 MHz."]
+        ///>20 to 24 MHz.
         Range20to24 = 0x04,
-        #[doc = ">24 to 32 MHz."]
+        ///>24 to 32 MHz.
         Range24to32 = 0x05,
-        #[doc = ">32 to 40 MHz."]
+        ///>32 to 40 MHz.
         Range32to40 = 0x06,
-        #[doc = ">40 to 48 MHz."]
+        ///>40 to 48 MHz.
         Range40to48 = 0x07,
     }
     impl Frange {
@@ -2323,15 +2384,15 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct GenEventIidxStat(u16);
     impl GenEventIidxStat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "High threshold compare interrupt."]
+        ///High threshold compare interrupt.
         pub const Highifg: Self = Self(0x03);
-        #[doc = "Low threshold compare interrupt."]
+        ///Low threshold compare interrupt.
         pub const Lowifg: Self = Self(0x04);
-        #[doc = "Primary Sequence In range comparator interrupt."]
+        ///Primary Sequence In range comparator interrupt.
         pub const Inifg: Self = Self(0x05);
-        #[doc = "MEMRES0 data loaded interrupt."]
+        ///MEMRES0 data loaded interrupt.
         pub const Memresifg0: Self = Self(0x09);
     }
     impl GenEventIidxStat {
@@ -2383,11 +2444,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum IntCfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -2417,9 +2478,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Pwrdn {
-        #[doc = "ADC is powered down on completion of a conversion if there is no pending trigger."]
+        ///ADC is powered down on completion of a conversion if there is no pending trigger.
         Auto = 0x0,
-        #[doc = "ADC remains powered on as long as it is enabled through software."]
+        ///ADC remains powered on as long as it is enabled through software.
         Manual = 0x01,
     }
     impl Pwrdn {
@@ -2491,11 +2552,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Res {
-        #[doc = "12-bits resolution."]
+        ///12-bits resolution.
         Bit12 = 0x0,
-        #[doc = "10-bits resolution."]
+        ///10-bits resolution.
         Bit10 = 0x01,
-        #[doc = "8-bits resolution."]
+        ///8-bits resolution.
         Bit8 = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -2568,11 +2629,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Sampclk {
-        #[doc = "ULPCLK is the source of ADC sample clock."]
+        ///ULPCLK is the source of ADC sample clock.
         Ulpclk = 0x0,
-        #[doc = "SYSOSC is the source of ADC sample clock."]
+        ///SYSOSC is the source of ADC sample clock.
         Sysosc = 0x01,
-        #[doc = "HFCLK clock is the source of ADC sample clock. Note : HFCLK may not be available on all the devices."]
+        ///HFCLK clock is the source of ADC sample clock. Note : HFCLK may not be available on all the devices.
         Hfclk = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -2602,7 +2663,7 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Sampcnt {
-        #[doc = "Minimum value."]
+        ///Minimum value.
         Min = 0x0,
         _RESERVED_1 = 0x01,
         _RESERVED_2 = 0x02,
@@ -2627,7 +2688,7 @@ pub mod vals {
         _RESERVED_15 = 0x15,
         _RESERVED_16 = 0x16,
         _RESERVED_17 = 0x17,
-        #[doc = "Maximum value."]
+        ///Maximum value.
         Max = 0x18,
         _RESERVED_19 = 0x19,
         _RESERVED_1a = 0x1a,
@@ -2663,9 +2724,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Sampmode {
-        #[doc = "Sample timer high phase is used as sample signal."]
+        ///Sample timer high phase is used as sample signal.
         Auto = 0x0,
-        #[doc = "Software trigger is used as sample signal."]
+        ///Software trigger is used as sample signal.
         Manual = 0x01,
     }
     impl Sampmode {
@@ -2694,9 +2755,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Sc {
-        #[doc = "When SAMPMODE is set to MANUAL, clearing this bit will end the sample phase and the conversion phase will start. When SAMPMODE is set to AUTO, writing 0 has no effect."]
+        ///When SAMPMODE is set to MANUAL, clearing this bit will end the sample phase and the conversion phase will start. When SAMPMODE is set to AUTO, writing 0 has no effect.
         Stop = 0x0,
-        #[doc = "When SAMPMODE is set to MANUAL, setting this bit will start the sample phase. Sample phase will last as long as this bit is set. When SAMPMODE is set to AUTO, setting this bit will trigger the timer based sample time."]
+        ///When SAMPMODE is set to MANUAL, setting this bit will start the sample phase. Sample phase will last as long as this bit is set. When SAMPMODE is set to AUTO, setting this bit will trigger the timer based sample time.
         Start = 0x01,
     }
     impl Sc {
@@ -2725,21 +2786,21 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Sclkdiv {
-        #[doc = "Do not divide clock source."]
+        ///Do not divide clock source.
         DivBy1 = 0x0,
-        #[doc = "Divide clock source by 2."]
+        ///Divide clock source by 2.
         DivBy2 = 0x01,
-        #[doc = "Divide clock source by 4."]
+        ///Divide clock source by 4.
         DivBy4 = 0x02,
-        #[doc = "Divide clock source by 8."]
+        ///Divide clock source by 8.
         DivBy8 = 0x03,
-        #[doc = "Divide clock source by 16."]
+        ///Divide clock source by 16.
         DivBy16 = 0x04,
-        #[doc = "Divide clock source by 24."]
+        ///Divide clock source by 24.
         DivBy24 = 0x05,
-        #[doc = "Divide clock source by 32."]
+        ///Divide clock source by 32.
         DivBy32 = 0x06,
-        #[doc = "Divide clock source by 48."]
+        ///Divide clock source by 48.
         DivBy48 = 0x07,
     }
     impl Sclkdiv {
@@ -2768,9 +2829,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Stime {
-        #[doc = "Select SCOMP0."]
+        ///Select SCOMP0.
         SelScomp0 = 0x0,
-        #[doc = "Select SCOMP1."]
+        ///Select SCOMP1.
         SelScomp1 = 0x01,
     }
     impl Stime {
@@ -2799,9 +2860,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Trig {
-        #[doc = "Next conversion is automatic."]
+        ///Next conversion is automatic.
         AutoNext = 0x0,
-        #[doc = "Next conversion requires a trigger."]
+        ///Next conversion requires a trigger.
         TriggerNext = 0x01,
     }
     impl Trig {
@@ -2830,9 +2891,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Trigsrc {
-        #[doc = "Software trigger."]
+        ///Software trigger.
         Software = 0x0,
-        #[doc = "Hardware event trigger."]
+        ///Hardware event trigger.
         Event = 0x01,
     }
     impl Trigsrc {
@@ -2861,15 +2922,15 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Vrsel {
-        #[doc = "VDDA reference."]
+        ///VDDA reference.
         VddaVssa = 0x0,
-        #[doc = "External reference from pin."]
+        ///External reference from pin.
         ExtrefVrefm = 0x01,
-        #[doc = "Internal reference."]
+        ///Internal reference.
         IntrefVssa = 0x02,
-        #[doc = "VDDA and VREFM connected to VREF+ and VREF- of ADC."]
+        ///VDDA and VREFM connected to VREF+ and VREF- of ADC.
         VddaVrefm = 0x03,
-        #[doc = "INTREF and VREFM connected to VREF+ and VREF- of ADC."]
+        ///INTREF and VREFM connected to VREF+ and VREF- of ADC.
         IntrefVrefm = 0x04,
         _RESERVED_5 = 0x05,
         _RESERVED_6 = 0x06,

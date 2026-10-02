@@ -3,7 +3,6 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Chan {
     ptr: *mut u8,
@@ -19,28 +18,28 @@ impl Chan {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "DMA Channel Control."]
+    ///DMA Channel Control.
     #[inline(always)]
     pub const fn ctl(self) -> crate::common::Reg<regs::Ctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "DMA Channel Source Address."]
+    ///DMA Channel Source Address.
     #[inline(always)]
     pub const fn sa(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "DMA Channel Destination Address."]
+    ///DMA Channel Destination Address.
     #[inline(always)]
     pub const fn da(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "DMA Channel Size."]
+    ///DMA Channel Size.
     #[inline(always)]
     pub const fn sz(self) -> crate::common::Reg<regs::Sz, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Dma {
     ptr: *mut u8,
@@ -56,23 +55,33 @@ impl Dma {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Subscriber Port 0."]
+    ///Subscriber Port 0.
     #[inline(always)]
-    pub const fn fsub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
+    pub const fn fsub(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 2usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 4usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x0400usize + n * 4usize) as _,
+            )
         }
     }
-    #[doc = "Publisher Port 0."]
+    ///Publisher Port 0.
     #[inline(always)]
-    pub const fn fpub(self, n: usize) -> crate::common::Reg<regs::Fport, crate::common::RW> {
+    pub const fn fpub(
+        self,
+        n: usize,
+    ) -> crate::common::Reg<regs::Fport, crate::common::RW> {
         assert!(n < 1usize);
         unsafe {
-            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0444usize + n * 0usize) as _)
+            crate::common::Reg::from_ptr(
+                self.ptr.wrapping_add(0x0444usize + n * 0usize) as _,
+            )
         }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[inline(always)]
     pub const fn pdbgctl(self) -> crate::common::Reg<regs::Pdbgctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1018usize) as _) }
@@ -80,19 +89,21 @@ impl Dma {
     #[inline(always)]
     pub const fn int_event(self, n: usize) -> IntEvent {
         assert!(n < 2usize);
-        unsafe { IntEvent::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _) }
+        unsafe {
+            IntEvent::from_ptr(self.ptr.wrapping_add(0x1020usize + n * 44usize) as _)
+        }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[inline(always)]
     pub const fn evt_mode(self) -> crate::common::Reg<regs::EvtMode, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10e0usize) as _) }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[inline(always)]
     pub const fn desc(self) -> crate::common::Reg<regs::Desc, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10fcusize) as _) }
     }
-    #[doc = "DMA Channel Priority Control."]
+    ///DMA Channel Priority Control.
     #[inline(always)]
     pub const fn prio(self) -> crate::common::Reg<regs::Prio, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1100usize) as _) }
@@ -123,32 +134,32 @@ impl IntEvent {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[inline(always)]
     pub const fn iidx(self) -> crate::common::Reg<regs::Iidx, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Interrupt mask."]
+    ///Interrupt mask.
     #[inline(always)]
     pub const fn imask(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "Raw interrupt status."]
+    ///Raw interrupt status.
     #[inline(always)]
     pub const fn ris(self) -> crate::common::Reg<regs::Int, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
-    #[doc = "Masked interrupt status."]
+    ///Masked interrupt status.
     #[inline(always)]
     pub const fn mis(self) -> crate::common::Reg<regs::Int, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
-    #[doc = "Interrupt set."]
+    ///Interrupt set.
     #[inline(always)]
     pub const fn iset(self) -> crate::common::Reg<regs::Int, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[inline(always)]
     pub const fn iclr(self) -> crate::common::Reg<regs::Int, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
@@ -169,137 +180,145 @@ impl Trig {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "DMA Trigger Select."]
+    ///DMA Trigger Select.
     #[inline(always)]
     pub const fn tctl(self) -> crate::common::Reg<regs::Tctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "DMA Channel Control."]
+    ///DMA Channel Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl(pub u32);
     impl Ctl {
-        #[doc = "DMA request. Software-controlled DMA start. DMAREQ is reset automatically."]
+        ///DMA request. Software-controlled DMA start. DMAREQ is reset automatically.
         #[must_use]
         #[inline(always)]
         pub const fn req(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "DMA request. Software-controlled DMA start. DMAREQ is reset automatically."]
+        ///DMA request. Software-controlled DMA start. DMAREQ is reset automatically.
         #[inline(always)]
         pub const fn set_req(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "DMA enable."]
+        ///DMA enable.
         #[must_use]
         #[inline(always)]
         pub const fn en(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "DMA enable."]
+        ///DMA enable.
         #[inline(always)]
         pub const fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet."]
+        ///Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet.
         #[must_use]
         #[inline(always)]
         pub const fn autoen(&self) -> super::vals::Autoen {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::Autoen::from_bits(val as u8)
         }
-        #[doc = "Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet."]
+        ///Automatic DMA channel enable on SA, DA, SZ register write. If channel is configured as SW trigger (TCTL=0), the AUTOEN will set the EN and REQ. If channel is configured as HW trigger (CTL!=0), the AUTOEN will only set the EN. Note: This feature is not present in all devices. Consult the device specific datasheet.
         #[inline(always)]
         pub const fn set_autoen(&mut self, val: super::vals::Autoen) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize))
+                | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
-        #[doc = "Enable an early IRQ event. This can help software to react quicker to and DMA done event or allows some additional configuration before the channel is complete. Note: This register is only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC configuration this register is a read only value and always reads as 0x0."]
+        ///Enable an early IRQ event. This can help software to react quicker to and DMA done event or allows some additional configuration before the channel is complete. Note: This register is only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC configuration this register is a read only value and always reads as 0x0.
         #[must_use]
         #[inline(always)]
         pub const fn preirq(&self) -> super::vals::Preirq {
             let val = (self.0 >> 4usize) & 0x07;
             super::vals::Preirq::from_bits(val as u8)
         }
-        #[doc = "Enable an early IRQ event. This can help software to react quicker to and DMA done event or allows some additional configuration before the channel is complete. Note: This register is only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC configuration this register is a read only value and always reads as 0x0."]
+        ///Enable an early IRQ event. This can help software to react quicker to and DMA done event or allows some additional configuration before the channel is complete. Note: This register is only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC configuration this register is a read only value and always reads as 0x0.
         #[inline(always)]
         pub const fn set_preirq(&mut self, val: super::vals::Preirq) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
+            self.0 = (self.0 & !(0x07 << 4usize))
+                | (((val.to_bits() as u32) & 0x07) << 4usize);
         }
-        #[doc = "DMA source width. This bit selects the source data width as a byte, half word, word or long word."]
+        ///DMA source width. This bit selects the source data width as a byte, half word, word or long word.
         #[must_use]
         #[inline(always)]
         pub const fn srcwdth(&self) -> super::vals::Wdth {
             let val = (self.0 >> 8usize) & 0x03;
             super::vals::Wdth::from_bits(val as u8)
         }
-        #[doc = "DMA source width. This bit selects the source data width as a byte, half word, word or long word."]
+        ///DMA source width. This bit selects the source data width as a byte, half word, word or long word.
         #[inline(always)]
         pub const fn set_srcwdth(&mut self, val: super::vals::Wdth) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize))
+                | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
-        #[doc = "DMA destination width. This bit selects the destination as a byte, half word, word or long word."]
+        ///DMA destination width. This bit selects the destination as a byte, half word, word or long word.
         #[must_use]
         #[inline(always)]
         pub const fn dstwdth(&self) -> super::vals::Wdth {
             let val = (self.0 >> 12usize) & 0x03;
             super::vals::Wdth::from_bits(val as u8)
         }
-        #[doc = "DMA destination width. This bit selects the destination as a byte, half word, word or long word."]
+        ///DMA destination width. This bit selects the destination as a byte, half word, word or long word.
         #[inline(always)]
         pub const fn set_dstwdth(&mut self, val: super::vals::Wdth) {
-            self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
+            self.0 = (self.0 & !(0x03 << 12usize))
+                | (((val.to_bits() as u32) & 0x03) << 12usize);
         }
-        #[doc = "DMA source increment. This bit selects automatic incrementing or decrementing of the source address DMASA for each transfer. The amount of change to the DMASA is based on the definitin in the DMASRCWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMASA by 4."]
+        ///DMA source increment. This bit selects automatic incrementing or decrementing of the source address DMASA for each transfer. The amount of change to the DMASA is based on the definitin in the DMASRCWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMASA by 4.
         #[must_use]
         #[inline(always)]
         pub const fn srcincr(&self) -> super::vals::Incr {
             let val = (self.0 >> 16usize) & 0x0f;
             super::vals::Incr::from_bits(val as u8)
         }
-        #[doc = "DMA source increment. This bit selects automatic incrementing or decrementing of the source address DMASA for each transfer. The amount of change to the DMASA is based on the definitin in the DMASRCWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMASA by 4."]
+        ///DMA source increment. This bit selects automatic incrementing or decrementing of the source address DMASA for each transfer. The amount of change to the DMASA is based on the definitin in the DMASRCWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMASA by 4.
         #[inline(always)]
         pub const fn set_srcincr(&mut self, val: super::vals::Incr) {
-            self.0 = (self.0 & !(0x0f << 16usize)) | (((val.to_bits() as u32) & 0x0f) << 16usize);
+            self.0 = (self.0 & !(0x0f << 16usize))
+                | (((val.to_bits() as u32) & 0x0f) << 16usize);
         }
-        #[doc = "DMA destination increment. This bit selects automatic incrementing or decrementing of the destination address DMADA for each transfer. The amount of change to the DMADA is based on the definitin in the DMADSTWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMADA by 4."]
+        ///DMA destination increment. This bit selects automatic incrementing or decrementing of the destination address DMADA for each transfer. The amount of change to the DMADA is based on the definitin in the DMADSTWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMADA by 4.
         #[must_use]
         #[inline(always)]
         pub const fn dstincr(&self) -> super::vals::Incr {
             let val = (self.0 >> 20usize) & 0x0f;
             super::vals::Incr::from_bits(val as u8)
         }
-        #[doc = "DMA destination increment. This bit selects automatic incrementing or decrementing of the destination address DMADA for each transfer. The amount of change to the DMADA is based on the definitin in the DMADSTWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMADA by 4."]
+        ///DMA destination increment. This bit selects automatic incrementing or decrementing of the destination address DMADA for each transfer. The amount of change to the DMADA is based on the definitin in the DMADSTWDTH. For example an increment of 1 (+1) on a WORD transfer will increment the DMADA by 4.
         #[inline(always)]
         pub const fn set_dstincr(&mut self, val: super::vals::Incr) {
-            self.0 = (self.0 & !(0x0f << 20usize)) | (((val.to_bits() as u32) & 0x0f) << 20usize);
+            self.0 = (self.0 & !(0x0f << 20usize))
+                | (((val.to_bits() as u32) & 0x0f) << 20usize);
         }
-        #[doc = "DMA extended mode Note: The extended transfer modes are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration this register is a read-only register and reads 0x0."]
+        ///DMA extended mode Note: The extended transfer modes are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration this register is a read-only register and reads 0x0.
         #[must_use]
         #[inline(always)]
         pub const fn em(&self) -> super::vals::Em {
             let val = (self.0 >> 24usize) & 0x03;
             super::vals::Em::from_bits(val as u8)
         }
-        #[doc = "DMA extended mode Note: The extended transfer modes are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration this register is a read-only register and reads 0x0."]
+        ///DMA extended mode Note: The extended transfer modes are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration this register is a read-only register and reads 0x0.
         #[inline(always)]
         pub const fn set_em(&mut self, val: super::vals::Em) {
-            self.0 = (self.0 & !(0x03 << 24usize)) | (((val.to_bits() as u32) & 0x03) << 24usize);
+            self.0 = (self.0 & !(0x03 << 24usize))
+                | (((val.to_bits() as u32) & 0x03) << 24usize);
         }
-        #[doc = "DMA transfer mode register Note: The repeat-single (2h) and repeat-block (3h) transfer are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration only the values for single (0h) and block (1h) transfer can be set."]
+        ///DMA transfer mode register Note: The repeat-single (2h) and repeat-block (3h) transfer are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration only the values for single (0h) and block (1h) transfer can be set.
         #[must_use]
         #[inline(always)]
         pub const fn tm(&self) -> super::vals::Tm {
             let val = (self.0 >> 28usize) & 0x03;
             super::vals::Tm::from_bits(val as u8)
         }
-        #[doc = "DMA transfer mode register Note: The repeat-single (2h) and repeat-block (3h) transfer are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration only the values for single (0h) and block (1h) transfer can be set."]
+        ///DMA transfer mode register Note: The repeat-single (2h) and repeat-block (3h) transfer are only available in a FULL-channel configuration. Please consult the datasheet of the specific device to map which channel number has FULL or BASIC capability. In a BASIC channel configuration only the values for single (0h) and block (1h) transfer can be set.
         #[inline(always)]
         pub const fn set_tm(&mut self, val: super::vals::Tm) {
-            self.0 = (self.0 & !(0x03 << 28usize)) | (((val.to_bits() as u32) & 0x03) << 28usize);
+            self.0 = (self.0 & !(0x03 << 28usize))
+                | (((val.to_bits() as u32) & 0x03) << 28usize);
         }
     }
     impl Default for Ctl {
@@ -327,61 +346,67 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctl {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctl {{ req: {=bool:?}, en: {=bool:?}, autoen: {:?}, preirq: {:?}, srcwdth: {:?}, dstwdth: {:?}, srcincr: {:?}, dstincr: {:?}, em: {:?}, tm: {:?} }}" , self . req () , self . en () , self . autoen () , self . preirq () , self . srcwdth () , self . dstwdth () , self . srcincr () , self . dstincr () , self . em () , self . tm ())
+            defmt::write!(
+                f,
+                "Ctl {{ req: {=bool:?}, en: {=bool:?}, autoen: {:?}, preirq: {:?}, srcwdth: {:?}, dstwdth: {:?}, srcincr: {:?}, dstincr: {:?}, em: {:?}, tm: {:?} }}",
+                self.req(), self.en(), self.autoen(), self.preirq(), self.srcwdth(), self
+                .dstwdth(), self.srcincr(), self.dstincr(), self.em(), self.tm()
+            )
         }
     }
-    #[doc = "Module Description."]
+    ///Module Description.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Desc(pub u32);
     impl Desc {
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn minrev(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "Minor rev of the IP."]
+        ///Minor rev of the IP.
         #[inline(always)]
         pub const fn set_minrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[must_use]
         #[inline(always)]
         pub const fn majrev(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
             val as u8
         }
-        #[doc = "Major rev of the IP."]
+        ///Major rev of the IP.
         #[inline(always)]
         pub const fn set_majrev(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
-        #[doc = "Feature Set for the DMA: number of DMA channel minus one (e.g. 0->1ch, 2->3ch, 15->16ch)."]
+        ///Feature Set for the DMA: number of DMA channel minus one (e.g. 0->1ch, 2->3ch, 15->16ch).
         #[must_use]
         #[inline(always)]
         pub const fn featurever(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
             val as u8
         }
-        #[doc = "Feature Set for the DMA: number of DMA channel minus one (e.g. 0->1ch, 2->3ch, 15->16ch)."]
+        ///Feature Set for the DMA: number of DMA channel minus one (e.g. 0->1ch, 2->3ch, 15->16ch).
         #[inline(always)]
         pub const fn set_featurever(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[must_use]
         #[inline(always)]
         pub const fn moduleid(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
             val as u16
         }
-        #[doc = "Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness."]
+        ///Module identification contains a unique peripheral identification number. The assignments are maintained in a central database for all of the platform modules to ensure uniqueness.
         #[inline(always)]
         pub const fn set_moduleid(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
+            self.0 = (self.0 & !(0xffff << 16usize))
+                | (((val as u32) & 0xffff) << 16usize);
         }
     }
     impl Default for Desc {
@@ -403,37 +428,43 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Desc {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}" , self . minrev () , self . majrev () , self . featurever () , self . moduleid ())
+            defmt::write!(
+                f,
+                "Desc {{ minrev: {=u8:?}, majrev: {=u8:?}, featurever: {=u8:?}, moduleid: {=u16:?} }}",
+                self.minrev(), self.majrev(), self.featurever(), self.moduleid()
+            )
         }
     }
-    #[doc = "Event Mode."]
+    ///Event Mode.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EvtMode(pub u32);
     impl EvtMode {
-        #[doc = "Event line mode select for event corresponding to interrupt event INT_EVENT\\[0\\]."]
+        ///Event line mode select for event corresponding to interrupt event INT_EVENT\[0\].
         #[must_use]
         #[inline(always)]
         pub const fn cpu(&self) -> super::vals::EvtCfg {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to interrupt event INT_EVENT\\[0\\]."]
+        ///Event line mode select for event corresponding to interrupt event INT_EVENT\[0\].
         #[inline(always)]
         pub const fn set_cpu(&mut self, val: super::vals::EvtCfg) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize))
+                | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
-        #[doc = "Event line mode select for event corresponding to generic event INT_EVENT\\[1\\]."]
+        ///Event line mode select for event corresponding to generic event INT_EVENT\[1\].
         #[must_use]
         #[inline(always)]
         pub const fn event(&self) -> super::vals::EvtCfg {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::EvtCfg::from_bits(val as u8)
         }
-        #[doc = "Event line mode select for event corresponding to generic event INT_EVENT\\[1\\]."]
+        ///Event line mode select for event corresponding to generic event INT_EVENT\[1\].
         #[inline(always)]
         pub const fn set_event(&mut self, val: super::vals::EvtCfg) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize))
+                | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
     }
     impl Default for EvtMode {
@@ -454,26 +485,23 @@ pub mod regs {
     impl defmt::Format for EvtMode {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "EvtMode {{ cpu: {:?}, event: {:?} }}",
-                self.cpu(),
-                self.event()
+                f, "EvtMode {{ cpu: {:?}, event: {:?} }}", self.cpu(), self.event()
             )
         }
     }
-    #[doc = "Publisher Port 0."]
+    ///Publisher Port 0.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fport(pub u32);
     impl Fport {
-        #[doc = "0 = disconnected. 1-255 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-255 = connected to channelID = CHANID.
         #[must_use]
         #[inline(always)]
         pub const fn chanid(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
             val as u8
         }
-        #[doc = "0 = disconnected. 1-255 = connected to channelID = CHANID."]
+        ///0 = disconnected. 1-255 = connected to channelID = CHANID.
         #[inline(always)]
         pub const fn set_chanid(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
@@ -487,9 +515,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Fport {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Fport")
-                .field("chanid", &self.chanid())
-                .finish()
+            f.debug_struct("Fport").field("chanid", &self.chanid()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -498,22 +524,23 @@ pub mod regs {
             defmt::write!(f, "Fport {{ chanid: {=u8:?} }}", self.chanid())
         }
     }
-    #[doc = "Interrupt index."]
+    ///Interrupt index.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iidx(pub u32);
     impl Iidx {
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[must_use]
         #[inline(always)]
         pub const fn stat(&self) -> super::vals::Stat {
             let val = (self.0 >> 0usize) & 0xff;
             super::vals::Stat::from_bits(val as u8)
         }
-        #[doc = "Interrupt index status."]
+        ///Interrupt index status.
         #[inline(always)]
         pub const fn set_stat(&mut self, val: super::vals::Stat) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize))
+                | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
     }
     impl Default for Iidx {
@@ -533,12 +560,12 @@ pub mod regs {
             defmt::write!(f, "Iidx {{ stat: {:?} }}", self.stat())
         }
     }
-    #[doc = "Interrupt clear."]
+    ///Interrupt clear.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Int(pub u32);
     impl Int {
-        #[doc = "DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0).
         #[must_use]
         #[inline(always)]
         pub const fn ch(&self, n: usize) -> bool {
@@ -547,14 +574,14 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 0 interrupt signals that size counter reached zero (DMASZ=0).
         #[inline(always)]
         pub const fn set_ch(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
-        #[doc = "Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold."]
+        ///Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold.
         #[must_use]
         #[inline(always)]
         pub const fn preirqch(&self, n: usize) -> bool {
@@ -563,33 +590,33 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold."]
+        ///Pre-IRQ for Channel 0. Size counter reached Pre-IRQ threshold.
         #[inline(always)]
         pub const fn set_preirqch(&mut self, n: usize, val: bool) {
             assert!(n < 8usize);
             let offs = 16usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
-        #[doc = "DMA address error, SRC address not reachable."]
+        ///DMA address error, SRC address not reachable.
         #[must_use]
         #[inline(always)]
         pub const fn addrerr(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
             val != 0
         }
-        #[doc = "DMA address error, SRC address not reachable."]
+        ///DMA address error, SRC address not reachable.
         #[inline(always)]
         pub const fn set_addrerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
-        #[doc = "DMA data error, SRC data might be corrupted (PAR or ECC error)."]
+        ///DMA data error, SRC data might be corrupted (PAR or ECC error).
         #[must_use]
         #[inline(always)]
         pub const fn dataerr(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
             val != 0
         }
-        #[doc = "DMA data error, SRC data might be corrupted (PAR or ECC error)."]
+        ///DMA data error, SRC data might be corrupted (PAR or ECC error).
         #[inline(always)]
         pub const fn set_dataerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
@@ -636,39 +663,50 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Int {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Int {{ ch[0]: {=bool:?}, ch[1]: {=bool:?}, ch[2]: {=bool:?}, ch[3]: {=bool:?}, ch[4]: {=bool:?}, ch[5]: {=bool:?}, ch[6]: {=bool:?}, ch[7]: {=bool:?}, ch[8]: {=bool:?}, ch[9]: {=bool:?}, ch[10]: {=bool:?}, ch[11]: {=bool:?}, ch[12]: {=bool:?}, ch[13]: {=bool:?}, ch[14]: {=bool:?}, ch[15]: {=bool:?}, preirqch[0]: {=bool:?}, preirqch[1]: {=bool:?}, preirqch[2]: {=bool:?}, preirqch[3]: {=bool:?}, preirqch[4]: {=bool:?}, preirqch[5]: {=bool:?}, preirqch[6]: {=bool:?}, preirqch[7]: {=bool:?}, addrerr: {=bool:?}, dataerr: {=bool:?} }}" , self . ch (0usize) , self . ch (1usize) , self . ch (2usize) , self . ch (3usize) , self . ch (4usize) , self . ch (5usize) , self . ch (6usize) , self . ch (7usize) , self . ch (8usize) , self . ch (9usize) , self . ch (10usize) , self . ch (11usize) , self . ch (12usize) , self . ch (13usize) , self . ch (14usize) , self . ch (15usize) , self . preirqch (0usize) , self . preirqch (1usize) , self . preirqch (2usize) , self . preirqch (3usize) , self . preirqch (4usize) , self . preirqch (5usize) , self . preirqch (6usize) , self . preirqch (7usize) , self . addrerr () , self . dataerr ())
+            defmt::write!(
+                f,
+                "Int {{ ch[0]: {=bool:?}, ch[1]: {=bool:?}, ch[2]: {=bool:?}, ch[3]: {=bool:?}, ch[4]: {=bool:?}, ch[5]: {=bool:?}, ch[6]: {=bool:?}, ch[7]: {=bool:?}, ch[8]: {=bool:?}, ch[9]: {=bool:?}, ch[10]: {=bool:?}, ch[11]: {=bool:?}, ch[12]: {=bool:?}, ch[13]: {=bool:?}, ch[14]: {=bool:?}, ch[15]: {=bool:?}, preirqch[0]: {=bool:?}, preirqch[1]: {=bool:?}, preirqch[2]: {=bool:?}, preirqch[3]: {=bool:?}, preirqch[4]: {=bool:?}, preirqch[5]: {=bool:?}, preirqch[6]: {=bool:?}, preirqch[7]: {=bool:?}, addrerr: {=bool:?}, dataerr: {=bool:?} }}",
+                self.ch(0usize), self.ch(1usize), self.ch(2usize), self.ch(3usize), self
+                .ch(4usize), self.ch(5usize), self.ch(6usize), self.ch(7usize), self
+                .ch(8usize), self.ch(9usize), self.ch(10usize), self.ch(11usize), self
+                .ch(12usize), self.ch(13usize), self.ch(14usize), self.ch(15usize), self
+                .preirqch(0usize), self.preirqch(1usize), self.preirqch(2usize), self
+                .preirqch(3usize), self.preirqch(4usize), self.preirqch(5usize), self
+                .preirqch(6usize), self.preirqch(7usize), self.addrerr(), self.dataerr()
+            )
         }
     }
-    #[doc = "Peripheral Debug Control."]
+    ///Peripheral Debug Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdbgctl(pub u32);
     impl Pdbgctl {
-        #[doc = "Free run control."]
+        ///Free run control.
         #[must_use]
         #[inline(always)]
         pub const fn free(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Free run control."]
+        ///Free run control.
         #[inline(always)]
         pub const fn set_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Soft halt boundary control. This function is only available, if \\[FREE\\]
-is set to 'STOP'."]
+        /**Soft halt boundary control. This function is only available, if \[FREE\]
+is set to 'STOP'.*/
         #[must_use]
         #[inline(always)]
         pub const fn soft(&self) -> super::vals::Soft {
             let val = (self.0 >> 1usize) & 0x01;
             super::vals::Soft::from_bits(val as u8)
         }
-        #[doc = "Soft halt boundary control. This function is only available, if \\[FREE\\]
-is set to 'STOP'."]
+        /**Soft halt boundary control. This function is only available, if \[FREE\]
+is set to 'STOP'.*/
         #[inline(always)]
         pub const fn set_soft(&mut self, val: super::vals::Soft) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize))
+                | (((val.to_bits() as u32) & 0x01) << 1usize);
         }
     }
     impl Default for Pdbgctl {
@@ -689,41 +727,39 @@ is set to 'STOP'."]
     impl defmt::Format for Pdbgctl {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pdbgctl {{ free: {=bool:?}, soft: {:?} }}",
-                self.free(),
-                self.soft()
+                f, "Pdbgctl {{ free: {=bool:?}, soft: {:?} }}", self.free(), self.soft()
             )
         }
     }
-    #[doc = "DMA Channel Priority Control."]
+    ///DMA Channel Priority Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Prio(pub u32);
     impl Prio {
-        #[doc = "Round robin. This bit enables the round-robin DMA channel priorities."]
+        ///Round robin. This bit enables the round-robin DMA channel priorities.
         #[must_use]
         #[inline(always)]
         pub const fn roundrobin(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Round robin. This bit enables the round-robin DMA channel priorities."]
+        ///Round robin. This bit enables the round-robin DMA channel priorities.
         #[inline(always)]
         pub const fn set_roundrobin(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Define the burst size of a block transfer, before the priority is re-evaluated."]
+        ///Define the burst size of a block transfer, before the priority is re-evaluated.
         #[must_use]
         #[inline(always)]
         pub const fn burstsz(&self) -> super::vals::Burstsz {
             let val = (self.0 >> 16usize) & 0x03;
             super::vals::Burstsz::from_bits(val as u8)
         }
-        #[doc = "Define the burst size of a block transfer, before the priority is re-evaluated."]
+        ///Define the burst size of a block transfer, before the priority is re-evaluated.
         #[inline(always)]
         pub const fn set_burstsz(&mut self, val: super::vals::Burstsz) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
+            self.0 = (self.0 & !(0x03 << 16usize))
+                | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
     }
     impl Default for Prio {
@@ -744,29 +780,28 @@ is set to 'STOP'."]
     impl defmt::Format for Prio {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Prio {{ roundrobin: {=bool:?}, burstsz: {:?} }}",
-                self.roundrobin(),
+                f, "Prio {{ roundrobin: {=bool:?}, burstsz: {:?} }}", self.roundrobin(),
                 self.burstsz()
             )
         }
     }
-    #[doc = "DMA Channel Size."]
+    ///DMA Channel Size.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sz(pub u32);
     impl Sz {
-        #[doc = "DMA Channel Size in number of transfers."]
+        ///DMA Channel Size in number of transfers.
         #[must_use]
         #[inline(always)]
         pub const fn size(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "DMA Channel Size in number of transfers."]
+        ///DMA Channel Size in number of transfers.
         #[inline(always)]
         pub const fn set_size(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize))
+                | (((val as u32) & 0xffff) << 0usize);
         }
     }
     impl Default for Sz {
@@ -786,34 +821,35 @@ is set to 'STOP'."]
             defmt::write!(f, "Sz {{ size: {=u16:?} }}", self.size())
         }
     }
-    #[doc = "DMA Trigger Select."]
+    ///DMA Trigger Select.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Tctl(pub u32);
     impl Tctl {
-        #[doc = "DMA Trigger Select Note: Reference the datasheet of the device to see the specific trigger mapping."]
+        ///DMA Trigger Select Note: Reference the datasheet of the device to see the specific trigger mapping.
         #[must_use]
         #[inline(always)]
         pub const fn tsel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
             val as u8
         }
-        #[doc = "DMA Trigger Select Note: Reference the datasheet of the device to see the specific trigger mapping."]
+        ///DMA Trigger Select Note: Reference the datasheet of the device to see the specific trigger mapping.
         #[inline(always)]
         pub const fn set_tsel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
         }
-        #[doc = "DMA Trigger by Internal Channel."]
+        ///DMA Trigger by Internal Channel.
         #[must_use]
         #[inline(always)]
         pub const fn tint(&self) -> super::vals::Tint {
             let val = (self.0 >> 7usize) & 0x01;
             super::vals::Tint::from_bits(val as u8)
         }
-        #[doc = "DMA Trigger by Internal Channel."]
+        ///DMA Trigger by Internal Channel.
         #[inline(always)]
         pub const fn set_tint(&mut self, val: super::vals::Tint) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize))
+                | (((val.to_bits() as u32) & 0x01) << 7usize);
         }
     }
     impl Default for Tctl {
@@ -834,10 +870,7 @@ is set to 'STOP'."]
     impl defmt::Format for Tctl {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Tctl {{ tsel: {=u8:?}, tint: {:?} }}",
-                self.tsel(),
-                self.tint()
+                f, "Tctl {{ tsel: {=u8:?}, tint: {:?} }}", self.tsel(), self.tint()
             )
         }
     }
@@ -847,13 +880,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Autoen {
-        #[doc = "No automatic DMA enable"]
+        ///No automatic DMA enable
         None = 0x0,
-        #[doc = "Automatic DMA channel enable on SA register write."]
+        ///Automatic DMA channel enable on SA register write.
         Sa = 0x01,
-        #[doc = "Automatic DMA channel enable on DA register write."]
+        ///Automatic DMA channel enable on DA register write.
         Da = 0x02,
-        #[doc = "Automatic DMA channel enable on SZ register write."]
+        ///Automatic DMA channel enable on SZ register write.
         Sz = 0x03,
     }
     impl Autoen {
@@ -882,13 +915,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Burstsz {
-        #[doc = "There is no burst size, the whole block transfer is completed on one transfer without interruption."]
+        ///There is no burst size, the whole block transfer is completed on one transfer without interruption.
         Infiniti = 0x0,
-        #[doc = "The burst size is 8, after 8 transfers the block transfer is interrupted and the priority is reevaluated."]
+        ///The burst size is 8, after 8 transfers the block transfer is interrupted and the priority is reevaluated.
         Burst8 = 0x01,
-        #[doc = "The burst size is 16, after 16 transfers the block transfer is interrupted and the priority is reevaluated."]
+        ///The burst size is 16, after 16 transfers the block transfer is interrupted and the priority is reevaluated.
         Burst16 = 0x02,
-        #[doc = "The burst size is 32, after 32 transfers the block transfer is interrupted and the priority is reevaluated."]
+        ///The burst size is 32, after 32 transfers the block transfer is interrupted and the priority is reevaluated.
         Burst32 = 0x03,
     }
     impl Burstsz {
@@ -917,12 +950,12 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Em {
-        #[doc = "Normal mode is related to transfers from SRC to DST."]
+        ///Normal mode is related to transfers from SRC to DST.
         Normal = 0x0,
         _RESERVED_1 = 0x01,
-        #[doc = "Fill mode will copy the SA register content as data to DA."]
+        ///Fill mode will copy the SA register content as data to DA.
         Fillmode = 0x02,
-        #[doc = "Table mode will read an address and data value from SA and write the data to address."]
+        ///Table mode will read an address and data value from SA and write the data to address.
         Tablemode = 0x03,
     }
     impl Em {
@@ -951,11 +984,11 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum EvtCfg {
-        #[doc = "The interrupt or event line is disabled."]
+        ///The interrupt or event line is disabled.
         Disable = 0x0,
-        #[doc = "The interrupt or event line is in software mode. Software must clear the RIS."]
+        ///The interrupt or event line is in software mode. Software must clear the RIS.
         Software = 0x01,
-        #[doc = "The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag."]
+        ///The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
         Hardware = 0x02,
         _RESERVED_3 = 0x03,
     }
@@ -985,32 +1018,32 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Incr {
-        #[doc = "Address is unchanged (+0)."]
+        ///Address is unchanged (+0).
         Unchanged = 0x0,
         _RESERVED_1 = 0x01,
-        #[doc = "Decremented by 1 (-1 * DMADSTWDTH)."]
+        ///Decremented by 1 (-1 * DMADSTWDTH).
         Decrement = 0x02,
-        #[doc = "Incremented by 1 (+1 * DMADSTWDTH)."]
+        ///Incremented by 1 (+1 * DMADSTWDTH).
         Increment = 0x03,
         _RESERVED_4 = 0x04,
         _RESERVED_5 = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
-        #[doc = "Stride size 2 (+2 * DMADSTWDTH)."]
+        ///Stride size 2 (+2 * DMADSTWDTH).
         Stride2 = 0x08,
-        #[doc = "Stride size 3 (+3 * DMADSTWDTH)."]
+        ///Stride size 3 (+3 * DMADSTWDTH).
         Stride3 = 0x09,
-        #[doc = "Stride size 4 (+4 * DMADSTWDTH)."]
+        ///Stride size 4 (+4 * DMADSTWDTH).
         Stride4 = 0x0a,
-        #[doc = "Stride size 5 (+5 * DMADSTWDTH)."]
+        ///Stride size 5 (+5 * DMADSTWDTH).
         Stride5 = 0x0b,
-        #[doc = "Stride size 6 (+6 * DMADSTWDTH)."]
+        ///Stride size 6 (+6 * DMADSTWDTH).
         Stride6 = 0x0c,
-        #[doc = "Stride size 7 (+7 * DMADSTWDTH)."]
+        ///Stride size 7 (+7 * DMADSTWDTH).
         Stride7 = 0x0d,
-        #[doc = "Stride size 8 (+8 * DMADSTWDTH)."]
+        ///Stride size 8 (+8 * DMADSTWDTH).
         Stride8 = 0x0e,
-        #[doc = "Stride size 9 (+9 * DMADSTWDTH)."]
+        ///Stride size 9 (+9 * DMADSTWDTH).
         Stride9 = 0x0f,
     }
     impl Incr {
@@ -1039,21 +1072,21 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Preirq {
-        #[doc = "Pre-IRQ event disabled."]
+        ///Pre-IRQ event disabled.
         PreirqDisable = 0x0,
-        #[doc = "Issure Pre-IRQ event when DMASZ=1."]
+        ///Issure Pre-IRQ event when DMASZ=1.
         Preirq1 = 0x01,
-        #[doc = "Issure Pre-IRQ event when DMASZ=2."]
+        ///Issure Pre-IRQ event when DMASZ=2.
         Preirq2 = 0x02,
-        #[doc = "Issure Pre-IRQ event when DMASZ=4."]
+        ///Issure Pre-IRQ event when DMASZ=4.
         Preirq4 = 0x03,
-        #[doc = "Issure Pre-IRQ event when DMASZ=8."]
+        ///Issure Pre-IRQ event when DMASZ=8.
         Preirq8 = 0x04,
-        #[doc = "Issure Pre-IRQ event when DMASZ=32."]
+        ///Issure Pre-IRQ event when DMASZ=32.
         Preirq32 = 0x05,
-        #[doc = "Issure Pre-IRQ event when DMASZ=64."]
+        ///Issure Pre-IRQ event when DMASZ=64.
         Preirq64 = 0x06,
-        #[doc = "Issure Pre-IRQ event when DMASZ reached the half size point of the original transfer size."]
+        ///Issure Pre-IRQ event when DMASZ reached the half size point of the original transfer size.
         PreirqHalf = 0x07,
     }
     impl Preirq {
@@ -1082,9 +1115,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Soft {
-        #[doc = "The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted."]
+        ///The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted.
         Immediate = 0x0,
-        #[doc = "The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption."]
+        ///The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption.
         Delayed = 0x01,
     }
     impl Soft {
@@ -1113,59 +1146,59 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub struct Stat(u8);
     impl Stat {
-        #[doc = "No bit is set means there is no pending interrupt request."]
+        ///No bit is set means there is no pending interrupt request.
         pub const NoIntr: Self = Self(0x0);
-        #[doc = "DMA Channel 0 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 0 size counter reached zero (DMASZ=0).
         pub const Ch0: Self = Self(0x01);
-        #[doc = "DMA Channel 2 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 2 size counter reached zero (DMASZ=0).
         pub const Ch1: Self = Self(0x02);
-        #[doc = "DMA Channel 2 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 2 size counter reached zero (DMASZ=0).
         pub const Ch2: Self = Self(0x03);
-        #[doc = "DMA Channel 3 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 3 size counter reached zero (DMASZ=0).
         pub const Ch3: Self = Self(0x04);
-        #[doc = "DMA Channel 4 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 4 size counter reached zero (DMASZ=0).
         pub const Ch4: Self = Self(0x05);
-        #[doc = "DMA Channel 5 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 5 size counter reached zero (DMASZ=0).
         pub const Ch5: Self = Self(0x06);
-        #[doc = "DMA Channel 6 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 6 size counter reached zero (DMASZ=0).
         pub const Ch6: Self = Self(0x07);
-        #[doc = "DMA Channel 7 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 7 size counter reached zero (DMASZ=0).
         pub const Ch7: Self = Self(0x08);
-        #[doc = "DMA Channel 8 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 8 size counter reached zero (DMASZ=0).
         pub const Ch8: Self = Self(0x09);
-        #[doc = "DMA Channel 9 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 9 size counter reached zero (DMASZ=0).
         pub const Ch9: Self = Self(0x0a);
-        #[doc = "DMA Channel 10 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 10 size counter reached zero (DMASZ=0).
         pub const Ch10: Self = Self(0x0b);
-        #[doc = "DMA Channel 11 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 11 size counter reached zero (DMASZ=0).
         pub const Ch11: Self = Self(0x0c);
-        #[doc = "DMA Channel 12 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 12 size counter reached zero (DMASZ=0).
         pub const Ch12: Self = Self(0x0d);
-        #[doc = "DMA Channel 13 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 13 size counter reached zero (DMASZ=0).
         pub const Ch13: Self = Self(0x0e);
-        #[doc = "DMA Channel 14 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 14 size counter reached zero (DMASZ=0).
         pub const Ch14: Self = Self(0x0f);
-        #[doc = "DMA Channel 15 size counter reached zero (DMASZ=0)."]
+        ///DMA Channel 15 size counter reached zero (DMASZ=0).
         pub const Ch15: Self = Self(0x10);
-        #[doc = "PRE-IRQ event for DMA Channel 0."]
+        ///PRE-IRQ event for DMA Channel 0.
         pub const Preirqch0: Self = Self(0x11);
-        #[doc = "PRE-IRQ event for DMA Channel 1."]
+        ///PRE-IRQ event for DMA Channel 1.
         pub const Preirqch1: Self = Self(0x12);
-        #[doc = "PRE-IRQ event for DMA Channel 2."]
+        ///PRE-IRQ event for DMA Channel 2.
         pub const Preirqch2: Self = Self(0x13);
-        #[doc = "PRE-IRQ event for DMA Channel 3."]
+        ///PRE-IRQ event for DMA Channel 3.
         pub const Preirqch3: Self = Self(0x14);
-        #[doc = "PRE-IRQ event for DMA Channel 4."]
+        ///PRE-IRQ event for DMA Channel 4.
         pub const Preirqch4: Self = Self(0x15);
-        #[doc = "PRE-IRQ event for DMA Channel 5."]
+        ///PRE-IRQ event for DMA Channel 5.
         pub const Preirqch5: Self = Self(0x16);
-        #[doc = "PRE-IRQ event for DMA Channel 6."]
+        ///PRE-IRQ event for DMA Channel 6.
         pub const Preirqch6: Self = Self(0x17);
-        #[doc = "PRE-IRQ event for DMA Channel 7."]
+        ///PRE-IRQ event for DMA Channel 7.
         pub const Preirqch7: Self = Self(0x18);
-        #[doc = "DMA address error, SRC address not reachable."]
+        ///DMA address error, SRC address not reachable.
         pub const Addrerr: Self = Self(0x19);
-        #[doc = "DMA data error, SRC data might be corrupted (PAR or ECC error)."]
+        ///DMA data error, SRC data might be corrupted (PAR or ECC error).
         pub const Dataerr: Self = Self(0x1a);
     }
     impl Stat {
@@ -1261,9 +1294,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Tint {
-        #[doc = "DMATSEL will define external trigger select as transfer trigger."]
+        ///DMATSEL will define external trigger select as transfer trigger.
         External = 0x0,
-        #[doc = "DMATSEL will define internal channel as transfer trigger select. 0-> Channel0-done, 1-> Channel1-done, ..."]
+        ///DMATSEL will define internal channel as transfer trigger select. 0-> Channel0-done, 1-> Channel1-done, ...
         Internal = 0x01,
     }
     impl Tint {
@@ -1292,13 +1325,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Tm {
-        #[doc = "Single transfer. Each transfers requires a new trigger. When the DMASZ counts down to zero an event can be generated and the DMAEN is cleared."]
+        ///Single transfer. Each transfers requires a new trigger. When the DMASZ counts down to zero an event can be generated and the DMAEN is cleared.
         Single = 0x0,
-        #[doc = "Block transfer. Each trigger transfers the complete block defined in DMASZ. After the transfer is complete an event can be generated and the DMAEN is cleared."]
+        ///Block transfer. Each trigger transfers the complete block defined in DMASZ. After the transfer is complete an event can be generated and the DMAEN is cleared.
         Block = 0x01,
-        #[doc = "Repeated single transfer. Each transfers requires a new trigger. When the DMASZ counts down to zero an event can be generated. After the last transfer the DMASA, DMADA, DAMSZ registers are restored to its initial value and the DMAEN stays enabled."]
+        ///Repeated single transfer. Each transfers requires a new trigger. When the DMASZ counts down to zero an event can be generated. After the last transfer the DMASA, DMADA, DAMSZ registers are restored to its initial value and the DMAEN stays enabled.
         Rptsngl = 0x02,
-        #[doc = "Repeated block transfer. Each trigger transfers the complete block defined in DMASZ. After the last transfer the DMASA, DMADA, DAMSZ registers are restored to its initial value and the DMAEN stays enabled."]
+        ///Repeated block transfer. Each trigger transfers the complete block defined in DMASZ. After the last transfer the DMASA, DMADA, DAMSZ registers are restored to its initial value and the DMAEN stays enabled.
         Rptblck = 0x03,
     }
     impl Tm {
@@ -1327,13 +1360,13 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Wdth {
-        #[doc = "Destination data width is BYTE (8-bit)."]
+        ///Destination data width is BYTE (8-bit).
         Byte = 0x0,
-        #[doc = "Destination data width is HALF-WORD (16-bit)."]
+        ///Destination data width is HALF-WORD (16-bit).
         Half = 0x01,
-        #[doc = "Destination data width is WORD (32-bit)."]
+        ///Destination data width is WORD (32-bit).
         Word = 0x02,
-        #[doc = "Destination data width is LONG-WORD (64-bit)."]
+        ///Destination data width is LONG-WORD (64-bit).
         Long = 0x03,
     }
     impl Wdth {

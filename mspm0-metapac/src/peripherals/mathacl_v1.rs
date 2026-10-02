@@ -3,7 +3,6 @@
 #![allow(clippy::identity_op)]
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
-
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Gprcm {
     ptr: *mut u8,
@@ -19,23 +18,23 @@ impl Gprcm {
     pub const fn as_ptr(&self) -> *mut () {
         self.ptr as _
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[inline(always)]
     pub const fn pwren(self) -> crate::common::Reg<regs::Pwren, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[inline(always)]
     pub const fn rstctl(self) -> crate::common::Reg<regs::Rstctl, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn stat(self) -> crate::common::Reg<regs::Stat, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
 }
-#[doc = "PERIPHERALREGION."]
+///PERIPHERALREGION.
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Mathacl {
     ptr: *mut u8,
@@ -56,116 +55,120 @@ impl Mathacl {
         assert!(n < 1usize);
         unsafe { Gprcm::from_ptr(self.ptr.wrapping_add(0x0800usize + n * 24usize) as _) }
     }
-    #[doc = "Control Register."]
+    ///Control Register.
     #[inline(always)]
     pub const fn ctl(self) -> crate::common::Reg<regs::Ctl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1100usize) as _) }
     }
-    #[doc = "Operand 2 register."]
+    ///Operand 2 register.
     #[inline(always)]
     pub const fn op2(self) -> crate::common::Reg<regs::Op2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1118usize) as _) }
     }
-    #[doc = "Operand 1 register."]
+    ///Operand 1 register.
     #[inline(always)]
     pub const fn op1(self) -> crate::common::Reg<regs::Op1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x111cusize) as _) }
     }
-    #[doc = "Result 1 register."]
+    ///Result 1 register.
     #[inline(always)]
     pub const fn res1(self) -> crate::common::Reg<regs::Res1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1120usize) as _) }
     }
-    #[doc = "Result 2 register."]
+    ///Result 2 register.
     #[inline(always)]
     pub const fn res2(self) -> crate::common::Reg<regs::Res2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1124usize) as _) }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[inline(always)]
     pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1130usize) as _) }
     }
-    #[doc = "Status flag clear register."]
+    ///Status flag clear register.
     #[inline(always)]
-    pub const fn statusclr(self) -> crate::common::Reg<regs::Statusclr, crate::common::W> {
+    pub const fn statusclr(
+        self,
+    ) -> crate::common::Reg<regs::Statusclr, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1140usize) as _) }
     }
 }
 pub mod regs {
-    #[doc = "Control Register."]
+    ///Control Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctl(pub u32);
     impl Ctl {
-        #[doc = "ULP_ADCHP Enable Conversions."]
+        ///ULP_ADCHP Enable Conversions.
         #[must_use]
         #[inline(always)]
         pub const fn func(&self) -> super::vals::Func {
             let val = (self.0 >> 0usize) & 0x1f;
             super::vals::Func::from_bits(val as u8)
         }
-        #[doc = "ULP_ADCHP Enable Conversions."]
+        ///ULP_ADCHP Enable Conversions.
         #[inline(always)]
         pub const fn set_func(&mut self, val: super::vals::Func) {
-            self.0 = (self.0 & !(0x1f << 0usize)) | (((val.to_bits() as u32) & 0x1f) << 0usize);
+            self.0 = (self.0 & !(0x1f << 0usize))
+                | (((val.to_bits() as u32) & 0x1f) << 0usize);
         }
-        #[doc = "Operand type, could signed or unsigned. applicable to DIV function."]
+        ///Operand type, could signed or unsigned. applicable to DIV function.
         #[must_use]
         #[inline(always)]
         pub const fn optype(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
-        #[doc = "Operand type, could signed or unsigned. applicable to DIV function."]
+        ///Operand type, could signed or unsigned. applicable to DIV function.
         #[inline(always)]
         pub const fn set_optype(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "Indicates the fractional bits in the operands, ranges from 0 to 31. Applicable to DIV function."]
+        ///Indicates the fractional bits in the operands, ranges from 0 to 31. Applicable to DIV function.
         #[must_use]
         #[inline(always)]
         pub const fn qval(&self) -> super::vals::Qval {
             let val = (self.0 >> 8usize) & 0x1f;
             super::vals::Qval::from_bits(val as u8)
         }
-        #[doc = "Indicates the fractional bits in the operands, ranges from 0 to 31. Applicable to DIV function."]
+        ///Indicates the fractional bits in the operands, ranges from 0 to 31. Applicable to DIV function.
         #[inline(always)]
         pub const fn set_qval(&mut self, val: super::vals::Qval) {
-            self.0 = (self.0 & !(0x1f << 8usize)) | (((val.to_bits() as u32) & 0x1f) << 8usize);
+            self.0 = (self.0 & !(0x1f << 8usize))
+                | (((val.to_bits() as u32) & 0x1f) << 8usize);
         }
-        #[doc = "Scaling factor. In case of SQRT function, the input operand needs to be in a range. If not it has to be scaled to 2^(+/-n). This field should be written with the value 'n'."]
+        ///Scaling factor. In case of SQRT function, the input operand needs to be in a range. If not it has to be scaled to 2^(+/-n). This field should be written with the value 'n'.
         #[must_use]
         #[inline(always)]
         pub const fn sfactor(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x3f;
             val as u8
         }
-        #[doc = "Scaling factor. In case of SQRT function, the input operand needs to be in a range. If not it has to be scaled to 2^(+/-n). This field should be written with the value 'n'."]
+        ///Scaling factor. In case of SQRT function, the input operand needs to be in a range. If not it has to be scaled to 2^(+/-n). This field should be written with the value 'n'.
         #[inline(always)]
         pub const fn set_sfactor(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
         }
-        #[doc = "Saturation enable This bit is shared among DIV, SQUARE32, MPY32, MAC and SAC functions. When enabled, it will make the result to saturate to maximum value in case of an overflow event When disabled, the result will overflow to an unknown value."]
+        ///Saturation enable This bit is shared among DIV, SQUARE32, MPY32, MAC and SAC functions. When enabled, it will make the result to saturate to maximum value in case of an overflow event When disabled, the result will overflow to an unknown value.
         #[must_use]
         #[inline(always)]
         pub const fn saten(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
             val != 0
         }
-        #[doc = "Saturation enable This bit is shared among DIV, SQUARE32, MPY32, MAC and SAC functions. When enabled, it will make the result to saturate to maximum value in case of an overflow event When disabled, the result will overflow to an unknown value."]
+        ///Saturation enable This bit is shared among DIV, SQUARE32, MPY32, MAC and SAC functions. When enabled, it will make the result to saturate to maximum value in case of an overflow event When disabled, the result will overflow to an unknown value.
         #[inline(always)]
         pub const fn set_saten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
-        #[doc = "Number of iterations, applicable if the function does the computations iteratively, for example sine/cosine/atan2/sqrt. Note: A value of 0 is interpreted as 31."]
+        ///Number of iterations, applicable if the function does the computations iteratively, for example sine/cosine/atan2/sqrt. Note: A value of 0 is interpreted as 31.
         #[must_use]
         #[inline(always)]
         pub const fn numiter(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
             val as u8
         }
-        #[doc = "Number of iterations, applicable if the function does the computations iteratively, for example sine/cosine/atan2/sqrt. Note: A value of 0 is interpreted as 31."]
+        ///Number of iterations, applicable if the function does the computations iteratively, for example sine/cosine/atan2/sqrt. Note: A value of 0 is interpreted as 31.
         #[inline(always)]
         pub const fn set_numiter(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
@@ -192,25 +195,31 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctl {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctl {{ func: {:?}, optype: {=bool:?}, qval: {:?}, sfactor: {=u8:?}, saten: {=bool:?}, numiter: {=u8:?} }}" , self . func () , self . optype () , self . qval () , self . sfactor () , self . saten () , self . numiter ())
+            defmt::write!(
+                f,
+                "Ctl {{ func: {:?}, optype: {=bool:?}, qval: {:?}, sfactor: {=u8:?}, saten: {=bool:?}, numiter: {=u8:?} }}",
+                self.func(), self.optype(), self.qval(), self.sfactor(), self.saten(),
+                self.numiter()
+            )
         }
     }
-    #[doc = "Operand 1 register."]
+    ///Operand 1 register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Op1(pub u32);
     impl Op1 {
-        #[doc = "Operand 1 Register"]
+        ///Operand 1 Register
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
-        #[doc = "Operand 1 Register"]
+        ///Operand 1 Register
         #[inline(always)]
         pub const fn set_data(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Op1 {
@@ -230,22 +239,23 @@ pub mod regs {
             defmt::write!(f, "Op1 {{ data: {=u32:?} }}", self.data())
         }
     }
-    #[doc = "Operand 2 register."]
+    ///Operand 2 register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Op2(pub u32);
     impl Op2 {
-        #[doc = "Operand 1 Register"]
+        ///Operand 1 Register
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
-        #[doc = "Operand 1 Register"]
+        ///Operand 1 Register
         #[inline(always)]
         pub const fn set_data(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Op2 {
@@ -265,34 +275,35 @@ pub mod regs {
             defmt::write!(f, "Op2 {{ data: {=u32:?} }}", self.data())
         }
     }
-    #[doc = "Power enable."]
+    ///Power enable.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pwren(pub u32);
     impl Pwren {
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[must_use]
         #[inline(always)]
         pub const fn enable(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Enable the power."]
+        ///Enable the power.
         #[inline(always)]
         pub const fn set_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::PwrenKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::PwrenKey::from_bits(val as u8)
         }
-        #[doc = "KEY to allow Power State Change 26h = KEY to allow write access to this register"]
+        ///KEY to allow Power State Change 26h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::PwrenKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Pwren {
@@ -313,29 +324,27 @@ pub mod regs {
     impl defmt::Format for Pwren {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Pwren {{ enable: {=bool:?}, key: {:?} }}",
-                self.enable(),
-                self.key()
+                f, "Pwren {{ enable: {=bool:?}, key: {:?} }}", self.enable(), self.key()
             )
         }
     }
-    #[doc = "Result 1 register."]
+    ///Result 1 register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Res1(pub u32);
     impl Res1 {
-        #[doc = "Result 1 Register"]
+        ///Result 1 Register
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
-        #[doc = "Result 1 Register"]
+        ///Result 1 Register
         #[inline(always)]
         pub const fn set_data(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Res1 {
@@ -355,22 +364,23 @@ pub mod regs {
             defmt::write!(f, "Res1 {{ data: {=u32:?} }}", self.data())
         }
     }
-    #[doc = "Result 2 register."]
+    ///Result 2 register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Res2(pub u32);
     impl Res2 {
-        #[doc = "Result 2 Register"]
+        ///Result 2 Register
         #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
-        #[doc = "Result 2 Register"]
+        ///Result 2 Register
         #[inline(always)]
         pub const fn set_data(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Res2 {
@@ -390,46 +400,49 @@ pub mod regs {
             defmt::write!(f, "Res2 {{ data: {=u32:?} }}", self.data())
         }
     }
-    #[doc = "Reset Control."]
+    ///Reset Control.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rstctl(pub u32);
     impl Rstctl {
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[must_use]
         #[inline(always)]
         pub const fn resetassert(&self) -> super::vals::Resetassert {
             let val = (self.0 >> 0usize) & 0x01;
             super::vals::Resetassert::from_bits(val as u8)
         }
-        #[doc = "Assert reset to the peripheral."]
+        ///Assert reset to the peripheral.
         #[inline(always)]
         pub const fn set_resetassert(&mut self, val: super::vals::Resetassert) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize))
+                | (((val.to_bits() as u32) & 0x01) << 0usize);
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstkyclr(&self) -> super::vals::Resetstkyclr {
             let val = (self.0 >> 1usize) & 0x01;
             super::vals::Resetstkyclr::from_bits(val as u8)
         }
-        #[doc = "Clear the RESETSTKY bit in the STAT register."]
+        ///Clear the RESETSTKY bit in the STAT register.
         #[inline(always)]
         pub const fn set_resetstkyclr(&mut self, val: super::vals::Resetstkyclr) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize))
+                | (((val.to_bits() as u32) & 0x01) << 1usize);
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[must_use]
         #[inline(always)]
         pub const fn key(&self) -> super::vals::ResetKey {
             let val = (self.0 >> 24usize) & 0xff;
             super::vals::ResetKey::from_bits(val as u8)
         }
-        #[doc = "Unlock key B1h = KEY to allow write access to this register"]
+        ///Unlock key B1h = KEY to allow write access to this register
         #[inline(always)]
         pub const fn set_key(&mut self, val: super::vals::ResetKey) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val.to_bits() as u32) & 0xff) << 24usize);
+            self.0 = (self.0 & !(0xff << 24usize))
+                | (((val.to_bits() as u32) & 0xff) << 24usize);
         }
     }
     impl Default for Rstctl {
@@ -451,30 +464,28 @@ pub mod regs {
     impl defmt::Format for Rstctl {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Rstctl {{ resetassert: {:?}, resetstkyclr: {:?}, key: {:?} }}",
-                self.resetassert(),
-                self.resetstkyclr(),
-                self.key()
+                f, "Rstctl {{ resetassert: {:?}, resetstkyclr: {:?}, key: {:?} }}", self
+                .resetassert(), self.resetstkyclr(), self.key()
             )
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Stat(pub u32);
     impl Stat {
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[must_use]
         #[inline(always)]
         pub const fn resetstky(&self) -> super::vals::Resetstky {
             let val = (self.0 >> 16usize) & 0x01;
             super::vals::Resetstky::from_bits(val as u8)
         }
-        #[doc = "This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
         #[inline(always)]
         pub const fn set_resetstky(&mut self, val: super::vals::Resetstky) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
+            self.0 = (self.0 & !(0x01 << 16usize))
+                | (((val.to_bits() as u32) & 0x01) << 16usize);
         }
     }
     impl Default for Stat {
@@ -485,9 +496,7 @@ pub mod regs {
     }
     impl core::fmt::Debug for Stat {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("Stat")
-                .field("resetstky", &self.resetstky())
-                .finish()
+            f.debug_struct("Stat").field("resetstky", &self.resetstky()).finish()
         }
     }
     #[cfg(feature = "defmt")]
@@ -496,58 +505,60 @@ pub mod regs {
             defmt::write!(f, "Stat {{ resetstky: {:?} }}", self.resetstky())
         }
     }
-    #[doc = "Status Register."]
+    ///Status Register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Status(pub u32);
     impl Status {
-        #[doc = "Underflow Flag."]
+        ///Underflow Flag.
         #[must_use]
         #[inline(always)]
         pub const fn uf(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Underflow Flag."]
+        ///Underflow Flag.
         #[inline(always)]
         pub const fn set_uf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Overflow bit for MPY32, SQUARE32, DIV, MAC, and SAC functions This bit will be set on overflow and will retain its value until cleared by writing 1 into CLR.CLR_OVF."]
+        ///Overflow bit for MPY32, SQUARE32, DIV, MAC, and SAC functions This bit will be set on overflow and will retain its value until cleared by writing 1 into CLR.CLR_OVF.
         #[must_use]
         #[inline(always)]
         pub const fn ovf(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Overflow bit for MPY32, SQUARE32, DIV, MAC, and SAC functions This bit will be set on overflow and will retain its value until cleared by writing 1 into CLR.CLR_OVF."]
+        ///Overflow bit for MPY32, SQUARE32, DIV, MAC, and SAC functions This bit will be set on overflow and will retain its value until cleared by writing 1 into CLR.CLR_OVF.
         #[inline(always)]
         pub const fn set_ovf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Incorrect inputs/outputs."]
+        ///Incorrect inputs/outputs.
         #[must_use]
         #[inline(always)]
         pub const fn err(&self) -> super::vals::Err {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::Err::from_bits(val as u8)
         }
-        #[doc = "Incorrect inputs/outputs."]
+        ///Incorrect inputs/outputs.
         #[inline(always)]
         pub const fn set_err(&mut self, val: super::vals::Err) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize))
+                | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
-        #[doc = "MATHACL busy bit."]
+        ///MATHACL busy bit.
         #[must_use]
         #[inline(always)]
         pub const fn busy(&self) -> super::vals::Busy {
             let val = (self.0 >> 8usize) & 0x01;
             super::vals::Busy::from_bits(val as u8)
         }
-        #[doc = "MATHACL busy bit."]
+        ///MATHACL busy bit.
         #[inline(always)]
         pub const fn set_busy(&mut self, val: super::vals::Busy) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
+            self.0 = (self.0 & !(0x01 << 8usize))
+                | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
     }
     impl Default for Status {
@@ -570,52 +581,48 @@ pub mod regs {
     impl defmt::Format for Status {
         fn format(&self, f: defmt::Formatter) {
             defmt::write!(
-                f,
-                "Status {{ uf: {=bool:?}, ovf: {=bool:?}, err: {:?}, busy: {:?} }}",
-                self.uf(),
-                self.ovf(),
-                self.err(),
-                self.busy()
+                f, "Status {{ uf: {=bool:?}, ovf: {=bool:?}, err: {:?}, busy: {:?} }}",
+                self.uf(), self.ovf(), self.err(), self.busy()
             )
         }
     }
-    #[doc = "Status flag clear register."]
+    ///Status flag clear register.
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Statusclr(pub u32);
     impl Statusclr {
-        #[doc = "Write 1 to this bit to clear STATUS.UF bit."]
+        ///Write 1 to this bit to clear STATUS.UF bit.
         #[must_use]
         #[inline(always)]
         pub const fn clr_uf(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Write 1 to this bit to clear STATUS.UF bit."]
+        ///Write 1 to this bit to clear STATUS.UF bit.
         #[inline(always)]
         pub const fn set_clr_uf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Write 1 to this bit to clear STATUS.OVF bit."]
+        ///Write 1 to this bit to clear STATUS.OVF bit.
         #[must_use]
         #[inline(always)]
         pub const fn clr_ovf(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Write 1 to this bit to clear STATUS.OVF bit."]
+        ///Write 1 to this bit to clear STATUS.OVF bit.
         #[inline(always)]
         pub const fn set_clr_ovf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Write 1 to this bit to clear STATUS.ERR field."]
+        ///Write 1 to this bit to clear STATUS.ERR field.
         #[must_use]
         #[inline(always)]
         pub const fn clr_err(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Write 1 to this bit to clear STATUS.ERR field."]
+        ///Write 1 to this bit to clear STATUS.ERR field.
         #[inline(always)]
         pub const fn set_clr_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
@@ -642,9 +649,7 @@ pub mod regs {
             defmt::write!(
                 f,
                 "Statusclr {{ clr_uf: {=bool:?}, clr_ovf: {=bool:?}, clr_err: {=bool:?} }}",
-                self.clr_uf(),
-                self.clr_ovf(),
-                self.clr_err()
+                self.clr_uf(), self.clr_ovf(), self.clr_err()
             )
         }
     }
@@ -654,9 +659,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Busy {
-        #[doc = "Compute has completed."]
+        ///Compute has completed.
         Done = 0x0,
-        #[doc = "Compute ongoing."]
+        ///Compute ongoing.
         Notdone = 0x01,
     }
     impl Busy {
@@ -685,9 +690,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Err {
-        #[doc = "No Error in computation."]
+        ///No Error in computation.
         Noerror = 0x0,
-        #[doc = "DIVBY0 error."]
+        ///DIVBY0 error.
         Divby0 = 0x01,
         _RESERVED_2 = 0x02,
         _RESERVED_3 = 0x03,
@@ -718,28 +723,28 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Func {
-        #[doc = "No operation."]
+        ///No operation.
         Nop = 0x0,
-        #[doc = "Sine and Cosine operation."]
+        ///Sine and Cosine operation.
         Sincos = 0x01,
-        #[doc = "Arc tangent with x and y values as operands."]
+        ///Arc tangent with x and y values as operands.
         Atan2 = 0x02,
         _RESERVED_3 = 0x03,
-        #[doc = "Divide, the operands are numerator, denominator, and the divide type. Result is the quotient and reminder."]
+        ///Divide, the operands are numerator, denominator, and the divide type. Result is the quotient and reminder.
         Div = 0x04,
-        #[doc = "Do square root. Operand is the number whoose square root needs to be computed. The number if outside the range needs to be scaled up down by 2 power 2n to bring it with in the range."]
+        ///Do square root. Operand is the number whoose square root needs to be computed. The number if outside the range needs to be scaled up down by 2 power 2n to bring it with in the range.
         Sqrt = 0x05,
-        #[doc = "32-bit Multiply Result."]
+        ///32-bit Multiply Result.
         Mpy32 = 0x06,
-        #[doc = "32-bit square result."]
+        ///32-bit square result.
         Square32 = 0x07,
-        #[doc = "64-bit multiply result."]
+        ///64-bit multiply result.
         Mpy64 = 0x08,
-        #[doc = "64-bit multiply result."]
+        ///64-bit multiply result.
         Square64 = 0x09,
-        #[doc = "Multiply and accumulate operation."]
+        ///Multiply and accumulate operation.
         Mac = 0x0a,
-        #[doc = "Square and accumulate operation."]
+        ///Square and accumulate operation.
         Sac = 0x0b,
         _RESERVED_c = 0x0c,
         _RESERVED_d = 0x0d,
@@ -831,69 +836,69 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Qval {
-        #[doc = "Q0 operands."]
+        ///Q0 operands.
         Q0 = 0x0,
-        #[doc = "Q1 operands."]
+        ///Q1 operands.
         Q1 = 0x01,
-        #[doc = "Q2 operands."]
+        ///Q2 operands.
         Q2 = 0x02,
-        #[doc = "Q3 operands."]
+        ///Q3 operands.
         Q3 = 0x03,
-        #[doc = "Q4 operands."]
+        ///Q4 operands.
         Q4 = 0x04,
-        #[doc = "Q5 operands."]
+        ///Q5 operands.
         Q5 = 0x05,
-        #[doc = "Q6 operands."]
+        ///Q6 operands.
         Q6 = 0x06,
-        #[doc = "Q7 operands."]
+        ///Q7 operands.
         Q7 = 0x07,
-        #[doc = "Q8 operands."]
+        ///Q8 operands.
         Q8 = 0x08,
-        #[doc = "Q9 operands."]
+        ///Q9 operands.
         Q9 = 0x09,
-        #[doc = "Q10 operands."]
+        ///Q10 operands.
         Q10 = 0x0a,
-        #[doc = "Q11 operands."]
+        ///Q11 operands.
         Q11 = 0x0b,
-        #[doc = "Q12 operands."]
+        ///Q12 operands.
         Q12 = 0x0c,
-        #[doc = "Q13 operands."]
+        ///Q13 operands.
         Q13 = 0x0d,
-        #[doc = "Q14 operands."]
+        ///Q14 operands.
         Q14 = 0x0e,
-        #[doc = "Q15 operands."]
+        ///Q15 operands.
         Q15 = 0x0f,
-        #[doc = "Q16 operands."]
+        ///Q16 operands.
         Q16 = 0x10,
-        #[doc = "Q17 operands."]
+        ///Q17 operands.
         Q17 = 0x11,
-        #[doc = "Q18 operands."]
+        ///Q18 operands.
         Q18 = 0x12,
-        #[doc = "Q19 operands."]
+        ///Q19 operands.
         Q19 = 0x13,
-        #[doc = "Q20 operands."]
+        ///Q20 operands.
         Q20 = 0x14,
-        #[doc = "Q21 operands."]
+        ///Q21 operands.
         Q21 = 0x15,
-        #[doc = "Q22 operands."]
+        ///Q22 operands.
         Q22 = 0x16,
-        #[doc = "Q23 operands."]
+        ///Q23 operands.
         Q23 = 0x17,
-        #[doc = "Q24 operands."]
+        ///Q24 operands.
         Q24 = 0x18,
-        #[doc = "Q25 operands."]
+        ///Q25 operands.
         Q25 = 0x19,
-        #[doc = "Q26 operands."]
+        ///Q26 operands.
         Q26 = 0x1a,
-        #[doc = "Q27 operands."]
+        ///Q27 operands.
         Q27 = 0x1b,
-        #[doc = "Q28 operands."]
+        ///Q28 operands.
         Q28 = 0x1c,
-        #[doc = "Q29 operands."]
+        ///Q29 operands.
         Q29 = 0x1d,
-        #[doc = "Q30 operands."]
+        ///Q30 operands.
         Q30 = 0x1e,
-        #[doc = "Q31 operands."]
+        ///Q31 operands.
         Q31 = 0x1f,
     }
     impl Qval {
@@ -965,9 +970,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Resetassert {
-        #[doc = "Writing 0 has no effect."]
+        ///Writing 0 has no effect.
         Nop = 0x0,
-        #[doc = "Assert reset."]
+        ///Assert reset.
         Assert = 0x01,
     }
     impl Resetassert {
@@ -996,9 +1001,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Resetstky {
-        #[doc = "The peripheral has not been reset since this bit was last cleared by RESETSTKYCLR in the RSTCTL register."]
+        ///The peripheral has not been reset since this bit was last cleared by RESETSTKYCLR in the RSTCTL register.
         Nores = 0x0,
-        #[doc = "The peripheral was reset since the last bit clear."]
+        ///The peripheral was reset since the last bit clear.
         Reset = 0x01,
     }
     impl Resetstky {
@@ -1027,9 +1032,9 @@ pub mod vals {
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Resetstkyclr {
-        #[doc = "Writing 0 has no effect."]
+        ///Writing 0 has no effect.
         Nop = 0x0,
-        #[doc = "Clear reset sticky bit."]
+        ///Clear reset sticky bit.
         Clr = 0x01,
     }
     impl Resetstkyclr {

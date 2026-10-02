@@ -164,57 +164,63 @@ pub mod tim;
 #[path = "../../peripherals/wwdt_v1.rs"]
 pub mod wwdt;
 pub const ADC0: adc::Adc = unsafe { adc::Adc::from_ptr(1073758208 as *mut _) };
-pub const AESADV: aesadv::Aesadv = unsafe { aesadv::Aesadv::from_ptr(1078206464 as *mut _) };
-#[doc = "Address: 1073774592"]
+pub const AESADV: aesadv::Aesadv = unsafe {
+    aesadv::Aesadv::from_ptr(1078206464 as *mut _)
+};
+///Address: 1073774592
 pub const COMP0: () = ();
 pub const CPUSS: cpuss::Cpuss = unsafe { cpuss::Cpuss::from_ptr(1077936128 as *mut _) };
-#[doc = "Address: 1078198272"]
+///Address: 1078198272
 pub const CRCP0: () = ();
-#[doc = "Address: 1074556928"]
+///Address: 1074556928
 pub const DEBUGSS: () = ();
 pub const DMA: dma::Dma = unsafe { dma::Dma::from_ptr(1078108160 as *mut _) };
-#[doc = "Address: 1074565120"]
+///Address: 1074565120
 pub const EVENT: () = ();
-pub const FACTORYREGION: factoryregion::Factoryregion =
-    unsafe { factoryregion::Factoryregion::from_ptr(1103364096 as *mut _) };
-pub const FLASHCTL: flashctl::Flashctl =
-    unsafe { flashctl::Flashctl::from_ptr(1074581504 as *mut _) };
+pub const FACTORYREGION: factoryregion::Factoryregion = unsafe {
+    factoryregion::Factoryregion::from_ptr(1103364096 as *mut _)
+};
+pub const FLASHCTL: flashctl::Flashctl = unsafe {
+    flashctl::Flashctl::from_ptr(1074581504 as *mut _)
+};
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074397184 as *mut _) };
 pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(1074405376 as *mut _) };
-#[doc = "Address: 1078439936"]
+///Address: 1078439936
 pub const I2S0: () = ();
 pub const IOMUX: iomux::Iomux = unsafe { iomux::Iomux::from_ptr(1078099968 as *mut _) };
-#[doc = "Address: 1074348032"]
+///Address: 1074348032
 pub const IWDT: () = ();
-#[doc = "Address: 1074446336"]
+///Address: 1074446336
 pub const KEYSTORECTL: () = ();
-#[doc = "Address: 1074348032"]
+///Address: 1074348032
 pub const LFSS: () = ();
-#[doc = "Address: 1083174912"]
+///Address: 1083174912
 pub const NPU: () = ();
-#[doc = "Address: 1074348032"]
+///Address: 1074348032
 pub const RTC_B: () = ();
-#[doc = "Address: 1084878848"]
+///Address: 1084878848
 pub const SPG0: () = ();
-pub const SYSCTL: sysctl::Sysctl = unsafe { sysctl::Sysctl::from_ptr(1074458624 as *mut _) };
+pub const SYSCTL: sysctl::Sysctl = unsafe {
+    sysctl::Sysctl::from_ptr(1074458624 as *mut _)
+};
 pub const TIMA0: tim::Tim = unsafe { tim::Tim::from_ptr(1082523648 as *mut _) };
 pub const TIMB0: tim::Tim = unsafe { tim::Tim::from_ptr(1074495488 as *mut _) };
 pub const TIMG0: tim::Tim = unsafe { tim::Tim::from_ptr(1074282496 as *mut _) };
 pub const TIMG6: tim::Tim = unsafe { tim::Tim::from_ptr(1082556416 as *mut _) };
 pub const TIMG7: tim::Tim = unsafe { tim::Tim::from_ptr(1082564608 as *mut _) };
-#[doc = "Address: 1084751872"]
+///Address: 1084751872
 pub const UC0: () = ();
-#[doc = "Address: 1084760064"]
+///Address: 1084760064
 pub const UC1: () = ();
-#[doc = "Address: 1085800448"]
+///Address: 1085800448
 pub const UC2: () = ();
-#[doc = "Address: 1085808640"]
+///Address: 1085808640
 pub const UC3: () = ();
-#[doc = "Address: 1078456320"]
+///Address: 1078456320
 pub const USBFS0: () = ();
-#[doc = "Address: 1073938432"]
+///Address: 1073938432
 pub const VREF: () = ();
-#[doc = "Address: 1078083584"]
+///Address: 1078083584
 pub const WUC: () = ();
 pub const WWDT0: wwdt::Wwdt = unsafe { wwdt::Wwdt::from_ptr(1074266112 as *mut _) };
 pub const WWDT1: wwdt::Wwdt = unsafe { wwdt::Wwdt::from_ptr(1074274304 as *mut _) };

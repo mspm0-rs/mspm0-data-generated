@@ -3278,7 +3278,7 @@
     },
     "SPG0": {
       "name": "SPG0",
-      "type": "Unknown",
+      "type": "Spgss",
       "address": 1084878848,
       "power_domain": "Pd0",
       "pins": []
